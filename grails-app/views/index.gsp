@@ -1,24 +1,143 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta name="layout" content="main"/>
-    <title>My Posts</title>
-</head>
-<body>
-<div class="btn-group" role="group" aria-label="...">
-    <button type="button" class="btn btn-default">1</button>
-    <button type="button" class="btn btn-default">2</button>
+	<head>
+		<meta name="layout" content="main"/>
+		<title>Welcome to Grails</title>
+		%{--<style type="text/css" media="screen">--}%
+			%{--#status {--}%
+				%{--background-color: #eee;--}%
+				%{--border: .2em solid #fff;--}%
+				%{--margin: 2em 2em 1em;--}%
+				%{--padding: 1em;--}%
+				%{--width: 12em;--}%
+				%{--float: left;--}%
+				%{---moz-box-shadow: 0px 0px 1.25em #ccc;--}%
+				%{---webkit-box-shadow: 0px 0px 1.25em #ccc;--}%
+				%{--box-shadow: 0px 0px 1.25em #ccc;--}%
+				%{---moz-border-radius: 0.6em;--}%
+				%{---webkit-border-radius: 0.6em;--}%
+				%{--border-radius: 0.6em;--}%
+			%{--}--}%
 
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            Dropdown
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Dropdown link</a></li>
-            <li><a href="#">Dropdown link</a></li>
-        </ul>
-    </div>
-</div>
-</body>
+			%{--.ie6 #status {--}%
+				%{--display: inline; /* float double margin fix http://www.positioniseverything.net/explorer/doubled-margin.html */--}%
+			%{--}--}%
+
+			%{--#status ul {--}%
+				%{--font-size: 0.9em;--}%
+				%{--list-style-type: none;--}%
+				%{--margin-bottom: 0.6em;--}%
+				%{--padding: 0;--}%
+			%{--}--}%
+
+			%{--#status li {--}%
+				%{--line-height: 1.3;--}%
+			%{--}--}%
+
+			%{--#status h1 {--}%
+				%{--text-transform: uppercase;--}%
+				%{--font-size: 1.1em;--}%
+				%{--margin: 0 0 0.3em;--}%
+			%{--}--}%
+
+			%{--#page-body {--}%
+				%{--margin: 2em 1em 1.25em 18em;--}%
+			%{--}--}%
+
+			%{--h2 {--}%
+				%{--margin-top: 1em;--}%
+				%{--margin-bottom: 0.3em;--}%
+				%{--font-size: 1em;--}%
+			%{--}--}%
+
+			%{--p {--}%
+				%{--line-height: 1.5;--}%
+				%{--margin: 0.25em 0;--}%
+			%{--}--}%
+
+			%{--#controller-list ul {--}%
+				%{--list-style-position: inside;--}%
+			%{--}--}%
+
+			%{--#controller-list li {--}%
+				%{--line-height: 1.3;--}%
+				%{--list-style-position: inside;--}%
+				%{--margin: 0.25em 0;--}%
+			%{--}--}%
+
+			%{--@media screen and (max-width: 480px) {--}%
+				%{--#status {--}%
+					%{--display: none;--}%
+				%{--}--}%
+
+				%{--#page-body {--}%
+					%{--margin: 0 1em 1em;--}%
+				%{--}--}%
+
+				%{--#page-body h1 {--}%
+					%{--margin-top: 0;--}%
+				%{--}--}%
+			%{--}--}%
+		%{--</style>--}%
+	</head>
+	<body>
+    %{--大盤走勢<BR/>--}%
+    %{--<embed src="https://tw.quote.finance.yahoo.net/quote/charts/Yahoo_IndexChart.swf" width="560" height="360" align="middle" id="Yahoo_IndexChart" quality="high" bgcolor="#ffffff" name="Yahoo_IndexChart" allowscriptaccess="never" pluginspage="http://www.adobe.com/go/getflashplayer" type="application/x-shockwave-flash">--}%
+    %{--<BR/>--}%
+    %{--技術分析<BR/>--}%
+    %{--<embed src="https://tw.quote.finance.yahoo.net/quote/charts/Yahoo_TA.swf" width="560" height="360" align="middle" id="Yahoo_TA" quality="high" bgcolor="#ffffff" name="Yahoo_TA" flashvars="SymId=#001" allowscriptaccess="never" pluginspage="https://www.adobe.com/go/getflashplayer" type="application/x-shockwave-flash">--}%
+    %{--<BR/>--}%
+    %{--店頭市場<BR/>--}%
+    %{--<embed src="https://tw.quote.finance.yahoo.net/quote/charts/Yahoo_IndexChart.swf" width="560" height="360" align="middle" id="Yahoo_IndexChart" quality="high" bgcolor="#ffffff" name="Yahoo_IndexChart" flashvars="OTC" allowscriptaccess="never" pluginspage="http://www.adobe.com/go/getflashplayer" type="application/x-shockwave-flash">--}%
+		%{--<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>--}%
+		%{--<div id="status" role="complementary">--}%
+    1:
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    <BR/>
+    %{--<div class="container">--}%
+        %{--...--}%
+    %{--</div>--}%
+    2:
+    <a class="btn btn-default">Button</a>
+    <BR/>
+
+            <body>
+            <h1> Hello World </h1>
+            </body>
+			%{--<h1>Application Status</h1>--}%
+			%{--<ul>--}%
+				%{--<li>App version: <g:meta name="app.version"/></li>--}%
+				%{--<li>Grails version: <g:meta name="app.grails.version"/></li>--}%
+				%{--<li>Groovy version: ${GroovySystem.getVersion()}</li>--}%
+				%{--<li>JVM version: ${System.getProperty('java.version')}</li>--}%
+				%{--<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>--}%
+				%{--<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>--}%
+				%{--<li>Domains: ${grailsApplication.domainClasses.size()}</li>--}%
+				%{--<li>Services: ${grailsApplication.serviceClasses.size()}</li>--}%
+				%{--<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>--}%
+			%{--</ul>--}%
+			%{--<h1>Installed Plugins</h1>--}%
+			%{--<ul>--}%
+				%{--<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">--}%
+					%{--<li>${plugin.name} - ${plugin.version}</li>--}%
+				%{--</g:each>--}%
+			%{--</ul>--}%
+		%{--</div>--}%
+		%{--<div id="page-body" role="main">--}%
+			%{--<h1>Welcome to Grails</h1>--}%
+			%{--<p>Congratulations, you have successfully started your first Grails application! At the moment--}%
+			   %{--this is the default page, feel free to modify it to either redirect to a controller or display whatever--}%
+			   %{--content you may choose. Below is a list of controllers that are currently deployed in this application,--}%
+			   %{--click on each to execute its default action:</p>--}%
+
+			%{--<div id="controller-list" role="navigation">--}%
+				%{--<h2>Available Controllers:</h2>--}%
+				%{--<ul>--}%
+					%{--<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">--}%
+						%{--<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>--}%
+					%{--</g:each>--}%
+				%{--</ul>--}%
+			%{--</div>--}%
+		%{--</div>--}%
+	%{--</body>--}%
 </html>
