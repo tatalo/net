@@ -6,6 +6,7 @@
 		<g:if env="development"><asset:stylesheet src="errors.css"/></g:if>
 	</head>
 	<body>
+    404
 		<g:if env="development">
 			<g:renderException exception="${exception}" />
 		</g:if>
