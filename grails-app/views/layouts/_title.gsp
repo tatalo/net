@@ -1,37 +1,33 @@
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                <span class="sr-only">巡覽切換</span>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/bs3" class="navbar-brand">Bootstrap</a>
+            <a class="navbar-brand" href="#">Bootstrap theme</a>
         </div>
-        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="/bs3/GettingStarted">旅程開始</a>
-                </li>
-                <li>
-                    <a href="/bs3/CSS">CSS</a>
-                </li>
-                <li>
-                    <a href="/bs3/Components">元件</a>
-                </li>
-                <li>
-                    <a href="/bs3/JavaScript">JavaScript</a>
-                </li>
-                <li>
-                    <a href="http://getbootstrap.com/customize/" data-toggle="tooltip" data-placement="bottom" title="外部連結">客製化</a>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Account/Register" id="registerLink">註冊</a></li>
-                <li><a href="/Account/Login" id="loginLink">登入</a></li>
-            </ul>
-
-        </nav>
+        </div><!--/.nav-collapse -->
     </div>
-</header>
+</nav>
