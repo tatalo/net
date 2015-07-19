@@ -7,7 +7,7 @@ class GambleJob {
     }
 
     def execute() {
-        println "±Æµ{¶}©l"
+        println "æŽ’ç¨‹é–‹å§‹"
         // execute job
     }
 }
