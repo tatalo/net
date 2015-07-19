@@ -70,7 +70,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.5.0" level="application" />
     <orderEntry type="module-library" exported="">
-      <library name="Grails User Library (dataService-grailsPlugins)">
+      <library name="Grails User Library (netWin-grailsPlugins)">
         <CLASSES>
           <root url="jar://$MAVEN_REPOSITORY$/com/bertramlabs/plugins/asset-pipeline-core/2.1.1/asset-pipeline-core-2.1.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar!/" />
