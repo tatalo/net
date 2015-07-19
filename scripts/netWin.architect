@@ -154,7 +154,7 @@
   <table id="TAB54" populated="true" name="參數主檔" objectType="TABLE" physicalName="BS100" remarks="參數主檔" >
 <remark>參數主檔</remark>
    <folder id="FOL55" populated="true" name="Columns" physicalName="Columns" type="1" >
-    <column id="COL56" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="2"     >
+    <column id="COL56" populated="true" autoIncrement="false" autoIncrementSequenceName="BS100_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="2" remarks="OBJID" scale="0" type="2"     >
 <remark>OBJID</remark>
     </column>
     <column id="COL57" populated="true" autoIncrement="false" defaultValue="1" name="VERSION" nullable="0" physicalName="VERSION" precision="10" referenceCount="2" remarks="" scale="0" type="2"     >
@@ -204,26 +204,18 @@
  </target-database>
  <Submodels>
 </Submodels>
-<ddl-generator type="ca.sqlpower.architect.ddl.Oracle9PlusDDLGenerator" allow-connection="false" target-schema=""></ddl-generator>
+<ddl-generator type="ca.sqlpower.architect.ddl.Oracle9PlusDDLGenerator" allow-connection="true" target-schema=""></ddl-generator>
 <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
 <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true" showLogicalNames="true" showPhysicalNames="true">
- <table-pane table-ref="TAB37" x="407" y="333" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB21" x="93" y="333" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB1" x="420" y="105" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
  <table-pane table-ref="TAB54" x="94" y="100" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB1" x="420" y="105" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB21" x="93" y="333" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB37" x="407" y="333" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
 <PPComponentsPosition>
-<PlayPenComponent table-ref="" db-ref="ppdb" x="954" y="229" />
-<PlayPenComponent table-ref="" db-ref="ppdb" x="1079" y="229" />
-<PlayPenComponent table-ref="" db-ref="ppdb" x="627" y="229" />
-<PlayPenComponent table-ref="" db-ref="ppdb" x="736" y="229" />
-<PlayPenComponent table-ref="" db-ref="ppdb" x="208" y="229" />
-<PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="420" y="105" />
 <PlayPenComponent table-ref="TAB21" db-ref="ppdb" x="93" y="333" />
-<PlayPenComponent table-ref="" db-ref="ppdb" x="845" y="229" />
-<PlayPenComponent table-ref="" db-ref="ppdb" x="317" y="229" />
-<PlayPenComponent table-ref="" db-ref="ppdb" x="426" y="229" />
-<PlayPenComponent table-ref="TAB37" db-ref="ppdb" x="407" y="333" />
 <PlayPenComponent table-ref="TAB54" db-ref="ppdb" x="94" y="100" />
+<PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="420" y="105" />
+<PlayPenComponent table-ref="TAB37" db-ref="ppdb" x="407" y="333" />
 </PPComponentsPosition>
 </play-pen>
 <profiles topNCount="10">
