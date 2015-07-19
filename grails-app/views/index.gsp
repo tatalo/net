@@ -3,41 +3,9 @@
 <head>
     <meta name="layout" content="main"/>
     <title>Welcome to Grails</title>
-
-    <script type="text/javascript">
-
-        jQuery(function(){
-
-        });
-
-        function callNetReptile(){
-            jQuery.ajax({//開始呼叫ajax
-                url: "${createLink(controller: "sport", action: "runNetReptile")}",
-                type: "POST",
-                dataType: "html",
-                success: function (html) {
-                    jQuery("#ResultDiv").html(html);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                },
-                beforeSend: function () {
-
-                },
-                complete: function () {
-
-                }
-            });
-        }
-
-    </script>
-
 </head>
 
-
-
 <body>
-
-<div id="ResultDiv"></div>
 
 <div class="container theme-showcase" role="main">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -51,8 +19,6 @@
         <h1>Theme example</h1>
         <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
     </div>
-
-    <input type="button" value="執行網路爬蟲" onclick="callNetReptile();" />
 
 
     <div class="page-header">

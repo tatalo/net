@@ -2,13 +2,12 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to Grails</title>
+    <title>網贏</title>
 </head>
 
 <body>
-
-<div class="container theme-showcase" role="main">
-    test3
-    </div>
+<div class="container">
+    建置中
+</div>
 </body>
 </html>
