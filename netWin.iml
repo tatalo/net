@@ -101,6 +101,6 @@
         <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="dataService-grailsPlugins" />
+    <orderEntry type="module" module-name="netWin-grailsPlugins" />
   </component>
 </module>

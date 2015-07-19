@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dataService.iml" filepath="$PROJECT_DIR$/dataService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dataService-grailsPlugins.iml" filepath="$PROJECT_DIR$/dataService-grailsPlugins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netWin.iml" filepath="$PROJECT_DIR$/netWin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netWin-grailsPlugins.iml" filepath="$PROJECT_DIR$/netWin-grailsPlugins.iml" />
     </modules>
   </component>
 </project>
