@@ -26,12 +26,15 @@
 </head>
 <body role="document">
 
+    <div id="mainheader">
     <g:render template="/layouts/title"/>
-
+    </div>
 
 %{--<div class="bs-docs-header" id="content">--}%
 %{--<div class="container">--}%
-    <g:layoutBody/>
+    <div id="mainbody">
+        <g:layoutBody/>
+    </div>
     %{--</div>--}%
 %{--</div>--}%
 
