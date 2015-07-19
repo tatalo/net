@@ -84,11 +84,11 @@
     <column id="COL29" populated="true" autoIncrement="false" autoIncrementSequenceName="NW300_資料建立時間_seq" defaultValue="" name="類型" nullable="1" physicalName="TYPE" precision="5" referenceCount="3" remarks="類型" scale="0" type="12"     >
 <remark>類型</remark>
     </column>
-    <column id="COL30" populated="true" autoIncrement="false" autoIncrementSequenceName="NW300_資料建立時間_seq" defaultValue="" name="開獎時間" nullable="1" physicalName="OPENDT" precision="7" referenceCount="2" remarks="開獎時間" scale="0" type="91"     >
-<remark>開獎時間</remark>
-    </column>
-    <column id="COL31" populated="true" autoIncrement="false" autoIncrementSequenceName="PERIODS_seq" defaultValue="" name="期數" nullable="1" physicalName="PERIODS" precision="20" referenceCount="2" remarks="期數" scale="0" type="12"     >
+    <column id="COL30" populated="true" autoIncrement="false" autoIncrementSequenceName="PERIODS_seq" defaultValue="" name="期數" nullable="1" physicalName="PERIODS" precision="20" referenceCount="2" remarks="期數" scale="0" type="12"     >
 <remark>期數</remark>
+    </column>
+    <column id="COL31" populated="true" autoIncrement="false" autoIncrementSequenceName="NW300_資料建立時間_seq" defaultValue="" name="開獎時間" nullable="1" physicalName="OPENDT" precision="7" referenceCount="2" remarks="開獎時間" scale="0" type="91"     >
+<remark>開獎時間</remark>
     </column>
    </folder>
    <folder id="FOL32" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
@@ -207,15 +207,30 @@
 <ddl-generator type="ca.sqlpower.architect.ddl.Oracle9PlusDDLGenerator" allow-connection="true" target-schema=""></ddl-generator>
 <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
 <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true" showLogicalNames="true" showPhysicalNames="true">
- <table-pane table-ref="TAB54" x="94" y="100" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB1" x="420" y="105" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB21" x="93" y="333" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
  <table-pane table-ref="TAB37" x="407" y="333" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB21" x="93" y="333" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB1" x="420" y="105" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB54" x="94" y="100" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+<textBlock-pane id="CP0"  db-ref="ppdb" x="85" y="529" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
+   <textBlock-text>NW300.TYPE (預計)
+01: 六合彩
+02: 大福彩
+03: 威力彩
+04: 38樂合彩
+05: 3星彩
+06: 4星彩
+07: 賓果
+08: 大樂透
+09: 49樂合彩
+10: 39樂合彩
+11: 今彩539</textBlock-text>
+</textBlock-pane>
 <PPComponentsPosition>
-<PlayPenComponent table-ref="TAB21" db-ref="ppdb" x="93" y="333" />
-<PlayPenComponent table-ref="TAB54" db-ref="ppdb" x="94" y="100" />
 <PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="420" y="105" />
+<PlayPenComponent textBlock-ref="CP0" db-ref="ppdb" x="85" y="529" />
 <PlayPenComponent table-ref="TAB37" db-ref="ppdb" x="407" y="333" />
+<PlayPenComponent table-ref="TAB54" db-ref="ppdb" x="94" y="100" />
+<PlayPenComponent table-ref="TAB21" db-ref="ppdb" x="93" y="333" />
 </PPComponentsPosition>
 </play-pen>
 <profiles topNCount="10">
