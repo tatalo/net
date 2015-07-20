@@ -22,7 +22,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
                 <li>
-                    <g:remoteLink controller="sport" action="index" update="mainbody">
+                    <g:remoteLink controller="sports" action="index" update="mainbody">
                         運動
                     </g:remoteLink>
                 </li>

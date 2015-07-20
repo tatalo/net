@@ -51,10 +51,8 @@
                 </g:remoteLink>
             </li>
         </ul>
-        %{--</div><!--/.nav-collapse -->--}%
     </div>
-    %{--</div>--}%
 </nav>
-<g:render template="/tabs/sports/result1"/>
+<g:render template="/sports/result"/>
 </body>
 </html>
