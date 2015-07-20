@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>網贏</title>
+    <title><g:message code="default.webname.label"/></title>
 </head>
 
 <body>

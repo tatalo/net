@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
             </button>
             <g:remoteLink class="navbar-brand active" controller="base" action="index" update="mainbody">
-                首頁
+                <g:message code="default.index.label"/>
             </g:remoteLink>
             %{--<a class="navbar-brand active" href="#">--}%
             %{--首頁--}%
@@ -23,7 +23,7 @@
             <ul class="nav navbar-nav navbar-left">
                 <li>
                     <g:remoteLink controller="sports" action="index" update="mainbody">
-                        運動
+                        <g:message code="tabs.type1.label"/>
                     </g:remoteLink>
                 </li>
                 %{--<li>--}%
@@ -33,7 +33,7 @@
                 %{--</li>--}%
                 <li>
                     <g:remoteLink controller="lotto" action="index" update="mainbody">
-                        彩球
+                        <g:message code="tabs.type2.label"/>
                     </g:remoteLink>
                 </li>
                 %{--<li>--}%
@@ -43,31 +43,31 @@
                 %{--</li>--}%
                 <li>
                     <g:remoteLink controller="nationGamble" action="index" update="mainbody">
-                        國際博彩
+                        <g:message code="tabs.type3.label"/>
                     </g:remoteLink>
                 </li>
                 <li>
                     <g:remoteLink controller="base" action="build" update="mainbody">
-                        即時比分(建置中)
+                        <g:message code="tabs.type4.label"/>
                     </g:remoteLink>
                 </li>
                 <li>
                     <g:remoteLink controller="gambleTech" action="index" update="mainbody">
-                        博彩技巧
+                        <g:message code="tabs.type5.label"/>
                     </g:remoteLink>
                 </li>
                 <li>
                     <g:remoteLink controller="base" action="build" update="mainbody">
-                        賽事分析(建置中)
+                        <g:message code="tabs.type6.label"/>
                     </g:remoteLink>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                        <button type="button" class="btn btn-default" onClick="addToFavorite('網贏', 'http://ww899.net/')">
-                            加入我的最愛
-                        </button>
-
+                    <button type="button" class="btn btn-default"
+                            onClick="addToFavorite('${message(code: "default.webname.label")}', 'http://ww899.net/')">
+                        加入我的最愛
+                    </button>
                 </li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -90,13 +90,14 @@
                     <i class="fa fa-twitter-square fa-3x"></i>
                     <i class="fa fa-tumblr-square fa-3x"></i>
                 </div>
+
                 <div class="col-md-2 text-center">
-                        <button type="button" class="btn btn-primary btn-sm">
-                            繁體
-                        </button>
-                        <button type="button" class="btn btn-primary btn-sm">
-                            簡體
-                        </button>
+                    <button type="button" class="btn btn-primary btn-sm">
+                        繁體
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm">
+                        簡體
+                    </button>
                 </div>
             </div>
         </div>

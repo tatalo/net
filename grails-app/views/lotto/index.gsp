@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>網贏</title>
+    <title><g:message code="default.webname.label"/></title>
 </head>
 
 <body>
@@ -11,48 +11,74 @@
         %{--<div id="navbar" class="navbar-collapse collapse">--}%
         <ul class="nav nav-pills nav-justified">
             <li class="active">
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    天下
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type1.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    35688
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type2.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    新鑫寶
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type3.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    英雄
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type4.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    榮華會
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type5.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    任你搏
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type6.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    速博
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type7.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    其他
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type8.label"/>
+                </g:remoteLink>
+            </li>
+            <li>
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type9.label"/>
+                </g:remoteLink>
+            </li>
+            <li>
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type10.label"/>
+                </g:remoteLink>
+            </li>
+            <li>
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type11.label"/>
+                </g:remoteLink>
+            </li>
+            <li>
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type12.label"/>
+                </g:remoteLink>
+            </li>
+            <li>
+                <g:remoteLink controller="lotto" action="index" update="contentDiv">
+                    <g:message code="lotto.type13.label"/>
                 </g:remoteLink>
             </li>
         </ul>
     </div>
 </nav>
-<g:render template="/sports/result"/>
+<div id="contentDiv" />
+<g:render template="/lotto/result"/>
 </body>
 </html>

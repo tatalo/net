@@ -2,57 +2,61 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>網贏</title>
+    <title><g:message code="default.webname.label"/></title>
 </head>
 
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="container">
-        %{--<div id="navbar" class="navbar-collapse collapse">--}%
         <ul class="nav nav-pills nav-justified">
             <li class="active">
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    天下
+                <g:remoteLink controller="nationGamble" action="result" update="contentDiv">
+                    <g:message code="nationGamble.type1.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    35688
+                <g:remoteLink controller="nationGamble" action="result" update="contentDiv">
+                    <g:message code="nationGamble.type2.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    新鑫寶
+                <g:remoteLink controller="nationGamble" action="result" update="contentDiv">
+                    <g:message code="nationGamble.type3.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    英雄
+                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
+                    <g:message code="nationGamble.type4.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    榮華會
+                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
+                    <g:message code="nationGamble.type5.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    任你搏
+                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
+                    <g:message code="nationGamble.type6.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    速博
+                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
+                    <g:message code="nationGamble.type7.label"/>
                 </g:remoteLink>
             </li>
             <li>
-                <g:remoteLink controller="sport" action="index" update="mainbody">
-                    其他
+                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
+                    <g:message code="nationGamble.type8.label"/>
+                </g:remoteLink>
+            </li>
+            <li>
+                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
+                    <g:message code="nationGamble.type9.label"/>
                 </g:remoteLink>
             </li>
         </ul>
     </div>
 </nav>
-<g:render template="/sports/result"/>
+<div id="contentDiv" />
 </body>
 </html>
