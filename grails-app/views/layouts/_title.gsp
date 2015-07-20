@@ -32,7 +32,9 @@
                 %{--</g:remoteLink>--}%
                 %{--</li>--}%
                 <li>
-                    <a href="#about">彩球</a>
+                    <g:remoteLink controller="lotto" action="index" update="mainbody">
+                        彩球
+                    </g:remoteLink>
                 </li>
                 %{--<li>--}%
                 %{--<g:remoteLink controller="base" action="build" update="mainbody">--}%
@@ -40,15 +42,19 @@
                 %{--</g:remoteLink>--}%
                 %{--</li>--}%
                 <li>
-                    <a href="#about">國際博彩</a>
+                    <g:remoteLink controller="nationGamble" action="index" update="mainbody">
+                        國際博彩
+                    </g:remoteLink>
                 </li>
                 <li>
-e                    <g:remoteLink controller="base" action="build" update="mainbody">
+                    <g:remoteLink controller="base" action="build" update="mainbody">
                         即時比分(建置中)
                     </g:remoteLink>
                 </li>
                 <li>
-                    <a href="#about">博彩技巧</a>
+                    <g:remoteLink controller="gambleTech" action="index" update="mainbody">
+                        博彩技巧
+                    </g:remoteLink>
                 </li>
                 <li>
                     <g:remoteLink controller="base" action="build" update="mainbody">

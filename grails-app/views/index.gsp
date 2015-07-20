@@ -8,6 +8,9 @@
 <body>
 
 <div class="container theme-showcase" role="main">
+    <g:message code="default.blank.message" locale="zh_CN"/><BR/>
+    <g:message code="default.blank.message" locale="th"/><BR/>
+    <g:message code="default.blank.message"/>
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
