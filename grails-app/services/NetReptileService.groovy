@@ -1,8 +1,11 @@
 import grails.transaction.Transactional
 import org.jsoup.Jsoup
+import groovy.sql.*
 
 @Transactional
 class NetReptileService {
+
+    def dataSource
 
     /**
      * 取得賓果
@@ -13,6 +16,51 @@ class NetReptileService {
             def element = org.jsoup.Jsoup.connect(url).get()
             def s = ''
             def delimiter = ' '
+
+
+            println '====寫入DB Start===='
+
+//            def sql = " select * from S_USER "
+//            def ds = new Sql(dataSource)
+//            def result = ds.firstRow(sql)
+//            def name = result.USER_NAME
+//
+//            println 'name = ' + name
+
+            def nw300Instance = new Nw300()
+
+//            nw300Instance.id = 1
+//            nw300Instance.version = 2
+//            nw300Instance.manCreatedId = 'Allen01'
+//            nw300Instance.dateCreated = new Date()
+//            nw300Instance.manLastUpdatedId = 'Allen02'
+//            nw300Instance.lastUpdated = new Date()
+//            nw300Instance.type = 'Bingo'
+//            nw300Instance.periods = '12345'
+//            nw300Instance.opendt = new Date()
+//
+//            nw300Instance.validate()//資料檢查
+//
+//            if (!nw300Instance.hasErrors()) {
+//                println '1111'
+//                nw300Instance.save(flush: true)
+//                println '2222'
+//            } else {
+//                println '333'
+//                nw300Instance.errors.each {
+//                    println it
+//                }
+//                println '5555'
+//            }
+
+
+
+
+
+
+
+            println '====寫入DB End===='
+
 
             element.select('div[class=contents_mine_tx01] span[class=font_black15]').each {
                 node->
