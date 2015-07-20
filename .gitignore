@@ -2,23 +2,17 @@
 /.idea
 
 # web application files
-!/web-app/WEB-INF/classes
+# /web-app/WEB-INF/classes
 
 # logs
-/stacktrace.log
 /test
-/logs
-
-# project release file
-/*.war
 
 # plugin release files
-/*.zip
-/plugin.xml
+# /plugin.xml
 
 # older plugin install locations
-/plugins
-/web-app/plugins
+# /plugins
+# /web-app/plugins
 
 # "temporary" build files
 /target
