@@ -6,11 +6,7 @@ class GambleJob {
     def NetReptileService
 
     static triggers = {
-<<<<<<< HEAD
       simple repeatInterval: 50000l // execute job once in 5 seconds
-=======
-      simple repeatInterval: 10000l // execute job once in 10 seconds
->>>>>>> origin/master
     }
 
     def execute() {
