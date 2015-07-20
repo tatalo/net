@@ -43,7 +43,7 @@
                     <a href="#about">國際博彩</a>
                 </li>
                 <li>
-                    <g:remoteLink controller="base" action="build" update="mainbody">
+e                    <g:remoteLink controller="base" action="build" update="mainbody">
                         即時比分(建置中)
                     </g:remoteLink>
                 </li>
