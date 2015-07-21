@@ -28,7 +28,7 @@ class Nw301 {
 		//---7.NW300ID  
 		Nw300 nw300id
 		//---8.開獎數字  
-		String no
+		Long no
 		//---9.特別號註記  
 		Long isspno = 0
 		//---10.開獎順序  
