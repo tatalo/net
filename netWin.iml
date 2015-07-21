@@ -96,6 +96,8 @@
           <root url="jar://$MAVEN_REPOSITORY$/com/bertramlabs/plugins/less-asset-pipeline/2.3.0/less-asset-pipeline-2.3.0.jar!/" />
           <root url="file://$MODULE_DIR$/lib" />
           <root url="jar://$MAVEN_REPOSITORY$/org/quartz-scheduler/quartz/2.2.1/quartz-2.2.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.7.1/jsoup-1.7.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

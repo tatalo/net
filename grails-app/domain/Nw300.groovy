@@ -16,7 +16,7 @@ class Nw300 {
 
 
 		//---2.VERSION  
-		Integer version = 1
+		Long version = 1
 		//---3.建立人  
 		String manCreatedId
 		//---4.建立時間  

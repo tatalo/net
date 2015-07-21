@@ -12,7 +12,7 @@
   <table id="TAB1" populated="true" name="BS101(參數子檔)" objectType="TABLE" physicalName="BS101" remarks="參數子檔" >
 <remark>參數子檔</remark>
    <folder id="FOL2" populated="true" name="Columns" physicalName="Columns" type="1" >
-    <column id="COL3" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="2"     >
+    <column id="COL3" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="3"     >
 <remark>OBJID</remark>
     </column>
     <column id="COL4" populated="true" autoIncrement="false" defaultValue="0" name="VERSION" nullable="0" physicalName="VERSION" precision="10" referenceCount="1" remarks="" scale="0" type="3"     >
@@ -66,10 +66,10 @@
   <table id="TAB22" populated="true" name="NW300(彩球開獎資料主檔)" objectType="TABLE" physicalName="NW300" remarks="彩球開獎資料主檔" >
 <remark>彩球開獎資料主檔</remark>
    <folder id="FOL23" populated="true" name="Columns" physicalName="Columns" type="1" >
-    <column id="COL24" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="2"     >
+    <column id="COL24" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="3"     >
 <remark>OBJID</remark>
     </column>
-    <column id="COL25" populated="true" autoIncrement="false" defaultValue="1" name="VERSION" nullable="0" physicalName="VERSION" precision="10" referenceCount="2" remarks="" scale="0" type="2"     >
+    <column id="COL25" populated="true" autoIncrement="false" defaultValue="1" name="VERSION" nullable="0" physicalName="VERSION" precision="10" referenceCount="2" remarks="" scale="0" type="3"     >
 <remark></remark>
     </column>
     <column id="COL26" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="" name="建立人" nullable="0" physicalName="MAN_CREATED_ID" precision="20" referenceCount="1" remarks="建立人" scale="0" type="12"     >
@@ -108,10 +108,10 @@
   <table id="TAB38" populated="true" name="NW301(彩球資料子檔)" objectType="TABLE" physicalName="NW301" remarks="彩球資料子檔" >
 <remark>彩球資料子檔</remark>
    <folder id="FOL39" populated="true" name="Columns" physicalName="Columns" type="1" >
-    <column id="COL40" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="2"     >
+    <column id="COL40" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="3"     >
 <remark>OBJID</remark>
     </column>
-    <column id="COL41" populated="true" autoIncrement="false" defaultValue="1" name="VERSION" nullable="0" physicalName="VERSION" precision="10" referenceCount="2" remarks="" scale="0" type="2"     >
+    <column id="COL41" populated="true" autoIncrement="false" defaultValue="1" name="VERSION" nullable="0" physicalName="VERSION" precision="10" referenceCount="2" remarks="" scale="0" type="3"     >
 <remark></remark>
     </column>
     <column id="COL42" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="" name="建立人" nullable="0" physicalName="MAN_CREATED_ID" precision="20" referenceCount="1" remarks="建立人" scale="0" type="12"     >
@@ -129,17 +129,17 @@
     <column id="COL46" populated="true" autoIncrement="false" autoIncrementSequenceName="NW300ID_seq" defaultValue="" name="NW300ID" nullable="1" physicalName="NW300ID" precision="10" referenceCount="2" remarks="NW300.OBJID" scale="0" type="2"     >
 <remark>NW300.OBJID</remark>
     </column>
-    <column id="COL47" populated="true" autoIncrement="false" autoIncrementSequenceName="NW301_資料建立時間_seq" defaultValue="" name="開獎數字" nullable="1" physicalName="NO" precision="5" referenceCount="3" remarks="開獎數字" scale="0" type="2"     >
+    <column id="COL47" populated="true" autoIncrement="false" autoIncrementSequenceName="NW301_資料建立時間_seq" defaultValue="" name="開獎數字" nullable="1" physicalName="NO" precision="3" referenceCount="3" remarks="開獎數字" scale="0" type="3"     >
 <remark>開獎數字</remark>
     </column>
     <column id="COL48" populated="true" autoIncrement="false" autoIncrementSequenceName="ISSPNO_seq" defaultValue="0" name="特別號註記" nullable="1" physicalName="ISSPNO" precision="1" referenceCount="2" remarks="特別號註記
 1 是
-0 否" scale="0" type="12"     >
+0 否" scale="0" type="3"     >
 <remark>特別號註記
 1 是
 0 否</remark>
     </column>
-    <column id="COL49" populated="true" autoIncrement="false" autoIncrementSequenceName="OPIDX_seq" defaultValue="1" name="開獎順序" nullable="1" physicalName="OPIDX" precision="3" referenceCount="2" remarks="開獎順序" scale="0" type="2"     >
+    <column id="COL49" populated="true" autoIncrement="false" autoIncrementSequenceName="OPIDX_seq" defaultValue="1" name="開獎順序" nullable="1" physicalName="OPIDX" precision="3" referenceCount="3" remarks="開獎順序" scale="0" type="3"     >
 <remark>開獎順序</remark>
     </column>
    </folder>
@@ -148,7 +148,7 @@
    <folder id="FOL51" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
    </folder>
    <folder id="FOL52" populated="true" name="Indices" physicalName="Indices" type="4" >
-    <index id="IDX53" populated="true" clustered="false" name="NW301_pk" physicalName="BS100_pk" primaryKeyIndex="true" unique="true" >
+    <index id="IDX53" populated="true" clustered="false" name="NW301_pk" physicalName="NW301_PK" primaryKeyIndex="true" unique="true" >
      <index-column id="IDC54" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL40" name="OBJID" physicalName="OBJID"      >
      </index-column>
     </index>
@@ -157,10 +157,10 @@
   <table id="TAB55" populated="true" name="參數主檔" objectType="TABLE" physicalName="BS100" remarks="參數主檔" >
 <remark>參數主檔</remark>
    <folder id="FOL56" populated="true" name="Columns" physicalName="Columns" type="1" >
-    <column id="COL57" populated="true" autoIncrement="false" autoIncrementSequenceName="BS100_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="2" remarks="OBJID" scale="0" type="2"     >
+    <column id="COL57" populated="true" autoIncrement="false" autoIncrementSequenceName="BS100_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="2" remarks="OBJID" scale="0" type="3"     >
 <remark>OBJID</remark>
     </column>
-    <column id="COL58" populated="true" autoIncrement="false" defaultValue="1" name="VERSION" nullable="0" physicalName="VERSION" precision="10" referenceCount="2" remarks="" scale="0" type="2"     >
+    <column id="COL58" populated="true" autoIncrement="false" defaultValue="1" name="VERSION" nullable="0" physicalName="VERSION" precision="10" referenceCount="2" remarks="" scale="0" type="3"     >
 <remark></remark>
     </column>
     <column id="COL59" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="" name="建立人" nullable="0" physicalName="MAN_CREATED_ID" precision="20" referenceCount="1" remarks="建立人" scale="0" type="12"     >
@@ -208,10 +208,10 @@
   <table id="TAB75" populated="true" name="運動資料主檔(NW200)" objectType="TABLE" physicalName="NW200" remarks="運動資料主檔" >
 <remark>運動資料主檔</remark>
    <folder id="FOL76" populated="true" name="Columns" physicalName="Columns" type="1" >
-    <column id="COL77" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="2"     >
+    <column id="COL77" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="2" remarks="OBJID" scale="0" type="3"     >
 <remark>OBJID</remark>
     </column>
-    <column id="COL78" populated="true" autoIncrement="false" defaultValue="1" name="VERSION" nullable="0" physicalName="VERSION" precision="10" referenceCount="1" remarks="" scale="0" type="2"     >
+    <column id="COL78" populated="true" autoIncrement="false" defaultValue="1" name="VERSION" nullable="0" physicalName="VERSION" precision="10" referenceCount="2" remarks="" scale="0" type="3"     >
 <remark></remark>
     </column>
     <column id="COL79" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="" name="建立人" nullable="0" physicalName="MAN_CREATED_ID" precision="20" referenceCount="1" remarks="建立人" scale="0" type="12"     >
@@ -264,26 +264,15 @@
  </target-database>
  <Submodels>
 </Submodels>
-<ddl-generator type="ca.sqlpower.architect.ddl.Oracle9PlusDDLGenerator" allow-connection="true" target-schema=""></ddl-generator>
+<ddl-generator type="ca.sqlpower.architect.ddl.Oracle9PlusDDLGenerator" allow-connection="false" target-schema=""></ddl-generator>
 <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
 <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true" showLogicalNames="true" showPhysicalNames="true">
- <table-pane table-ref="TAB38" x="419" y="310" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB22" x="96" y="309" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB1" x="420" y="105" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB55" x="94" y="100" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
  <table-pane table-ref="TAB75" x="417" y="502" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
-<textBlock-pane id="CP0"  db-ref="ppdb" x="737" y="507" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
-   <textBlock-text>NW200.TYPE (預計)
-01: 天下
-02: 35688
-03: 新鑫寶
-04: 英雄
-05: 榮華會
-06: 任你搏
-07: 速博
-08: 其他</textBlock-text>
-</textBlock-pane>
-<textBlock-pane id="CP1"  db-ref="ppdb" x="94" y="492" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
+ <table-pane table-ref="TAB55" x="94" y="100" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB1" x="420" y="105" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB22" x="96" y="309" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB38" x="419" y="310" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+<textBlock-pane id="CP0"  db-ref="ppdb" x="94" y="492" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
    <textBlock-text>NW300.TYPE (預計)
 01: 六合彩
 02: 大福彩
@@ -297,14 +286,25 @@
 10: 39樂合彩
 11: 今彩539</textBlock-text>
 </textBlock-pane>
+<textBlock-pane id="CP1"  db-ref="ppdb" x="737" y="507" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
+   <textBlock-text>NW200.TYPE (預計)
+01: 天下
+02: 35688
+03: 新鑫寶
+04: 英雄
+05: 榮華會
+06: 任你搏
+07: 速博
+08: 其他</textBlock-text>
+</textBlock-pane>
 <PPComponentsPosition>
+<PlayPenComponent textBlock-ref="CP0" db-ref="ppdb" x="94" y="492" />
 <PlayPenComponent table-ref="TAB55" db-ref="ppdb" x="94" y="100" />
-<PlayPenComponent table-ref="TAB22" db-ref="ppdb" x="96" y="309" />
-<PlayPenComponent table-ref="TAB75" db-ref="ppdb" x="417" y="502" />
-<PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="420" y="105" />
-<PlayPenComponent textBlock-ref="CP1" db-ref="ppdb" x="94" y="492" />
+<PlayPenComponent textBlock-ref="CP1" db-ref="ppdb" x="737" y="507" />
 <PlayPenComponent table-ref="TAB38" db-ref="ppdb" x="419" y="310" />
-<PlayPenComponent textBlock-ref="CP0" db-ref="ppdb" x="737" y="507" />
+<PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="420" y="105" />
+<PlayPenComponent table-ref="TAB75" db-ref="ppdb" x="417" y="502" />
+<PlayPenComponent table-ref="TAB22" db-ref="ppdb" x="96" y="309" />
 </PPComponentsPosition>
 </play-pen>
 <profiles topNCount="10">

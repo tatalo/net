@@ -16,7 +16,7 @@ class Nw301 {
 
 
 		//---2.VERSION  
-	    Integer version = 1
+		Long version = 1
 		//---3.建立人  
 		String manCreatedId
 		//---4.建立時間  
@@ -26,11 +26,11 @@ class Nw301 {
 		//---6.最後更新時間  
 		Date lastUpdated
 		//---7.NW300ID  
-		Long nw300id
+		Nw300 nw300id
 		//---8.開獎數字  
 		String no
 		//---9.特別號註記  
-		String isspno = "0"
+		Long isspno = 0
 		//---10.開獎順序  
 	    Long opidx = 1
 

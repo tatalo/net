@@ -59,6 +59,5 @@
     </div>
 </nav>
 <div id="contentDiv" />
-<g:render template="/gambleTech/result"/>
 </body>
 </html>
