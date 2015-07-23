@@ -11,6 +11,39 @@
     <g:message code="default.blank.message" locale="zh_CN"/><BR/>
     <g:message code="default.blank.message" locale="th"/><BR/>
     <g:message code="default.blank.message"/>
+
+
+
+    <div class="container-fluid" style="background: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 text-center">
+                    <img src="${assetPath(src: 'logo.png')}"/>
+                </div>
+
+                <div class="col-md-5 ">
+                    原搜尋
+                </div>
+
+                <div class="col-md-3 text-center">
+                    <i class="fa fa-facebook-square fa-3x"></i>
+                    <i class="fa fa-google-plus-square fa-3x"></i>
+                    <i class="fa fa-twitter-square fa-3x"></i>
+                    <i class="fa fa-tumblr-square fa-3x"></i>
+                </div>
+
+                %{--<div class="col-md-2 text-center">--}%
+                %{--<button type="button" class="btn btn-primary btn-sm">--}%
+                %{--繁體--}%
+                %{--</button>--}%
+                %{--<button type="button" class="btn btn-primary btn-sm">--}%
+                %{--簡體--}%
+                %{--</button>--}%
+                %{--</div>--}%
+            </div>
+        </div>
+    </div>
+
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -22,7 +55,11 @@
         <h1>Theme example</h1>
         <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
     </div>
-
+    <p class="bg-primary">...</p>
+    <p class="bg-success">...</p>
+    <p class="bg-info">...</p>
+    <p class="bg-warning">...</p>
+    <p class="bg-danger">...</p>
 
     <div class="page-header">
         <h1>Buttons</h1>
