@@ -2,10 +2,28 @@ import grails.transaction.Transactional
 import org.jsoup.Jsoup
 import groovy.sql.*
 
-@Transactional
+
 class NetReptileService {
 
     def dataSource
+
+
+    static void main(String[] args){
+        NetReptileService netReptileService = new NetReptileService()
+        def url = "http://www.taiwanlottery.com.tw/index_new.aspx"
+
+//        netReptileService.getBingo(url)//賓果
+//        netReptileService.getWayLiTry(url)//威力彩
+//        netReptileService.getThreeEightTry(url)//38樂合彩
+//        netReptileService.getBigLuckToa(url)//大樂透
+//        netReptileService.getFourNineTry(url)//49樂合彩
+//        netReptileService.getBigFuTry(url)//大福彩
+//        netReptileService.getFiveThreeNine(url)//今彩539
+//        netReptileService.getThreeNineTry(url)//39樂合彩
+//        netReptileService.getThreeStarTry(url)//3星彩
+//        netReptileService.getFourStarTry(url)//4星彩
+    }
+
 
     /**
      * 取得賓果
@@ -15,75 +33,112 @@ class NetReptileService {
             println '===getBingo==='
             def element = org.jsoup.Jsoup.connect(url).get()
             def s = ''
-            def delimiter = ' '
-
-
-            println '====寫入DB Start===='
-
-//            def sql = " select * from S_USER "
-//            def ds = new Sql(dataSource)
-//            def result = ds.firstRow(sql)
-//            def name = result.USER_NAME
-//
-//            println 'name = ' + name
-
-            def nw300Instance = new Nw300()
-
-//            nw300Instance.id = 1
-//            nw300Instance.version = 2
-//            nw300Instance.manCreatedId = 'Allen01'
-//            nw300Instance.dateCreated = new Date()
-//            nw300Instance.manLastUpdatedId = 'Allen02'
-//            nw300Instance.lastUpdated = new Date()
-//            nw300Instance.type = 'Bingo'
-//            nw300Instance.periods = '12345'
-//            nw300Instance.opendt = new Date()
-//
-//            nw300Instance.validate()//資料檢查
-//
-//            if (!nw300Instance.hasErrors()) {
-//                println '1111'
-//                nw300Instance.save(flush: true)
-//                println '2222'
-//            } else {
-//                println '333'
-//                nw300Instance.errors.each {
-//                    println it
-//                }
-//                println '5555'
-//            }
-
-
-
-
-
-
-
-            println '====寫入DB End===='
-
+            def delimiter = ' '//分隔符號
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
 
             element.select('div[class=contents_mine_tx01] span[class=font_black15]').each {
                 node->
-                    println "說明:"+"${node.text()}"
+//                    println "說明:"+"${node.text()}"
+                    title = "${node.text()}"
+                    day = title.substring(0,title.indexOf(' '))
+                    no = title.substring(title.indexOf(' ')+1)
+                    no2 = no.substring(1,no.length()-1)
             }
 
-            element.select('div[class=ball_box01] div').each {
-                node->
-                    s += "${node.text()}" + delimiter
+            def queryNw300Object = Nw300.findByTypeAndPeriods('Bingo',no2)
+
+            if(queryNw300Object==null){
+
+                def nw300Instance = new Nw300()
+                def nw301Instance
+
+                long nw300id = System.nanoTime()
+
+                nw300Instance.id = nw300id
+                nw300Instance.manCreatedId = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdatedId = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = 'Bingo'
+                nw300Instance.periods = no2
+                nw300Instance.opendt = new Date()
+
+                nw300Instance.validate()//資料檢查
+
+                if (!nw300Instance.hasErrors()) {
+                    nw300Instance.save(flush: true)
+
+                    element.select('div[class=ball_box01] div').each {
+                        node->
+                            s += "${node.text()}" + delimiter
+
+                            nw301Instance = new Nw301()
+                            nw301Instance.id = System.nanoTime()
+                            nw301Instance.nw300id = nw300Instance
+                            nw301Instance.manCreatedId = 'system'
+                            nw301Instance.dateCreated = new Date()
+                            nw301Instance.manLastUpdatedId = 'system'
+                            nw301Instance.lastUpdated = new Date()
+                            nw301Instance.no = Long.parseLong("${node.text()}")
+
+                            nw301Instance.validate()//資料檢查
+
+                            if(!nw301Instance.hasErrors()){
+                                nw301Instance.save(flush: true)
+                            }else {
+                                nw301Instance.errors.each {
+                                    println it
+                                }
+                            }
+
 //                    println "item=${node.text()}"
+                    }
+
+                    println '賓果 : '+s
+
+                    element.select('div[class=contents_box01] div[class=ball_red]').each {
+                        node->
+                            println "超級獎號 = ${node.text()}"
+
+                            nw301Instance = new Nw301()
+                            nw301Instance.id = System.nanoTime()
+                            nw301Instance.nw300id = nw300Instance
+                            nw301Instance.manCreatedId = 'system'
+                            nw301Instance.dateCreated = new Date()
+                            nw301Instance.manLastUpdatedId = 'system'
+                            nw301Instance.lastUpdated = new Date()
+                            nw301Instance.no = Long.parseLong("${node.text()}")
+
+                            nw301Instance.validate()//資料檢查
+
+                            if(!nw301Instance.hasErrors()){
+                                nw301Instance.save(flush: true)
+                            }else {
+                                nw301Instance.errors.each {
+                                    println it
+                                }
+                            }
+                    }
+
+                    element.select('div[class=contents_box01] div[class=ball_tx]').each {
+                        node->
+                            println "猜大小 = ${node.text()}"
+                    }
+                } else {
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+            }else{
+                println '本次賓果重複'
             }
 
-            println '賓果 : '+s
 
-            element.select('div[class=contents_box01] div[class=ball_red]').each {
-                node->
-                    println "超級獎號 = ${node.text()}"
-            }
 
-            element.select('div[class=contents_box01] div[class=ball_tx]').each {
-                node->
-                    println "猜大小 = ${node.text()}"
-            }
+
             println ''
     }
 
@@ -102,7 +157,15 @@ class NetReptileService {
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==0){
-                        println "說明:"+"${node.text()}"
+//                        println "說明:"+"${node.text()}"
+                        String title = "${node.text()}"
+                        String day = title.substring(0,title.indexOf(' '))
+                        String no = title.substring(title.indexOf(' ')+1)
+                        String no2 = no.substring(1,no.length()-1)
+                        println '完整標頭 = '+title
+                        println '開獎日期 = '+day
+                        println '期數說明 = '+no
+                        println '期數(純數字) = '+no2
                     }
             }
 
@@ -144,7 +207,15 @@ class NetReptileService {
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==1){
-                        println "說明:"+"${node.text()}"
+//                        println "說明:"+"${node.text()}"
+                        String title = "${node.text()}"
+                        String day = title.substring(0,title.indexOf(' '))
+                        String no = title.substring(title.indexOf(' ')+1)
+                        String no2 = no.substring(1,no.length()-1)
+                        println '完整標頭 = '+title
+                        println '開獎日期 = '+day
+                        println '期數說明 = '+no
+                        println '期數(純數字) = '+no2
                     }
             }
 
@@ -178,7 +249,15 @@ class NetReptileService {
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==2){
-                        println "說明:"+"${node.text()}"
+//                        println "說明:"+"${node.text()}"
+                        String title = "${node.text()}"
+                        String day = title.substring(0,title.indexOf(' '))
+                        String no = title.substring(title.indexOf(' ')+1)
+                        String no2 = no.substring(1,no.length()-1)
+                        println '完整標頭 = '+title
+                        println '開獎日期 = '+day
+                        println '期數說明 = '+no
+                        println '期數(純數字) = '+no2
                     }
             }
             element.select('div[class=contents_box02] div[class=ball_tx ball_yellow]').eachWithIndex {
@@ -219,7 +298,15 @@ class NetReptileService {
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==3){
-                        println "說明:"+"${node.text()}"
+//                        println "說明:"+"${node.text()}"
+                        String title = "${node.text()}"
+                        String day = title.substring(0,title.indexOf(' '))
+                        String no = title.substring(title.indexOf(' ')+1)
+                        String no2 = no.substring(1,no.length()-1)
+                        println '完整標頭 = '+title
+                        println '開獎日期 = '+day
+                        println '期數說明 = '+no
+                        println '期數(純數字) = '+no2
                     }
             }
             element.select('div[class=contents_box02] div[class=ball_tx ball_yellow]').eachWithIndex {
@@ -253,7 +340,15 @@ class NetReptileService {
             element.select('div[class=contents_mine_tx05] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==0){
-                        println "說明:"+"${node.text()}"
+//                        println "說明:"+"${node.text()}"
+                        String title = "${node.text()}"
+                        String day = title.substring(0,title.indexOf(' '))
+                        String no = title.substring(title.indexOf(' ')+1)
+                        String no2 = no.substring(1,no.length()-1)
+                        println '完整標頭 = '+title
+                        println '開獎日期 = '+day
+                        println '期數說明 = '+no
+                        println '期數(純數字) = '+no2
                     }
             }
             element.select('div[class=contents_box05] div[class=ball_tx ball_melon_red]').eachWithIndex {
@@ -287,7 +382,15 @@ class NetReptileService {
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==4){
-                        println "說明:"+"${node.text()}"
+//                        println "說明:"+"${node.text()}"
+                        String title = "${node.text()}"
+                        String day = title.substring(0,title.indexOf(' '))
+                        String no = title.substring(title.indexOf(' ')+1)
+                        String no2 = no.substring(1,no.length()-1)
+                        println '完整標頭 = '+title
+                        println '開獎日期 = '+day
+                        println '期數說明 = '+no
+                        println '期數(純數字) = '+no2
                     }
             }
             element.select('div[class=contents_box03] div[class=ball_tx ball_lemon]').eachWithIndex {
@@ -321,7 +424,15 @@ class NetReptileService {
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==5){
-                        println "說明:"+"${node.text()}"
+//                        println "說明:"+"${node.text()}"
+                        String title = "${node.text()}"
+                        String day = title.substring(0,title.indexOf(' '))
+                        String no = title.substring(title.indexOf(' ')+1)
+                        String no2 = no.substring(1,no.length()-1)
+                        println '完整標頭 = '+title
+                        println '開獎日期 = '+day
+                        println '期數說明 = '+no
+                        println '期數(純數字) = '+no2
                     }
             }
             element.select('div[class=contents_box03] div[class=ball_tx ball_lemon]').eachWithIndex {
@@ -354,7 +465,15 @@ class NetReptileService {
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==6){
-                        println "說明:"+"${node.text()}"
+//                        println "說明:"+"${node.text()}"
+                        String title = "${node.text()}"
+                        String day = title.substring(0,title.indexOf(' '))
+                        String no = title.substring(title.indexOf(' ')+1)
+                        String no2 = no.substring(1,no.length()-1)
+                        println '完整標頭 = '+title
+                        println '開獎日期 = '+day
+                        println '期數說明 = '+no
+                        println '期數(純數字) = '+no2
                     }
             }
             element.select('div[class=contents_box04] div[class=ball_tx ball_purple]').eachWithIndex {
@@ -384,7 +503,15 @@ class NetReptileService {
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==7){
-                        println "說明:"+"${node.text()}"
+//                        println "說明:"+"${node.text()}"
+                        String title = "${node.text()}"
+                        String day = title.substring(0,title.indexOf(' '))
+                        String no = title.substring(title.indexOf(' ')+1)
+                        String no2 = no.substring(1,no.length()-1)
+                        println '完整標頭 = '+title
+                        println '開獎日期 = '+day
+                        println '期數說明 = '+no
+                        println '期數(純數字) = '+no2
                     }
             }
             element.select('div[class=contents_box04] div[class=ball_tx ball_purple]').eachWithIndex {
