@@ -25,23 +25,16 @@
     <![endif]-->
     <g:layoutHead/>
 </head>
+
 <body role="document">
 
-    <div id="mainheader">
+
+<div id="mainheader">
     <g:render template="/layouts/title"/>
-    </div>
+</div>
 
-%{--<div class="bs-docs-header" id="content">--}%
-%{--<div class="container">--}%
-    <div id="mainbody">
-        <g:layoutBody/>
-    </div>
-    %{--</div>--}%
-%{--</div>--}%
-
-%{--<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>--}%
-%{--<g:layoutBody/>--}%
-%{--<div class="footer" role="contentinfo"></div>--}%
-%{--<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>--}%
+<div id="mainbody">
+    <g:layoutBody/>
+</div>
 </body>
 </html>

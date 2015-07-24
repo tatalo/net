@@ -1,5 +1,6 @@
 body {
-    padding-top: 130px;
+    padding-top: 120px;
+    background: #EEEEEE;
     /*padding-bottom: 30px;*/
 }
 
@@ -16,3 +17,4 @@ body {
 .theme-showcase .navbar .container {
     width: auto;
 }
+

@@ -62,14 +62,25 @@
                     </g:remoteLink>
                 </li>
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <button type="button" class="btn btn-default"
-                            onClick="addToFavorite('${message(code: "default.webname.label")}', 'http://ww899.net/')">
-                        加入我的最愛
-                    </button>
+                    <a href="#" class="fa fa-facebook-square fa-2x"></a>
+                </li>
+                <li>
+                    <a href="#" class="fa fa-google-plus-square fa-2x"></a>
+                </li>
+                <li>
+                    <a href="#" class="fa fa-twitter-square fa-2x"></a>
+                </li>
+                <li>
+                    <a href="#" class="fa fa-print fa-2x"></a>
+                </li>
+                <li>
+                    <a href="#" class="fa fa-heart fa-2x" onClick="addToFavorite('${message(code: "default.webname.label")}', 'http://ww899.net/')" ></a>
                 </li>
             </ul>
+
         </div><!--/.nav-collapse -->
     </div>
 
@@ -79,25 +90,8 @@
                 <div class="col-md-2 text-center">
                     <img src="${assetPath(src: 'logo.png')}"/>
                 </div>
-
                 <div class="col-md-5 ">
                     原搜尋
-                </div>
-
-                <div class="col-md-3 text-center">
-                    <i class="fa fa-facebook-square fa-3x"></i>
-                    <i class="fa fa-google-plus-square fa-3x"></i>
-                    <i class="fa fa-twitter-square fa-3x"></i>
-                    <i class="fa fa-tumblr-square fa-3x"></i>
-                </div>
-
-                <div class="col-md-2 text-center">
-                    <button type="button" class="btn btn-primary btn-sm">
-                        繁體
-                    </button>
-                    <button type="button" class="btn btn-primary btn-sm">
-                        簡體
-                    </button>
                 </div>
             </div>
         </div>

@@ -28,3 +28,17 @@ function withKeys() {
     }
     return ((str) ? '瀏覽器不支援，請輸入 ' + str + ' 手動加入.' : str);
 }
+
+function eid(v) { return v.replace(/\./g, "\\."); }
+
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.4";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+$("a[data-toggle='tab']").on("mouseover", function () {
+    this.click();
+});

@@ -8,11 +8,12 @@ class SportsController {
         render( view: "/sports/index")
     }
 
-    def result() {
-        render( template: "/sports/result")
-    }
-
-    def result2() {
-        render( template: "/sports/result2")
+    def query() {
+        println "params = " + params
+        if (params.type in ['01','02','03','04','05']) {
+            render(template: "/sports/result1")
+        } else if (params.type in ['06','07','08']) {
+            render(template: "/sports/result2")
+        }
     }
 }

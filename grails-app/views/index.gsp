@@ -6,12 +6,14 @@
 </head>
 
 <body>
-
 <div class="container theme-showcase" role="main">
     <g:message code="default.blank.message" locale="zh_CN"/><BR/>
     <g:message code="default.blank.message" locale="th"/><BR/>
     <g:message code="default.blank.message"/>
 
+
+
+    <div class="fb-comments" data-href="http://fuckingmother3124321432.com/" data-numposts="5"></div>
 
 
     <div class="container-fluid" style="background: white;">
