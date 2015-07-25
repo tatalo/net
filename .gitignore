@@ -1,8 +1,4 @@
-/target/*
-#!target/work/
-#target/work/*
-#!target/work/plugins
-#target/work/plugins/*
-/test/*
-/.idea/*
+/target/
+/test/
+/.idea/
 /*.iml
