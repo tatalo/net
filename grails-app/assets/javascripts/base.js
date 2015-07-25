@@ -31,7 +31,7 @@ function withKeys() {
 
 function eid(v) { return v.replace(/\./g, "\\."); }
 
-(function(d, s, id) {
+(function(d, s, id) { //facebook留言版功能
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
