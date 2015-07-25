@@ -1,18 +1,12 @@
-# xml setting
-/.idea
-
-# web application files
-# /web-app/WEB-INF/classes
-
-# logs
+target/*
+!target/work/
+target/work/*
+!target/work/plugins
+target/work/plugins/*
+!target/work/plugins/multi-select-0.2
 /test
-
-# plugin release files
-# /plugin.xml
-
-# older plugin install locations
-# /plugins
-# /web-app/plugins
-
-# "temporary" build files
-/target
+/grails
+/.idea/
+/*.iml
+*~
+.directory
