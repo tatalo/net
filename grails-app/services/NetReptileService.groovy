@@ -47,12 +47,8 @@ class NetReptileService {
                     no2 = no.substring(1,no.length()-1)
             }
 
-            println "no2 = " + no2
 
-            println "test1 = " + Nw300.read("123456")
-            println "1"
             def queryNw300Object = Nw300.findByTypeAndPeriods('01',no2)
-            println "2"
 
             if(queryNw300Object==null){
 
