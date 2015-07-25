@@ -1,5 +1,6 @@
 package system
 
+import BaseController
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

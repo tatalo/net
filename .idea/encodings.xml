@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="true">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/grails-app/assets/javascripts/base.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grails-app/controllers/BaseController.groovy" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grails-app/controllers/ErrorController.groovy" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grails-app/controllers/NationGambleController.groovy" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/grails-app/jobs/netwin/GambleJob.groovy" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

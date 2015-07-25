@@ -7,12 +7,11 @@ class NetReptileService {
 
     def dataSource
 
-
     static void main(String[] args){
         NetReptileService netReptileService = new NetReptileService()
         def url = "http://www.taiwanlottery.com.tw/index_new.aspx"
 
-//        netReptileService.getBingo(url)//賓果
+        netReptileService.getBingo(url)//賓果
 //        netReptileService.getWayLiTry(url)//威力彩
 //        netReptileService.getThreeEightTry(url)//38樂合彩
 //        netReptileService.getBigLuckToa(url)//大樂透
@@ -48,19 +47,24 @@ class NetReptileService {
                     no2 = no.substring(1,no.length()-1)
             }
 
-            def queryNw300Object = Nw300.findByTypeAndPeriods('Bingo',no2)
+            println "no2 = " + no2
+
+            println "test1 = " + Nw300.read("123456")
+            println "1"
+            def queryNw300Object = Nw300.findByTypeAndPeriods('01',no2)
+            println "2"
 
             if(queryNw300Object==null){
 
                 def nw300Instance = new Nw300()
                 def nw301Instance
 
-                long nw300id = System.nanoTime()
+//                long nw300id = System.nanoTime()
 
-                nw300Instance.id = nw300id
-                nw300Instance.manCreatedId = 'system'
+//                nw300Instance.id = nw300id
+                nw300Instance.manCreated = 'system'
                 nw300Instance.dateCreated = new Date()
-                nw300Instance.manLastUpdatedId = 'system'
+                nw300Instance.manLastUpdated = 'system'
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = 'Bingo'
                 nw300Instance.periods = no2
@@ -76,11 +80,11 @@ class NetReptileService {
                             s += "${node.text()}" + delimiter
 
                             nw301Instance = new Nw301()
-                            nw301Instance.id = System.nanoTime()
+//                            nw301Instance.id = System.nanoTime()
                             nw301Instance.nw300id = nw300Instance
-                            nw301Instance.manCreatedId = 'system'
+                            nw301Instance.manCreated = 'system'
                             nw301Instance.dateCreated = new Date()
-                            nw301Instance.manLastUpdatedId = 'system'
+                            nw301Instance.manLastUpdated = 'system'
                             nw301Instance.lastUpdated = new Date()
                             nw301Instance.no = Long.parseLong("${node.text()}")
 
@@ -104,11 +108,11 @@ class NetReptileService {
                             println "超級獎號 = ${node.text()}"
 
                             nw301Instance = new Nw301()
-                            nw301Instance.id = System.nanoTime()
+//                            nw301Instance.id = System.nanoTime()
                             nw301Instance.nw300id = nw300Instance
-                            nw301Instance.manCreatedId = 'system'
+                            nw301Instance.manCreated = 'system'
                             nw301Instance.dateCreated = new Date()
-                            nw301Instance.manLastUpdatedId = 'system'
+                            nw301Instance.manLastUpdated = 'system'
                             nw301Instance.lastUpdated = new Date()
                             nw301Instance.no = Long.parseLong("${node.text()}")
 

@@ -1,6 +1,7 @@
-package system
-
 class ErrorController {
+
+    static void main(String[] args){
+    }
 
     def index(HandleErrorCommand erc) {
         redirect(action:"${erc.code}")
