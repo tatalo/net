@@ -1,5 +1,11 @@
 <div class="container">
     <table class="table table-hover table-striped">
+        <colgroup width="5%"/>
+        <colgroup width="20%"/>
+        <colgroup width="15%"/>
+        <colgroup width="15%"/>
+        <colgroup width="15%"/>
+        <colgroup width="15%"/>
         <thead>
         <tr>
             <th>#</th>
@@ -11,62 +17,33 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>TS9988</td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>TT7777</td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>TS1688</td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>TT1999</td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>大傳奇CD658</td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>CST888999</td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>老虎777</td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-            <td><button type="button" class="btn btn-info btn-sm">登入</button></td>
-        </tr>
+        <g:each in="${nw200I}" var="nw200" status="i">
+            <tr>
+                <td>${i + 1}</td>
+            <td>
+                ${nw200?.webnm}
+            </td>
+            <td>
+                <g:if test="${nw200?.manageurl != null}">
+                    <a href="${nw200?.manageurl}" class="btn btn-danger btn-sm" target="_blank">登入</a>
+                </g:if>
+            </td>
+            <td>
+                <g:if test="${nw200?.manageurlBk != null}">
+                    <a href="${nw200?.manageurlBk}" class="btn btn-danger btn-sm" target="_blank">登入</a>
+                </g:if>
+            </td>
+            <td>
+                <g:if test="${nw200?.memberurl != null}">
+                    <a href="${nw200?.memberurl}" class="btn btn-danger btn-sm" target="_blank">登入</a>
+                </g:if>
+            </td>
+            <td>
+                <g:if test="${nw200?.memberurlBk != null}">
+                    <a href="${nw200?.memberurlBk}" class="btn btn-danger btn-sm" target="_blank">登入</a>
+                </g:if>
+            </td>
+        </g:each>
         </tbody>
     </table>
 </div>

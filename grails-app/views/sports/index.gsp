@@ -3,101 +3,41 @@
 <head>
     <meta name="layout" content="main"/>
     <title><g:message code="default.webname.label"/></title>
-    %{--<script type="application/javascript">--}%
-        %{--$(function () {--}%
-            %{--$('a[data-tabs="sports"]').on("mouseover", function () {--}%
-                %{--var type = $(this).data("type");--}%
-                %{--${remoteFunction(controller:"sports",action:"query",update:"contentDiv",params:'\'type=\'+type')}--}%
-            %{--});--}%
-        %{--});--}%
-    %{--</script>--}%
+    <script type="application/javascript">
+        $(function () {
+            $("a[href='#tab01']").click();
+        });
+    </script>
 </head>
 
 <body>
 <div class="container">
+    %{--<div class="fb-comments" data-href="http://ww899.net/?page_id=80" data-numposts="5"></div>--}%
     <div class="form-group">
-        <ul class="nav nav-tabs nav-justified">
-            <li>
-                <a data-toggle="tab" class="btn btn-default" href="#Type01" data-tabs="sports">
-                    <g:message code="sports.type1.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="tab" class="btn btn-default" href="#Type02" data-tabs="sports">
-                    <g:message code="sports.type2.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="tab" class="btn btn-default" href="#Type03" data-tabs="sports">
-                    <g:message code="sports.type3.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="tab" class="btn btn-default" href="#Type04" data-tabs="sports">
-                    <g:message code="sports.type4.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="tab" class="btn btn-default" href="#Type05" data-tabs="sports">
-                    <g:message code="sports.type5.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="tab" class="btn btn-default" href="#Type06" data-tabs="sports">
-                    <g:message code="sports.type6.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="tab" class="btn btn-default" href="#Type08" data-tabs="sports">
-                    <g:message code="sports.type99.label"/>
-                </a>
-            </li>
+        <ul class="nav nav-pills nav-justified">
+            <g:each in="${bs101I}" var="bs101" status="i">
+                <li>
+                    <a data-toggle="pill" class="" href="#tab${bs101?.pcode}" data-tabs="sports">
+                        <i class="fa fa-th-list"></i>
+                        <g:message code="sports.tab${bs101?.pcode}.label"/>
+                    </a>
+                </li>
+            </g:each>
         </ul>
     </div>
-    <div class="fb-comments" data-href="http://ww899.net/?page_id=80" data-numposts="5"></div>
-    %{--<div class="form-group">--}%
-    %{--<div id="contentDiv"/>--}%
-    %{--</div>--}%
 
-    %{--<ul class="nav nav-tabs">--}%
-    %{--<li class="active"><a data-toggle="tab" href="#home">Home</a></li>--}%
-    %{--<li><a data-toggle="tab" href="#menu1">Menu 1</a></li>--}%
-    %{--<li><a data-toggle="tab" href="#menu2">Menu 2</a></li>--}%
-    %{--</ul>--}%
-
-    <div class="tab-content">
-        <div id="Type01" class="tab-pane fade">
-            <g:include controller="sports" action="query" params="[type:'01']"/>
-        </div>
-
-        <div id="Type02" class="tab-pane fade">
-            <g:include controller="sports" action="query" params="[type:'02']"/>
-        </div>
-
-        <div id="Type03" class="tab-pane fade">
-
-            <g:include controller="sports" action="query" params="[type:'03']"/>
-        </div>
-
-        <div id="Type04" class="tab-pane fade">
-            <g:include controller="sports" action="query" params="[type:'04']"/>
-        </div>
-
-        <div id="Type05" class="tab-pane fade">
-            <g:include controller="sports" action="query" params="[type:'05']"/>
-
-        </div>
-
-        <div id="Type06" class="tab-pane fade">
-            <g:include controller="sports" action="query" params="[type:'06']"/>
-        </div>
-
-        <div id="Type07" class="tab-pane fade">
-            <g:include controller="sports" action="query" params="[type:'07']"/>
-        </div>
-
-        <div id="Type08" class="tab-pane fade">
-            <g:include controller="sports" action="query" params="[type:'08']"/>
+    <div class="form-group">
+        <div class="tab-content">
+            <g:each in="${bs101I}" var="bs101" status="i">
+                <div id="tab${bs101?.pcode}" class="tab-pane">
+                    <g:if test="${bs101?.pcode in ["01","05"]}">
+                        <g:render template="/sports/result1" model="[nw200I: nw200I.findAll() { it?.type == bs101?.pcode }]"/>
+                    </g:if>
+                    <g:else>
+                        <g:render template="/sports/result2" model="[nw200I: nw200I.findAll() { it?.type == bs101?.pcode }]"/>
+                    </g:else>
+                </div>
+            </g:each>
         </div>
     </div>
 </div>

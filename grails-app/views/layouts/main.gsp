@@ -28,7 +28,6 @@
 
 <body role="document">
 
-
 <div id="mainheader">
     <g:render template="/layouts/title"/>
 </div>

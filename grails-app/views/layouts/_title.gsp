@@ -23,7 +23,7 @@
             <ul class="nav navbar-nav navbar-left">
                 <li>
                     <g:remoteLink controller="sports" action="index" update="mainbody">
-                        <g:message code="tabs.type1.label"/>
+                        <g:message code="default.tab01.label"/>
                     </g:remoteLink>
                 </li>
                 %{--<li>--}%
@@ -33,7 +33,7 @@
                 %{--</li>--}%
                 <li>
                     <g:remoteLink controller="lotto" action="index" update="mainbody">
-                        <g:message code="tabs.type2.label"/>
+                        <g:message code="default.tab02.label"/>
                     </g:remoteLink>
                 </li>
                 %{--<li>--}%
@@ -43,22 +43,22 @@
                 %{--</li>--}%
                 <li>
                     <g:remoteLink controller="nationGamble" action="index" update="mainbody">
-                        <g:message code="tabs.type3.label"/>
+                        <g:message code="default.tab03.label"/>
                     </g:remoteLink>
                 </li>
                 <li>
                     <g:remoteLink controller="base" action="build" update="mainbody">
-                        <g:message code="tabs.type4.label"/>
+                        <g:message code="default.tab04.label"/>
                     </g:remoteLink>
                 </li>
                 <li>
                     <g:remoteLink controller="gambleTech" action="index" update="mainbody">
-                        <g:message code="tabs.type5.label"/>
+                        <g:message code="default.tab05.label"/>
                     </g:remoteLink>
                 </li>
                 <li>
                     <g:remoteLink controller="base" action="build" update="mainbody">
-                        <g:message code="tabs.type6.label"/>
+                        <g:message code="default.tab06.label"/>
                     </g:remoteLink>
                 </li>
             </ul>

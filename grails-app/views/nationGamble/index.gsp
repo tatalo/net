@@ -3,60 +3,83 @@
 <head>
     <meta name="layout" content="main"/>
     <title><g:message code="default.webname.label"/></title>
+    <script type="application/javascript">
+        $(function () {
+            $("a[href='#tab01']").click();
+        });
+    </script>
 </head>
 
 <body>
-<nav class="navbar navbar-inverse" role="navigation">
-    <div class="container">
+<div class="container">
+    %{--<div class="fb-comments" data-href="http://ww899.net/?page_id=80" data-numposts="5"></div>--}%
+    <div class="form-group">
         <ul class="nav nav-pills nav-justified">
-            <li class="active">
-                <g:remoteLink controller="nationGamble" action="result" update="contentDiv">
-                    <g:message code="nationGamble.type1.label"/>
-                </g:remoteLink>
+            <li>
+                <a data-toggle="pill" class="" href="#tab01" data-tabs="sports">
+                    <i class="fa fa-th-list"></i>
+                    <g:message code="nationGamble.tab01.label"/>
+                </a>
             </li>
             <li>
-                <g:remoteLink controller="nationGamble" action="result" update="contentDiv">
-                    <g:message code="nationGamble.type2.label"/>
-                </g:remoteLink>
+                <a data-toggle="pill" class="" href="#tab02" data-tabs="sports">
+                    <i class="fa fa-th-list"></i>
+                    <g:message code="nationGamble.tab02.label"/>
+                </a>
             </li>
             <li>
-                <g:remoteLink controller="nationGamble" action="result" update="contentDiv">
-                    <g:message code="nationGamble.type3.label"/>
-                </g:remoteLink>
+                <a data-toggle="pill" class="" href="#tab03" data-tabs="sports">
+                    <i class="fa fa-th-list"></i>
+                    <g:message code="nationGamble.tab03.label"/>
+                </a>
             </li>
             <li>
-                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
-                    <g:message code="nationGamble.type4.label"/>
-                </g:remoteLink>
+                <a data-toggle="pill" class="" href="#tab04" data-tabs="sports">
+                    <i class="fa fa-th-list"></i>
+                    <g:message code="nationGamble.tab04.label"/>
+                </a>
             </li>
             <li>
-                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
-                    <g:message code="nationGamble.type5.label"/>
-                </g:remoteLink>
+                <a data-toggle="pill" class="" href="#tab05" data-tabs="sports">
+                    <i class="fa fa-th-list"></i>
+                    <g:message code="nationGamble.tab05.label"/>
+                </a>
             </li>
             <li>
-                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
-                    <g:message code="nationGamble.type6.label"/>
-                </g:remoteLink>
+                <a data-toggle="pill" class="" href="#tab06" data-tabs="sports">
+                    <i class="fa fa-th-list"></i>
+                    <g:message code="nationGamble.tab06.label"/>
+                </a>
             </li>
             <li>
-                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
-                    <g:message code="nationGamble.type7.label"/>
-                </g:remoteLink>
+                <a data-toggle="pill" class="" href="#tab07" data-tabs="sports">
+                    <i class="fa fa-th-list"></i>
+                    <g:message code="nationGamble.tab07.label"/>
+                </a>
             </li>
             <li>
-                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
-                    <g:message code="nationGamble.type8.label"/>
-                </g:remoteLink>
+                <a data-toggle="pill" class="" href="#tab08" data-tabs="sports">
+                    <i class="fa fa-th-list"></i>
+                    <g:message code="nationGamble.tab08.label"/>
+                </a>
             </li>
             <li>
-                <g:remoteLink controller="nationGamble" action="result2" update="contentDiv">
-                    <g:message code="nationGamble.type9.label"/>
-                </g:remoteLink>
+                <a data-toggle="pill" class="" href="#tab09" data-tabs="sports">
+                    <i class="fa fa-th-list"></i>
+                    <g:message code="nationGamble.tab09.label"/>
+                </a>
             </li>
         </ul>
     </div>
-</nav>
-<div id="contentDiv" />
+
+    <div class="form-group">
+        <div class="tab-content">
+            <div id="tab01" class="tab-pane">
+                <g:render template="/nationGamble/result" model="[]"/>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
