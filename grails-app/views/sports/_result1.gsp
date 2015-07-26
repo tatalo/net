@@ -1,4 +1,5 @@
-<div class="container">
+<div class="panel panel-default">
+    <!-- Default panel contents -->
     <table class="table table-hover table-striped">
         <colgroup width="5%"/>
         <colgroup width="20%"/>

@@ -35,5 +35,7 @@
 <div id="mainbody">
     <g:layoutBody/>
 </div>
+
+<g:render template="/layouts/javascirpt"/>
 </body>
 </html>

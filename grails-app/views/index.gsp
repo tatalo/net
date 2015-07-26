@@ -11,6 +11,17 @@
     <g:message code="default.blank.message" locale="th"/><BR/>
     <g:message code="default.blank.message"/>
 
+    <div class="container">
+        <h3>Tooltip Example</h3>
+        <p>The data-placement attribute specifies the tooltip position.</p>
+        <ul class="list-inline">
+            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Hooray!">Top</a></li>
+            <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">Bottom</a></li>
+            <li><a href="#" data-toggle="tooltip" data-placement="left" title="Hooray!">Left</a></li>
+            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Hooray!">Right</a></li>
+        </ul>
+    </div>
+
     <div class="fb-comments" data-href="http://fuckingmother3124321432.com/" data-numposts="5"></div>
 
 
