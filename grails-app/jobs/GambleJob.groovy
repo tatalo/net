@@ -1,6 +1,3 @@
-package netwin
-
-
 class GambleJob {
 
     def netReptileService

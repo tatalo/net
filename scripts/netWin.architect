@@ -9,237 +9,241 @@
  <source-databases>
  </source-databases>
  <target-database id="ppdb" dbcs-ref="DS0">
-  <table id="TAB1" populated="true" name="BS101(參數子檔)" objectType="TABLE" physicalName="BS101" remarks="參數子檔" >
-<remark>參數子檔</remark>
+  <table id="TAB1" populated="true" name="BS100(參數主檔)" objectType="TABLE" physicalName="BS100" remarks="參數主檔" >
+<remark>參數主檔</remark>
    <folder id="FOL2" populated="true" name="Columns" physicalName="Columns" type="1" >
-    <column id="COL3" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="3"     >
+    <column id="COL3" populated="true" autoIncrement="false" autoIncrementSequenceName="BS100_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="2" remarks="OBJID" scale="0" type="3"     >
 <remark>OBJID</remark>
     </column>
-    <column id="COL4" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="SYSTEM" name="建立人" nullable="0" physicalName="MAN_CREATED" precision="20" referenceCount="1" remarks="建立人" scale="0" type="12"     >
+    <column id="COL4" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="" name="建立人" nullable="0" physicalName="MAN_CREATED" precision="20" referenceCount="6" remarks="建立人" scale="0" type="12"     >
 <remark>建立人</remark>
     </column>
-    <column id="COL5" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立時間_seq" defaultValue="sysdate" name="建立時間" nullable="1" physicalName="DATE_CREATED" precision="7" referenceCount="4" remarks="建立時間" scale="0" type="91"     >
+    <column id="COL5" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立時間_seq" defaultValue="sysdate" name="建立時間" nullable="1" physicalName="DATE_CREATED" precision="7" referenceCount="2" remarks="建立時間" scale="0" type="91"     >
 <remark>建立時間</remark>
     </column>
-    <column id="COL6" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_最後更新人_seq" defaultValue="SYSTEM" name="最後更新人" nullable="0" physicalName="MAN_LAST_UPDATED" precision="20" referenceCount="1" remarks="最後更新人" scale="0" type="12"     >
+    <column id="COL6" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_最後更新人_seq" defaultValue="" name="最後更新人" nullable="0" physicalName="MAN_LAST_UPDATED" precision="20" referenceCount="5" remarks="最後更新人" scale="0" type="12"     >
 <remark>最後更新人</remark>
     </column>
-    <column id="COL7" populated="true" autoIncrement="false" defaultValue="sysdate" name="最後更新時間" nullable="1" physicalName="LAST_UPDATED" precision="7" referenceCount="5" remarks="最後更新時間" scale="0" type="91"     >
+    <column id="COL7" populated="true" autoIncrement="false" defaultValue="sysdate" name="最後更新時間" nullable="1" physicalName="LAST_UPDATED" precision="7" referenceCount="2" remarks="最後更新時間" scale="0" type="91"     >
 <remark>最後更新時間</remark>
     </column>
     <column id="COL8" populated="true" autoIncrement="false" autoIncrementSequenceName="NW200_資料建立時間_seq" defaultValue="" name="多國語系" nullable="1" physicalName="LOCALE" precision="10" referenceCount="1" remarks="多國語系" scale="0" type="12"     >
 <remark>多國語系</remark>
     </column>
-    <column id="COL9" populated="true" autoIncrement="false" autoIncrementSequenceName="PTYPE_seq" defaultValue="" name="類型" nullable="1" physicalName="PTYPE" precision="50" referenceCount="2" remarks="類型" scale="0" type="12"     >
+    <column id="COL9" populated="true" autoIncrement="false" autoIncrementSequenceName="SYSTYPE_seq" defaultValue="" name="系統類型" nullable="1" physicalName="SYSTYPE" precision="20" referenceCount="2" remarks="系統類型" scale="0" type="12"     >
+<remark>系統類型</remark>
+    </column>
+    <column id="COL10" populated="true" autoIncrement="false" autoIncrementSequenceName="PTYPE_seq" defaultValue="" name="類型" nullable="1" physicalName="PTYPE" precision="50" referenceCount="2" remarks="類型" scale="0" type="12"     >
 <remark>類型</remark>
     </column>
-    <column id="COL10" populated="true" autoIncrement="false" autoIncrementSequenceName="PCODE_seq" defaultValue="" name="代碼" nullable="1" physicalName="PCODE" precision="20" referenceCount="2" remarks="代碼" scale="0" type="12"     >
-<remark>代碼</remark>
-    </column>
-    <column id="COL11" populated="true" autoIncrement="false" autoIncrementSequenceName="CODEDESC_seq" defaultValue="" name="代碼名稱" nullable="1" physicalName="CODEDESC" precision="300" referenceCount="1" remarks="代碼名稱" scale="0" type="12"     >
-<remark>代碼名稱</remark>
-    </column>
-    <column id="COL12" populated="true" autoIncrement="false" autoIncrementSequenceName="IDX_seq" defaultValue="1" name="排序" nullable="1" physicalName="IDX" precision="3" referenceCount="2" remarks="排序" scale="0" type="2"     >
-<remark>排序</remark>
+    <column id="COL11" populated="true" autoIncrement="false" autoIncrementSequenceName="TYPEDESC_seq" defaultValue="" name="類型名稱" nullable="1" physicalName="TYPEDESC" precision="300" referenceCount="2" remarks="類型名稱" scale="0" type="12"     >
+<remark>類型名稱</remark>
     </column>
    </folder>
-   <folder id="FOL13" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
+   <folder id="FOL12" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
    </folder>
-   <folder id="FOL14" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
+   <folder id="FOL13" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
    </folder>
-   <folder id="FOL15" populated="true" name="Indices" physicalName="Indices" type="4" >
-    <index id="IDX16" populated="true" clustered="false" name="BS101_pk" physicalName="BS101_pk" primaryKeyIndex="true" unique="true" >
-     <index-column id="IDC17" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL3" name="OBJID" physicalName="OBJID"      >
+   <folder id="FOL14" populated="true" name="Indices" physicalName="Indices" type="4" >
+    <index id="IDX15" populated="true" clustered="false" name="BS100_pk" physicalName="BS100_PK" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC16" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL3" name="OBJID" physicalName="OBJID"      >
      </index-column>
     </index>
-    <index id="IDX18" populated="true" clustered="false" name="IDX_BS101_1" physicalName="IDX_BS101_1" primaryKeyIndex="false" unique="true" >
-     <index-column id="IDC19" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL9" name="類型" physicalName="PTYPE"      >
+    <index id="IDX17" populated="true" clustered="false" name="IDX_BS100_1" physicalName="IDX_BS100_1" primaryKeyIndex="false" unique="true" >
+     <index-column id="IDC18" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL10" name="類型" physicalName="PTYPE"      >
      </index-column>
-     <index-column id="IDC20" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL10" name="代碼" physicalName="PCODE"      >
+     <index-column id="IDC19" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL9" name="系統類型" physicalName="SYSTYPE"      >
+     </index-column>
+     <index-column id="IDC20" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL8" name="多國語系" physicalName="LOCALE"      >
      </index-column>
     </index>
    </folder>
   </table>
-  <table id="TAB21" populated="true" name="NW300(彩球開獎資料主檔)" objectType="TABLE" physicalName="NW300" remarks="彩球開獎資料主檔" >
-<remark>彩球開獎資料主檔</remark>
+  <table id="TAB21" populated="true" name="BS101(參數子檔)" objectType="TABLE" physicalName="BS101" remarks="參數子檔" >
+<remark>參數子檔</remark>
    <folder id="FOL22" populated="true" name="Columns" physicalName="Columns" type="1" >
     <column id="COL23" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="3"     >
 <remark>OBJID</remark>
     </column>
-    <column id="COL24" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="SYSTEM" name="建立人" nullable="0" physicalName="MAN_CREATED" precision="20" referenceCount="1" remarks="建立人" scale="0" type="12"     >
+    <column id="COL24" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="" name="建立人" nullable="0" physicalName="MAN_CREATED" precision="20" referenceCount="2" remarks="建立人" scale="0" type="12"     >
 <remark>建立人</remark>
     </column>
-    <column id="COL25" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立時間_seq" defaultValue="sysdate" name="建立時間" nullable="0" physicalName="DATE_CREATED" precision="7" referenceCount="1" remarks="建立時間" scale="0" type="91"     >
+    <column id="COL25" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立時間_seq" defaultValue="sysdate" name="建立時間" nullable="1" physicalName="DATE_CREATED" precision="7" referenceCount="4" remarks="建立時間" scale="0" type="91"     >
 <remark>建立時間</remark>
     </column>
-    <column id="COL26" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_最後更新人_seq" defaultValue="SYSTEM" name="最後更新人" nullable="0" physicalName="MAN_LAST_UPDATED" precision="20" referenceCount="1" remarks="最後更新人" scale="0" type="12"     >
+    <column id="COL26" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_最後更新人_seq" defaultValue="" name="最後更新人" nullable="0" physicalName="MAN_LAST_UPDATED" precision="20" referenceCount="2" remarks="最後更新人" scale="0" type="12"     >
 <remark>最後更新人</remark>
     </column>
-    <column id="COL27" populated="true" autoIncrement="false" defaultValue="sysdate" name="最後更新時間" nullable="0" physicalName="LAST_UPDATED" precision="7" referenceCount="1" remarks="最後更新時間" scale="0" type="91"     >
+    <column id="COL27" populated="true" autoIncrement="false" defaultValue="sysdate" name="最後更新時間" nullable="1" physicalName="LAST_UPDATED" precision="7" referenceCount="5" remarks="最後更新時間" scale="0" type="91"     >
 <remark>最後更新時間</remark>
     </column>
-    <column id="COL28" populated="true" autoIncrement="false" autoIncrementSequenceName="NW300_資料建立時間_seq" defaultValue="" name="類型" nullable="1" physicalName="TYPE" precision="5" referenceCount="3" remarks="類型" scale="0" type="12"     >
+    <column id="COL28" populated="true" autoIncrement="false" autoIncrementSequenceName="NW200_資料建立時間_seq" defaultValue="" name="多國語系" nullable="1" physicalName="LOCALE" precision="10" referenceCount="1" remarks="多國語系" scale="0" type="12"     >
+<remark>多國語系</remark>
+    </column>
+    <column id="COL29" populated="true" autoIncrement="false" autoIncrementSequenceName="PTYPE_seq" defaultValue="" name="類型" nullable="1" physicalName="PTYPE" precision="50" referenceCount="2" remarks="類型" scale="0" type="12"     >
 <remark>類型</remark>
     </column>
-    <column id="COL29" populated="true" autoIncrement="false" autoIncrementSequenceName="PERIODS_seq" defaultValue="" name="期數" nullable="1" physicalName="PERIODS" precision="20" referenceCount="2" remarks="期數" scale="0" type="12"     >
-<remark>期數</remark>
+    <column id="COL30" populated="true" autoIncrement="false" autoIncrementSequenceName="PCODE_seq" defaultValue="" name="代碼" nullable="1" physicalName="PCODE" precision="20" referenceCount="2" remarks="代碼" scale="0" type="12"     >
+<remark>代碼</remark>
     </column>
-    <column id="COL30" populated="true" autoIncrement="false" autoIncrementSequenceName="NW300_資料建立時間_seq" defaultValue="" name="開獎時間" nullable="1" physicalName="OPENDT" precision="7" referenceCount="2" remarks="開獎時間" scale="0" type="91"     >
-<remark>開獎時間</remark>
+    <column id="COL31" populated="true" autoIncrement="false" autoIncrementSequenceName="CODEDESC_seq" defaultValue="" name="代碼名稱" nullable="1" physicalName="CODEDESC" precision="300" referenceCount="1" remarks="代碼名稱" scale="0" type="12"     >
+<remark>代碼名稱</remark>
+    </column>
+    <column id="COL32" populated="true" autoIncrement="false" autoIncrementSequenceName="IDX_seq" defaultValue="1" name="排序" nullable="1" physicalName="IDX" precision="3" referenceCount="2" remarks="排序" scale="0" type="2"     >
+<remark>排序</remark>
     </column>
    </folder>
-   <folder id="FOL31" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
+   <folder id="FOL33" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
    </folder>
-   <folder id="FOL32" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
+   <folder id="FOL34" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
    </folder>
-   <folder id="FOL33" populated="true" name="Indices" physicalName="Indices" type="4" >
-    <index id="IDX34" populated="true" clustered="false" name="NW300_pk" physicalName="NW300_PK" primaryKeyIndex="true" unique="true" >
-     <index-column id="IDC35" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL23" name="OBJID" physicalName="OBJID"      >
+   <folder id="FOL35" populated="true" name="Indices" physicalName="Indices" type="4" >
+    <index id="IDX36" populated="true" clustered="false" name="BS101_pk" physicalName="BS101_PK" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC37" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL23" name="OBJID" physicalName="OBJID"      >
+     </index-column>
+    </index>
+    <index id="IDX38" populated="true" clustered="false" name="IDX_BS101_1" physicalName="IDX_BS101_1" primaryKeyIndex="false" unique="true" >
+     <index-column id="IDC39" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL29" name="類型" physicalName="PTYPE"      >
+     </index-column>
+     <index-column id="IDC40" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL30" name="代碼" physicalName="PCODE"      >
+     </index-column>
+     <index-column id="IDC41" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL28" name="多國語系" physicalName="LOCALE"      >
      </index-column>
     </index>
    </folder>
   </table>
-  <table id="TAB36" populated="true" name="NW301(彩球開獎號碼檔)" objectType="TABLE" physicalName="NW301" remarks="彩球號碼檔" >
-<remark>彩球號碼檔</remark>
-   <folder id="FOL37" populated="true" name="Columns" physicalName="Columns" type="1" >
-    <column id="COL38" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="3"     >
+  <table id="TAB42" populated="true" name="NW200(運動資料主檔)" objectType="TABLE" physicalName="NW200" remarks="運動資料主檔" >
+<remark>運動資料主檔</remark>
+   <folder id="FOL43" populated="true" name="Columns" physicalName="Columns" type="1" >
+    <column id="COL44" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="2" remarks="OBJID" scale="0" type="3"     >
 <remark>OBJID</remark>
     </column>
-    <column id="COL39" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="SYSTEM" name="建立人" nullable="0" physicalName="MAN_CREATED" precision="20" referenceCount="1" remarks="建立人" scale="0" type="12"     >
+    <column id="COL45" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="" name="建立人" nullable="0" physicalName="MAN_CREATED" precision="20" referenceCount="2" remarks="建立人" scale="0" type="12"     >
 <remark>建立人</remark>
     </column>
-    <column id="COL40" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立時間_seq" defaultValue="sysdate" name="建立時間" nullable="0" physicalName="DATE_CREATED" precision="7" referenceCount="1" remarks="建立時間" scale="0" type="91"     >
+    <column id="COL46" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立時間_seq" defaultValue="sysdate" name="建立時間" nullable="1" physicalName="DATE_CREATED" precision="7" referenceCount="2" remarks="建立時間" scale="0" type="91"     >
 <remark>建立時間</remark>
     </column>
-    <column id="COL41" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_最後更新人_seq" defaultValue="SYSTEM" name="最後更新人" nullable="0" physicalName="MAN_LAST_UPDATED" precision="20" referenceCount="1" remarks="最後更新人" scale="0" type="12"     >
+    <column id="COL47" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_最後更新人_seq" defaultValue="" name="最後更新人" nullable="0" physicalName="MAN_LAST_UPDATED" precision="20" referenceCount="2" remarks="最後更新人" scale="0" type="12"     >
 <remark>最後更新人</remark>
     </column>
-    <column id="COL42" populated="true" autoIncrement="false" defaultValue="sysdate" name="最後更新時間" nullable="0" physicalName="LAST_UPDATED" precision="7" referenceCount="1" remarks="最後更新時間" scale="0" type="91"     >
+    <column id="COL48" populated="true" autoIncrement="false" defaultValue="sysdate" name="最後更新時間" nullable="1" physicalName="LAST_UPDATED" precision="7" referenceCount="2" remarks="最後更新時間" scale="0" type="91"     >
 <remark>最後更新時間</remark>
     </column>
-    <column id="COL43" populated="true" autoIncrement="false" autoIncrementSequenceName="NW300ID_seq" defaultValue="" name="NW300ID" nullable="1" physicalName="NW300ID" precision="10" referenceCount="2" remarks="NW300.OBJID" scale="0" type="2"     >
+    <column id="COL49" populated="true" autoIncrement="false" autoIncrementSequenceName="NW200_資料建立時間_seq" defaultValue="" name="多國語系" nullable="1" physicalName="LOCALE" precision="10" referenceCount="1" remarks="多國語系" scale="0" type="12"     >
+<remark>多國語系</remark>
+    </column>
+    <column id="COL50" populated="true" autoIncrement="false" autoIncrementSequenceName="NW200_資料建立時間_seq" defaultValue="" name="類型" nullable="1" physicalName="TYPE" precision="5" referenceCount="1" remarks="類型" scale="0" type="12"     >
+<remark>類型</remark>
+    </column>
+    <column id="COL51" populated="true" autoIncrement="false" autoIncrementSequenceName="WEBNM_seq" defaultValue="" name="網站" nullable="1" physicalName="WEBNM" precision="50" referenceCount="1" remarks="網站" scale="0" type="12"     >
+<remark>網站</remark>
+    </column>
+    <column id="COL52" populated="true" autoIncrement="false" autoIncrementSequenceName="MANAGEURL_seq" defaultValue="" name="管理URL" nullable="1" physicalName="MANAGEURL" precision="200" referenceCount="1" remarks="管理URL" scale="0" type="12"     >
+<remark>管理URL</remark>
+    </column>
+    <column id="COL53" populated="true" autoIncrement="false" autoIncrementSequenceName="MANAGEURL_BK_seq" defaultValue="" name="管理URL_備份" nullable="1" physicalName="MANAGEURL_BK" precision="200" referenceCount="1" remarks="管理URL_備份" scale="0" type="12"     >
+<remark>管理URL_備份</remark>
+    </column>
+    <column id="COL54" populated="true" autoIncrement="false" autoIncrementSequenceName="MEMBERURL_seq" defaultValue="" name="會員URL" nullable="1" physicalName="MEMBERURL" precision="200" referenceCount="1" remarks="會員URL" scale="0" type="12"     >
+<remark>會員URL</remark>
+    </column>
+    <column id="COL55" populated="true" autoIncrement="false" autoIncrementSequenceName="MEMBERURL_BK_seq" defaultValue="" name="會員URL_備份" nullable="1" physicalName="MEMBERURL_BK" precision="200" referenceCount="1" remarks="會員URL_備份" scale="0" type="12"     >
+<remark>會員URL_備份</remark>
+    </column>
+   </folder>
+   <folder id="FOL56" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
+   </folder>
+   <folder id="FOL57" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
+   </folder>
+   <folder id="FOL58" populated="true" name="Indices" physicalName="Indices" type="4" >
+    <index id="IDX59" populated="true" clustered="false" name="NW200_pk" physicalName="NW200_PK" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC60" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL44" name="OBJID" physicalName="OBJID"      >
+     </index-column>
+    </index>
+   </folder>
+  </table>
+  <table id="TAB61" populated="true" name="NW300(彩球開獎資料主檔)" objectType="TABLE" physicalName="NW300" remarks="彩球開獎資料主檔" >
+<remark>彩球開獎資料主檔</remark>
+   <folder id="FOL62" populated="true" name="Columns" physicalName="Columns" type="1" >
+    <column id="COL63" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="3"     >
+<remark>OBJID</remark>
+    </column>
+    <column id="COL64" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="" name="建立人" nullable="0" physicalName="MAN_CREATED" precision="20" referenceCount="2" remarks="建立人" scale="0" type="12"     >
+<remark>建立人</remark>
+    </column>
+    <column id="COL65" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立時間_seq" defaultValue="sysdate" name="建立時間" nullable="1" physicalName="DATE_CREATED" precision="7" referenceCount="2" remarks="建立時間" scale="0" type="91"     >
+<remark>建立時間</remark>
+    </column>
+    <column id="COL66" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_最後更新人_seq" defaultValue="" name="最後更新人" nullable="0" physicalName="MAN_LAST_UPDATED" precision="20" referenceCount="2" remarks="最後更新人" scale="0" type="12"     >
+<remark>最後更新人</remark>
+    </column>
+    <column id="COL67" populated="true" autoIncrement="false" defaultValue="sysdate" name="最後更新時間" nullable="1" physicalName="LAST_UPDATED" precision="7" referenceCount="2" remarks="最後更新時間" scale="0" type="91"     >
+<remark>最後更新時間</remark>
+    </column>
+    <column id="COL68" populated="true" autoIncrement="false" autoIncrementSequenceName="NW300_資料建立時間_seq" defaultValue="" name="類型" nullable="1" physicalName="TYPE" precision="5" referenceCount="3" remarks="類型" scale="0" type="12"     >
+<remark>類型</remark>
+    </column>
+    <column id="COL69" populated="true" autoIncrement="false" autoIncrementSequenceName="PERIODS_seq" defaultValue="" name="期數" nullable="1" physicalName="PERIODS" precision="20" referenceCount="2" remarks="期數" scale="0" type="12"     >
+<remark>期數</remark>
+    </column>
+    <column id="COL70" populated="true" autoIncrement="false" autoIncrementSequenceName="NW300_資料建立時間_seq" defaultValue="" name="開獎時間" nullable="1" physicalName="OPENDT" precision="7" referenceCount="2" remarks="開獎時間" scale="0" type="91"     >
+<remark>開獎時間</remark>
+    </column>
+   </folder>
+   <folder id="FOL71" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
+   </folder>
+   <folder id="FOL72" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
+   </folder>
+   <folder id="FOL73" populated="true" name="Indices" physicalName="Indices" type="4" >
+    <index id="IDX74" populated="true" clustered="false" name="NW300_pk" physicalName="NW300_PK" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC75" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL63" name="OBJID" physicalName="OBJID"      >
+     </index-column>
+    </index>
+   </folder>
+  </table>
+  <table id="TAB76" populated="true" name="NW301(彩球開獎號碼檔)" objectType="TABLE" physicalName="NW301" remarks="彩球開獎號碼檔" >
+<remark>彩球開獎號碼檔</remark>
+   <folder id="FOL77" populated="true" name="Columns" physicalName="Columns" type="1" >
+    <column id="COL78" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="1" remarks="OBJID" scale="0" type="3"     >
+<remark>OBJID</remark>
+    </column>
+    <column id="COL79" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="" name="建立人" nullable="0" physicalName="MAN_CREATED" precision="20" referenceCount="2" remarks="建立人" scale="0" type="12"     >
+<remark>建立人</remark>
+    </column>
+    <column id="COL80" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立時間_seq" defaultValue="sysdate" name="建立時間" nullable="1" physicalName="DATE_CREATED" precision="7" referenceCount="2" remarks="建立時間" scale="0" type="91"     >
+<remark>建立時間</remark>
+    </column>
+    <column id="COL81" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_最後更新人_seq" defaultValue="" name="最後更新人" nullable="0" physicalName="MAN_LAST_UPDATED" precision="20" referenceCount="2" remarks="最後更新人" scale="0" type="12"     >
+<remark>最後更新人</remark>
+    </column>
+    <column id="COL82" populated="true" autoIncrement="false" defaultValue="sysdate" name="最後更新時間" nullable="1" physicalName="LAST_UPDATED" precision="7" referenceCount="2" remarks="最後更新時間" scale="0" type="91"     >
+<remark>最後更新時間</remark>
+    </column>
+    <column id="COL83" populated="true" autoIncrement="false" autoIncrementSequenceName="NW300ID_seq" defaultValue="" name="NW300ID" nullable="1" physicalName="NW300ID" precision="10" referenceCount="2" remarks="NW300.OBJID" scale="0" type="2"     >
 <remark>NW300.OBJID</remark>
     </column>
-    <column id="COL44" populated="true" autoIncrement="false" autoIncrementSequenceName="NW301_資料建立時間_seq" defaultValue="" name="開獎數字" nullable="1" physicalName="NO" precision="3" referenceCount="3" remarks="開獎數字" scale="0" type="3"     >
+    <column id="COL84" populated="true" autoIncrement="false" autoIncrementSequenceName="NW301_資料建立時間_seq" defaultValue="" name="開獎數字" nullable="1" physicalName="NO" precision="3" referenceCount="3" remarks="開獎數字" scale="0" type="3"     >
 <remark>開獎數字</remark>
     </column>
-    <column id="COL45" populated="true" autoIncrement="false" autoIncrementSequenceName="ISSPNO_seq" defaultValue="0" name="特別號註記" nullable="1" physicalName="ISSPNO" precision="1" referenceCount="2" remarks="特別號註記
+    <column id="COL85" populated="true" autoIncrement="false" autoIncrementSequenceName="ISSPNO_seq" defaultValue="0" name="特別號註記" nullable="1" physicalName="ISSPNO" precision="1" referenceCount="2" remarks="特別號註記
 1 是
 0 否" scale="0" type="3"     >
 <remark>特別號註記
 1 是
 0 否</remark>
     </column>
-    <column id="COL46" populated="true" autoIncrement="false" autoIncrementSequenceName="OPIDX_seq" defaultValue="1" name="開獎順序" nullable="1" physicalName="OPIDX" precision="3" referenceCount="3" remarks="開獎順序" scale="0" type="3"     >
+    <column id="COL86" populated="true" autoIncrement="false" autoIncrementSequenceName="OPIDX_seq" defaultValue="1" name="開獎順序" nullable="1" physicalName="OPIDX" precision="3" referenceCount="3" remarks="開獎順序" scale="0" type="3"     >
 <remark>開獎順序</remark>
     </column>
    </folder>
-   <folder id="FOL47" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
+   <folder id="FOL87" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
    </folder>
-   <folder id="FOL48" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
+   <folder id="FOL88" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
    </folder>
-   <folder id="FOL49" populated="true" name="Indices" physicalName="Indices" type="4" >
-    <index id="IDX50" populated="true" clustered="false" name="NW301_pk" physicalName="NW301_PK" primaryKeyIndex="true" unique="true" >
-     <index-column id="IDC51" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL38" name="OBJID" physicalName="OBJID"      >
-     </index-column>
-    </index>
-   </folder>
-  </table>
-  <table id="TAB52" populated="true" name="參數主檔" objectType="TABLE" physicalName="BS100" remarks="參數主檔" >
-<remark>參數主檔</remark>
-   <folder id="FOL53" populated="true" name="Columns" physicalName="Columns" type="1" >
-    <column id="COL54" populated="true" autoIncrement="false" autoIncrementSequenceName="BS100_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="2" remarks="OBJID" scale="0" type="3"     >
-<remark>OBJID</remark>
-    </column>
-    <column id="COL55" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="SYSTEM" name="建立人" nullable="0" physicalName="MAN_CREATED" precision="20" referenceCount="5" remarks="建立人" scale="0" type="12"     >
-<remark>建立人</remark>
-    </column>
-    <column id="COL56" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立時間_seq" defaultValue="sysdate" name="建立時間" nullable="1" physicalName="DATE_CREATED" precision="7" referenceCount="2" remarks="建立時間" scale="0" type="91"     >
-<remark>建立時間</remark>
-    </column>
-    <column id="COL57" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_最後更新人_seq" defaultValue="SYSTEM" name="最後更新人" nullable="0" physicalName="MAN_LAST_UPDATED" precision="20" referenceCount="4" remarks="最後更新人" scale="0" type="12"     >
-<remark>最後更新人</remark>
-    </column>
-    <column id="COL58" populated="true" autoIncrement="false" defaultValue="sysdate" name="最後更新時間" nullable="1" physicalName="LAST_UPDATED" precision="7" referenceCount="2" remarks="最後更新時間" scale="0" type="91"     >
-<remark>最後更新時間</remark>
-    </column>
-    <column id="COL59" populated="true" autoIncrement="false" autoIncrementSequenceName="NW200_資料建立時間_seq" defaultValue="" name="多國語系" nullable="1" physicalName="LOCALE" precision="10" referenceCount="1" remarks="多國語系" scale="0" type="12"     >
-<remark>多國語系</remark>
-    </column>
-    <column id="COL60" populated="true" autoIncrement="false" autoIncrementSequenceName="SYSTYPE_seq" defaultValue="" name="系統類型" nullable="1" physicalName="SYSTYPE" precision="20" referenceCount="2" remarks="系統類型" scale="0" type="12"     >
-<remark>系統類型</remark>
-    </column>
-    <column id="COL61" populated="true" autoIncrement="false" autoIncrementSequenceName="PTYPE_seq" defaultValue="" name="類型" nullable="1" physicalName="PTYPE" precision="50" referenceCount="2" remarks="類型" scale="0" type="12"     >
-<remark>類型</remark>
-    </column>
-    <column id="COL62" populated="true" autoIncrement="false" autoIncrementSequenceName="TYPEDESC_seq" defaultValue="" name="類型名稱" nullable="1" physicalName="TYPEDESC" precision="300" referenceCount="2" remarks="類型名稱" scale="0" type="12"     >
-<remark>類型名稱</remark>
-    </column>
-   </folder>
-   <folder id="FOL63" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
-   </folder>
-   <folder id="FOL64" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
-   </folder>
-   <folder id="FOL65" populated="true" name="Indices" physicalName="Indices" type="4" >
-    <index id="IDX66" populated="true" clustered="false" name="BS100_pk" physicalName="BS100_PK" primaryKeyIndex="true" unique="true" >
-     <index-column id="IDC67" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL54" name="OBJID" physicalName="OBJID"      >
-     </index-column>
-    </index>
-    <index id="IDX68" populated="true" clustered="false" name="IDX_BS100_1" physicalName="IDX_BS100_1" primaryKeyIndex="false" unique="true" >
-     <index-column id="IDC69" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL61" name="類型" physicalName="PTYPE"      >
-     </index-column>
-     <index-column id="IDC70" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL60" name="系統類型" physicalName="SYSTYPE"      >
-     </index-column>
-    </index>
-   </folder>
-  </table>
-  <table id="TAB71" populated="true" name="運動資料主檔(NW200)" objectType="TABLE" physicalName="NW200" remarks="運動資料主檔" >
-<remark>運動資料主檔</remark>
-   <folder id="FOL72" populated="true" name="Columns" physicalName="Columns" type="1" >
-    <column id="COL73" populated="true" autoIncrement="false" autoIncrementSequenceName="OBJID_seq" defaultValue="" name="OBJID" nullable="0" physicalName="OBJID" precision="10" primaryKeySeq="0" referenceCount="2" remarks="OBJID" scale="0" type="3"     >
-<remark>OBJID</remark>
-    </column>
-    <column id="COL74" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立人_seq" defaultValue="SYSTEM" name="建立人" nullable="0" physicalName="MAN_CREATED" precision="20" referenceCount="1" remarks="建立人" scale="0" type="12"     >
-<remark>建立人</remark>
-    </column>
-    <column id="COL75" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_資料建立時間_seq" defaultValue="sysdate" name="建立時間" nullable="0" physicalName="DATE_CREATED" precision="7" referenceCount="1" remarks="建立時間" scale="0" type="91"     >
-<remark>建立時間</remark>
-    </column>
-    <column id="COL76" populated="true" autoIncrement="false" autoIncrementSequenceName="BS101_最後更新人_seq" defaultValue="SYSTEM" name="最後更新人" nullable="0" physicalName="MAN_LAST_UPDATED" precision="20" referenceCount="1" remarks="最後更新人" scale="0" type="12"     >
-<remark>最後更新人</remark>
-    </column>
-    <column id="COL77" populated="true" autoIncrement="false" defaultValue="sysdate" name="最後更新時間" nullable="0" physicalName="LAST_UPDATED" precision="7" referenceCount="1" remarks="最後更新時間" scale="0" type="91"     >
-<remark>最後更新時間</remark>
-    </column>
-    <column id="COL78" populated="true" autoIncrement="false" autoIncrementSequenceName="NW200_資料建立時間_seq" defaultValue="" name="多國語系" nullable="1" physicalName="LOCALE" precision="10" referenceCount="1" remarks="多國語系" scale="0" type="12"     >
-<remark>多國語系</remark>
-    </column>
-    <column id="COL79" populated="true" autoIncrement="false" autoIncrementSequenceName="NW200_資料建立時間_seq" defaultValue="" name="類型" nullable="1" physicalName="TYPE" precision="5" referenceCount="1" remarks="類型" scale="0" type="12"     >
-<remark>類型</remark>
-    </column>
-    <column id="COL80" populated="true" autoIncrement="false" autoIncrementSequenceName="WEBNM_seq" defaultValue="" name="網站" nullable="1" physicalName="WEBNM" precision="50" referenceCount="1" remarks="網站" scale="0" type="12"     >
-<remark>網站</remark>
-    </column>
-    <column id="COL81" populated="true" autoIncrement="false" autoIncrementSequenceName="MANAGEURL_seq" defaultValue="" name="管理URL" nullable="1" physicalName="MANAGEURL" precision="200" referenceCount="1" remarks="管理URL" scale="0" type="12"     >
-<remark>管理URL</remark>
-    </column>
-    <column id="COL82" populated="true" autoIncrement="false" autoIncrementSequenceName="MANAGEURL_BK_seq" defaultValue="" name="管理URL_備份" nullable="1" physicalName="MANAGEURL_BK" precision="200" referenceCount="1" remarks="管理URL_備份" scale="0" type="12"     >
-<remark>管理URL_備份</remark>
-    </column>
-    <column id="COL83" populated="true" autoIncrement="false" autoIncrementSequenceName="MEMBERURL_seq" defaultValue="" name="會員URL" nullable="1" physicalName="MEMBERURL" precision="200" referenceCount="1" remarks="會員URL" scale="0" type="12"     >
-<remark>會員URL</remark>
-    </column>
-    <column id="COL84" populated="true" autoIncrement="false" autoIncrementSequenceName="MEMBERURL_BK_seq" defaultValue="" name="會員URL_備份" nullable="1" physicalName="MEMBERURL_BK" precision="200" referenceCount="1" remarks="會員URL_備份" scale="0" type="12"     >
-<remark>會員URL_備份</remark>
-    </column>
-   </folder>
-   <folder id="FOL85" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3" >
-   </folder>
-   <folder id="FOL86" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2" >
-   </folder>
-   <folder id="FOL87" populated="true" name="Indices" physicalName="Indices" type="4" >
-    <index id="IDX88" populated="true" clustered="false" name="NW200_pk" physicalName="BS100_pk" primaryKeyIndex="true" unique="true" >
-     <index-column id="IDC89" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL73" name="OBJID" physicalName="OBJID"      >
+   <folder id="FOL89" populated="true" name="Indices" physicalName="Indices" type="4" >
+    <index id="IDX90" populated="true" clustered="false" name="NW301_pk" physicalName="NW301_PK" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC91" populated="true" ascendingOrDescending="UNSPECIFIED" column-ref="COL78" name="OBJID" physicalName="OBJID"      >
      </index-column>
     </index>
    </folder>
@@ -252,11 +256,11 @@
 <ddl-generator type="ca.sqlpower.architect.ddl.Oracle9PlusDDLGenerator" allow-connection="false" target-schema=""></ddl-generator>
 <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
 <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true" showLogicalNames="true" showPhysicalNames="true">
- <table-pane table-ref="TAB36" x="419" y="310" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB21" x="96" y="309" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB1" x="420" y="105" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB52" x="94" y="100" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB71" x="417" y="502" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB76" x="419" y="310" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB61" x="96" y="309" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB21" x="420" y="105" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB1" x="94" y="100" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB42" x="417" y="502" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
 <textBlock-pane id="CP0"  db-ref="ppdb" x="737" y="507" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
    <textBlock-text>NW200.TYPE (預計)
 01: 天下
@@ -283,12 +287,12 @@
 11: 今彩539</textBlock-text>
 </textBlock-pane>
 <PPComponentsPosition>
-<PlayPenComponent table-ref="TAB52" db-ref="ppdb" x="94" y="100" />
-<PlayPenComponent table-ref="TAB71" db-ref="ppdb" x="417" y="502" />
+<PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="94" y="100" />
+<PlayPenComponent table-ref="TAB42" db-ref="ppdb" x="417" y="502" />
 <PlayPenComponent textBlock-ref="CP0" db-ref="ppdb" x="737" y="507" />
-<PlayPenComponent table-ref="TAB21" db-ref="ppdb" x="96" y="309" />
-<PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="420" y="105" />
-<PlayPenComponent table-ref="TAB36" db-ref="ppdb" x="419" y="310" />
+<PlayPenComponent table-ref="TAB61" db-ref="ppdb" x="96" y="309" />
+<PlayPenComponent table-ref="TAB21" db-ref="ppdb" x="420" y="105" />
+<PlayPenComponent table-ref="TAB76" db-ref="ppdb" x="419" y="310" />
 <PlayPenComponent textBlock-ref="CP1" db-ref="ppdb" x="94" y="492" />
 </PPComponentsPosition>
 </play-pen>
