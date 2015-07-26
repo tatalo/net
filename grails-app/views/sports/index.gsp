@@ -3,11 +3,6 @@
 <head>
     <meta name="layout" content="main"/>
     <title><g:message code="default.webname.label"/></title>
-    <script type="application/javascript">
-        $(function () {
-            $("a[href='#tab01']").click();
-        });
-    </script>
 </head>
 
 <body>
@@ -17,7 +12,7 @@
         <ul class="nav nav-pills nav-justified">
             <g:each in="${bs101I}" var="bs101" status="i">
                 <li>
-                    <a data-toggle="pill" class="" href="#tab${bs101?.pcode}" data-tabs="sports">
+                    <a data-toggle="pill" class="" href="#tab${bs101?.pcode}">
                         <i class="fa fa-th-list"></i>
                         <g:message code="sports.tab${bs101?.pcode}.label"/>
                     </a>
