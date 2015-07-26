@@ -16,18 +16,18 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "update"
-            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
-//            url      = "jdbc:oracle:thin:@192.168.31.181:1521:xe"
+//            dbCreate = "update"
+//            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
+            url      = "jdbc:oracle:thin:@192.168.31.181:1521:xe"
             username = "netwin"
             password = "1234"
         }
     }
     test {
         dataSource {
-            dbCreate = "update"
-            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
-//            url      = "jdbc:oracle:thin:@192.168.31.181:1521:xe"
+//            dbCreate = "update"
+//            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
+            url      = "jdbc:oracle:thin:@192.168.31.181:1521:xe"
             username = "netwin"
             password = "1234"
 
@@ -57,9 +57,9 @@ environments {
     }
     production {
         dataSource {
-            dbCreate = "update"
-            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
-//            url      = "jdbc:oracle:thin:@192.168.31.181:1521:xe"
+//            dbCreate = "update"
+//            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
+            url      = "jdbc:oracle:thin:@192.168.31.181:1521:xe"
             username = "netwin"
             password = "1234"
             properties {

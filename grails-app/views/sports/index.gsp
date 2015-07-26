@@ -3,25 +3,17 @@
 <head>
     <meta name="layout" content="main"/>
     <title><g:message code="default.webname.label"/></title>
-    <script type="application/javascript">
-        $(function () {
-            $('a[data-tabs="sports"]').on("mouseover", function () {
-                var type = $(this).data("type");
-                ${remoteFunction(controller:"sports",action:"query",update:"contentDiv",params:'\'type=\'+type')}
-            });
-        });
-    </script>
+    %{--<script type="application/javascript">--}%
+        %{--$(function () {--}%
+            %{--$('a[data-tabs="sports"]').on("mouseover", function () {--}%
+                %{--var type = $(this).data("type");--}%
+                %{--${remoteFunction(controller:"sports",action:"query",update:"contentDiv",params:'\'type=\'+type')}--}%
+            %{--});--}%
+        %{--});--}%
+    %{--</script>--}%
 </head>
 
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.4";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <div class="container">
     <div class="form-group">
         <ul class="nav nav-tabs nav-justified">
@@ -56,13 +48,8 @@
                 </a>
             </li>
             <li>
-                <a data-toggle="tab" class="btn btn-default" href="#Type07" data-tabs="sports">
-                    <g:message code="sports.type7.label"/>
-                </a>
-            </li>
-            <li>
                 <a data-toggle="tab" class="btn btn-default" href="#Type08" data-tabs="sports">
-                    <g:message code="sports.type8.label"/>
+                    <g:message code="sports.type99.label"/>
                 </a>
             </li>
         </ul>

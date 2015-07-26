@@ -71,7 +71,7 @@ public class Power228Generator
     public void configure(Type type, Properties params, Dialect dialect) throws MappingException {
         ObjectNameNormalizer normalizer = ( ObjectNameNormalizer ) params.get( IDENTIFIER_NORMALIZER );
         sequenceName = normalizer.normalizeIdentifierQuoting(
-            ConfigurationHelper.getString( SEQUENCE, params, "NESEQ" )
+            ConfigurationHelper.getString( SEQUENCE, params, "NWSEQ" )
             );
         parameters = params.getProperty( PARAMETERS );
 
