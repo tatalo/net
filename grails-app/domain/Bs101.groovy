@@ -11,7 +11,7 @@ class Bs101 {
 			table 'BS101'
 			version false 
 			//---1.OBJID PK0
-			id column:"objid", generator:'assigned'
+			id column:"objid", generator:'Power228Generator'
 		}
 
 
