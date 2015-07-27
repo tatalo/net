@@ -361,14 +361,27 @@
 <ddl-generator type="ca.sqlpower.architect.ddl.Oracle9PlusDDLGenerator" allow-connection="true" target-schema=""></ddl-generator>
 <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
 <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true" showLogicalNames="true" showPhysicalNames="true">
- <table-pane table-ref="TAB42" x="126" y="505" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB1" x="94" y="100" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB21" x="420" y="105" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB99" x="96" y="309" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB115" x="419" y="310" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB61" x="464" y="510" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
  <table-pane table-ref="TAB80" x="775" y="513" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
-<textBlock-pane id="CP0"  db-ref="ppdb" x="990" y="96" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
+ <table-pane table-ref="TAB61" x="464" y="510" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB115" x="419" y="310" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB99" x="96" y="309" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB21" x="420" y="105" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB1" x="94" y="100" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB42" x="126" y="505" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+<textBlock-pane id="CP0"  db-ref="ppdb" x="752" y="100" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
+   <textBlock-text>NW200.TYPE (預計)
+01: 天下
+02: 35688
+03: 35688(大陸)
+04: 新鑫寶
+05: 英雄
+06: 榮華會
+99: 其他
+
+07: 任你搏 (暫不用)
+08: 速博 (暫不用)</textBlock-text>
+</textBlock-pane>
+<textBlock-pane id="CP1"  db-ref="ppdb" x="990" y="96" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
    <textBlock-text>NW300.TYPE (預計)
 01: 六合彩
 02: 大福彩
@@ -382,29 +395,16 @@
 10: 39樂合彩
 11: 今彩539</textBlock-text>
 </textBlock-pane>
-<textBlock-pane id="CP1"  db-ref="ppdb" x="752" y="100" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
-   <textBlock-text>NW200.TYPE (預計)
-01: 天下
-02: 35688
-03: 35688(大陸)
-04: 新鑫寶
-05: 英雄
-06: 榮華會
-99: 其他
-
-07: 任你搏 (暫不用)
-08: 速博 (暫不用)</textBlock-text>
-</textBlock-pane>
 <PPComponentsPosition>
-<PlayPenComponent table-ref="TAB21" db-ref="ppdb" x="420" y="105" />
-<PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="94" y="100" />
-<PlayPenComponent textBlock-ref="CP1" db-ref="ppdb" x="752" y="100" />
-<PlayPenComponent table-ref="TAB42" db-ref="ppdb" x="126" y="505" />
-<PlayPenComponent table-ref="TAB99" db-ref="ppdb" x="96" y="309" />
-<PlayPenComponent table-ref="TAB115" db-ref="ppdb" x="419" y="310" />
+<PlayPenComponent textBlock-ref="CP1" db-ref="ppdb" x="990" y="96" />
 <PlayPenComponent table-ref="TAB80" db-ref="ppdb" x="775" y="513" />
 <PlayPenComponent table-ref="TAB61" db-ref="ppdb" x="464" y="510" />
-<PlayPenComponent textBlock-ref="CP0" db-ref="ppdb" x="990" y="96" />
+<PlayPenComponent table-ref="TAB115" db-ref="ppdb" x="419" y="310" />
+<PlayPenComponent table-ref="TAB42" db-ref="ppdb" x="126" y="505" />
+<PlayPenComponent textBlock-ref="CP0" db-ref="ppdb" x="752" y="100" />
+<PlayPenComponent table-ref="TAB21" db-ref="ppdb" x="420" y="105" />
+<PlayPenComponent table-ref="TAB99" db-ref="ppdb" x="96" y="309" />
+<PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="94" y="100" />
 </PPComponentsPosition>
 </play-pen>
 <profiles topNCount="10">

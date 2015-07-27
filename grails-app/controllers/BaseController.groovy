@@ -20,46 +20,51 @@ class BaseController {
 
         def url = "http://www.taiwanlottery.com.tw/index_new.aspx"
 
-        if(actionType=='07'){
-            netReptileService.getBingo(url)//賓果
-        }
-        if(actionType=='2'){
-            netReptileService.getWayLiTry(url)//威力彩
-        }
-        if(actionType=='3'){
-            netReptileService.getThreeEightTry(url)//38樂合彩
-        }
-        if(actionType=='4'){
-            netReptileService.getBigLuckToa(url)//大樂透
-        }
-        if(actionType=='5'){
-            netReptileService.getFourNineTry(url)//49樂合彩
-        }
-        if(actionType=='6'){
-            netReptileService.getBigFuTry(url)//大福彩
-        }
-        if(actionType=='7'){
-            netReptileService.getFiveThreeNine(url)//今彩539
-        }
-        if(actionType=='8'){
-            netReptileService.getThreeNineTry(url)//39樂合彩
-        }
-        if(actionType=='9'){
-            netReptileService.getThreeStarTry(url)//3星彩
-        }
-        if(actionType=='10'){
-            netReptileService.getFourStarTry(url)//4星彩
-        }
-        if(actionType=='11'){
+        def result = ''
 
+        try {
+
+            if(actionType=='01'){//六合彩
+
+            }
+            if(actionType=='02'){
+                netReptileService.getBigFuTry(url)//大福彩
+            }
+            if(actionType=='03'){
+                netReptileService.getWayLiTry(url)//威力彩
+            }
+            if(actionType=='04'){
+                netReptileService.getThreeEightTry(url)//38樂合彩
+            }
+            if(actionType=='05'){
+                netReptileService.getThreeStarTry(url)//3星彩
+            }
+            if(actionType=='06'){
+                netReptileService.getFourStarTry(url)//4星彩
+            }
+            if(actionType=='07'){
+                netReptileService.getBingo(url)//賓果
+            }
+            if(actionType=='08'){
+                netReptileService.getBigLuckToa(url)//大樂透
+            }
+            if(actionType=='09'){
+                netReptileService.getFourNineTry(url)//49樂合彩
+            }
+            if(actionType=='10'){
+                netReptileService.getThreeNineTry(url)//39樂合彩
+            }
+            if(actionType=='11'){
+                netReptileService.getFiveThreeNine(url)//今彩539
+            }
+            result = 'ok'
+        }catch (Exception e){
+            result = 'no'
+            println 'Exception => '+Exception
         }
 
 
 
-
-
-
-
-        render "ok"
+        render result
     }
 }

@@ -32,7 +32,7 @@ class Nw301 {
 		//---5.最後更新時間  
 		Date lastUpdated
 		//---6.NW300ID  
-		String nw300id
+		Nw300 nw300id
 		//---7.開獎數字  
 		Long no
 		//---8.特別號註記  

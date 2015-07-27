@@ -23,6 +23,13 @@ class NetReptileService {
 //        netReptileService.getFourStarTry(url)//4星彩
     }
 
+    /**
+     * 取得六合彩
+     */
+    def getSixTry = {
+
+    }
+
 
     /**
      * 取得賓果
@@ -48,17 +55,11 @@ class NetReptileService {
                     no2 = no.substring(1,no.length()-1)
             }
 
-            println 'title'+title
-            println 'day'+day
-            println 'no'+no
-            println 'no2'+no2
-
             element.select('div[class=contents_box01] div[class=ball_tx]').each {
                 node->
 //                    println "猜大小 = ${node.text()}"
                     result = "${node.text()}"
             }
-            println 'result'+result
 
             def queryNw300Object = Nw300.findByTypeAndPeriods('07',no2)
 
@@ -92,16 +93,14 @@ class NetReptileService {
                             nw301Instance.manLastUpdated = 'system'
                             nw301Instance.lastUpdated = new Date()
                             nw301Instance.no = Long.parseLong("${node.text()}")
-println '1'
+
                             nw301Instance.validate()//資料檢查
-                            println '2'
+
                             if(!nw301Instance.hasErrors()){
-                                println '3'
                                 nw301Instance.save(flush: true)
-                                println '4'
                             }else {
                                 nw301Instance.errors.each {
-                                    println  'FuckingException!!==>'+it
+                                    println  'Exception!!==>'+it
                                 }
                             }
 
