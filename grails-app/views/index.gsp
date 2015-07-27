@@ -3,6 +3,53 @@
 <head>
     <meta name="layout" content="main"/>
     <title>Welcome to Grails</title>
+
+    <script type="text/javascript">
+        function a1(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'07'])}
+        }
+
+        function a2(){
+
+        }
+
+        function a3(){
+
+        }
+
+        function a4(){
+
+        }
+
+        function a5(){
+
+        }
+
+        function a6(){
+
+        }
+
+        function a7(){
+
+        }
+
+        function a8(){
+
+        }
+
+        function a9(){
+
+        }
+
+        function a10(){
+
+        }
+
+        function a11(){
+
+        }
+    </script>
+
 </head>
 
 <body>
@@ -81,5 +128,22 @@
     </div>
 
 </div>
+
+
+<div id="getDataResult"></div>
+
+<input type="button" id="a1" name="a1" onclick="a1();"  value="賓果"  /><br/>
+<input type="button" id="a2" name="a2" onclick="a2();"  value="威力彩"  /><br/>
+<input type="button" id="a3" name="a3" onclick="a3();"  value="38樂合彩"  /><br/>
+<input type="button" id="a4" name="a4" onclick="a4();"  value="大樂透"  /><br/>
+<input type="button" id="a5" name="a5" onclick="a5();"  value="49樂合彩"  /><br/>
+<input type="button" id="a6" name="a6" onclick="a6();"  value="大福彩"  /><br/>
+<input type="button" id="a7" name="a7" onclick="a7();"  value="今彩539"  /><br/>
+<input type="button" id="a8" name="a8" onclick="a8();"  value="39樂合彩"  /><br/>
+<input type="button" id="a9" name="a9" onclick="a9();"  value="3星彩"  /><br/>
+<input type="button" id="a10" name="a10"  onclick="a10();"  value="4星彩"  /><br/>
+<input type="button" id="a11" name="a11"  onclick="a11();"  value="六合彩"  /><br/>
+
+
 </body>
 </html>
