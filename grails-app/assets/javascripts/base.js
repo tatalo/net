@@ -39,6 +39,6 @@ function eid(v) { return v.replace(/\./g, "\\."); }
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-$("a[data-toggle='pill']").on("mouseover", function () {
+$("a[data-toggle='tab']").on("mouseover", function () {
     this.click();
 });

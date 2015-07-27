@@ -26,22 +26,22 @@
             </td>
             <td>
                 <g:if test="${nw200?.manageurl != null}">
-                    <a href="${nw200?.manageurl}" class="btn btn-danger btn-sm" target="_blank">登入</a>
+                    <a href="${nw200?.manageurl}" class="btn btn-primary btn-sm" target="_blank">登入</a>
                 </g:if>
             </td>
             <td>
                 <g:if test="${nw200?.manageurlBk != null}">
-                    <a href="${nw200?.manageurlBk}" class="btn btn-danger btn-sm" target="_blank">登入</a>
+                    <a href="${nw200?.manageurlBk}" class="btn btn-primary btn-sm" target="_blank">登入</a>
                 </g:if>
             </td>
             <td>
                 <g:if test="${nw200?.memberurl != null}">
-                    <a href="${nw200?.memberurl}" class="btn btn-danger btn-sm" target="_blank">登入</a>
+                    <a href="${nw200?.memberurl}" class="btn btn-primary btn-sm" target="_blank">登入</a>
                 </g:if>
             </td>
             <td>
                 <g:if test="${nw200?.memberurlBk != null}">
-                    <a href="${nw200?.memberurlBk}" class="btn btn-danger btn-sm" target="_blank">登入</a>
+                    <a href="${nw200?.memberurlBk}" class="btn btn-primary btn-sm" target="_blank">登入</a>
                 </g:if>
             </td>
         </g:each>

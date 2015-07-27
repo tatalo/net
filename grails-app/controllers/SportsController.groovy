@@ -1,4 +1,5 @@
 class SportsController {
+    def netReptileService
 
     static void main(String[] args){
     }

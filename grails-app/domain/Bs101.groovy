@@ -12,6 +12,15 @@ class Bs101 {
 			version false 
 			//---1.OBJID PK0
 			id column:"objid", generator:'Power228Generator'
+			manCreated column:"MAN_CREATED"
+			dateCreated column:"DATE_CREATED"
+			manLastUpdated column:"MAN_LAST_UPDATED"
+			lastUpdated column:"LAST_UPDATED"
+			locale column:"LOCALE"
+			ptype column:"PTYPE"
+			pcode column:"PCODE"
+			pdesc column:"PDESC"
+			idx column:"IDX"
 		}
 
 

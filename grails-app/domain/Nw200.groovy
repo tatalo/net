@@ -12,6 +12,17 @@ class Nw200 {
 			version false 
 			//---1.OBJID PK0
 			id column:"objid", generator:'Power228Generator'
+			manCreated column:"MAN_CREATED"
+			dateCreated column:"DATE_CREATED"
+			manLastUpdated column:"MAN_LAST_UPDATED"
+			lastUpdated column:"LAST_UPDATED"
+			locale column:"LOCALE"
+			type column:"TYPE"
+			webnm column:"WEBNM"
+			manageurl column:"MANAGEURL"
+			manageurlBk column:"MANAGEURL_BK"
+			memberurl column:"MEMBERURL"
+			memberurlBk column:"MEMBERURL_BK"
 		}
 
 
