@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
             </button>
             <g:remoteLink class="navbar-brand active" controller="base" action="index" update="mainbody">
-                <i class="fa fa-home"></i>
+                <i class="fa fa-home fa-lg"></i>
                 <g:message code="default.home.label"/>
             </g:remoteLink>
             %{--<a class="navbar-brand active" href="#">--}%
@@ -66,19 +66,19 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li data-toggle="tooltip" data-placement="bottom" title="facebook分享">
-                    <a href="#" class="fa fa-facebook-square fa-2x"></a>
+                    <a href="#" class="fa fa-facebook-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="google+分享">
-                    <a href="#" class="fa fa-google-plus-square fa-2x"></a>
+                    <a href="#" class="fa fa-google-plus-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="twitter分享">
-                    <a href="#" class="fa fa-twitter-square fa-2x"></a>
+                    <a href="#" class="fa fa-twitter-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="列印">
-                    <a href="#" class="fa fa-print fa-2x"></a>
+                    <a href="#" class="fa fa-print fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="加入書籤">
-                    <a href="#" class="fa fa-heart fa-2x" onClick="addToFavorite('${message(code: "default.webname.label")}', 'http://ww899.net/')" ></a>
+                    <a href="#" class="fa fa-heart fa-lg" onClick="addToFavorite('${message(code: "default.webname.label")}', 'http://ww899.net/')" ></a>
                 </li>
             </ul>
 
