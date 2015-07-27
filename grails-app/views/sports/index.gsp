@@ -12,7 +12,7 @@
             <ul class="nav nav-tabs nav-justified">
                 <g:each in="${bs101I}" var="bs101" status="i">
                     <li>
-                        <a data-toggle="tab" class="" href="#tab${bs101?.pcode}">
+                        <a data-toggle="tab" class="active" href="#tab${bs101?.pcode}">
                             <i class="fa fa-th-list"></i>
                             <g:message code="sports.tab${bs101?.pcode}.label"/>
                         </a>

@@ -9,53 +9,56 @@
 <div class="container theme-showcase" role="main">
     <div class="row">
         <div class="col-md-2">
-            左邊區塊
         </div>
 
         <div class="col-md-7">
             <div class="form-group">
-                <div class="portlet">
-                    <div class="portlet-title">
-                        <ul class="nav nav-tabs nav-justified">
-                            <li>
-                                <a data-toggle="tab" class="" href="#tab01">
-                                    彩球
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" class="" href="#tab02">
-                                    即時比分
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" class="" href="#tab03">
-                                    新聞
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" class="" href="#tab04">
-                                    當日賽事
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="portlet-body">
-                        <div class="tab-content">
-                            <div id="tab01" class="tab-pane">
-                                建置中
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="portlet">
+                            <div class="portlet-title">
+                                <ul class="nav nav-tabs nav-justified">
+                                    <li>
+                                        <a data-toggle="tab" class="" href="#tab01">
+                                            彩球
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" class="" href="#tab02">
+                                            即時比分
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" class="" href="#tab03">
+                                            新聞
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" class="" href="#tab04">
+                                            當日賽事
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
 
-                            <div id="tab02" class="tab-pane">
-                                建置中2
-                            </div>
+                            <div class="portlet-body">
+                                <div class="tab-content">
+                                    <div id="tab01" class="tab-pane">
+                                        彩球資料建置中
+                                    </div>
 
-                            <div id="tab03" class="tab-pane">
-                                建置中3
-                            </div>
+                                    <div id="tab02" class="tab-pane">
+                                        即時比分資料建置中
+                                    </div>
 
-                            <div id="tab04" class="tab-pane">
-                                建置中4
+                                    <div id="tab03" class="tab-pane">
+                                        新聞資料建置中
+                                    </div>
+
+                                    <div id="tab04" class="tab-pane">
+                                        當日賽事資料建置中
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -63,59 +66,77 @@
             </div>
 
             <div class="form-group">
-
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tW4vLmcsqig"
                                     frameborder="0" allowfullscreen></iframe>
                         </div>
+
+                        <div class="well well-sm">
+                            週一至週六晚上08:30pm~09:00pm，您收看的畫面會比電視播出延遲30~60秒
+                        </div>
                     </div>
+
                 </div>
             </div>
+
             <div class="form-group">
-                <div class="portlet">
-                    <div class="portlet-title">
-                        <ul class="nav nav-tabs nav-justified">
-                            <li>
-                                <a data-toggle="tab" class="" href="#taba01">
-                                    <asset:image src="01.nba.png"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" class="" href="#taba02">
-                                    即時比分
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" class="" href="#taba03">
-                                    新聞
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" class="" href="#taba04">
-                                    當日賽事
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="portlet-body">
-                        <div class="tab-content">
-                            <div id="taba01" class="tab-pane">
-                                建置中
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="portlet">
+                            <div class="portlet-title">
+                                <ul class="nav nav-tabs nav-justified">
+                                    <li>
+                                        <a data-toggle="tab" class="" href="#taba01">
+                                            <img src="${assetPath(src: '01.nba.png')}" height="25px" width="80%">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" class="" href="#taba02">
+                                            <img src="${assetPath(src: '02.mlb.jpg')}" height="25px" width="80%">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" class="" href="#taba03">
+                                            <img src="${assetPath(src: '03.cpbl.png')}" height="25px" width="80%">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" class="" href="#taba04">
+                                            <img src="${assetPath(src: '04.npb.png')}" height="25px" width="80%">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" class="" href="#taba05">
+                                            <img src="${assetPath(src: '05.kbo.jpg')}" height="25px" width="80%">
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
 
-                            <div id="taba02" class="tab-pane">
-                                建置中2
-                            </div>
+                            <div class="portlet-body">
+                                <div class="tab-content">
+                                    <div id="taba01" class="tab-pane">
+                                        NBA資料建置中
+                                    </div>
 
-                            <div id="taba03" class="tab-pane">
-                                建置中3
-                            </div>
+                                    <div id="taba02" class="tab-pane">
+                                        MLB資料建置中
+                                    </div>
 
-                            <div id="taba04" class="tab-pane">
-                                建置中4
+                                    <div id="taba03" class="tab-pane">
+                                        CPBL資料建置中
+                                    </div>
+
+                                    <div id="taba04" class="tab-pane">
+                                        NPB資料建置中
+                                    </div>
+
+                                    <div id="taba05" class="tab-pane">
+                                        KBO資料建置中
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
