@@ -7,6 +7,8 @@
  * @desc Groovy ORM 1.0.3 (NW300/NW300(彩球開獎資料主檔))
  */
 class Nw300 {
+		static hasMany = [nw301s: Nw301]
+
 		static mapping = {
 			table 'NW300'
 			version false 
