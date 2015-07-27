@@ -37,6 +37,7 @@ class NetReptileService {
             String day = ''//開獎日期
             String no = ''//期數說明
             String no2 = ''//期數(純數字)
+            String result = ''//開獎結果
 
             element.select('div[class=contents_mine_tx01] span[class=font_black15]').each {
                 node->
@@ -47,24 +48,33 @@ class NetReptileService {
                     no2 = no.substring(1,no.length()-1)
             }
 
+            println 'title'+title
+            println 'day'+day
+            println 'no'+no
+            println 'no2'+no2
 
-            def queryNw300Object = Nw300.findByTypeAndPeriods('01',no2)
+            element.select('div[class=contents_box01] div[class=ball_tx]').each {
+                node->
+//                    println "猜大小 = ${node.text()}"
+                    result = "${node.text()}"
+            }
+            println 'result'+result
+
+            def queryNw300Object = Nw300.findByTypeAndPeriods('07',no2)
 
             if(queryNw300Object==null){
-
+                println '新的一期'
                 def nw300Instance = new Nw300()
                 def nw301Instance
 
-//                long nw300id = System.nanoTime()
-
-//                nw300Instance.id = nw300id
                 nw300Instance.manCreated = 'system'
                 nw300Instance.dateCreated = new Date()
                 nw300Instance.manLastUpdated = 'system'
                 nw300Instance.lastUpdated = new Date()
-                nw300Instance.type = 'Bingo'
+                nw300Instance.type = '07'
                 nw300Instance.periods = no2
                 nw300Instance.opendt = new Date()
+                nw300Instance.result = result
 
                 nw300Instance.validate()//資料檢查
 
@@ -76,21 +86,22 @@ class NetReptileService {
                             s += "${node.text()}" + delimiter
 
                             nw301Instance = new Nw301()
-//                            nw301Instance.id = System.nanoTime()
                             nw301Instance.nw300id = nw300Instance
                             nw301Instance.manCreated = 'system'
                             nw301Instance.dateCreated = new Date()
                             nw301Instance.manLastUpdated = 'system'
                             nw301Instance.lastUpdated = new Date()
                             nw301Instance.no = Long.parseLong("${node.text()}")
-
+println '1'
                             nw301Instance.validate()//資料檢查
-
+                            println '2'
                             if(!nw301Instance.hasErrors()){
+                                println '3'
                                 nw301Instance.save(flush: true)
+                                println '4'
                             }else {
                                 nw301Instance.errors.each {
-                                    println it
+                                    println  'FuckingException!!==>'+it
                                 }
                             }
 
@@ -104,7 +115,6 @@ class NetReptileService {
                             println "超級獎號 = ${node.text()}"
 
                             nw301Instance = new Nw301()
-//                            nw301Instance.id = System.nanoTime()
                             nw301Instance.nw300id = nw300Instance
                             nw301Instance.manCreated = 'system'
                             nw301Instance.dateCreated = new Date()
@@ -122,11 +132,6 @@ class NetReptileService {
                                 }
                             }
                     }
-
-                    element.select('div[class=contents_box01] div[class=ball_tx]').each {
-                        node->
-                            println "猜大小 = ${node.text()}"
-                    }
                 } else {
                     nw300Instance.errors.each {
                         println it
@@ -135,9 +140,6 @@ class NetReptileService {
             }else{
                 println '本次賓果重複'
             }
-
-
-
 
             println ''
     }

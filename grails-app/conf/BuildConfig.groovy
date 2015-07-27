@@ -53,7 +53,9 @@ grails.project.dependency.resolution = {
 
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
         compile "org.jsoup:jsoup:1.7.1"
-        runtime "mysql:mysql-connector-java:5.1.29"
+        //runtime "mysql:mysql-connector-java:5.1.29"
+        //runtime "com.oracle:ojdbc6:11.2.0.2"
+        //runtime 'com.oracle:ojdbc14:10.2.0.1.0'
     }
 
     plugins {
