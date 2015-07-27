@@ -38,7 +38,3 @@ function eid(v) { return v.replace(/\./g, "\\."); }
     js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.4";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-
-$("a[data-toggle='tab']").on("mouseover", function () {
-    this.click();
-});
