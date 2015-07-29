@@ -3,6 +3,53 @@
 <head>
     <meta name="layout" content="main"/>
     <title>Welcome to Grails</title>
+
+    <script type="text/javascript">
+        function a1(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'07'])}
+        }
+
+        function a2(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'03'])}
+        }
+
+        function a3(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'04'])}
+        }
+
+        function a4(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'08'])}
+        }
+
+        function a5(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'09'])}
+        }
+
+        function a6(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'02'])}
+        }
+
+        function a7(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'11'])}
+        }
+
+        function a8(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'10'])}
+        }
+
+        function a9(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'05'])}
+        }
+
+        function a10(){
+            ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'06'])}
+        }
+
+        function a11(){
+
+        }
+    </script>
+
 </head>
 
 <body>
