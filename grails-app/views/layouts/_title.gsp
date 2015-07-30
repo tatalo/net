@@ -75,7 +75,7 @@
                     <a href="#" class="fa fa-twitter-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="列印">
-                    <a href="#" class="fa fa-print fa-lg"></a>
+                    <a href="javascript:self.print()" class="fa fa-print fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="加入書籤">
                     <a href="#" class="fa fa-heart fa-lg" onClick="addToFavorite('${message(code: "default.webname.label")}', 'http://ww899.net/')" ></a>
