@@ -29,12 +29,10 @@
             <g:each in="${alltabs}" var="tab" status="i">
                 <div id="tab${tab.tab}" class="tab-pane">
                     <g:if test="${tab.tab in ["01", "05"]}">
-                        tab${tab.tab}
                         <g:render template="/sports/result1"
                                   model="[nw200I: nw200I.findAll() { it?.type == tab.bs101 }]"/>
                     </g:if>
                     <g:else>
-                        tab${tab.tab}
                         <g:render template="/sports/result2"
                                   model="[nw200I: nw200I.findAll() { it?.type == tab.bs101 }]"/>
                     </g:else>
