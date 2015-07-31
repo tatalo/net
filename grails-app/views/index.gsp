@@ -5,47 +5,47 @@
     <title>Welcome to Grails</title>
 
     <script type="text/javascript">
-        function a1(){
+        function a1() {
             ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'07'])}
         }
 
-        function a2(){
+        function a2() {
             ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'03'])}
         }
 
-        function a3(){
+        function a3() {
             ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'04'])}
         }
 
-        function a4(){
+        function a4() {
             ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'08'])}
         }
 
-        function a5(){
+        function a5() {
             ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'09'])}
         }
 
-        function a6(){
+        function a6() {
             ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'02'])}
         }
 
-        function a7(){
+        function a7() {
             ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'11'])}
         }
 
-        function a8(){
+        function a8() {
             ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'10'])}
         }
 
-        function a9(){
+        function a9() {
             ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'05'])}
         }
 
-        function a10(){
+        function a10() {
             ${remoteFunction(controller:'base', action:'getData', update:'getDataResult', params:[actionType:'06'])}
         }
 
-        function a11(){
+        function a11() {
 
         }
     </script>
@@ -53,10 +53,87 @@
 </head>
 
 <body>
-
-<div class="container theme-showcase" role="main">
+<div class="container" role="main">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-1">
+            <div class="form-group">
+                <h4 class="custome2 page-header text-center text-nowrap">
+                    <strong>
+                        <g:message code="default.tab01.label"/>
+                    </strong>
+                </h4>
+                <g:each in="${sportTabs}" var="tab" status="i">
+                    <p class="text-nowrap">
+                        <g:remoteLink controller="sports" action="index" update="mainbody" params="[fragment: 'tab' + tab.tab]">
+                            <g:message code="sports.tab${tab.tab}.label"/>
+                        </g:remoteLink>
+                    </p>
+                </g:each>
+            </div>
+
+            <div class="form-group">
+                <h4 class="custome2 page-header text-center text-nowrap">
+                    <strong>
+                        <g:message code="default.tab03.label"/>
+                    </strong>
+                </h4>
+                <g:each in="${nationGambleTabs}" var="tab" status="i">
+                    <p class="text-nowrap">
+                        <g:remoteLink controller="nationGamble" action="index" update="mainbody" params="[fragment: 'tab' + tab.tab]">
+                            <g:message code="nationGamble.tab${tab.tab}.label"/>
+                        </g:remoteLink>
+                    </p>
+                </g:each>
+            </div>
+
+            <div class="form-group">
+                <h4 class="custome2 page-header text-center text-nowrap">
+                    <strong>
+                        <g:message code="default.tab05.label"/>
+                    </strong>
+                </h4>
+                <g:each in="${gambletechTabs}" var="tab" status="i">
+                    <p class="text-nowrap">
+                        <g:remoteLink controller="gambleTech" action="index" update="mainbody" params="[fragment: 'tab' + tab.tab]">
+                            <g:message code="gambleTech.tab${tab.tab}.label"/>
+                        </g:remoteLink>
+                    </p>
+                </g:each>
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="form-group">
+                <h4 class="custome2 page-header text-center text-nowrap">
+                    <strong>
+                        <g:message code="default.tab02.label"/>
+                    </strong>
+                </h4>
+                <g:each in="${lottoTabs}" var="tab" status="i">
+                    <p class="text-nowrap">
+                        <g:remoteLink controller="lotto" action="index" update="mainbody" params="[fragment: 'tab' + tab.tab]">
+                            <g:message code="lotto.tab${tab.tab}.label"/>
+                        </g:remoteLink>
+                    </p>
+                </g:each>
+            </div>
+
+
+            <div class="form-group">
+                <h4 class="custome2 page-header text-center text-nowrap">
+                    <strong>
+                        <g:message code="default.tab04.label"/>
+                    </strong>
+                </h4>
+            </div>
+
+            <div class="form-group">
+                <h4 class="custome2 page-header text-center text-nowrap">
+                    <strong>
+                        <g:message code="default.tab06.label"/>
+                    </strong>
+                </h4>
+            </div>
         </div>
 
         <div class="col-md-7">

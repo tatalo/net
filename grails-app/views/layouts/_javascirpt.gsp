@@ -6,5 +6,9 @@
         $("a[data-toggle='tab']").on("mouseover", function () {
             this.click();
         });
+
+        if ("${fragment}") {
+                $('.nav-tabs a[href=#${params.fragment}]').trigger("click");;
+        }
     });
 </script>

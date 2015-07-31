@@ -7,74 +7,33 @@
 
 <body>
 <div class="container">
-    %{--<div class="fb-comments" data-href="http://ww899.net/?page_id=80" data-numposts="5"></div>--}%
     <div class="form-group">
-        <ul class="nav nav-pills nav-justified">
-            <li>
-                <a data-toggle="pill" class="" href="#tab01">
-                    <i class="fa fa-th-list"></i>
-                    <g:message code="nationGamble.tab01.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="pill" class="" href="#tab02">
-                    <i class="fa fa-th-list"></i>
-                    <g:message code="nationGamble.tab02.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="pill" class="" href="#tab03">
-                    <i class="fa fa-th-list"></i>
-                    <g:message code="nationGamble.tab03.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="pill" class="" href="#tab04">
-                    <i class="fa fa-th-list"></i>
-                    <g:message code="nationGamble.tab04.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="pill" class="" href="#tab05">
-                    <i class="fa fa-th-list"></i>
-                    <g:message code="nationGamble.tab05.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="pill" class="" href="#tab06">
-                    <i class="fa fa-th-list"></i>
-                    <g:message code="nationGamble.tab06.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="pill" class="" href="#tab07">
-                    <i class="fa fa-th-list"></i>
-                    <g:message code="nationGamble.tab07.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="pill" class="" href="#tab08">
-                    <i class="fa fa-th-list"></i>
-                    <g:message code="nationGamble.tab08.label"/>
-                </a>
-            </li>
-            <li>
-                <a data-toggle="pill" class="" href="#tab09">
-                    <i class="fa fa-th-list"></i>
-                    <g:message code="nationGamble.tab09.label"/>
-                </a>
-            </li>
-        </ul>
+        <div class="portlet">
+            <div class="portlet-title">
+                <ul class="nav nav-tabs nav-justified">
+                    <g:each in="${alltabs}" var="tab" status="i">
+                        <li>
+                            <a data-toggle="tab" class="" href="#tab${tab.tab}">
+                                <i class="fa fa-th-list"></i>
+                                <g:message code="nationGamble.tab${tab.tab}.label"/>
+                            </a>
+                        </li>
+                    </g:each>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div class="form-group">
         <div class="tab-content">
-            <div id="tab01" class="tab-pane">
-                <g:render template="/nationGamble/result" model="[]"/>
-            </div>
+            <g:each in="${alltabs}" var="tab" status="i">
+                <div id="tab${tab.tab}" class="tab-pane">
+                    <g:render template="/nationGamble/result"
+                              model="[]"/>
+                </div>
+            </g:each>
         </div>
     </div>
 </div>
-
 </body>
 </html>
