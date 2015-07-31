@@ -8,11 +8,11 @@ class ErrorController {
     }
 
     def '500'(){
-        render(status: 500, view:"/system/error/500")
+        render(status: 500, view:"/base/error/500")
     }
 
     def '404'(){
-        render(status: 404, view:"/system/error/404")
+        render(status: 404, view:"/base/error/404")
     }
 }
 

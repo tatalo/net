@@ -15,7 +15,7 @@
                         <li>
                             <a data-toggle="tab" class="" href="#tab${tab.tab}">
                                 <i class="fa fa-th-list"></i>
-                                <g:message code="sports.tab${tab.tab}.label"/>
+                                <g:message code="gambleTech.tab${tab.tab}.label"/>
                             </a>
                         </li>
                     </g:each>
@@ -28,14 +28,8 @@
         <div class="tab-content">
             <g:each in="${alltabs}" var="tab" status="i">
                 <div id="tab${tab.tab}" class="tab-pane">
-                    <g:if test="${tab.tab in ["01", "05"]}">
-                        <g:render template="/sports/result1"
-                                  model="[nw200I: nw200I.findAll() { it?.type == tab.bs101 }]"/>
-                    </g:if>
-                    <g:else>
-                        <g:render template="/sports/result2"
-                                  model="[nw200I: nw200I.findAll() { it?.type == tab.bs101 }]"/>
-                    </g:else>
+                    <g:render template="/gambleTech/result"
+                              model="[]"/>
                 </div>
             </g:each>
         </div>
