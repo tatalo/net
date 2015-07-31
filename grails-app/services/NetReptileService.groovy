@@ -82,8 +82,8 @@ class NetReptileService {
                 if (!nw300Instance.hasErrors()) {
                     nw300Instance.save(flush: true)
 
-                    element.select('div[class=ball_box01] div').each {
-                        node->
+                    element.select('div[class=ball_box01] div').eachWithIndex {
+                        node, index->
                             s += "${node.text()}" + delimiter
 
                             nw301Instance = new Nw301()
@@ -93,6 +93,7 @@ class NetReptileService {
                             nw301Instance.manLastUpdated = 'system'
                             nw301Instance.lastUpdated = new Date()
                             nw301Instance.no = Long.parseLong("${node.text()}")
+                            nw301Instance.opidx = index+1
 
                             nw301Instance.validate()//資料檢查
 
@@ -114,6 +115,7 @@ class NetReptileService {
                             println "超級獎號 = ${node.text()}"
 
                             nw301Instance = new Nw301()
+                            nw301Instance.isspno = 1
                             nw301Instance.nw300id = nw300Instance
                             nw301Instance.manCreated = 'system'
                             nw301Instance.dateCreated = new Date()
@@ -154,15 +156,19 @@ class NetReptileService {
             def s1 = ''//開出順序
             def s2 = ''//大小順序
             def delimiter = ' '
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
 
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==0){
 //                        println "說明:"+"${node.text()}"
-                        String title = "${node.text()}"
-                        String day = title.substring(0,title.indexOf(' '))
-                        String no = title.substring(title.indexOf(' ')+1)
-                        String no2 = no.substring(1,no.length()-1)
+                        title = "${node.text()}"
+                        day = title.substring(0,title.indexOf(' '))
+                        no = title.substring(title.indexOf(' ')+1)
+                        no2 = no.substring(1,no.length()-1)
                         println '完整標頭 = '+title
                         println '開獎日期 = '+day
                         println '期數說明 = '+no
@@ -170,25 +176,96 @@ class NetReptileService {
                     }
             }
 
-            element.select('div[class=contents_box02] div[class=ball_tx ball_green]').eachWithIndex {
-                node,index->
-                    if(index<6){
-                        s1 += "${node.text()}" + delimiter
-                    }else if(index>=6 && index<12){
-                        s2 += "${node.text()}" + delimiter
-                    }
+            def queryNw300Object = Nw300.findByTypeAndPeriods('03',no2)
+
+            if(queryNw300Object==null){
+                println '新的一期'
+                def nw300Instance = new Nw300()
+                def nw301Instance
+
+                nw300Instance.manCreated = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdated = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = '03'
+                nw300Instance.periods = no2
+                nw300Instance.opendt = new Date()
+
+                nw300Instance.validate()//資料檢查
+
+                if(!nw300Instance.hasErrors()){
+                    nw300Instance.save(flush: true)
+
+
+                    element.select('div[class=contents_box02] div[class=ball_tx ball_green]').eachWithIndex {
+                        node,index->
+                            if(index<6){
+                                s1 += "${node.text()}" + delimiter
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+                                nw301Instance.opidx = index+1
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println  'Exception!!==>'+it
+                                    }
+                                }
+
+                            }else if(index>=6 && index<12){
+                                s2 += "${node.text()}" + delimiter
+                            }
 //                    println "item=${node.text()}"
-            }
-
-            println '威力彩(開出順序) : '+s1
-            println '威力彩(大小順序) : '+s2
-
-            element.select('div[class=contents_box02] div[class=ball_red]').eachWithIndex {
-                node, index->
-                    if(index==0){
-                        println "第二區 = ${node.text()}"
                     }
+
+                    println '威力彩(開出順序) : '+s1
+                    println '威力彩(大小順序) : '+s2
+
+                    element.select('div[class=contents_box02] div[class=ball_red]').eachWithIndex {
+                        node, index->
+                            if(index==0){
+                                println "第二區 = ${node.text()}"
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.isspno = 1
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println it
+                                    }
+                                }
+
+                            }
+                    }
+                }else{
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+            }else{
+                println '本次威力彩重複'
             }
+
+
 
             println ''
     }
@@ -204,15 +281,19 @@ class NetReptileService {
             def s1 = ''//開出順序
             def s2 = ''//大小順序
             def delimiter = ' '
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
 
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==1){
 //                        println "說明:"+"${node.text()}"
-                        String title = "${node.text()}"
-                        String day = title.substring(0,title.indexOf(' '))
-                        String no = title.substring(title.indexOf(' ')+1)
-                        String no2 = no.substring(1,no.length()-1)
+                        title = "${node.text()}"
+                        day = title.substring(0,title.indexOf(' '))
+                        no = title.substring(title.indexOf(' ')+1)
+                        no2 = no.substring(1,no.length()-1)
                         println '完整標頭 = '+title
                         println '開獎日期 = '+day
                         println '期數說明 = '+no
@@ -220,18 +301,67 @@ class NetReptileService {
                     }
             }
 
-            element.select('div[class=contents_box02] div[class=ball_tx ball_green]').eachWithIndex {
-                node,index->
-                    if(index<6){
-                        s1 += "${node.text()}" + delimiter
-                    }else if(index>=6 && index<12){
-                        s2 += "${node.text()}" + delimiter
-                    }
-//                    println "item=${node.text()}"
-            }
+            def queryNw300Object = Nw300.findByTypeAndPeriods('04',no2)
 
-            println '38樂合彩(開出順序) : '+s1
-            println '38樂合彩(大小順序) : '+s2
+            if(queryNw300Object==null){
+                println '新的一期'
+                def nw300Instance = new Nw300()
+                def nw301Instance
+
+                nw300Instance.manCreated = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdated = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = '04'
+                nw300Instance.periods = no2
+                nw300Instance.opendt = new Date()
+
+                nw300Instance.validate()//資料檢查
+
+                if(!nw300Instance.hasErrors()){
+                    nw300Instance.save(flush: true)
+
+                    element.select('div[class=contents_box02] div[class=ball_tx ball_green]').eachWithIndex {
+                        node,index->
+                            if(index<6){
+                                s1 += "${node.text()}" + delimiter
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+                                nw301Instance.opidx = index+1
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println  'Exception!!==>'+it
+                                    }
+                                }
+
+                            }else if(index>=6 && index<12){
+                                s2 += "${node.text()}" + delimiter
+                            }
+//                    println "item=${node.text()}"
+                    }
+
+                    println '38樂合彩(開出順序) : '+s1
+                    println '38樂合彩(大小順序) : '+s2
+
+                }else{
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+            }else{
+                println '本次38樂合彩重複'
+            }
 
             println ''
     }
@@ -247,38 +377,109 @@ class NetReptileService {
             def s1 = ''//開出順序
             def s2 = ''//大小順序
             def delimiter = ' '
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==2){
 //                        println "說明:"+"${node.text()}"
-                        String title = "${node.text()}"
-                        String day = title.substring(0,title.indexOf(' '))
-                        String no = title.substring(title.indexOf(' ')+1)
-                        String no2 = no.substring(1,no.length()-1)
+                        title = "${node.text()}"
+                        day = title.substring(0,title.indexOf(' '))
+                        no = title.substring(title.indexOf(' ')+1)
+                        no2 = no.substring(1,no.length()-1)
                         println '完整標頭 = '+title
                         println '開獎日期 = '+day
                         println '期數說明 = '+no
                         println '期數(純數字) = '+no2
                     }
             }
-            element.select('div[class=contents_box02] div[class=ball_tx ball_yellow]').eachWithIndex {
-                node,index->
-                    if(index<6){
-                        s1 += "${node.text()}" + delimiter
-                    }else if(index>=6 && index<12){
-                        s2 += "${node.text()}" + delimiter
-                    }
+
+            def queryNw300Object = Nw300.findByTypeAndPeriods('08',no2)
+
+            if(queryNw300Object==null){
+                println '新的一期'
+                def nw300Instance = new Nw300()
+                def nw301Instance
+
+                nw300Instance.manCreated = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdated = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = '08'
+                nw300Instance.periods = no2
+                nw300Instance.opendt = new Date()
+
+                nw300Instance.validate()//資料檢查
+                if(!nw300Instance.hasErrors()){
+                    nw300Instance.save(flush: true)
+
+                    element.select('div[class=contents_box02] div[class=ball_tx ball_yellow]').eachWithIndex {
+                        node,index->
+                            if(index<6){
+                                s1 += "${node.text()}" + delimiter
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+                                nw301Instance.opidx = index+1
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println  'Exception!!==>'+it
+                                    }
+                                }
+
+                            }else if(index>=6 && index<12){
+                                s2 += "${node.text()}" + delimiter
+                            }
 //                    println "item=${node.text()}"
-            }
-
-            println '大樂透(開出順序) : '+s1
-            println '大樂透(大小順序) : '+s2
-
-            element.select('div[class=contents_box02] div[class=ball_red]').eachWithIndex {
-                node, index->
-                    if(index==1){
-                        println "特別號 = ${node.text()}"
                     }
+
+                    println '大樂透(開出順序) : '+s1
+                    println '大樂透(大小順序) : '+s2
+
+                    element.select('div[class=contents_box02] div[class=ball_red]').eachWithIndex {
+                        node, index->
+                            if(index==1){
+                                println "特別號 = ${node.text()}"
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.isspno = 1
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println it
+                                    }
+                                }
+                            }
+                    }
+                }else{
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+            }else{
+                println '本次大樂透重複'
             }
 
             println ''
@@ -296,32 +497,86 @@ class NetReptileService {
             def s1 = ''//開出順序
             def s2 = ''//大小順序
             def delimiter = ' '
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
+
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==3){
 //                        println "說明:"+"${node.text()}"
-                        String title = "${node.text()}"
-                        String day = title.substring(0,title.indexOf(' '))
-                        String no = title.substring(title.indexOf(' ')+1)
-                        String no2 = no.substring(1,no.length()-1)
+                        title = "${node.text()}"
+                        day = title.substring(0,title.indexOf(' '))
+                        no = title.substring(title.indexOf(' ')+1)
+                        no2 = no.substring(1,no.length()-1)
                         println '完整標頭 = '+title
                         println '開獎日期 = '+day
                         println '期數說明 = '+no
                         println '期數(純數字) = '+no2
                     }
             }
-            element.select('div[class=contents_box02] div[class=ball_tx ball_yellow]').eachWithIndex {
-                node,index->
-                    if(index<6){
-                        s1 += "${node.text()}" + delimiter
-                    }else if(index>=6 && index<12){
-                        s2 += "${node.text()}" + delimiter
-                    }
-//                    println "item=${node.text()}"
-            }
 
-            println '49樂合彩(開出順序) : '+s1
-            println '49樂合彩(大小順序) : '+s2
+            def queryNw300Object = Nw300.findByTypeAndPeriods('09',no2)
+
+            if(queryNw300Object==null){
+                println '新的一期'
+                def nw300Instance = new Nw300()
+                def nw301Instance
+
+                nw300Instance.manCreated = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdated = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = '09'
+                nw300Instance.periods = no2
+                nw300Instance.opendt = new Date()
+
+                nw300Instance.validate()//資料檢查
+
+                if(!nw300Instance.hasErrors()){
+                    nw300Instance.save(flush: true)
+
+                    element.select('div[class=contents_box02] div[class=ball_tx ball_yellow]').eachWithIndex {
+                        node,index->
+                            if(index<6){
+                                s1 += "${node.text()}" + delimiter
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+                                nw301Instance.opidx = index+1
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println  'Exception!!==>'+it
+                                    }
+                                }
+                            }else if(index>=6 && index<12){
+                                s2 += "${node.text()}" + delimiter
+                            }
+//                    println "item=${node.text()}"
+                    }
+
+                    println '49樂合彩(開出順序) : '+s1
+                    println '49樂合彩(大小順序) : '+s2
+
+                }else{
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+            }else{
+                println '本次49樂合彩重複'
+            }
 
             println ''
     }
@@ -338,32 +593,86 @@ class NetReptileService {
             def s1 = ''//開出順序
             def s2 = ''//大小順序
             def delimiter = ' '
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
+
             element.select('div[class=contents_mine_tx05] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==0){
 //                        println "說明:"+"${node.text()}"
-                        String title = "${node.text()}"
-                        String day = title.substring(0,title.indexOf(' '))
-                        String no = title.substring(title.indexOf(' ')+1)
-                        String no2 = no.substring(1,no.length()-1)
+                        title = "${node.text()}"
+                        day = title.substring(0,title.indexOf(' '))
+                        no = title.substring(title.indexOf(' ')+1)
+                        no2 = no.substring(1,no.length()-1)
                         println '完整標頭 = '+title
                         println '開獎日期 = '+day
                         println '期數說明 = '+no
                         println '期數(純數字) = '+no2
                     }
             }
-            element.select('div[class=contents_box05] div[class=ball_tx ball_melon_red]').eachWithIndex {
-                node,index->
-                    if(index<7){
-                        s1 += "${node.text()}" + delimiter
-                    }else if(index>=7 && index<14){
-                        s2 += "${node.text()}" + delimiter
-                    }
-//                    println "item=${node.text()}"
-            }
 
-            println '大福彩(開出順序) : '+s1
-            println '大福彩(大小順序) : '+s2
+            def queryNw300Object = Nw300.findByTypeAndPeriods('02',no2)
+
+            if(queryNw300Object==null){
+                println '新的一期'
+                def nw300Instance = new Nw300()
+                def nw301Instance
+
+                nw300Instance.manCreated = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdated = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = '02'
+                nw300Instance.periods = no2
+                nw300Instance.opendt = new Date()
+
+                nw300Instance.validate()//資料檢查
+
+                if(!nw300Instance.hasErrors()){
+                    nw300Instance.save(flush: true)
+
+                    element.select('div[class=contents_box05] div[class=ball_tx ball_melon_red]').eachWithIndex {
+                        node,index->
+                            if(index<7){
+                                s1 += "${node.text()}" + delimiter
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+                                nw301Instance.opidx = index+1
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println  'Exception!!==>'+it
+                                    }
+                                }
+                            }else if(index>=7 && index<14){
+                                s2 += "${node.text()}" + delimiter
+                            }
+//                    println "item=${node.text()}"
+                    }
+
+                    println '大福彩(開出順序) : '+s1
+                    println '大福彩(大小順序) : '+s2
+
+                }else{
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+            }else{
+                println '本次大福彩重複'
+            }
 
             println ''
     }
@@ -380,32 +689,88 @@ class NetReptileService {
             def s1 = ''//開出順序
             def s2 = ''//大小順序
             def delimiter = ' '
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
+
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==4){
 //                        println "說明:"+"${node.text()}"
-                        String title = "${node.text()}"
-                        String day = title.substring(0,title.indexOf(' '))
-                        String no = title.substring(title.indexOf(' ')+1)
-                        String no2 = no.substring(1,no.length()-1)
+                        title = "${node.text()}"
+                        day = title.substring(0,title.indexOf(' '))
+                        no = title.substring(title.indexOf(' ')+1)
+                        no2 = no.substring(1,no.length()-1)
                         println '完整標頭 = '+title
                         println '開獎日期 = '+day
                         println '期數說明 = '+no
                         println '期數(純數字) = '+no2
                     }
             }
-            element.select('div[class=contents_box03] div[class=ball_tx ball_lemon]').eachWithIndex {
-                node,index->
-                    if(index<5){
-                        s1 += "${node.text()}" + delimiter
-                    }else if(index>=5 && index<10){
-                        s2 += "${node.text()}" + delimiter
-                    }
-//                    println "item=${node.text()}"
-            }
 
-            println '今彩539(開出順序) : '+s1
-            println '今彩539(大小順序) : '+s2
+            def queryNw300Object = Nw300.findByTypeAndPeriods('11',no2)
+
+            if(queryNw300Object==null){
+                println '新的一期'
+
+                def nw300Instance = new Nw300()
+                def nw301Instance
+
+                nw300Instance.manCreated = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdated = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = '11'
+                nw300Instance.periods = no2
+                nw300Instance.opendt = new Date()
+
+                nw300Instance.validate()//資料檢查
+
+                if(!nw300Instance.hasErrors()){
+                    nw300Instance.save(flush: true)
+
+
+                    element.select('div[class=contents_box03] div[class=ball_tx ball_lemon]').eachWithIndex {
+                        node,index->
+                            if(index<5){
+                                s1 += "${node.text()}" + delimiter
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+                                nw301Instance.opidx = index+1
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println  'Exception!!==>'+it
+                                    }
+                                }
+
+                            }else if(index>=5 && index<10){
+                                s2 += "${node.text()}" + delimiter
+                            }
+//                    println "item=${node.text()}"
+                    }
+
+                    println '今彩539(開出順序) : '+s1
+                    println '今彩539(大小順序) : '+s2
+                }else{
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+            }else{
+                println '本次今彩539重複'
+            }
 
             println ''
     }
@@ -422,32 +787,90 @@ class NetReptileService {
             def s1 = ''//開出順序
             def s2 = ''//大小順序
             def delimiter = ' '
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
+
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==5){
 //                        println "說明:"+"${node.text()}"
-                        String title = "${node.text()}"
-                        String day = title.substring(0,title.indexOf(' '))
-                        String no = title.substring(title.indexOf(' ')+1)
-                        String no2 = no.substring(1,no.length()-1)
+                        title = "${node.text()}"
+                        day = title.substring(0,title.indexOf(' '))
+                        no = title.substring(title.indexOf(' ')+1)
+                        no2 = no.substring(1,no.length()-1)
                         println '完整標頭 = '+title
                         println '開獎日期 = '+day
                         println '期數說明 = '+no
                         println '期數(純數字) = '+no2
                     }
             }
-            element.select('div[class=contents_box03] div[class=ball_tx ball_lemon]').eachWithIndex {
-                node,index->
-                    if(index<5){
-                        s1 += "${node.text()}" + delimiter
-                    }else if(index>=5 && index<10){
-                        s2 += "${node.text()}" + delimiter
-                    }
+
+            def queryNw300Object = Nw300.findByTypeAndPeriods('10',no2)
+
+            if(queryNw300Object==null){
+                println '新的一期'
+
+                def nw300Instance = new Nw300()
+                def nw301Instance
+
+                nw300Instance.manCreated = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdated = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = '10'
+                nw300Instance.periods = no2
+                nw300Instance.opendt = new Date()
+
+                nw300Instance.validate()//資料檢查
+
+                if(!nw300Instance.hasErrors()){
+                    nw300Instance.save(flush: true)
+
+
+                    element.select('div[class=contents_box03] div[class=ball_tx ball_lemon]').eachWithIndex {
+                        node,index->
+                            if(index<5){
+                                s1 += "${node.text()}" + delimiter
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+                                nw301Instance.opidx = index+1
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println  'Exception!!==>'+it
+                                    }
+                                }
+
+                            }else if(index>=5 && index<10){
+                                s2 += "${node.text()}" + delimiter
+                            }
 //                    println "item=${node.text()}"
+                    }
+
+                    println '39樂合彩(開出順序) : '+s1
+                    println '39樂合彩(大小順序) : '+s2
+                }else{
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+            }else{
+                println '本次39樂合彩重複'
             }
 
-            println '39樂合彩(開出順序) : '+s1
-            println '39樂合彩(大小順序) : '+s2
+
 
             println ''
     }
@@ -463,29 +886,85 @@ class NetReptileService {
 
             def s1 = ''//開出順序
             def delimiter = ' '
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
+
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==6){
 //                        println "說明:"+"${node.text()}"
-                        String title = "${node.text()}"
-                        String day = title.substring(0,title.indexOf(' '))
-                        String no = title.substring(title.indexOf(' ')+1)
-                        String no2 = no.substring(1,no.length()-1)
+                        title = "${node.text()}"
+                        day = title.substring(0,title.indexOf(' '))
+                        no = title.substring(title.indexOf(' ')+1)
+                        no2 = no.substring(1,no.length()-1)
                         println '完整標頭 = '+title
                         println '開獎日期 = '+day
                         println '期數說明 = '+no
                         println '期數(純數字) = '+no2
                     }
             }
-            element.select('div[class=contents_box04] div[class=ball_tx ball_purple]').eachWithIndex {
-                node,index->
-                    if(index<3){
-                        s1 += "${node.text()}" + delimiter
-                    }
-//                    println "item=${node.text()}"
-            }
 
-            println '3星彩(中獎號碼) : '+s1
+            def queryNw300Object = Nw300.findByTypeAndPeriods('05',no2)
+
+            if(queryNw300Object==null){
+                println '新的一期'
+
+                def nw300Instance = new Nw300()
+                def nw301Instance
+
+                nw300Instance.manCreated = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdated = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = '05'
+                nw300Instance.periods = no2
+                nw300Instance.opendt = new Date()
+
+                nw300Instance.validate()//資料檢查
+
+                if(!nw300Instance.hasErrors()){
+                    nw300Instance.save(flush: true)
+
+                    element.select('div[class=contents_box04] div[class=ball_tx ball_purple]').eachWithIndex {
+                        node,index->
+                            if(index<3){
+                                s1 += "${node.text()}" + delimiter
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+                                nw301Instance.opidx = index+1
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println  'Exception!!==>'+it
+                                    }
+                                }
+
+                            }
+//                    println "item=${node.text()}"
+                    }
+
+                    println '3星彩(中獎號碼) : '+s1
+
+                }else{
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+            }else{
+                println '本次3星彩重複'
+            }
 
             println ''
     }
@@ -501,29 +980,93 @@ class NetReptileService {
 
             def s1 = ''//開出順序
             def delimiter = ' '
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
+
             element.select('div[class=contents_mine_tx02] span[class=font_black15]').eachWithIndex {
                 node, index->
                     if(index==7){
 //                        println "說明:"+"${node.text()}"
-                        String title = "${node.text()}"
-                        String day = title.substring(0,title.indexOf(' '))
-                        String no = title.substring(title.indexOf(' ')+1)
-                        String no2 = no.substring(1,no.length()-1)
+                        title = "${node.text()}"
+                        day = title.substring(0,title.indexOf(' '))
+                        no = title.substring(title.indexOf(' ')+1)
+                        no2 = no.substring(1,no.length()-1)
                         println '完整標頭 = '+title
                         println '開獎日期 = '+day
                         println '期數說明 = '+no
                         println '期數(純數字) = '+no2
                     }
             }
-            element.select('div[class=contents_box04] div[class=ball_tx ball_purple]').eachWithIndex {
-                node,index->
-                    if(index>2 && index<7){
-                        s1 += "${node.text()}" + delimiter
-                    }
+
+            def queryNw300Object = Nw300.findByTypeAndPeriods('06',no2)
+
+            if(queryNw300Object==null){
+                println '新的一期'
+
+                def nw300Instance = new Nw300()
+                def nw301Instance
+
+                nw300Instance.manCreated = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdated = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = '06'
+                nw300Instance.periods = no2
+                nw300Instance.opendt = new Date()
+
+                nw300Instance.validate()//資料檢查
+
+                if(!nw300Instance.hasErrors()){
+                    nw300Instance.save(flush: true)
+
+
+
+                    element.select('div[class=contents_box04] div[class=ball_tx ball_purple]').eachWithIndex {
+                        node,index->
+                            if(index>2 && index<7){
+                                s1 += "${node.text()}" + delimiter
+
+                                nw301Instance = new Nw301()
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong("${node.text()}")
+                                nw301Instance.opidx = index-2
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println  'Exception!!==>'+it
+                                    }
+                                }
+
+                            }
 //                    println "item=${node.text()}"
+                    }
+
+                    println '4星彩(中獎號碼) : '+s1
+
+                }else{
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+
+
+
+
+            }else{
+                println '本次4星彩重複'
             }
 
-            println '4星彩(中獎號碼) : '+s1
+
 
             println ''
     }

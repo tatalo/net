@@ -75,7 +75,7 @@
                     <a href="#" class="fa fa-twitter-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="列印">
-                    <a href="#" class="fa fa-print fa-lg"></a>
+                    <a href="javascript:self.print()" class="fa fa-print fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="加入書籤">
                     <a href="#" class="fa fa-heart fa-lg" onClick="addToFavorite('${message(code: "default.webname.label")}', 'http://ww899.net/')" ></a>
@@ -84,6 +84,55 @@
 
         </div><!--/.nav-collapse -->
     </div>
+
+    <!--*************  facebook    setting   start  **************-->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.4";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="fb-share-button" data-href="http://www.yahoo.com.tw" data-layout="button_count"></div>
+    <!--*************  facebook    setting   end  **************-->
+
+
+
+
+
+
+    <!--*************  twitter    setting   start  **************-->
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+    <script>
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+            if(!d.getElementById(id)){js=d.createElement(s);
+                js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    </script>
+    <!--*************  twitter    setting   end  **************-->
+
+
+
+
+
+
+    <!--*************  google+    setting   start  **************-->
+    <!-- Place this tag where you want the share button to render. -->
+    <div class="g-plus" data-action="share"></div>
+
+    <!-- Place this tag after the last share tag. -->
+    <script type="text/javascript">
+        window.___gcfg = {lang: 'zh-TW'};
+
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/platform.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+    </script>
+    <!--*************  google+    setting   end  **************-->
 
     <div class="container-fluid" style="background: white;">
         <div class="container">
