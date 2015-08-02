@@ -3,26 +3,50 @@ class GambleTechController {
     static void main(String[] args){
     }
 
-    //分頁
+    // 分頁參數管理
+    // Type: webLink => NW200
+    //       context => NW400
     static def alltabs = [
-            [tab: '01', bs101: ''],
-            [tab: '02', bs101: ''],
-            [tab: '03', bs101: ''],
-            [tab: '04', bs101: ''],
-            [tab: '05', bs101: ''],
-            [tab: '06', bs101: ''],
-            [tab: '07', bs101: ''],
-            [tab: '08', bs101: ''],
-            [tab: '09', bs101: '']
+            [id: UUID.randomUUID(),tab: '01', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: '', dataType: '' ]]],
+            [id: UUID.randomUUID(),tab: '02', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '102' ]]],
+            [id: UUID.randomUUID(),tab: '03', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '103' ]]],
+            [id: UUID.randomUUID(),tab: '04', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '104' ]]],
+            [id: UUID.randomUUID(),tab: '05', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '105' ]]],
+            [id: UUID.randomUUID(),tab: '06', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '106' ]]],
+            [id: UUID.randomUUID(),tab: '07', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '107' ]]],
+            [id: UUID.randomUUID(),tab: '08', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '108' ]]],
+            [id: UUID.randomUUID(),tab: '09', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '109' ]]]
     ]
-
     def index() {
-        //博彩技巧目前參數List
-//        def bs101I = Bs101.findAllByPtype("NW200TYPE")
+        //List
+        def nw400Types = []
+
+        alltabs?.lv2Tab.each {it ->
+            it.dataType.each { it2 ->
+                if (it2 != "") {
+                    nw400Types += it2
+                }
+            }
+        }
+
+        println "nw400Types = " + nw400Types
+
 
         //博彩技巧資料
-//        def nw200I = Nw200.findAllByTypeInList(bs101I.pcode)
+        def nw400I = Nw400.findAllByTypeInList(nw400Types.unique())
 
-        render view: "/gambleTech/index", model: [fragment : params.fragment, alltabs : alltabs]
+        println "nw400I = " + nw400I
+        println "nw400I.context1 = " + nw400I.findAll(){it.type == '02'}
+        println "nw400I.context2 = " + nw400I.findAll(){it.type == '102'}
+
+        render view: "/gambleTech/index", model: [nw400I: nw400I, fragment : params.fragment, alltabs : alltabs]
     }
 }

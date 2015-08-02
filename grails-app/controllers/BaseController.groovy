@@ -11,11 +11,11 @@ class BaseController {
         def nationGambleTabs = NationGambleController.alltabs
         def gambletechTabs = GambleTechController.alltabs
 
-        render view:"/base/index", model: [sportTabs: sportTabs, lottoTabs: lottoTabs, nationGambleTabs : nationGambleTabs , gambletechTabs :gambletechTabs]
+        render view:"/base/index", model: [ sportTabs: sportTabs, lottoTabs: lottoTabs, nationGambleTabs : nationGambleTabs , gambletechTabs :gambletechTabs]
     }
 
     def build() {
-        render view:"/base/build"
+        render template: "/base/build"
     }
 
     def getData={

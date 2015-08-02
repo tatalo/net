@@ -6,25 +6,22 @@
 </head>
 
 <body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <ul class="nav nav-pills nav-justified horiz-divider-2">
+            <g:each in="${alltabs}" var="tab" status="i">
+                <li class="horiz-divider">
+                    <a data-toggle="pill" class="" href="#tab${tab.tab}">
+                        <i class="fa fa-th-list"></i>
+                        <g:message code="lotto.tab${tab.tab}.label"/>
+                    </a>
+                </li>
+            </g:each>
+        </ul>
+    </div>
+</nav>
 
 <div class="container">
-    <div class="form-group">
-        <div class="portlet">
-            <div class="portlet-title">
-                <ul class="nav nav-tabs nav-justified">
-                    <g:each in="${alltabs}" var="tab" status="i">
-                        <li>
-                            <a data-toggle="tab" class="" href="#tab${tab.tab}">
-                                <i class="fa fa-th-list"></i>
-                                <g:message code="lotto.tab${tab.tab}.label"/>
-                            </a>
-                        </li>
-                    </g:each>
-                </ul>
-            </div>
-        </div>
-    </div>
-
     <div class="form-group">
         <div class="tab-content">
             <g:each in="${alltabs}" var="tab" status="i">

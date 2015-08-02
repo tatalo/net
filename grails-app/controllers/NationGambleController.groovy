@@ -5,7 +5,8 @@ class NationGambleController {
 
     //分頁
     static def alltabs = [
-            [tab: '01', bs101: ''],
+            [tab: '01', bs101: '', tab2:[[tab: '01', bs101: ''],
+                                         [tab: '02', bs101: '']]],
             [tab: '02', bs101: ''],
             [tab: '03', bs101: ''],
             [tab: '04', bs101: ''],

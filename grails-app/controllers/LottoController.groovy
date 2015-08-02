@@ -4,21 +4,21 @@ class LottoController {
     }
 
     //分頁
-    static def alltabs = [
-            [tab: '01', bs101: ''],
-            [tab: '02', bs101: ''],
-            [tab: '03', bs101: '01'],
-            [tab: '04', bs101: '02'],
-            [tab: '05', bs101: '03'],
-            [tab: '06', bs101: '04'],
-            [tab: '07', bs101: '05'],
-            [tab: '08', bs101: '06'],
-            [tab: '09', bs101: '07'],
-            [tab: '10', bs101: '08'],
-            [tab: '11', bs101: '09'],
-            [tab: '12', bs101: '10'],
-            [tab: '13', bs101: '11'],
-            [tab: '14', bs101: '']
+    static def alltabs = [ //dataType: Nw300.Type
+            [tab: '01', dataType: ''],
+            [tab: '02', dataType: ''],
+            [tab: '03', dataType: '01'],
+            [tab: '04', dataType: '02'],
+            [tab: '05', dataType: '03'],
+            [tab: '06', dataType: '04'],
+            [tab: '07', dataType: '05'],
+            [tab: '08', dataType: '06'],
+            [tab: '09', dataType: '07'],
+            [tab: '10', dataType: '08'],
+            [tab: '11', dataType: '09'],
+            [tab: '12', dataType: '10'],
+            [tab: '13', dataType: '11'],
+            [tab: '14', dataType: '']
     ]
 
     def index() {
