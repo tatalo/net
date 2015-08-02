@@ -7,39 +7,20 @@
 
 <body>
 
-<nav class="navbar navbar-inverse">
+<div class="container-fluid bg-custome1">
     <div class="container">
-        <ul class="nav nav-pills nav-justified horiz-divider-2">
+        <ul class="nav nav-pills nav-justified HDivider-outer">
             <g:each in="${alltabs}" var="tab" status="i">
-                <li class="horiz-divider">
-                    <a data-toggle="pill" class="" href="#tab${tab.tab}">
+                <li class="HDivider-inner">
+                    <a data-toggle="pill" name="tab${tab?.tab}" class="autoclick" href="#${tab?.id}">
                         <i class="fa fa-th-list"></i>
-                        <g:message code="nationGamble.tab${tab.tab}.label"/>
+                        <g:message code="nationGamble.tab${tab?.tab}.label"/>
                     </a>
                 </li>
             </g:each>
         </ul>
     </div>
-    <div class="container-fluid lv2navbar">
-        <div class="container">
-            <div class="tab-content">
-                <div id="tab01" class="tab-pane">
-                    <ul class="list-inline">
-                        <li><a data-toggle="pill" href="#tab0101">歐洲</a></li>
-                        <li><a data-toggle="pill" href="#tab0102">亞洲</a></li>
-                    </ul>
-                </div>
-                <div id="tab02" class="tab-pane">
-                    <ul class="nav nav-tabs">
-                        <li role="presentation" class="active"><a href="#">Home2</a></li>
-                        <li role="presentation"><a href="#">Profile</a></li>
-                        <li role="presentation"><a href="#">Messages</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
+</div>
 
 <div class="container">
     <div class="form-group">

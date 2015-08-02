@@ -6,24 +6,25 @@ class GambleTechController {
     // 分頁參數管理
     // Type: webLink => NW200
     //       context => NW400
+    //       list => NW500
     static def alltabs = [
             [id: UUID.randomUUID(),tab: '01', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: '', dataType: '' ]]],
-            [id: UUID.randomUUID(),tab: '02', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
-                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '102' ]]],
-            [id: UUID.randomUUID(),tab: '03', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
-                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '103' ]]],
-            [id: UUID.randomUUID(),tab: '04', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
-                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '104' ]]],
-            [id: UUID.randomUUID(),tab: '05', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
-                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '105' ]]],
-            [id: UUID.randomUUID(),tab: '06', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
-                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '106' ]]],
-            [id: UUID.randomUUID(),tab: '07', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
-                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '107' ]]],
-            [id: UUID.randomUUID(),tab: '08', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
-                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '108' ]]],
-            [id: UUID.randomUUID(),tab: '09', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '02' ],
-                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '109' ]]]
+            [id: UUID.randomUUID(),tab: '02', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '302' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '352' ]]],
+            [id: UUID.randomUUID(),tab: '03', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '303' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '353' ]]],
+            [id: UUID.randomUUID(),tab: '04', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '304' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '354' ]]],
+            [id: UUID.randomUUID(),tab: '05', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '305' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '355' ]]],
+            [id: UUID.randomUUID(),tab: '06', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '306' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '356' ]]],
+            [id: UUID.randomUUID(),tab: '07', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '307' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '357' ]]],
+            [id: UUID.randomUUID(),tab: '08', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '308' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '358' ]]],
+            [id: UUID.randomUUID(),tab: '09', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '309' ],
+                                                       [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '359' ]]]
     ]
     def index() {
         //List
@@ -37,15 +38,8 @@ class GambleTechController {
             }
         }
 
-        println "nw400Types = " + nw400Types
-
-
         //博彩技巧資料
         def nw400I = Nw400.findAllByTypeInList(nw400Types.unique())
-
-        println "nw400I = " + nw400I
-        println "nw400I.context1 = " + nw400I.findAll(){it.type == '02'}
-        println "nw400I.context2 = " + nw400I.findAll(){it.type == '102'}
 
         render view: "/gambleTech/index", model: [nw400I: nw400I, fragment : params.fragment, alltabs : alltabs]
     }

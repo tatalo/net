@@ -53,6 +53,7 @@
 </head>
 
 <body>
+
 <div class="container" role="main">
     <div class="row">
         <div class="col-md-1">
@@ -145,22 +146,22 @@
                     <div class="panel-body">
                         <ul class="nav nav-tabs nav-justified">
                             <li>
-                                <a data-toggle="tab" name="tab01" class="" href="#tab01">
+                                <a data-toggle="tab" name="tab01" class="autoclick" href="#tab01">
                                     彩球
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="" href="#tab02">
+                                <a data-toggle="tab" class="autoclick" href="#tab02">
                                     即時比分
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="" href="#tab03">
+                                <a data-toggle="tab" class="autoclick" href="#tab03">
                                     新聞
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="" href="#tab04">
+                                <a data-toggle="tab" class="autoclick" href="#tab04">
                                     當日賽事
                                 </a>
                             </li>
@@ -208,31 +209,31 @@
                     <div class="panel-body">
                         <ul class="nav nav-tabs nav-justified">
                             <li>
-                                <a data-toggle="tab" name="tab01" class="" href="#taba01">
+                                <a data-toggle="tab" name="tab01" class="autoclick" href="#taba01">
                                     <img src="${assetPath(src: '01.nba.png')}" class="img-responsive text-center"
                                          alt="Responsive image">
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="" href="#taba02">
+                                <a data-toggle="tab" class="autoclick" href="#taba02">
                                     <img src="${assetPath(src: '02.mlb.jpg')}" class="img-responsive"
                                          alt="Responsive image">
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="" href="#taba03">
+                                <a data-toggle="tab" class="autoclick" href="#taba03">
                                     <img src="${assetPath(src: '03.cpbl.png')}" class="img-responsive"
                                          alt="Responsive image">
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="" href="#taba04">
+                                <a data-toggle="tab" class="autoclick" href="#taba04">
                                     <img src="${assetPath(src: '04.npb.png')}" class="img-responsive"
                                          alt="Responsive image">
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="" href="#taba05">
+                                <a data-toggle="tab" class="autoclick" href="#taba05">
                                     <img src="${assetPath(src: '05.kbo.jpg')}" class="img-responsive"
                                          alt="Responsive image">
                                 </a>
@@ -269,9 +270,11 @@
             <div class="form-group">
                 <h4 class="bg-custome1 text-center">當日開獎</h4>
             </div>
+
             <div class="form-group">
                 <h4 class="bg-custome1 text-center">當日賽事</h4>
             </div>
+
             <div class="form-group">
                 <h4 class="bg-custome1 text-center">博彩技巧</h4>
             </div>

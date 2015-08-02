@@ -1,14 +1,14 @@
 /**
- * <p>Title: O/R Mapping(For Nw400)</p>
+ * <p>Title: O/R Mapping(For Nw500)</p>
  * <p>Description: BaseDAO/SqlObj/ResultSetObj/</p>
  * <p>Copyright: Copyright (c) 2015</p>
  * <p>Company: Free Open Everybody Use</p>
  * @author PA-ORM TableMining 
- * @desc Groovy ORM 1.0.3 (NW400/NW400(文章類主檔))
+ * @desc Groovy ORM 1.0.3 (NW500/NW500(列表類主檔))
  */
-class Nw400 {
+class Nw500 {
 		static mapping = {
-			table 'NW400'
+			table 'NW500'
 			version false 
 			//---1.OBJID PK0
 			id column:"objid", generator:'Power228Generator'
@@ -18,11 +18,8 @@ class Nw400 {
 			lastUpdated column:"LAST_UPDATED"
 			locale column:"LOCALE"
 			type column:"TYPE"
-			issuedt column:"ISSUEDT"
 			title column:"TITLE"
 			context column:"CONTEXT"
-			fbboardurl column:"FBBOARDURL"
-			countsurl column:"COUNTSURL"
 			idx column:"IDX"
 		}
 
@@ -39,17 +36,11 @@ class Nw400 {
 		String locale
 		//---7.類型  
 		String type
-		//---8.發佈日期  
-		Date issuedt
-		//---9.標題  
+		//---8.標題  
 		String title
-		//---10.內容  
+		//---9.內容  
 		String context
-		//---11.FB留言版URL  
-		String fbboardurl
-		//---12.計數器URL  
-		String countsurl
-		//---13.排序
+		//---10.排序  
 		Long idx = 1
 
 
@@ -60,11 +51,8 @@ class Nw400 {
 			lastUpdated(nullable:true)
 			locale(nullable:true)
 			type(nullable:true)
-			issuedt(nullable:true)
 			title(nullable:true)
 			context(nullable:true)
-			fbboardurl(nullable:true)
-			countsurl(nullable:true)
 			idx(nullable:true)
 		}
 

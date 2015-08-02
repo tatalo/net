@@ -5,6 +5,7 @@ class SportsController {
     // 分頁參數管理
     // Type: webLink => NW200
     //       context => NW400
+    //       list => NW500
     static def alltabs = [
         [id: UUID.randomUUID(), tab: '01', Type: 'webLink', dataType: '01'],
         [id: UUID.randomUUID(), tab: '02', Type: 'webLink', dataType: '02'],

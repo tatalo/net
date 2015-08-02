@@ -6,12 +6,12 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse">
+<div class="container-fluid bg-custome1">
     <div class="container">
-        <ul class="nav nav-pills nav-justified horiz-divider-2">
+        <ul class="nav nav-pills nav-justified HDivider-outer">
             <g:each in="${alltabs}" var="tab" status="i">
-                <li class="horiz-divider">
-                    <a data-toggle="pill" name="tab${tab?.tab}" class="" href="#${tab?.id}">
+                <li class="HDivider-inner">
+                    <a data-toggle="pill" name="tab${tab?.tab}" class="autoclick" href="#${tab?.id}">
                         <i class="fa fa-th-list"></i>
                         <g:message code="gambleTech.tab${tab?.tab}.label"/>
                     </a>
@@ -19,27 +19,26 @@
             </g:each>
         </ul>
     </div>
-    <div class="container-fluid lv2navbar">
-        <div class="container">
-            <div class="tab-content">
-                <g:each in="${alltabs}" var="tab" status="i">
-                    <div id="${tab?.id}" class="tab-pane">
-                        <ul class="list-inline">
-                            <g:each in="${tab?.lv2Tab as List}" var="lv2Tab" status="i2">
-                                <li>
-                                    <a data-toggle="pill" name="tab${tab?.tab}${lv2Tab?.tab}" href="#${lv2Tab?.id}">
-                                        <g:message code="gambleTech.tab${tab?.tab}.lv2Tab${lv2Tab?.tab}.label"/>
-                                    </a>
-                                <li>
-                            </g:each>
-                        </ul>
-                    </div>
-                </g:each>
-            </div>
+</div>
+<div class="container-fluid lv2navbar">
+    <div class="container">
+        <div class="tab-content">
+            <g:each in="${alltabs}" var="tab" status="i">
+                <div id="${tab?.id}" class="tab-pane">
+                    <ul class="list-inline">
+                        <g:each in="${tab?.lv2Tab as List}" var="lv2Tab" status="i2">
+                            <li>
+                                <a data-toggle="pill" name="tab${tab?.tab}${lv2Tab?.tab}" href="#${lv2Tab?.id}">
+                                    <g:message code="gambleTech.tab${tab?.tab}.lv2Tab${lv2Tab?.tab}.label"/>
+                                </a>
+                            <li>
+                        </g:each>
+                    </ul>
+                </div>
+            </g:each>
         </div>
     </div>
-</nav>
-
+</div>
 <div class="container">
     <div class="form-group">
         <div class="tab-content">

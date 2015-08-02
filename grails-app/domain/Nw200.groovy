@@ -4,7 +4,7 @@
  * <p>Copyright: Copyright (c) 2015</p>
  * <p>Company: Free Open Everybody Use</p>
  * @author PA-ORM TableMining 
- * @desc Groovy ORM 1.0.3 (NW200/NW200(運動資料主檔))
+ * @desc Groovy ORM 1.0.3 (NW200/NW200(網站連結類主檔))
  */
 class Nw200 {
 		static mapping = {
@@ -23,6 +23,7 @@ class Nw200 {
 			manageurlBk column:"MANAGEURL_BK"
 			memberurl column:"MEMBERURL"
 			memberurlBk column:"MEMBERURL_BK"
+			idx column:"IDX"
 		}
 
 
@@ -48,6 +49,8 @@ class Nw200 {
 		String memberurl
 		//---12.會員URL_備份  
 		String memberurlBk
+		//---13.排序
+		Long idx = 1
 
 
 		static constraints = {
@@ -62,6 +65,7 @@ class Nw200 {
 			manageurlBk(nullable:true)
 			memberurl(nullable:true)
 			memberurlBk(nullable:true)
+			idx(nullable:true)
 		}
 
 }

@@ -3,7 +3,10 @@ class LottoController {
     static void main(String[] args){
     }
 
-    //分頁
+    // 分頁參數管理
+    // Type: webLink => NW200
+    //       context => NW400
+    //       list => NW500
     static def alltabs = [ //dataType: Nw300.Type
             [tab: '01', dataType: ''],
             [tab: '02', dataType: ''],
