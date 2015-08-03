@@ -28,18 +28,21 @@ class GambleTechController {
     ]
     def index() {
         //List
-        def nw400Types = []
+        def nw400Types = alltabs?.lv2Tab.dataType.flatten().findAll()
 
-        alltabs?.lv2Tab.each {it ->
-            it.dataType.each { it2 ->
-                if (it2 != "") {
-                    nw400Types += it2
-                }
-            }
-        }
+        println "nw400Types = " + nw400Types
+//        nw400Types = alltabs?.lv2Tab.dataType.flatten()
+
+//        alltabs?.lv2Tab.each {it ->
+//            it.dataType.each { it2 ->
+//                if (it2 != "") {
+//                    nw400Types += it2
+//                }
+//            }
+//        }
 
         //博彩技巧資料
-        def nw400I = Nw400.findAllByTypeInList(nw400Types.unique())
+        def nw400I = Nw400.findAllByTypeInList(nw400Types)
 
         render view: "/gambleTech/index", model: [nw400I: nw400I, fragment : params.fragment, alltabs : alltabs]
     }

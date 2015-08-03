@@ -20,7 +20,7 @@
         </ul>
     </div>
 </div>
-<div class="container-fluid lv2navbar">
+%{--<div class="container-fluid lv2navbar">--}%
     <div class="container">
         <div class="tab-content">
             <g:each in="${alltabs}" var="tab" status="i">
@@ -38,7 +38,9 @@
             </g:each>
         </div>
     </div>
-</div>
+%{--</div>--}%
+
+<hr/>
 <div class="container">
     <div class="form-group">
         <div class="tab-content">

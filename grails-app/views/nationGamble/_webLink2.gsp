@@ -1,16 +1,13 @@
 <div class="panel panel-default">
-    <!-- Default panel contents -->
     <table class="table table-hover table-striped">
         <colgroup width="10%"/>
-        <colgroup width="30%"/>
-        <colgroup width="30%"/>
-        <colgroup width="30%"/>
+        <colgroup width="35%"/>
+        <colgroup width="55%"/>
         <thead>
         <tr>
             <th>#</th>
             <th>網站</th>
-            <th>管理</th>
-            <th>會員</th>
+            <th>連結</th>
         </tr>
         </thead>
         <tbody>
@@ -22,12 +19,7 @@
             </td>
             <td>
                 <g:if test="${nw200?.manageurl != null}">
-                    <a href="${nw200?.manageurl}" class="btn btn-primary btn-sm" target="_blank">登入</a>
-                </g:if>
-            </td>
-            <td>
-                <g:if test="${nw200?.memberurl != null}">
-                    <a href="${nw200?.memberurl}" class="btn btn-primary btn-sm" target="_blank">登入</a>
+                    <a href="${nw200?.manageurl}" class="btn btn-primary btn-sm" target="_blank">檢視</a>
                 </g:if>
             </td>
         </g:each>
