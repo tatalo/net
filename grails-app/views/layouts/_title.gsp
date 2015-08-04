@@ -133,7 +133,6 @@
         %{--})();--}%
     %{--</script>--}%
     %{--<!--*************  google+    setting   end  **************-->--}%
-
     <div class="container-fluid" style="background: white;">
         <div class="container">
             <div class="row">

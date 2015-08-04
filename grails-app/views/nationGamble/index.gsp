@@ -47,9 +47,6 @@
                         <g:render template="/nationGamble/list1"
                                   model="[nw500I: nw500I.findAll() { it?.type in tab?.dataType }]"/>
                     </g:elseif>
-
-                    %{--<g:render template="/nationGamble/result"--}%
-                    %{--model="[]"/>--}%
                 </div>
             </g:each>
         </div>

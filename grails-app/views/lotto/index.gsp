@@ -11,7 +11,7 @@
         <ul class="nav nav-pills nav-justified HDivider-outer">
             <g:each in="${alltabs}" var="tab" status="i">
                 <li class="HDivider-inner">
-                    <a data-toggle="pill" class="text-nowrap" href="#tab${tab.tab}">
+                    <a data-toggle="pill" class="" href="#tab${tab.tab}">
                         <i class="fa fa-th-list"></i>
                         <g:message code="lotto.tab${tab.tab}.label"/>
                     </a>
