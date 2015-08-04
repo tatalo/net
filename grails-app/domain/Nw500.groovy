@@ -7,41 +7,33 @@
  * @desc Groovy ORM 1.0.3 (NW500/NW500(列表類主檔))
  */
 class Nw500 {
+		String manCreated
+		Date dateCreated
+		String manLastUpdated
+		Date lastUpdated
+		String locale
+		String type
+		String title
+		String context
+		Integer idx = 1
+
+
 		static mapping = {
 			table 'NW500'
+			comment 'NW500(列表類主檔)'
 			version false 
 			//---1.OBJID PK0
 			id column:"objid", generator:'Power228Generator'
-			manCreated column:"MAN_CREATED"
-			dateCreated column:"DATE_CREATED"
-			manLastUpdated column:"MAN_LAST_UPDATED"
-			lastUpdated column:"LAST_UPDATED"
-			locale column:"LOCALE"
-			type column:"TYPE"
-			title column:"TITLE"
-			context column:"CONTEXT"
-			idx column:"IDX"
+			manCreated column:"MAN_CREATED" , comment:"建立人"
+			dateCreated column:"DATE_CREATED" , comment:"建立時間"
+			manLastUpdated column:"MAN_LAST_UPDATED" , comment:"最後更新人"
+			lastUpdated column:"LAST_UPDATED" , comment:"最後更新時間"
+			locale column:"LOCALE" , comment:"多國語系"
+			type column:"TYPE" , comment:"類型"
+			title column:"TITLE" , comment:"標題"
+			context column:"CONTEXT" , comment:"內容"
+			idx column:"IDX" , comment:"排序"
 		}
-
-
-		//---2.建立人  
-		String manCreated
-		//---3.建立時間  
-		Date dateCreated
-		//---4.最後更新人  
-		String manLastUpdated
-		//---5.最後更新時間  
-		Date lastUpdated
-		//---6.多國語系  
-		String locale
-		//---7.類型  
-		String type
-		//---8.標題  
-		String title
-		//---9.內容  
-		String context
-		//---10.排序  
-		Long idx = 1
 
 
 		static constraints = {

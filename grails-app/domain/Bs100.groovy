@@ -7,38 +7,31 @@
  * @desc Groovy ORM 1.0.3 (BS100/BS100(參數主檔))
  */
 class Bs100 {
+		String manCreated
+		Date dateCreated
+		String manLastUpdated
+		Date lastUpdated
+		String locale
+		String systype
+		String ptype
+		String pdesc
+
+
 		static mapping = {
 			table 'BS100'
+			comment 'BS100(參數主檔)'
 			version false 
 			//---1.OBJID PK0
 			id column:"objid", generator:'Power228Generator'
-			manCreated column:"MAN_CREATED"
-			dateCreated column:"DATE_CREATED"
-			manLastUpdated column:"MAN_LAST_UPDATED"
-			lastUpdated column:"LAST_UPDATED"
-			locale column:"LOCALE"
-			systype column:"SYSTYPE"
-			ptype column:"PTYPE"
-			pdesc column:"PDESC"
+			manCreated column:"MAN_CREATED" , comment:"建立人"
+			dateCreated column:"DATE_CREATED" , comment:"建立時間"
+			manLastUpdated column:"MAN_LAST_UPDATED" , comment:"最後更新人"
+			lastUpdated column:"LAST_UPDATED" , comment:"最後更新時間"
+			locale column:"LOCALE" , comment:"多國語系"
+			systype column:"SYSTYPE" , comment:"系統類型"
+			ptype column:"PTYPE" , comment:"類型"
+			pdesc column:"PDESC" , comment:"類型名稱"
 		}
-
-
-		//---2.建立人  
-		String manCreated
-		//---3.建立時間  
-		Date dateCreated
-		//---4.最後更新人  
-		String manLastUpdated
-		//---5.最後更新時間  
-		Date lastUpdated
-		//---6.多國語系  
-		String locale
-		//---7.系統類型  
-		String systype
-		//---8.類型  
-		String ptype
-		//---9.類型名稱  
-		String pdesc
 
 
 		static constraints = {

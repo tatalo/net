@@ -7,40 +7,31 @@
  * @desc Groovy ORM 1.0.3 (NW300/NW300(彩球開獎資料主檔))
  */
 class Nw300 {
-		static hasMany = [nw301s: Nw301]
+		String manCreated
+		Date dateCreated
+		String manLastUpdated
+		Date lastUpdated
+		String type
+		String periods
+		Date opendt
+		String result
+
 
 		static mapping = {
 			table 'NW300'
+			comment 'NW300(彩球開獎資料主檔)'
 			version false 
 			//---1.OBJID PK0
 			id column:"objid", generator:'Power228Generator'
-			manCreated column:"MAN_CREATED"
-			dateCreated column:"DATE_CREATED"
-			manLastUpdated column:"MAN_LAST_UPDATED"
-			lastUpdated column:"LAST_UPDATED"
-			type column:"TYPE"
-			periods column:"PERIODS"
-			opendt column:"OPENDT"
-			result column:"RESULT"
+			manCreated column:"MAN_CREATED" , comment:"建立人"
+			dateCreated column:"DATE_CREATED" , comment:"建立時間"
+			manLastUpdated column:"MAN_LAST_UPDATED" , comment:"最後更新人"
+			lastUpdated column:"LAST_UPDATED" , comment:"最後更新時間"
+			type column:"TYPE" , comment:"類型"
+			periods column:"PERIODS" , comment:"期數"
+			opendt column:"OPENDT" , comment:"開獎時間"
+			result column:"RESULT" , comment:"開彩結果說明"
 		}
-
-
-		//---2.建立人  
-		String manCreated
-		//---3.建立時間  
-		Date dateCreated
-		//---4.最後更新人  
-		String manLastUpdated
-		//---5.最後更新時間  
-		Date lastUpdated
-		//---6.類型  
-		String type
-		//---7.期數  
-		String periods
-		//---8.開獎時間  
-		Date opendt
-		//---9.開彩結果說明  
-		String result
 
 
 		static constraints = {

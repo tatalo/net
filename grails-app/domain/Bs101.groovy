@@ -7,41 +7,33 @@
  * @desc Groovy ORM 1.0.3 (BS101/BS101(參數子檔))
  */
 class Bs101 {
+		String manCreated
+		Date dateCreated
+		String manLastUpdated
+		Date lastUpdated
+		String locale
+		String ptype
+		String pcode
+		String pdesc
+		Integer idx = 1
+
+
 		static mapping = {
 			table 'BS101'
+			comment 'BS101(參數子檔)'
 			version false 
 			//---1.OBJID PK0
 			id column:"objid", generator:'Power228Generator'
-			manCreated column:"MAN_CREATED"
-			dateCreated column:"DATE_CREATED"
-			manLastUpdated column:"MAN_LAST_UPDATED"
-			lastUpdated column:"LAST_UPDATED"
-			locale column:"LOCALE"
-			ptype column:"PTYPE"
-			pcode column:"PCODE"
-			pdesc column:"PDESC"
-			idx column:"IDX"
+			manCreated column:"MAN_CREATED" , comment:"建立人"
+			dateCreated column:"DATE_CREATED" , comment:"建立時間"
+			manLastUpdated column:"MAN_LAST_UPDATED" , comment:"最後更新人"
+			lastUpdated column:"LAST_UPDATED" , comment:"最後更新時間"
+			locale column:"LOCALE" , comment:"多國語系"
+			ptype column:"PTYPE" , comment:"類型"
+			pcode column:"PCODE" , comment:"代碼"
+			pdesc column:"PDESC" , comment:"代碼名稱"
+			idx column:"IDX" , comment:"排序"
 		}
-
-
-		//---2.建立人  
-		String manCreated
-		//---3.建立時間  
-		Date dateCreated
-		//---4.最後更新人  
-		String manLastUpdated
-		//---5.最後更新時間  
-		Date lastUpdated
-		//---6.多國語系  
-		String locale
-		//---7.類型  
-		String ptype
-		//---8.代碼  
-		String pcode
-		//---9.代碼名稱  
-		String pdesc
-		//---10.排序  
-		Long idx = "1"
 
 
 		static constraints = {
