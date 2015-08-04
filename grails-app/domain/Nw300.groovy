@@ -16,6 +16,7 @@ class Nw300 {
 		Date opendt
 		String result
 
+        static hasMany = [nw301s: Nw301]
 
 		static mapping = {
 			table 'NW300'

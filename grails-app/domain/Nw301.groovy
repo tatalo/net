@@ -15,7 +15,6 @@ class Nw301 {
 		Integer no
 		Integer isspno = 0
 		Integer opidx = 1
-		Integer objid
 
 
 		static mapping = {
@@ -44,7 +43,6 @@ class Nw301 {
 			no(nullable:true)
 			isspno(nullable:true)
 			opidx(nullable:true)
-			objid(nullable:false)
 		}
 
 }

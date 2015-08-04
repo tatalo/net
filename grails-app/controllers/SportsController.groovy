@@ -33,21 +33,21 @@ class SportsController {
             inList("type",["01"])
         }
 
-        def test = Nw300.findAll(params) {
-            inList("type", ["02"])
-            nw301s {
-                inList("isspno",0)
-            }
-        }
-        println "test = " + test
-
-        def test2 = Nw300.createCriteria().list(params) {
-            inList("type", ["02"])
-            nw301s {
-                inList("isspno",0)
-            }
-        }
-        println "test2 = " + test2
+//        def test = Nw300.findAll(params) {
+//            inList("type", ["02"])
+//            nw301s {
+//                inList("isspno",0)
+//            }
+//        }
+//        println "test = " + test
+//
+//        def test2 = Nw300.createCriteria().list(params) {
+//            inList("type", ["02"])
+//            nw301s {
+//                inList("isspno",0)
+//            }
+//        }
+//        println "test2 = " + test2
 
 //        def counts = nw200I.totalCount
 
