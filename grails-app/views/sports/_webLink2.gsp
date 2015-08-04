@@ -2,16 +2,12 @@
     <div class="table-responsive">
     <!-- Default panel contents -->
         <table class="table table-hover table-striped">
-            <colgroup width="10%"/>
-            <colgroup width="30%"/>
-            <colgroup width="30%"/>
-            <colgroup width="30%"/>
             <thead>
             <tr>
-                <th>#</th>
-                <th>網站</th>
-                <th>管理</th>
-                <th>會員</th>
+                <th class="col-sm-1">#</th>
+                <th class="col-sm-3">網站</th>
+                <th class="col-sm-4">管理</th>
+                <th class="col-sm-4">會員</th>
             </tr>
             </thead>
             <tbody>

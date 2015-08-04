@@ -2,14 +2,11 @@
     <div class="table-responsive">
         <!-- Default panel contents -->
         <table class="table table-hover table-striped">
-            <colgroup width="10%"/>
-            <colgroup width="35%"/>
-            <colgroup width="55%"/>
             <thead>
             <tr>
-                <th>#</th>
-                <th>Stake</th>
-                <th>投注額</th>
+                <th class="col-sm-1">#</th>
+                <th class="col-sm-3">Stake</th>
+                <th class="col-sm-8">投注額</th>
             </tr>
             </thead>
             <tbody>

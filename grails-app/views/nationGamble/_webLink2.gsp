@@ -2,14 +2,11 @@
     <div class="table-responsive">
         <!-- Default panel contents -->
         <table class="table table-hover table-striped">
-            <colgroup width="10%"/>
-            <colgroup width="35%"/>
-            <colgroup width="55%"/>
             <thead>
             <tr>
-                <th>#</th>
-                <th>網站</th>
-                <th>連結</th>
+                <th class="col-sm-1">#</th>
+                <th class="col-sm-3">網站</th>
+                <th class="col-sm-8">連結</th>
             </tr>
             </thead>
             <tbody>

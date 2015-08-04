@@ -2,20 +2,14 @@
     <div class="table-responsive">
     <!-- Default panel contents -->
         <table class="table table-hover table-striped">
-            <colgroup width="10%"/>
-            <colgroup width="30%"/>
-            <colgroup width="15%"/>
-            <colgroup width="15%"/>
-            <colgroup width="15%"/>
-            <colgroup width="15%"/>
             <thead>
             <tr>
-                <th>#</th>
-                <th>網站</th>
-                <th>管理</th>
-                <th>備用</th>
-                <th>會員</th>
-                <th>備用</th>
+                <th class="col-sm-1">#</th>
+                <th class="col-sm-3">網站</th>
+                <th class="col-sm-2">管理</th>
+                <th class="col-sm-2">備用</th>
+                <th class="col-sm-2">會員</th>
+                <th class="col-sm-2">備用</th>
             </tr>
             </thead>
             <tbody>
@@ -48,5 +42,9 @@
             </g:each>
             </tbody>
         </table>
+        params = ${params}
+        <div class="pagination">
+            共 ${total} 筆，<g:paginate total="${total}" params="${params}" />
+        </div>
     </div>
 </div>

@@ -1,3 +1,5 @@
+import grails.gorm.*
+
 class SportsController {
     static void main(String[] args){
     }
@@ -21,8 +23,42 @@ class SportsController {
         def nw200Types = alltabs?.findAll(){it?.Type == 'webLink'}.dataType.flatten().findAll()
 
         //運動資料
-        def nw200I = Nw200.findAllByTypeInList(nw200Types)
+//        def nw200I2 = Nw200.findAllByTypeInList(nw200Types)
 
-        render view: "/sports/index", model: [nw200I : nw200I, fragment : params?.fragment, alltabs : alltabs]
+        params.max = 5
+        def nw200I = Nw200.createCriteria().list(params) {
+//            projections {
+//                property("id")
+//            }
+            inList("type",["01"])
+        }
+
+        def test = Nw300.findAll(params) {
+            inList("type", ["02"])
+            nw301s {
+                inList("isspno",0 as Long)
+            }
+        }
+        println "test = " + test
+
+        def test2 = Nw300.createCriteria().list(params) {
+            inList("type", ["02"])
+            nw301s {
+                inList("isspno",0)
+            }
+        }
+        println "test2 = " + test2
+
+//        def counts = nw200I.totalCount
+
+//
+        println "nw200I = " + nw200I
+        println "nw200I.totalCount2 = " + counts
+
+//
+////        println "nw200I = " + nw200I.
+//        println "nw200I = " + nw200I.
+
+        render view: "/sports/index", model: [nw200I : nw200I, total: nw200I.totalCount, fragment : params?.fragment, alltabs : alltabs]
     }
 }
