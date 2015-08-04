@@ -36,7 +36,7 @@ class SportsController {
         def test = Nw300.findAll(params) {
             inList("type", ["02"])
             nw301s {
-                inList("isspno",0 as Long)
+                inList("isspno",0)
             }
         }
         println "test = " + test

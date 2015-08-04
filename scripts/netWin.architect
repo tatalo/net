@@ -426,15 +426,15 @@
 <ddl-generator type="ca.sqlpower.architect.ddl.Oracle9PlusDDLGenerator" allow-connection="true" target-schema=""></ddl-generator>
 <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
 <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true" showLogicalNames="true" showPhysicalNames="true">
- <table-pane table-ref="TAB119" x="746" y="504" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB136" x="95" y="736" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB99" x="421" y="501" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB82" x="418" y="310" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB21" x="420" y="107" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB1" x="94" y="103" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
- <table-pane table-ref="TAB42" x="94" y="502" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
  <table-pane table-ref="TAB62" x="96" y="311" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
-<textBlock-pane id="CP0"  db-ref="ppdb" x="1133" y="0" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
+ <table-pane table-ref="TAB42" x="94" y="502" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB1" x="94" y="103" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB21" x="420" y="107" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB82" x="418" y="310" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB99" x="421" y="501" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB136" x="95" y="736" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+ <table-pane table-ref="TAB119" x="746" y="504" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+<textBlock-pane id="CP0"  db-ref="ppdb" x="786" y="107" width="202" height="193" fontColor="0x000000" bgColor="0xf0f0f0" fgColor="0x000000" dashed="false" rounded="false">
    <textBlock-text>NW300.TYPE (預計)
 01: 六合彩
 02: 大福彩
@@ -449,15 +449,15 @@
 11: 今彩539</textBlock-text>
 </textBlock-pane>
 <PPComponentsPosition>
-<PlayPenComponent table-ref="TAB42" db-ref="ppdb" x="94" y="502" />
-<PlayPenComponent table-ref="TAB119" db-ref="ppdb" x="746" y="504" />
-<PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="94" y="103" />
-<PlayPenComponent table-ref="TAB99" db-ref="ppdb" x="421" y="501" />
 <PlayPenComponent table-ref="TAB82" db-ref="ppdb" x="418" y="310" />
-<PlayPenComponent textBlock-ref="CP0" db-ref="ppdb" x="1133" y="0" />
-<PlayPenComponent table-ref="TAB21" db-ref="ppdb" x="420" y="107" />
-<PlayPenComponent table-ref="TAB136" db-ref="ppdb" x="95" y="736" />
 <PlayPenComponent table-ref="TAB62" db-ref="ppdb" x="96" y="311" />
+<PlayPenComponent table-ref="TAB119" db-ref="ppdb" x="746" y="504" />
+<PlayPenComponent table-ref="TAB21" db-ref="ppdb" x="420" y="107" />
+<PlayPenComponent table-ref="TAB99" db-ref="ppdb" x="421" y="501" />
+<PlayPenComponent table-ref="TAB1" db-ref="ppdb" x="94" y="103" />
+<PlayPenComponent table-ref="TAB42" db-ref="ppdb" x="94" y="502" />
+<PlayPenComponent textBlock-ref="CP0" db-ref="ppdb" x="786" y="107" />
+<PlayPenComponent table-ref="TAB136" db-ref="ppdb" x="95" y="736" />
 </PPComponentsPosition>
 </play-pen>
 <profiles topNCount="10">

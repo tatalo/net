@@ -11,7 +11,7 @@ class Nw301 {
 		Date dateCreated
 		String manLastUpdated
 		Date lastUpdated
-		Integer nw300id
+		Nw300 nw300id
 		Integer no
 		Integer isspno = 0
 		Integer opidx = 1
