@@ -45,7 +45,6 @@
 
 <div class="form-group">
     <div class="container">
-
         <div class="tab-content">
             <g:each in="${alltabs}" var="tab" status="i">
                 <g:each in="${tab?.lv2Tab as List}" var="lv2Tab" status="i2">
@@ -53,14 +52,17 @@
                         <g:if test="${tab?.tab in ["01"]}">
                             <g:render template="/base/build"/>
                         </g:if>
-                        <g:elseif test="${tab?.tab in ["02"]}">
-                            <g:render template="/gambleTech/content1"
-                                      model="[nw400I: nw400I.findAll() { it?.type == lv2Tab?.dataType }]"/>
+                        <g:elseif test="${tab?.tab in ["02","03","04","05","06","07","08","09"]}">
+                            <g:if test="${lv2Tab?.tab in ["01"]}">
+                                <g:render template="/gambleTech/content1"
+                                          model="[nw400I: nw400I.findAll() { it?.type == lv2Tab?.dataType }]"/>
+                            </g:if>
+                            <g:elseif test="${lv2Tab?.tab in ["02"]}">
+                                <g:include controller="gambleTech" action="list" params="[type:lv2Tab?.dataType]"/>
+                                %{--<g:render template="/gambleTech/list1"--}%
+                                          %{--model="[nw400I: nw400I.findAll() { it?.type == lv2Tab?.dataType }]"/>--}%
+                            </g:elseif>
                         </g:elseif>
-                        <g:else>
-                        %{--<g:render template="/gambleTech/result2"--}%
-                        %{--model="[nw200I: nw200I.findAll() { it?.type == tab.dataType }]"/>--}%
-                        </g:else>
                     </div>
                 </g:each>
             </g:each>

@@ -212,6 +212,9 @@
         <table class= "" border ="1" >
             <tr>
                 <td style=" width: 40px;text-align: center;">期次</td><td style=" width: 85px;text-align: center;">日期</td>
+                <g:each in="[1..49]" var="" status="i">
+
+                </g:each>
                 <td>01</td><td>02</td>
                 <td>03</td><td>04</td>
                 <td>05</td><td>06</td>

@@ -7,7 +7,9 @@
 
 <body>
 <div class="container">
-    建置中
+    <div class="form-group">
+        建置中
+    </div>
 </div>
 </body>
 </html>

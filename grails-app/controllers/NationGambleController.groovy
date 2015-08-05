@@ -19,15 +19,19 @@ class NationGambleController {
             [id: UUID.randomUUID(), tab: '09', Type: 'context', dataType: ['205']]
     ]
 
-    def index() {
-        //國際博彩List
+    def index() { //國際博彩
+        //取得類型webLink all types
         def nw200Types = alltabs?.findAll(){it?.Type == 'webLink'}.dataType.flatten().findAll()
+        //取得類型context all types
         def nw400Types = alltabs?.findAll(){it?.Type == 'context'}.dataType.flatten().findAll()
+        //取得類型list all types
         def nw500Types = alltabs?.findAll(){it?.Type == 'list'}.dataType.flatten().findAll()
 
-        //國際博彩資料
+        //取得類型webLink資料
         def nw200I = Nw200.findAllByTypeInList(nw200Types)
+        //取得類型context資料
         def nw400I = Nw400.findAllByTypeInList(nw400Types)
+        //取得類型list資料
         def nw500I = Nw500.findAllByTypeInList(nw500Types)
 
         render view: "/nationGamble/index", model: [nw200I:nw200I, nw400I:nw400I, nw500I:nw500I, fragment : params.fragment, alltabs : alltabs]

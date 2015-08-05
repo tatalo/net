@@ -26,24 +26,37 @@ class GambleTechController {
             [id: UUID.randomUUID(),tab: '09', lv2Tab: [[id: UUID.randomUUID(), tab: '01' ,Type: 'context', dataType: '309' ],
                                                        [id: UUID.randomUUID(), tab: '02' ,Type: 'context', dataType: '359' ]]]
     ]
-    def index() {
-        //List
-        def nw400Types = alltabs?.lv2Tab.dataType.flatten().findAll()
+    def index() { //博彩技巧
 
-        println "nw400Types = " + nw400Types
-//        nw400Types = alltabs?.lv2Tab.dataType.flatten()
+        //取得類型context all types
+        def nw400Types = alltabs?.lv2Tab.collect { //資料取得規則就好
+            def k = []
+            it.each { it2 ->
+                if (it2.tab in ['01']) {
+                    k.add(it2)
+                }
+            }
+            return k
+        }.dataType.flatten().findAll()
 
-//        alltabs?.lv2Tab.each {it ->
-//            it.dataType.each { it2 ->
-//                if (it2 != "") {
-//                    nw400Types += it2
-//                }
-//            }
-//        }
-
-        //博彩技巧資料
+        //取得類型context資料
         def nw400I = Nw400.findAllByTypeInList(nw400Types)
 
         render view: "/gambleTech/index", model: [nw400I: nw400I, fragment : params.fragment, alltabs : alltabs]
+    }
+
+    def list() {
+        params.max = (params.max?:10)
+        println "params = " + params
+        def nw400I = Nw400.findAll(params) {
+            eq("type", params.type)
+        }
+//        def nw400I = Nw400.findAllByTypeInList(params.par)
+        println "nw400I = " + nw400I
+
+        println "1 = " + nw400I.totalCount
+
+        render view: "/gambleTech/_list1", model: [nw400I: nw400I, totalCount: nw400I.totalCount, fragment : params.fragment]
+
     }
 }

@@ -42,9 +42,5 @@
             </g:each>
             </tbody>
         </table>
-        params = ${params}
-        <div class="pagination">
-            共 ${total} 筆，<g:paginate total="${total}" params="${params}" />
-        </div>
     </div>
 </div>
