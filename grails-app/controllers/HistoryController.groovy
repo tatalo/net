@@ -13,6 +13,7 @@ class HistoryController {
 
         def s = new Sql(dataSource)
         def sql = """
+                  SELECT * FROM (
                   SELECT
                   NW3.PERIODS,
                   TRUNC(NW3.OPENDT) OPENDT,
@@ -70,6 +71,9 @@ class HistoryController {
                   WHERE 1=1
                   AND NW3.TYPE = '08'
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
+                  ) X
+                  WHERE ROWNUM <= 50
+                  ORDER BY X.PERIODS DESC
                   """
         def result1 = s.rows(sql)
 
@@ -184,6 +188,7 @@ class HistoryController {
                   AND NW3.TYPE = '08'
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
                   ) x
+                  where rownum <= 50
                   """
         def result2 = s.rows(sql2)
 

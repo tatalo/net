@@ -94,6 +94,11 @@ grails.assets.minifyJs = false
 grails.plugins.twitterbootstrap.fixtaglib = true
 grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
 
+//In Config.groovy
+grails.plugins.remotepagination.max=10
+//EnableBootstrap here when using twitter bootstrap, default is set to false.
+grails.plugins.remotepagination.enableBootstrap=true
+
 //grails.plugins.twitterbootstrap.fixtaglib = true
 //grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
 

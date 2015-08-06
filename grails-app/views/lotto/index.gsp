@@ -23,14 +23,15 @@
 
 <div class="container">
     <div class="form-group">
-        <div class="tab-content">
-            <g:each in="${alltabs}" var="tab" status="i">
-                <div id="tab${tab.tab}" class="tab-pane">
-                    <g:render template="/lotto/result"
-                              model="[]"/>
-                </div>
-            </g:each>
-        </div>
+        <g:include controller="history" action="showBigLuckToa" />
+        %{--<div class="tab-content">--}%
+            %{--<g:each in="${alltabs}" var="tab" status="i">--}%
+                %{--<div id="tab${tab.tab}" class="tab-pane">--}%
+                    %{--<g:render template="/lotto/result"--}%
+                              %{--model="[]"/>--}%
+                %{--</div>--}%
+            %{--</g:each>--}%
+        %{--</div>--}%
     </div>
 </div>
 </body>

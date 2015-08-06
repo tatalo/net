@@ -1,4 +1,9 @@
 <script>
+    function list1ToContent1() {
+        <g:remoteFunction controller="gambleTech" action="list2Content" id="${nw400?.id}"
+            update="${params.divId}" />
+    }
+
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
 

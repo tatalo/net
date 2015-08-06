@@ -1,4 +1,5 @@
 class GambleTechController {
+    def grailsApplication
 
     static void main(String[] args){
     }
@@ -46,17 +47,22 @@ class GambleTechController {
     }
 
     def list() {
-        params.max = (params.max?:10)
-        println "params = " + params
+        println "params1 = " + params
+        params.max = grailsApplication.config.grails.plugins.remotepagination.max
         def nw400I = Nw400.findAll(params) {
             eq("type", params.type)
         }
-//        def nw400I = Nw400.findAllByTypeInList(params.par)
         println "nw400I = " + nw400I
 
-        println "1 = " + nw400I.totalCount
+        render view: "/gambleTech/_list1", model: [nw400I: nw400I, totalCount: nw400I.totalCount, fragment : params.fragment, divId : params.divId]
 
-        render view: "/gambleTech/_list1", model: [nw400I: nw400I, totalCount: nw400I.totalCount, fragment : params.fragment]
+    }
 
+    def list2Content ={
+        println "params2 = " + params
+
+        def nw400I = Nw400.read(params.id)
+
+        render view: "/gambleTech/_list1ToContent1", model: [nw400I: nw400I ,divId : params.divId]
     }
 }

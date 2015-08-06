@@ -55,12 +55,10 @@
                         <g:elseif test="${tab?.tab in ["02","03","04","05","06","07","08","09"]}">
                             <g:if test="${lv2Tab?.tab in ["01"]}">
                                 <g:render template="/gambleTech/content1"
-                                          model="[nw400I: nw400I.findAll() { it?.type == lv2Tab?.dataType }]"/>
+                                          model="[nw400I: nw400I.findAll() { it?.type == lv2Tab?.dataType }[0]]"/>
                             </g:if>
                             <g:elseif test="${lv2Tab?.tab in ["02"]}">
-                                <g:include controller="gambleTech" action="list" params="[type:lv2Tab?.dataType]"/>
-                                %{--<g:render template="/gambleTech/list1"--}%
-                                          %{--model="[nw400I: nw400I.findAll() { it?.type == lv2Tab?.dataType }]"/>--}%
+                                <g:include controller="gambleTech" action="list" params="[divId: lv2Tab?.id,type:lv2Tab?.dataType]"/>
                             </g:elseif>
                         </g:elseif>
                     </div>

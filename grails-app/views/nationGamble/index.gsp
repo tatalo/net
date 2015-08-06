@@ -41,7 +41,7 @@
                     </g:elseif>
                     <g:elseif test="${tab?.tab in ["04", "05", "06", "08", "09"]}">
                         <g:render template="/nationGamble/content1"
-                                  model="[nw400I: nw400I.findAll() { it?.type in tab?.dataType }]"/>
+                                  model="[nw400I: nw400I.findAll() { it?.type in tab?.dataType }[0]]"/>
                     </g:elseif>
                     <g:elseif test="${tab?.tab in ["07"]}">
                         <g:render template="/nationGamble/list1"

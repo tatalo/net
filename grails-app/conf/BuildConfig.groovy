@@ -67,6 +67,7 @@ grails.project.dependency.resolution = {
         compile ':cache:1.1.8'
         compile ":asset-pipeline:2.1.5"
         compile ":quartz:1.0.2"
+        compile ":remote-pagination:0.4.8"
 //        compile ':twitter-bootstrap:3.3.4' // current: 3.3.4
 
         // plugins needed at runtime but not for compilation
