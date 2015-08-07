@@ -20,6 +20,13 @@
         border:1px solid
     }
 
+    .linepercentEver{
+        background-repeat: repeat-y ;
+        background-position: bottom center ;
+        background-color: yellow ;
+        border:1px solid
+    }
+
     .lineNumber{
         /*border:1px solid*/
         position:relative ;
@@ -29,6 +36,20 @@
         /*border:1px solid*/
         position:absolute ;
         bottom:0;
+        margin: 0;
+        text-align: center ;
+    }
+
+
+    .lineNumberEver{
+        /*border:1px solid*/
+        position:relative ;
+    }
+
+    .lineNumberEver label{
+        /*border:1px solid*/
+        position:absolute ;
+        top:0;
         margin: 0;
         text-align: center ;
     }
@@ -58,23 +79,35 @@
             var num = '${nw300InstanceList.size()}';
             var inum = parseInt(num);
             var z = '';
-
-            for(i=1;i<=inum;i++){
+            var tempTRList = [];
+            var tempTDList = [];
+            var itr;
+            for (i = 1; i <= inum; i++) {
                 z = 'tbody2tr';
-                z = z+i;
-                var mylist2 = $("table tbody[id=tbody2] tr[id="+z+"] td[class=tbody2td]").clone(true).get();
+                z = z + i;
 
-                mylist2.sort(function(a,b){
+                var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
+                var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
+
+                mylist2.sort(function(a, b) {
                     var compA = parseInt($(a).find('label[class="onum"]').text());
                     var compB = parseInt($(b).find('label[class="onum"]').text());
 
                     return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
                 });
 
-                $("table tbody[id=tbody2] tr[id="+z+"]  td[class=tbody2td]").remove();
-                $("table tbody[id=tbody2] tr[id="+z+"] ").append($(mylist2));
+                itr = document.createElement('TR');
+                $(itr).prop('id','tbody2tr'+i);
 
+                tempTDList = [];
+                tempTDList = tempTDList.concat(mylist2_th, mylist2);
+
+                $(itr).append(tempTDList);
+                tempTRList.push(itr);
             }
+
+            $("table tbody[id=tbody2] tr").remove();
+            $("table tbody[id=tbody2]").append(tempTRList);
 
 
 
@@ -104,8 +137,8 @@
             $("table tbody[id=tbody4] tr").append($(mylist4));
         }
 
+        function tableSort2() {
 
-        function tableSort2(){
             var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
 
             mylist3.sort(function(a,b){
@@ -122,23 +155,37 @@
             var num = '${nw300InstanceList.size()}';
             var inum = parseInt(num);
             var z = '';
-
-            for(i=1;i<=inum;i++){
+            var tempTRList = [];
+            var tempTDList = [];
+            var itr;
+            for (i = 1; i <= inum; i++) {
                 z = 'tbody2tr';
-                z = z+i;
-                var mylist2 = $("table tbody[id=tbody2] tr[id="+z+"] td[class=tbody2td]").clone(true).get();
+                z = z + i;
 
-                mylist2.sort(function(a,b){
+                var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
+                var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
+
+                mylist2.sort(function(a, b) {
                     var compA = parseInt($(a).find('label[class="onum"]').text());
                     var compB = parseInt($(b).find('label[class="onum"]').text());
 
                     return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
                 });
 
-                $("table tbody[id=tbody2] tr[id="+z+"]  td[class=tbody2td]").remove();
-                $("table tbody[id=tbody2] tr[id="+z+"] ").append($(mylist2));
+                itr = document.createElement('TR');
+                $(itr).prop('id','tbody2tr'+i);
 
+                tempTDList = [];
+                tempTDList = tempTDList.concat(mylist2_th, mylist2);
+
+                $(itr).append(tempTDList);
+                tempTRList.push(itr);
             }
+
+            $("table tbody[id=tbody2] tr").remove();
+            $("table tbody[id=tbody2]").append(tempTRList);
+
+
 
             var mylist1 = $("table tbody[id=tbody1] td[class=tbody1td]").clone(true).get();
 
@@ -163,7 +210,6 @@
             $("table tbody[id=tbody4] tr").append($(mylist4));
 
         }
-
 
         function tableSort3(){
 
@@ -186,24 +232,35 @@
             var num = '${nw300InstanceList.size()}';
             var inum = parseInt(num);
             var z = '';
-
-            for(i=1;i<=inum;i++){
+            var tempTRList = [];
+            var tempTDList = [];
+            var itr;
+            for (i = 1; i <= inum; i++) {
                 z = 'tbody2tr';
-                z = z+i;
+                z = z + i;
 
+                var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
+                var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
 
-                var mylist2 = $("table tbody[id=tbody2] tr[id="+z+"]  td[class=tbody2td]").clone(true).get();
-
-                mylist2.sort(function(a,b){
+                mylist2.sort(function(a, b) {
                     var compA = parseInt($(a).find('label[class="cnum"]').text());
                     var compB = parseInt($(b).find('label[class="cnum"]').text());
 
                     return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
                 });
 
-                $("table tbody[id=tbody2] tr[id="+z+"]  td[class=tbody2td]").remove();
-                $("table tbody[id=tbody2] tr[id="+z+"] ").append($(mylist2));
+                itr = document.createElement('TR');
+                $(itr).prop('id','tbody2tr'+i);
+
+                tempTDList = [];
+                tempTDList = tempTDList.concat(mylist2_th, mylist2);
+
+                $(itr).append(tempTDList);
+                tempTRList.push(itr);
             }
+
+            $("table tbody[id=tbody2] tr").remove();
+            $("table tbody[id=tbody2]").append(tempTRList);
 
 
 
@@ -237,6 +294,7 @@
 
         }
 
+
         function tableSort4(){
 
             var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
@@ -257,24 +315,35 @@
             var num = '${nw300InstanceList.size()}';
             var inum = parseInt(num);
             var z = '';
-
-            for(i=1;i<=inum;i++){
+            var tempTRList = [];
+            var tempTDList = [];
+            var itr;
+            for (i = 1; i <= inum; i++) {
                 z = 'tbody2tr';
-                z = z+i;
+                z = z + i;
 
+                var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
+                var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
 
-                var mylist2 = $("table tbody[id=tbody2] tr[id="+z+"]  td[class=tbody2td]").clone(true).get();
-
-                mylist2.sort(function(a,b){
+                mylist2.sort(function(a, b) {
                     var compA = parseInt($(a).find('label[class="cnum"]').text());
                     var compB = parseInt($(b).find('label[class="cnum"]').text());
 
                     return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
                 });
 
-                $("table tbody[id=tbody2] tr[id="+z+"]  td[class=tbody2td]").remove();
-                $("table tbody[id=tbody2] tr[id="+z+"] ").append($(mylist2));
+                itr = document.createElement('TR');
+                $(itr).prop('id','tbody2tr'+i);
+
+                tempTDList = [];
+                tempTDList = tempTDList.concat(mylist2_th, mylist2);
+
+                $(itr).append(tempTDList);
+                tempTRList.push(itr);
             }
+
+            $("table tbody[id=tbody2] tr").remove();
+            $("table tbody[id=tbody2]").append(tempTRList);
 
 
 
@@ -360,9 +429,8 @@
             <tbody id="tbody2">
             <g:each in="${nw300InstanceList}" var="nw300Instance" status="i">
                 <tr id="tbody2tr${i+1}">
-                    <td>${nw300Instance.PERIODS}</td><td>
-                    <g:formatDate format="yyyyMMdd" date="${nw300Instance?.OPENDT}"/>
-                    </td>
+                    <td class="tbody2th">${nw300Instance.PERIODS}</td>
+                    <td class="tbody2th"><g:formatDate format="yyyyMMdd" date="${nw300Instance?.OPENDT}"/></td>
                     <td class="tbody2td"><label class="onum" style="display: none;">01</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO01}</label>${nw300Instance.NO01?'01':''}</td>  <td class="tbody2td"><label class="onum" style="display: none;">02</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO02}</label>${nw300Instance.NO02?'02':''}</td>
                     <td class="tbody2td"><label class="onum" style="display: none;">03</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO03}</label>${nw300Instance.NO03?'03':''}</td>  <td class="tbody2td"><label class="onum" style="display: none;">04</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO04}</label>${nw300Instance.NO04?'04':''}</td>
                     <td class="tbody2td"><label class="onum" style="display: none;">05</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO05}</label>${nw300Instance.NO05?'05':''}</td>  <td class="tbody2td"><label class="onum" style="display: none;">06</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO06}</label>${nw300Instance.NO06?'06':''}</td>
@@ -485,6 +553,69 @@
                 <td class="tbody4td" style=" height: 80px" > <div class ="lineNumber" style="width:20px; height: ${80-((60*(nw300CountInstance[0].NO49))/maxNum)}px;"><label class="onum" style="display: none;">49</label><label class="cnum"> ${nw300CountInstance[0].NO49} </label></div><div class ="linepercent" style="width:20px; height: ${(60*(nw300CountInstance[0].NO49))/maxNum}px;"></div></td>
             </tr>
             </tbody>
+
+
+
+
+        <tbody id="tbody5">
+        <tr>
+            <td colspan="2">
+                最久未開<br/>
+                <input type="button" value="arc" onclick="tableSort3();" />
+                <input type="button" value="desc" onclick="tableSort4();" />
+            </td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO01))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO01))/everNum)}px;"><label class="onum" style="display: none;">01</label><label class="cnum"> ${nw300EverInstance[0].NO01} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO02))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO02))/everNum)}px;"><label class="onum" style="display: none;">02</label><label class="cnum"> ${nw300EverInstance[0].NO02} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO03))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO03))/everNum)}px;"><label class="onum" style="display: none;">03</label><label class="cnum"> ${nw300EverInstance[0].NO03} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO04))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO04))/everNum)}px;"><label class="onum" style="display: none;">04</label><label class="cnum"> ${nw300EverInstance[0].NO04} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO05))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO05))/everNum)}px;"><label class="onum" style="display: none;">05</label><label class="cnum"> ${nw300EverInstance[0].NO05} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO06))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO06))/everNum)}px;"><label class="onum" style="display: none;">06</label><label class="cnum"> ${nw300EverInstance[0].NO06} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO07))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO07))/everNum)}px;"><label class="onum" style="display: none;">07</label><label class="cnum"> ${nw300EverInstance[0].NO07} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO08))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO08))/everNum)}px;"><label class="onum" style="display: none;">08</label><label class="cnum"> ${nw300EverInstance[0].NO08} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO09))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO09))/everNum)}px;"><label class="onum" style="display: none;">09</label><label class="cnum"> ${nw300EverInstance[0].NO09} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO10))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO10))/everNum)}px;"><label class="onum" style="display: none;">10</label><label class="cnum"> ${nw300EverInstance[0].NO10} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO11))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO11))/everNum)}px;"><label class="onum" style="display: none;">11</label><label class="cnum"> ${nw300EverInstance[0].NO11} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO12))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO12))/everNum)}px;"><label class="onum" style="display: none;">12</label><label class="cnum"> ${nw300EverInstance[0].NO12} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO13))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO13))/everNum)}px;"><label class="onum" style="display: none;">13</label><label class="cnum"> ${nw300EverInstance[0].NO13} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO14))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO14))/everNum)}px;"><label class="onum" style="display: none;">14</label><label class="cnum"> ${nw300EverInstance[0].NO14} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO15))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO15))/everNum)}px;"><label class="onum" style="display: none;">15</label><label class="cnum"> ${nw300EverInstance[0].NO15} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO16))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO16))/everNum)}px;"><label class="onum" style="display: none;">16</label><label class="cnum"> ${nw300EverInstance[0].NO16} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO17))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO17))/everNum)}px;"><label class="onum" style="display: none;">17</label><label class="cnum"> ${nw300EverInstance[0].NO17} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO18))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO18))/everNum)}px;"><label class="onum" style="display: none;">18</label><label class="cnum"> ${nw300EverInstance[0].NO18} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO19))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO19))/everNum)}px;"><label class="onum" style="display: none;">19</label><label class="cnum"> ${nw300EverInstance[0].NO19} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO20))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO20))/everNum)}px;"><label class="onum" style="display: none;">20</label><label class="cnum"> ${nw300EverInstance[0].NO20} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO21))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO21))/everNum)}px;"><label class="onum" style="display: none;">21</label><label class="cnum"> ${nw300EverInstance[0].NO21} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO22))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO22))/everNum)}px;"><label class="onum" style="display: none;">22</label><label class="cnum"> ${nw300EverInstance[0].NO22} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO23))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO23))/everNum)}px;"><label class="onum" style="display: none;">23</label><label class="cnum"> ${nw300EverInstance[0].NO23} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO24))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO24))/everNum)}px;"><label class="onum" style="display: none;">24</label><label class="cnum"> ${nw300EverInstance[0].NO24} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO25))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO25))/everNum)}px;"><label class="onum" style="display: none;">25</label><label class="cnum"> ${nw300EverInstance[0].NO25} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO26))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO26))/everNum)}px;"><label class="onum" style="display: none;">26</label><label class="cnum"> ${nw300EverInstance[0].NO26} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO27))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO27))/everNum)}px;"><label class="onum" style="display: none;">27</label><label class="cnum"> ${nw300EverInstance[0].NO27} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO28))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO28))/everNum)}px;"><label class="onum" style="display: none;">28</label><label class="cnum"> ${nw300EverInstance[0].NO28} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO29))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO29))/everNum)}px;"><label class="onum" style="display: none;">29</label><label class="cnum"> ${nw300EverInstance[0].NO29} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO30))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO30))/everNum)}px;"><label class="onum" style="display: none;">30</label><label class="cnum"> ${nw300EverInstance[0].NO30} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO31))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO31))/everNum)}px;"><label class="onum" style="display: none;">31</label><label class="cnum"> ${nw300EverInstance[0].NO31} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO32))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO32))/everNum)}px;"><label class="onum" style="display: none;">32</label><label class="cnum"> ${nw300EverInstance[0].NO32} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO33))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO33))/everNum)}px;"><label class="onum" style="display: none;">33</label><label class="cnum"> ${nw300EverInstance[0].NO33} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO34))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO34))/everNum)}px;"><label class="onum" style="display: none;">34</label><label class="cnum"> ${nw300EverInstance[0].NO34} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO35))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO35))/everNum)}px;"><label class="onum" style="display: none;">35</label><label class="cnum"> ${nw300EverInstance[0].NO35} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO36))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO36))/everNum)}px;"><label class="onum" style="display: none;">36</label><label class="cnum"> ${nw300EverInstance[0].NO36} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO37))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO37))/everNum)}px;"><label class="onum" style="display: none;">37</label><label class="cnum"> ${nw300EverInstance[0].NO37} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO38))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO38))/everNum)}px;"><label class="onum" style="display: none;">38</label><label class="cnum"> ${nw300EverInstance[0].NO38} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO39))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO39))/everNum)}px;"><label class="onum" style="display: none;">39</label><label class="cnum"> ${nw300EverInstance[0].NO39} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO40))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO40))/everNum)}px;"><label class="onum" style="display: none;">40</label><label class="cnum"> ${nw300EverInstance[0].NO40} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO41))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO41))/everNum)}px;"><label class="onum" style="display: none;">41</label><label class="cnum"> ${nw300EverInstance[0].NO41} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO42))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO42))/everNum)}px;"><label class="onum" style="display: none;">42</label><label class="cnum"> ${nw300EverInstance[0].NO42} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO43))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO43))/everNum)}px;"><label class="onum" style="display: none;">43</label><label class="cnum"> ${nw300EverInstance[0].NO43} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO44))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO44))/everNum)}px;"><label class="onum" style="display: none;">44</label><label class="cnum"> ${nw300EverInstance[0].NO44} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO45))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO45))/everNum)}px;"><label class="onum" style="display: none;">45</label><label class="cnum"> ${nw300EverInstance[0].NO45} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO46))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO46))/everNum)}px;"><label class="onum" style="display: none;">46</label><label class="cnum"> ${nw300EverInstance[0].NO46} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO47))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO47))/everNum)}px;"><label class="onum" style="display: none;">47</label><label class="cnum"> ${nw300EverInstance[0].NO47} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO48))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO48))/everNum)}px;"><label class="onum" style="display: none;">48</label><label class="cnum"> ${nw300EverInstance[0].NO48} </label></div></td>
+            <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO49))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO49))/everNum)}px;"><label class="onum" style="display: none;">49</label><label class="cnum"> ${nw300EverInstance[0].NO49} </label></div></td>
+        </tr>
+        </tbody>
+
 
         </table>
     </div>

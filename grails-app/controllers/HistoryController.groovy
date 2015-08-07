@@ -7,7 +7,7 @@ class HistoryController {
     def index() {
     }
 
-    def showBigLuckToa () {
+    def showBigLuckToa() {
         println 'showBigLuckToa'
 
 
@@ -72,7 +72,7 @@ class HistoryController {
                   AND NW3.TYPE = '08'
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
                   ) X
-                  WHERE ROWNUM <= 20
+                  WHERE ROWNUM <= 100
                   ORDER BY X.PERIODS DESC
                   """
         def result1 = s.rows(sql)
@@ -188,7 +188,7 @@ class HistoryController {
                   AND NW3.TYPE = '08'
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
                   ) x
-                  where rownum <= 20
+                  where rownum <= 100
                   """
         def result2 = s.rows(sql2)
 
@@ -196,22 +196,149 @@ class HistoryController {
 
         def maxNum = 0
 
-        if(result2!=null){
-            result2[0].eachWithIndex{
-                node, index->
+        if (result2 != null) {
+            result2[0].eachWithIndex {
+                node, index ->
                     //println 'node'+node.value
                     list1 << node.value
             }
-
-            println '最大值為:'+list1.max()
-
             maxNum = (list1.max())?.toInteger()
         }
 
 
 
+        def sql3 = """
+                   select
+                   (c.maxnum - c.no01) no01,
+                   (c.maxnum - c.no02) no02,
+                   (c.maxnum - c.no03) no03,
+                   (c.maxnum - c.no04) no04,
+                   (c.maxnum - c.no05) no05,
+                   (c.maxnum - c.no06) no06,
+                   (c.maxnum - c.no07) no07,
+                   (c.maxnum - c.no08) no08,
+                   (c.maxnum - c.no09) no09,
+                   (c.maxnum - c.no10) no10,
+                   (c.maxnum - c.no11) no11,
+                   (c.maxnum - c.no12) no12,
+                   (c.maxnum - c.no13) no13,
+                   (c.maxnum - c.no14) no14,
+                   (c.maxnum - c.no15) no15,
+                   (c.maxnum - c.no16) no16,
+                   (c.maxnum - c.no17) no17,
+                   (c.maxnum - c.no18) no18,
+                   (c.maxnum - c.no19) no19,
+                   (c.maxnum - c.no20) no20,
+                   (c.maxnum - c.no21) no21,
+                   (c.maxnum - c.no22) no22,
+                   (c.maxnum - c.no23) no23,
+                   (c.maxnum - c.no24) no24,
+                   (c.maxnum - c.no25) no25,
+                   (c.maxnum - c.no26) no26,
+                   (c.maxnum - c.no27) no27,
+                   (c.maxnum - c.no28) no28,
+                   (c.maxnum - c.no29) no29,
+                   (c.maxnum - c.no30) no30,
+                   (c.maxnum - c.no31) no31,
+                   (c.maxnum - c.no32) no32,
+                   (c.maxnum - c.no33) no33,
+                   (c.maxnum - c.no34) no34,
+                   (c.maxnum - c.no35) no35,
+                   (c.maxnum - c.no36) no36,
+                   (c.maxnum - c.no37) no37,
+                   (c.maxnum - c.no38) no38,
+                   (c.maxnum - c.no39) no39,
+                   (c.maxnum - c.no40) no40,
+                   (c.maxnum - c.no41) no41,
+                   (c.maxnum - c.no42) no42,
+                   (c.maxnum - c.no43) no43,
+                   (c.maxnum - c.no44) no44,
+                   (c.maxnum - c.no45) no45,
+                   (c.maxnum - c.no46) no46,
+                   (c.maxnum - c.no47) no47,
+                   (c.maxnum - c.no48) no48,
+                   (c.maxnum - c.no49) no49
+                   from (
+                   select * from (
+                   select max(a.periods) maxnum
+                   from nw300 a where a.type = '08' and  A.OPENDT>=to_date('20140101','yyyyMMdd') and A.OPENDT<=to_date('20141202','yyyyMMdd')
+                   ) tempA
+                   CROSS JOIN
+                   (
+                   select
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO01 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO01,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO02 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO02,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO03 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO03,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO04 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO04,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO05 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO05,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO06 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO06,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO07 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO07,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO08 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO08,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO09 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO09,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO10 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO10,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO11 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO11,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO12 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO12,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO13 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO13,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO14 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO14,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO15 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO15,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO16 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO16,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO17 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO17,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO18 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO18,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO19 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO19,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO20 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO20,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO21 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO21,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO22 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO22,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO23 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO23,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO24 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO24,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO25 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO25,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO26 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO26,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO27 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO27,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO28 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO28,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO29 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO29,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO30 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO30,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO31 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO31,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO32 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO32,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO33 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO33,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO34 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO34,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO35 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO35,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO36 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO36,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO37 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO37,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO38 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO38,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO39 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO39,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO40 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO40,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO41 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO41,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO42 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO42,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO43 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO43,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO44 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO44,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO45 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO45,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO46 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO46,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO47 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO47,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO48 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO48,
+                   (select max(x.periods) from V_BIG_LUCK_TOA x where x. NO49 > 0 and  x.OPENDT>=to_date('20140101','yyyyMMdd') and x.OPENDT<=to_date('20141202','yyyyMMdd') ) NO49
+                   from dual
+                   ) tempB
+                   ) c
+                   """
+
+        def result3 = s.rows(sql3)
 
 
-        render(view: 'index', model: [nw300InstanceList:result1, nw300CountInstance:result2, maxNum:maxNum])
+        def list2 = []
+
+        def everNum = 0
+
+        if (result3 != null) {
+            result3[0].eachWithIndex {
+                node, index ->
+                    //println 'node'+node.value
+                    list2 << node.value
+            }
+            everNum = (list2.max())?.toInteger()
+        }
+
+        println 'everNum = '+everNum
+
+
+        render(view: 'index', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300EverInstance:result3, everNum:everNum])
     }
 }
