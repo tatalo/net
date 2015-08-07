@@ -47,21 +47,20 @@ class GambleTechController {
     }
 
     def list() {
-        println "params1 = " + params
         params.max = grailsApplication.config.grails.plugins.remotepagination.max
         def nw400I = Nw400.findAll(params) {
             eq("type", params.type)
         }
-        println "nw400I = " + nw400I
 
         render view: "/gambleTech/_list1", model: [nw400I: nw400I, totalCount: nw400I.totalCount, fragment : params.fragment, divId : params.divId]
-
     }
 
     def list2Content ={
-        println "params2 = " + params
-
-        def nw400I = Nw400.read(params.id)
+        //瀏覽次數
+        def nw400I = Nw400.get(params.id)
+        nw400I.browsercnts = ((nw400I.browsercnts?:0)+1)
+        nw400I.manLastUpdated = "BROWSER"
+        nw400I.save(flush: true)
 
         render view: "/gambleTech/_list1ToContent1", model: [nw400I: nw400I ,divId : params.divId]
     }

@@ -17,7 +17,7 @@ class Nw400 {
 		String title
 		String context
 		String fbboardurl
-		String countsurl
+		Integer browsercnts
 		Integer idx = 1
 
 
@@ -37,7 +37,7 @@ class Nw400 {
 			title column:"TITLE" , comment:"標題"
 			context column:"CONTEXT" , comment:"內容"
 			fbboardurl column:"FBBOARDURL" , comment:"FB留言版URL"
-			countsurl column:"COUNTSURL" , comment:"計數器URL"
+			browsercnts column:"BROWSERCNTS" , comment:"瀏覽次數"
 			idx column:"IDX" , comment:"排序"
 		}
 
@@ -53,7 +53,7 @@ class Nw400 {
 			title(nullable:true)
 			context(nullable:true)
 			fbboardurl(nullable:true)
-			countsurl(nullable:true)
+			browsercnts(nullable:true)
 			idx(nullable:true)
 		}
 

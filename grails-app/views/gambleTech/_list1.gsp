@@ -2,6 +2,7 @@
     <div class="col-md-10">
         <ol class="breadcrumb">
             <li class="active">
+                <i class="fa fa-th-list"></i>
                 <g:message code="gambleTech.tab02.lv2Tab02.label"/>
             </li>
         </ol>
@@ -12,8 +13,7 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <util:remoteSortableColumn class="col-sm-1 text-nowrap" property="issuedt" action="list"
-                                                       params="${params}" title="發佈日期" update="${params.divId}"/>
+                            <th class="col-sm-2 text-nowrap">發佈日期</th>
                             <th class="col-sm-10">標題</th>
                         </tr>
                         </thead>
@@ -21,10 +21,10 @@
                         <g:each in="${nw400I}" var="nw400" status="i">
                             <tr>
                                 <td>
-                                    <g:formatDate format="MM/dd/yyyy" date="${nw400?.issuedt}"/>
+                                    <g:formatDate format="yyyy/MM/dd" date="${nw400?.issuedt}"/>
                                 </td>
                                 <td>
-                                    <g:remoteLink data-toggle="pill" class="text-nowrap" controller="gambleTech" action="list2Content" id="${nw400?.id}" update="${params.divId}" params="[divId : params.divId]">
+                                    <g:remoteLink data-toggle="pill" class="text-nowrap" controller="gambleTech" action="list2Content" id="${nw400?.id}" update="${params.divId}" onSuccess="fbRefresh();" params="[divId : params.divId]">
                                         ${nw400?.title}
                                     </g:remoteLink>
                                 </td>

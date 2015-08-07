@@ -7,9 +7,8 @@
 
 <body>
 <div class="container">
-    <div class="form-group">
-        建置中
-    </div>
+    <img src="${assetPath(src: 'build.png')}" class="img-responsive center-block"
+                                           alt="Responsive image">
 </div>
 </body>
 </html>

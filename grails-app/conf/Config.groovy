@@ -106,11 +106,13 @@ environments {
     development {
         grails.logging.jul.usebridge = true
         grails.dbconsole.enabled = true
+        facebook.commts.url = "http://tatalo.vicp.net/"
 
     }
     production {
         grails.logging.jul.usebridge = false
         grails.dbconsole.enabled = true
+        facebook.commts.url = "http://ww899.net/"
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }

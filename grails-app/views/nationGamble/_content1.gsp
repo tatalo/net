@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading text-center">
-        <strong>${raw(nw400I?.title)}</strong>
+        <h4><strong>${raw(nw400I?.title)}</strong></h4>
     </div>
 
     <div class="panel-body">
