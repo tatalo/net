@@ -64,446 +64,326 @@
     </style>
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
     var sortPeriodsType = 'asc';
+    var sortNumberType = 'desc';
+    var sortCountType = 'desc';
+    var sortEverType = 'desc';
 
-        $(function(){
-            //$("table tbody[id=tbody2]  td[class=tbody2td][text!='']").css('color','white');
-            //$("table tbody[id=tbody2]  td[class=tbody2td][text!='']").css('background-color','red');
+    $(function(){
+
+    });
+
+    function sortNumber() {
+        var s = sortNumberType;
+        if(sortNumberType=='desc'){
+            $('#imgNumberSeriz').prop('src','${resource(dir: 'images/icon', file: 'down.png')}');
+            sortNumberType = 'asc';
+        }else{
+            $('#imgNumberSeriz').prop('src','${resource(dir: 'images/icon', file: 'up.png')}');
+            sortNumberType = 'desc';
+        }
 
 
-            $('td[class=tbody2td]:empty').css('background-color','red');
+        var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
+        mylist3.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="sernum1"]').text());
+            var compB = parseInt($(b).find('label[class="sernum1"]').text());
 
-
-
-            //background-color: #ff0000;color: white
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
+                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+            }
         });
+        $("table tbody[id=tbody3] td[class=tbody3td]").remove();
+        $("table tbody[id=tbody3] tr").append($(mylist3));
 
 
-        function tableSort1(){
-            var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
-            mylist3.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="sernum1"]').text());
-                var compB = parseInt($(b).find('label[class="sernum1"]').text());
-
-                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody3] td[class=tbody3td]").remove();
-            $("table tbody[id=tbody3] tr").append($(mylist3));
-
-
-            var num = '${nw300InstanceList.size()}';
-            var inum = parseInt(num);
-            var z = '';
-            var tempTRList = [];
-            var tempTDList = [];
-            var itr;
-            for (i = 1; i <= inum; i++) {
-                z = 'tbody2tr';
-                z = z + i;
-                var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
-                var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
-                mylist2.sort(function(a, b) {
-                    var compA = parseInt($(a).find('label[class="onum"]').text());
-                    var compB = parseInt($(b).find('label[class="onum"]').text());
-
-                    return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-                });
-                itr = document.createElement('TR');
-                $(itr).prop('id','tbody2tr'+i);
-                tempTDList = [];
-                tempTDList = tempTDList.concat(mylist2_th, mylist2);
-                $(itr).append(tempTDList);
-                tempTRList.push(itr);
-            }
-            $("table tbody[id=tbody2] tr").remove();
-            $("table tbody[id=tbody2]").append(tempTRList);
-
-
-            var mylist1 = $("table tbody[id=tbody1] td[class=tbody1td]").clone(true).get();
-            mylist1.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="sernum1"]').text());
-                var compB = parseInt($(b).find('label[class="sernum1"]').text());
-                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody1] td[class=tbody1td]").remove();
-            $("table tbody[id=tbody1] tr").append($(mylist1));
-
-
-            var mylist4 = $("table tbody[id=tbody4] td[class=tbody4td]").clone(true).get();
-            mylist4.sort(function(a,b){
+        var num = '${nw300InstanceList.size()}';
+        var inum = parseInt(num);
+        var z = '';
+        var tempTRList = [];
+        var tempTDList = [];
+        var itr;
+        for (i = 1; i <= inum; i++) {
+            z = 'tbody2tr';
+            z = z + i;
+            var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
+            var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
+            mylist2.sort(function(a, b) {
                 var compA = parseInt($(a).find('label[class="onum"]').text());
                 var compB = parseInt($(b).find('label[class="onum"]').text());
-                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody4] td[class=tbody4td]").remove();
-            $("table tbody[id=tbody4] tr").append($(mylist4));
 
-
-            var mylist5 = $("table tbody[id=tbody5] td[class=tbody5td]").clone(true).get();
-            mylist5.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="onum"]').text());
-                var compB = parseInt($(b).find('label[class="onum"]').text());
-                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody5] td[class=tbody5td]").remove();
-            $("table tbody[id=tbody5] tr").append($(mylist5));
-        }
-
-
-        function tableSort2() {
-            var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
-            mylist3.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="sernum1"]').text());
-                var compB = parseInt($(b).find('label[class="sernum1"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody3] td[class=tbody3td]").remove();
-            $("table tbody[id=tbody3] tr").append($(mylist3));
-
-
-            var num = '${nw300InstanceList.size()}';
-            var inum = parseInt(num);
-            var z = '';
-            var tempTRList = [];
-            var tempTDList = [];
-            var itr;
-            for (i = 1; i <= inum; i++) {
-                z = 'tbody2tr';
-                z = z + i;
-                var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
-                var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
-                mylist2.sort(function(a, b) {
-                    var compA = parseInt($(a).find('label[class="onum"]').text());
-                    var compB = parseInt($(b).find('label[class="onum"]').text());
+                if(s=='desc'){
                     return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-                });
-                itr = document.createElement('TR');
-                $(itr).prop('id','tbody2tr'+i);
-                tempTDList = [];
-                tempTDList = tempTDList.concat(mylist2_th, mylist2);
-                $(itr).append(tempTDList);
-                tempTRList.push(itr);
-            }
-            $("table tbody[id=tbody2] tr").remove();
-            $("table tbody[id=tbody2]").append(tempTRList);
-
-
-            var mylist1 = $("table tbody[id=tbody1] td[class=tbody1td]").clone(true).get();
-            mylist1.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="sernum1"]').text());
-                var compB = parseInt($(b).find('label[class="sernum1"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody1] td[class=tbody1td]").remove();
-            $("table tbody[id=tbody1] tr").append($(mylist1));
-
-
-            var mylist4 = $("table tbody[id=tbody4] td[class=tbody4td]").clone(true).get();
-            mylist4.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="onum"]').text());
-                var compB = parseInt($(b).find('label[class="onum"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody4] td[class=tbody4td]").remove();
-            $("table tbody[id=tbody4] tr").append($(mylist4));
-
-
-            var mylist5 = $("table tbody[id=tbody5] td[class=tbody5td]").clone(true).get();
-            mylist5.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="onum"]').text());
-                var compB = parseInt($(b).find('label[class="onum"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody5] td[class=tbody5td]").remove();
-            $("table tbody[id=tbody5] tr").append($(mylist5));
-        }
-
-
-        function tableSort3(){
-            var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
-            mylist3.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="cnum"]').text());
-                var compB = parseInt($(b).find('label[class="cnum"]').text());
-                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody3] td[class=tbody3td]").remove();
-            $("table tbody[id=tbody3] tr").append($(mylist3));
-
-
-            var num = '${nw300InstanceList.size()}';
-            var inum = parseInt(num);
-            var z = '';
-            var tempTRList = [];
-            var tempTDList = [];
-            var itr;
-            for (i = 1; i <= inum; i++) {
-                z = 'tbody2tr';
-                z = z + i;
-                var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
-                var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
-                mylist2.sort(function(a, b) {
-                    var compA = parseInt($(a).find('label[class="cnum"]').text());
-                    var compB = parseInt($(b).find('label[class="cnum"]').text());
+                }else{
                     return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-                });
-                itr = document.createElement('TR');
-                $(itr).prop('id','tbody2tr'+i);
-                tempTDList = [];
-                tempTDList = tempTDList.concat(mylist2_th, mylist2);
-                $(itr).append(tempTDList);
-                tempTRList.push(itr);
+                }
+            });
+            itr = document.createElement('TR');
+            $(itr).prop('id','tbody2tr'+i);
+            tempTDList = [];
+            tempTDList = tempTDList.concat(mylist2_th, mylist2);
+            $(itr).append(tempTDList);
+            tempTRList.push(itr);
+        }
+        $("table tbody[id=tbody2] tr").remove();
+        $("table tbody[id=tbody2]").append(tempTRList);
+
+
+        var mylist1 = $("table tbody[id=tbody1] td[class=tbody1td]").clone(true).get();
+        mylist1.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="sernum1"]').text());
+            var compB = parseInt($(b).find('label[class="sernum1"]').text());
+
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
+                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
             }
-            $("table tbody[id=tbody2] tr").remove();
-            $("table tbody[id=tbody2]").append(tempTRList);
+        });
+        $("table tbody[id=tbody1] td[class=tbody1td]").remove();
+        $("table tbody[id=tbody1] tr").append($(mylist1));
 
 
-            var mylist1 = $("table tbody[id=tbody1] td[class=tbody1td]").clone(true).get();
-            mylist1.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="cnum"]').text());
-                var compB = parseInt($(b).find('label[class="cnum"]').text());
+        var mylist4 = $("table tbody[id=tbody4] td[class=tbody4td]").clone(true).get();
+        mylist4.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="onum"]').text());
+            var compB = parseInt($(b).find('label[class="onum"]').text());
+
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
                 return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody1] td[class=tbody1td]").remove();
-            $("table tbody[id=tbody1] tr").append($(mylist1));
+            }
+        });
+        $("table tbody[id=tbody4] td[class=tbody4td]").remove();
+        $("table tbody[id=tbody4] tr").append($(mylist4));
 
 
-            var mylist4 = $("table tbody[id=tbody4] td[class=tbody4td]").clone(true).get();
-            mylist4.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="cnum"]').text());
-                var compB = parseInt($(b).find('label[class="cnum"]').text());
+        var mylist5 = $("table tbody[id=tbody5] td[class=tbody5td]").clone(true).get();
+        mylist5.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="onum"]').text());
+            var compB = parseInt($(b).find('label[class="onum"]').text());
+
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
                 return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody4] td[class=tbody4td]").remove();
-            $("table tbody[id=tbody4] tr").append($(mylist4));
+            }
+        });
+        $("table tbody[id=tbody5] td[class=tbody5td]").remove();
+        $("table tbody[id=tbody5] tr").append($(mylist5));
+    }
 
 
-            var mylist5 = $("table tbody[id=tbody5] td[class=tbody5td]").clone(true).get();
-            mylist5.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="cnum"]').text());
-                var compB = parseInt($(b).find('label[class="cnum"]').text());
-                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody5] td[class=tbody5td]").remove();
-            $("table tbody[id=tbody5] tr").append($(mylist5));
+    function sortNumberCount(){
+        var s = sortCountType;
+        if(sortCountType=='desc'){
+            $('#imgCountNumber').prop('src','${resource(dir: 'images/icon', file: 'down.png')}');
+            sortCountType = 'asc';
+        }else{
+            $('#imgCountNumber').prop('src','${resource(dir: 'images/icon', file: 'up.png')}');
+            sortCountType = 'desc';
         }
 
 
-        function tableSort4(){
-            var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
-            mylist3.sort(function(a,b){
+        var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
+        mylist3.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="cnum"]').text());
+            var compB = parseInt($(b).find('label[class="cnum"]').text());
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
+                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+            }
+        });
+        $("table tbody[id=tbody3] td[class=tbody3td]").remove();
+        $("table tbody[id=tbody3] tr").append($(mylist3));
+
+
+        var num = '${nw300InstanceList.size()}';
+        var inum = parseInt(num);
+        var z = '';
+        var tempTRList = [];
+        var tempTDList = [];
+        var itr;
+        for (i = 1; i <= inum; i++) {
+            z = 'tbody2tr';
+            z = z + i;
+            var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
+            var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
+            mylist2.sort(function(a, b) {
                 var compA = parseInt($(a).find('label[class="cnum"]').text());
                 var compB = parseInt($(b).find('label[class="cnum"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody3] td[class=tbody3td]").remove();
-            $("table tbody[id=tbody3] tr").append($(mylist3));
-
-
-            var num = '${nw300InstanceList.size()}';
-            var inum = parseInt(num);
-            var z = '';
-            var tempTRList = [];
-            var tempTDList = [];
-            var itr;
-            for (i = 1; i <= inum; i++) {
-                z = 'tbody2tr';
-                z = z + i;
-                var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
-                var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
-                mylist2.sort(function(a, b) {
-                    var compA = parseInt($(a).find('label[class="cnum"]').text());
-                    var compB = parseInt($(b).find('label[class="cnum"]').text());
+                if(s=='desc'){
                     return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-                });
-                itr = document.createElement('TR');
-                $(itr).prop('id','tbody2tr'+i);
-                tempTDList = [];
-                tempTDList = tempTDList.concat(mylist2_th, mylist2);
-                $(itr).append(tempTDList);
-                tempTRList.push(itr);
-            }
-            $("table tbody[id=tbody2] tr").remove();
-            $("table tbody[id=tbody2]").append(tempTRList);
-
-
-            var mylist1 = $("table tbody[id=tbody1] td[class=tbody1td]").clone(true).get();
-            mylist1.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="cnum"]').text());
-                var compB = parseInt($(b).find('label[class="cnum"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody1] td[class=tbody1td]").remove();
-            $("table tbody[id=tbody1] tr").append($(mylist1));
-
-
-            var mylist4 = $("table tbody[id=tbody4] td[class=tbody4td]").clone(true).get();
-            mylist4.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="cnum"]').text());
-                var compB = parseInt($(b).find('label[class="cnum"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody4] td[class=tbody4td]").remove();
-            $("table tbody[id=tbody4] tr").append($(mylist4));
-
-
-            var mylist5 = $("table tbody[id=tbody5] td[class=tbody5td]").clone(true).get();
-            mylist5.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="cnum"]').text());
-                var compB = parseInt($(b).find('label[class="cnum"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody5] td[class=tbody5td]").remove();
-            $("table tbody[id=tbody5] tr").append($(mylist5));
-        }
-
-
-        function tableSort5(){
-            var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
-            mylist3.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="evnum"]').text());
-                var compB = parseInt($(b).find('label[class="evnum"]').text());
-                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody3] td[class=tbody3td]").remove();
-            $("table tbody[id=tbody3] tr").append($(mylist3));
-
-
-            var num = '${nw300InstanceList.size()}';
-            var inum = parseInt(num);
-            var z = '';
-            var tempTRList = [];
-            var tempTDList = [];
-            var itr;
-            for (i = 1; i <= inum; i++) {
-                z = 'tbody2tr';
-                z = z + i;
-                var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
-                var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
-                mylist2.sort(function(a, b) {
-                    var compA = parseInt($(a).find('label[class="evnum"]').text());
-                    var compB = parseInt($(b).find('label[class="evnum"]').text());
+                }else{
                     return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-                });
-                itr = document.createElement('TR');
-                $(itr).prop('id','tbody2tr'+i);
-                tempTDList = [];
-                tempTDList = tempTDList.concat(mylist2_th, mylist2);
-                $(itr).append(tempTDList);
-                tempTRList.push(itr);
+                }
+            });
+            itr = document.createElement('TR');
+            $(itr).prop('id','tbody2tr'+i);
+            tempTDList = [];
+            tempTDList = tempTDList.concat(mylist2_th, mylist2);
+            $(itr).append(tempTDList);
+            tempTRList.push(itr);
+        }
+        $("table tbody[id=tbody2] tr").remove();
+        $("table tbody[id=tbody2]").append(tempTRList);
+
+
+        var mylist1 = $("table tbody[id=tbody1] td[class=tbody1td]").clone(true).get();
+        mylist1.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="cnum"]').text());
+            var compB = parseInt($(b).find('label[class="cnum"]').text());
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
+                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
             }
-            $("table tbody[id=tbody2] tr").remove();
-            $("table tbody[id=tbody2]").append(tempTRList);
+        });
+        $("table tbody[id=tbody1] td[class=tbody1td]").remove();
+        $("table tbody[id=tbody1] tr").append($(mylist1));
 
 
-            var mylist1 = $("table tbody[id=tbody1] td[class=tbody1td]").clone(true).get();
-            mylist1.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="evnum"]').text());
-                var compB = parseInt($(b).find('label[class="evnum"]').text());
+        var mylist4 = $("table tbody[id=tbody4] td[class=tbody4td]").clone(true).get();
+        mylist4.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="cnum"]').text());
+            var compB = parseInt($(b).find('label[class="cnum"]').text());
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
                 return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody1] td[class=tbody1td]").remove();
-            $("table tbody[id=tbody1] tr").append($(mylist1));
+            }
+        });
+        $("table tbody[id=tbody4] td[class=tbody4td]").remove();
+        $("table tbody[id=tbody4] tr").append($(mylist4));
 
 
-            var mylist4 = $("table tbody[id=tbody4] td[class=tbody4td]").clone(true).get();
-            mylist4.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="evnum"]').text());
-                var compB = parseInt($(b).find('label[class="evnum"]').text());
+        var mylist5 = $("table tbody[id=tbody5] td[class=tbody5td]").clone(true).get();
+        mylist5.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="cnum"]').text());
+            var compB = parseInt($(b).find('label[class="cnum"]').text());
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
                 return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody4] td[class=tbody4td]").remove();
-            $("table tbody[id=tbody4] tr").append($(mylist4));
+            }
+        });
+        $("table tbody[id=tbody5] td[class=tbody5td]").remove();
+        $("table tbody[id=tbody5] tr").append($(mylist5));
+    }
 
 
-            var mylist5 = $("table tbody[id=tbody5] td[class=tbody5td]").clone(true).get();
-            mylist5.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="evnum"]').text());
-                var compB = parseInt($(b).find('label[class="evnum"]').text());
-                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody5] td[class=tbody5td]").remove();
-            $("table tbody[id=tbody5] tr").append($(mylist5));
+    function sortEverNumber(){
+        var s = sortEverType;
+        if(sortEverType=='desc'){
+            $('#imgEverNumber').prop('src','${resource(dir: 'images/icon', file: 'down.png')}');
+            sortEverType = 'asc';
+        }else{
+            $('#imgEverNumber').prop('src','${resource(dir: 'images/icon', file: 'up.png')}');
+            sortEverType = 'desc';
         }
 
 
-        function tableSort6(){
-            var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
-            mylist3.sort(function(a,b){
+        var mylist3 = $("table tbody[id=tbody3] td[class=tbody3td]").clone(true).get();
+        mylist3.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="evnum"]').text());
+            var compB = parseInt($(b).find('label[class="evnum"]').text());
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
+                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+            }
+        });
+        $("table tbody[id=tbody3] td[class=tbody3td]").remove();
+        $("table tbody[id=tbody3] tr").append($(mylist3));
+
+
+        var num = '${nw300InstanceList.size()}';
+        var inum = parseInt(num);
+        var z = '';
+        var tempTRList = [];
+        var tempTDList = [];
+        var itr;
+        for (i = 1; i <= inum; i++) {
+            z = 'tbody2tr';
+            z = z + i;
+            var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
+            var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
+            mylist2.sort(function(a, b) {
                 var compA = parseInt($(a).find('label[class="evnum"]').text());
                 var compB = parseInt($(b).find('label[class="evnum"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody3] td[class=tbody3td]").remove();
-            $("table tbody[id=tbody3] tr").append($(mylist3));
-
-
-            var num = '${nw300InstanceList.size()}';
-            var inum = parseInt(num);
-            var z = '';
-            var tempTRList = [];
-            var tempTDList = [];
-            var itr;
-            for (i = 1; i <= inum; i++) {
-                z = 'tbody2tr';
-                z = z + i;
-                var mylist2_th = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2th]").clone(true).get();
-                var mylist2 = $("table tbody[id=tbody2] tr[id=" + z + "]  td[class=tbody2td]").clone(true).get();
-                mylist2.sort(function(a, b) {
-                    var compA = parseInt($(a).find('label[class="evnum"]').text());
-                    var compB = parseInt($(b).find('label[class="evnum"]').text());
+                if(s=='desc'){
                     return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-                });
-                itr = document.createElement('TR');
-                $(itr).prop('id','tbody2tr'+i);
-                tempTDList = [];
-                tempTDList = tempTDList.concat(mylist2_th, mylist2);
-                $(itr).append(tempTDList);
-                tempTRList.push(itr);
-            }
-            $("table tbody[id=tbody2] tr").remove();
-            $("table tbody[id=tbody2]").append(tempTRList);
-
-
-            var mylist1 = $("table tbody[id=tbody1] td[class=tbody1td]").clone(true).get();
-            mylist1.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="evnum"]').text());
-                var compB = parseInt($(b).find('label[class="evnum"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+                }else{
+                    return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+                }
             });
-            $("table tbody[id=tbody1] td[class=tbody1td]").remove();
-            $("table tbody[id=tbody1] tr").append($(mylist1));
-
-
-            var mylist4 = $("table tbody[id=tbody4] td[class=tbody4td]").clone(true).get();
-            mylist4.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="evnum"]').text());
-                var compB = parseInt($(b).find('label[class="evnum"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody4] td[class=tbody4td]").remove();
-            $("table tbody[id=tbody4] tr").append($(mylist4));
-
-
-            var mylist5 = $("table tbody[id=tbody5] td[class=tbody5td]").clone(true).get();
-            mylist5.sort(function(a,b){
-                var compA = parseInt($(a).find('label[class="evnum"]').text());
-                var compB = parseInt($(b).find('label[class="evnum"]').text());
-                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-            });
-            $("table tbody[id=tbody5] td[class=tbody5td]").remove();
-            $("table tbody[id=tbody5] tr").append($(mylist5));
+            itr = document.createElement('TR');
+            $(itr).prop('id','tbody2tr'+i);
+            tempTDList = [];
+            tempTDList = tempTDList.concat(mylist2_th, mylist2);
+            $(itr).append(tempTDList);
+            tempTRList.push(itr);
         }
+        $("table tbody[id=tbody2] tr").remove();
+        $("table tbody[id=tbody2]").append(tempTRList);
 
 
+        var mylist1 = $("table tbody[id=tbody1] td[class=tbody1td]").clone(true).get();
+        mylist1.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="evnum"]').text());
+            var compB = parseInt($(b).find('label[class="evnum"]').text());
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
+                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+            }
+        });
+        $("table tbody[id=tbody1] td[class=tbody1td]").remove();
+        $("table tbody[id=tbody1] tr").append($(mylist1));
 
 
-        function sortPeriods(){
+        var mylist4 = $("table tbody[id=tbody4] td[class=tbody4td]").clone(true).get();
+        mylist4.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="evnum"]').text());
+            var compB = parseInt($(b).find('label[class="evnum"]').text());
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
+                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+            }
+        });
+        $("table tbody[id=tbody4] td[class=tbody4td]").remove();
+        $("table tbody[id=tbody4] tr").append($(mylist4));
+
+
+        var mylist5 = $("table tbody[id=tbody5] td[class=tbody5td]").clone(true).get();
+        mylist5.sort(function(a,b){
+            var compA = parseInt($(a).find('label[class="evnum"]').text());
+            var compB = parseInt($(b).find('label[class="evnum"]').text());
+            if(s=='desc'){
+                return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            }else{
+                return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+            }
+        });
+        $("table tbody[id=tbody5] td[class=tbody5td]").remove();
+        $("table tbody[id=tbody5] tr").append($(mylist5));
+    }
+
+
+    function sortPeriods(){
             var s = sortPeriodsType;
             if(sortPeriodsType=='asc'){
+                $('#imgPeriods').prop('src','${resource(dir: 'images/icon', file: 'down.png')}');
                 sortPeriodsType = 'desc';
             }else{
+                $('#imgPeriods').prop('src','${resource(dir: 'images/icon', file: 'up.png')}');
                 sortPeriodsType = 'asc';
             }
             var mylist2 = $("table tbody[id=tbody2] tr").clone(true).get();
@@ -518,35 +398,8 @@
             });
             $("table tbody[id=tbody2] tr").remove();
             $("table tbody[id=tbody2]").append(mylist2);
-
-
-        }
-
-
-
-
-    function tableSortDesc(){
-        var mylist2 = $("table tbody[id=tbody2] tr").clone(true).get();
-        mylist2.sort(function(a, b) {
-            var compA = parseInt($(a).find('td[name="PERIODS"]').text());
-            var compB = parseInt($(b).find('td[name="PERIODS"]').text());
-            return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
-        });
-        $("table tbody[id=tbody2] tr").remove();
-        $("table tbody[id=tbody2]").append(mylist2);
     }
 
-
-    function tableSortArc(){
-        var mylist2 = $("table tbody[id=tbody2] tr").clone(true).get();
-        mylist2.sort(function(a, b) {
-            var compA = parseInt($(a).find('td[name="PERIODS"]').text());
-            var compB = parseInt($(b).find('td[name="PERIODS"]').text());
-            return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-        });
-        $("table tbody[id=tbody2] tr").remove();
-        $("table tbody[id=tbody2]").append(mylist2);
-    }
 
     </script>
 </head>
@@ -562,15 +415,7 @@
             <tbody id="tbody1">
             <tr>
                 <td style=" background-color: #E0EEEE;width: 60px;text-align: center;">
-
-                    <a href="javascript:void(0);" onclick="sortPeriods();">期次<img src="${resource(dir: 'images/icon', file: 'up.png')}" width="23px" height="23px"  border="0"></a>
-                    <%--
-                                        期次<br/>
-                                        <img src="${resource(dir: 'images/icon', file: 'up.png')}">
-                                        <img src="${resource(dir: 'images/icon', file: 'down.png')}">
-                                        <input type="button" value="Desc" onclick="tableSortDesc();" />
-                                        <input type="button" value="Arc" onclick="tableSortArc();" />
-                                        --%>
+                    <a href="javascript:void(0);" style="color:#000000;" onclick="sortPeriods();">期次<img id="imgPeriods" src="${resource(dir: 'images/icon', file: 'up.png')}" width="23px" height="23px"  border="0"></a>
                 </td>
                 <td style=" background-color: #E0EEEE;width: 80px;text-align: center;">日期</td>
                 <td class="tbody1td"><label class="sernum1">01</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO01}</label><label class="evnum" style="display: none;">${nw300EverInstance[0].NO01}</label></td>    <td class="tbody1td"><label class="sernum1">02</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO02}</label><label class="evnum" style="display: none;">${nw300EverInstance[0].NO02}</label></td>
@@ -638,12 +483,7 @@
             <tbody id="tbody3">
             <tr>
                 <td style="background-color: #FFD700; text-align: center;" colspan="2">
-                    投注號碼
-
-                    <br/>
-                    <input type="button" value="arc" onclick="tableSort1();" />
-                    <input type="button" value="desc" onclick="tableSort2();" />
-                    <%----%>
+                    <a href="javascript:void(0);" style="color:#000000;" onclick="sortNumber();">投注號碼<img id="imgNumberSeriz" src="${resource(dir: 'images/icon', file: 'up.png')}" width="23px" height="23px"  border="0"></a>
                 </td>
                 <td class="tbody3td"><label class="sernum1">01</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO01}</label><label class="evnum" style="display: none;">${nw300EverInstance[0].NO01}</label></td>     <td class="tbody3td"><label class="sernum1">02</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO02}</label><label class="evnum" style="display: none;">${nw300EverInstance[0].NO02}</label></td>
                 <td class="tbody3td"><label class="sernum1">03</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO03}</label><label class="evnum" style="display: none;">${nw300EverInstance[0].NO03}</label></td>     <td class="tbody3td"><label class="sernum1">04</label><label class="cnum" style="display: none;">${nw300CountInstance[0].NO04}</label><label class="evnum" style="display: none;">${nw300EverInstance[0].NO04}</label></td>
@@ -676,15 +516,7 @@
             <tbody id="tbody4">
             <tr>
                 <td style="background-color: #FFAEB9; text-align: center;" colspan="2">
-                    <a href="javascript:void(0);" style="color:#000000;" onclick="tableSortArc();">出現次數<img src="${resource(dir: 'images/icon', file: 'left.png')}" width="23px" height="23px" border="0"></a>
-
-
-                    <%--
-                    出現次數
-                    <br/>
-                    <input type="button" value="arc" onclick="tableSort3();" />
-                    <input type="button" value="desc" onclick="tableSort4();" />
-                    --%>
+                    <a href="javascript:void(0);" style="color:#000000;" onclick="sortNumberCount();">出現次數<img id="imgCountNumber" src="${resource(dir: 'images/icon', file: 'up.png')}" width="23px" height="23px" border="0"></a>
                 </td>
                 <td class="tbody4td" style=" height: 80px" > <div class ="lineNumber" style="width:20px; height: ${80-((60*(nw300CountInstance[0].NO01))/maxNum)}px;"><label class="onum" style="display: none;">01</label><label class="evnum" style="display: none;"> ${nw300EverInstance[0].NO01} </label><label class="cnum"> ${nw300CountInstance[0].NO01} </label></div><div class ="linepercent" style="width:20px; height: ${(60*(nw300CountInstance[0].NO01))/maxNum}px;"></div></td>
                 <td class="tbody4td" style=" height: 80px" > <div class ="lineNumber" style="width:20px; height: ${80-((60*(nw300CountInstance[0].NO02))/maxNum)}px;"><label class="onum" style="display: none;">02</label><label class="evnum" style="display: none;"> ${nw300EverInstance[0].NO02} </label><label class="cnum"> ${nw300CountInstance[0].NO02} </label></div><div class ="linepercent" style="width:20px; height: ${(60*(nw300CountInstance[0].NO02))/maxNum}px;"></div></td>
@@ -742,12 +574,7 @@
         <tbody id="tbody5">
         <tr>
             <td style="background-color: #90EE90; text-align: center;" colspan="2">
-                最久未開
-
-                <br/>
-                <input type="button" value="arc" onclick="tableSort5();" />
-                <input type="button" value="desc" onclick="tableSort6();" />
-                <%----%>
+                <a href="javascript:void(0);" style="color:#000000;" onclick="sortEverNumber();">最久未開<img id="imgEverNumber" src="${resource(dir: 'images/icon', file: 'up.png')}" width="23px" height="23px" border="0"></a>
             </td>
             <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO01))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO01))/everNum)}px;"><label class="onum" style="display: none;">01</label>  <label class="evnum"> ${nw300EverInstance[0].NO01} </label>   <label style="display: none;" class="cnum"> ${nw300CountInstance[0].NO01} </label></div></td>
             <td class="tbody5td" style=" height: 80px" > <div class ="linepercentEver" style="width:20px; height: ${(60*(nw300EverInstance[0].NO02))/everNum}px;"></div>    <div class ="lineNumberEver" style="width:20px; height: ${80-((60*(nw300EverInstance[0].NO02))/everNum)}px;"><label class="onum" style="display: none;">02</label>  <label class="evnum"> ${nw300EverInstance[0].NO02} </label>   <label style="display: none;" class="cnum"> ${nw300CountInstance[0].NO02} </label></div></td>
