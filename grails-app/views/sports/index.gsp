@@ -3,6 +3,23 @@
 <head>
     <meta name="layout" content="main"/>
     <title><g:message code="default.webname.label"/></title>
+    <script>
+        function getList(pTab, pTypes, updateId) { //加入取得後不需再更新功能
+            if (!$.trim($('#' + updateId).html())) {
+                $.ajax({
+                    type: 'POST',
+                    url: "${createLink(controller: "sports", action: "list")}",
+                    data: {'pTypes': pTypes, 'pTab': pTab},
+                    traditional: true,
+                    success: function (data, textStatus) {
+                        $('#' + updateId).html(data);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -12,7 +29,9 @@
             <ul class="nav nav-pills nav-justified HDivider-outer">
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
-                        <a data-toggle="pill" name="tab${tab?.tab}" class="autoclick text-nowrap" href="#${tab?.id}">
+                        <a data-toggle="pill"
+                           onclick="getList('${tab?.tab}', '${tab?.dataType as grails.converters.JSON}', 'tab${tab?.tab}');"
+                           class="autoclick ${[0: 'active'][i]}" href="#tab${tab?.tab}">
                             <i class="fa fa-th-list"></i>
                             <g:message code="sports.tab${tab?.tab}.label"/>
                         </a>
@@ -25,18 +44,9 @@
 
 <div class="form-group">
     <div class="container">
-        %{--<div class="form-group">--}%
         <div class="tab-content">
             <g:each in="${alltabs}" var="tab" status="i">
-                <div id="${tab?.id}" class="tab-pane">
-                    <g:if test="${tab?.tab in ["01", "05"]}">
-                        <g:render template="/sports/webLink1"
-                                  model="[nw200I: nw200I.findAll() { it?.type in tab?.dataType }]"/>
-                    </g:if>
-                    <g:else>
-                        <g:render template="/sports/webLink2"
-                                  model="[nw200I: nw200I.findAll() { it?.type in tab?.dataType }]"/>
-                    </g:else>
+                <div id="tab${tab?.tab}" class="tab-pane">
                 </div>
             </g:each>
         </div>

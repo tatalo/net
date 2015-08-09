@@ -1,6 +1,7 @@
 class NationGambleController {
+    def netWinService
 
-    static void main(String[] args){
+    static void main(String[] args) {
     }
 
     // 分頁參數管理
@@ -8,32 +9,43 @@ class NationGambleController {
     //       context => NW400
     //       list => NW500
     static def alltabs = [
-            [id: UUID.randomUUID(), tab: '01', Type: 'webLink', dataType: ['201','202']],
-            [id: UUID.randomUUID(), tab: '02', Type: 'webLink', dataType: ['203']],
-            [id: UUID.randomUUID(), tab: '03', Type: 'webLink', dataType: ['204']],
-            [id: UUID.randomUUID(), tab: '04', Type: 'context', dataType: ['201']],
-            [id: UUID.randomUUID(), tab: '05', Type: 'context', dataType: ['202']],
-            [id: UUID.randomUUID(), tab: '06', Type: 'context', dataType: ['203']],
-            [id: UUID.randomUUID(), tab: '07', Type: 'list', dataType: ['201']],
-            [id: UUID.randomUUID(), tab: '08', Type: 'context', dataType: ['204']],
-            [id: UUID.randomUUID(), tab: '09', Type: 'context', dataType: ['205']]
+            [tab: '01', Type: 'webLink', dataType: ['201', '202']],
+            [tab: '02', Type: 'webLink', dataType: ['203']],
+            [tab: '03', Type: 'webLink', dataType: ['204']],
+            [tab: '04', Type: 'context', dataType: ['201']],
+            [tab: '05', Type: 'context', dataType: ['202']],
+            [tab: '06', Type: 'context', dataType: ['203']],
+            [tab: '07', Type: 'list', dataType: ['201']],
+            [tab: '08', Type: 'context', dataType: ['204']],
+            [tab: '09', Type: 'context', dataType: ['205']]
     ]
 
     def index() { //國際博彩
-        //取得類型webLink all types
-        def nw200Types = alltabs?.findAll(){it?.Type == 'webLink'}.dataType.flatten().findAll()
-        //取得類型context all types
-        def nw400Types = alltabs?.findAll(){it?.Type == 'context'}.dataType.flatten().findAll()
-        //取得類型list all types
-        def nw500Types = alltabs?.findAll(){it?.Type == 'list'}.dataType.flatten().findAll()
+        render view: "/nationGamble/index", model: [alltabs: alltabs]
+    }
 
-        //取得類型webLink資料
-        def nw200I = Nw200.findAllByTypeInList(nw200Types)
-        //取得類型context資料
-        def nw400I = Nw400.findAllByTypeInList(nw400Types)
-        //取得類型list資料
-        def nw500I = Nw500.findAllByTypeInList(nw500Types)
+    def list() {
+        if (params.pTab in ["01"]) {
+            params.pType = Eval.me(params.pTypes)[0]
+            def nw200Ia = netWinService.getNw200List(params)
+            params.pType = Eval.me(params.pTypes)[1]
+            def nw200Ib = netWinService.getNw200List(params)
 
-        render view: "/nationGamble/index", model: [nw200I:nw200I, nw400I:nw400I, nw500I:nw500I, fragment : params.fragment, alltabs : alltabs]
+            render template: "/nationGamble/webLink1", model: [nw200Ia: nw200Ia, nw200Ib: nw200Ib]
+        } else if (params.pTab in ["02", "03"]) {
+            params.pType = Eval.me(params.pTypes)[0]
+            def nw200I = netWinService.getNw200List(params)
+
+            render template: "/nationGamble/webLink2", model: [nw200I: nw200I]
+        } else if (params.pTab in ["04", "05", "06", "08", "09"]) {
+            params.pType = Eval.me(params.pTypes)[0]
+            def nw400I = netWinService.getNw400List(params)
+
+            render template: "/nationGamble/content1", model: [nw400I: nw400I]
+        } else if (params.pTab in ["07"]) {
+            params.pType = Eval.me(params.pTypes)[0]
+            def nw500I = netWinService.getNw500List(params)
+            render template: "/nationGamble/list1", model: [nw500I: nw500I]
+        }
     }
 }

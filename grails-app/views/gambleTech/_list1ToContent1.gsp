@@ -28,6 +28,9 @@
         </div>
     </div>
 </div>
-<div class="form-group text-center">
-    <div class="fb-comments" data-href="${grailsApplication.config.facebook.commts.url + nw400I?.id}" data-numposts="5"></div>
+%{--<div class="form-group">--}%
+    %{--<div class="fb-comments" data-href="${grailsApplication.config.grails.serverURL + nw400I?.id}" data-numposts="5"></div>--}%
+%{--</div>--}%
+<div class="form-group">
+    <disqus:comments url="${grailsApplication.config.grails.serverURL + nw400I?.id}" identifier="${nw400I?.id}" />
 </div>

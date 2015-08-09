@@ -102,17 +102,23 @@ grails.plugins.remotepagination.enableBootstrap=true
 //grails.plugins.twitterbootstrap.fixtaglib = true
 //grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
 
+//
+grails.plugins.disqus.shortname = "tatalo"
+grails.plugins.disqus.identifier = { bean -> return bean.toString() }
+
 environments {
     development {
         grails.logging.jul.usebridge = true
         grails.dbconsole.enabled = true
-        facebook.commts.url = "http://tatalo.vicp.net/"
+//        facebook.commts.url = "http://localhost:8080/"
+        grails.serverURL = "http://localhost:8080/" + appName
 
     }
     production {
         grails.logging.jul.usebridge = false
         grails.dbconsole.enabled = true
-        facebook.commts.url = "http://ww899.net/"
+//        facebook.commts.url = "http://ww899.net/"
+        grails.serverURL = "http://ww899.net/" + appName
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }

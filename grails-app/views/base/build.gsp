@@ -8,7 +8,7 @@
 <body>
 <div class="container">
     <img src="${assetPath(src: 'build.png')}" class="img-responsive center-block"
-                                           alt="Responsive image">
+         alt="Responsive image">
 </div>
 </body>
 </html>

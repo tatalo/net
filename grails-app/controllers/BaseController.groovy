@@ -15,7 +15,7 @@ class BaseController {
     }
 
     def build() {
-        render template: "/base/build"
+        render view: "/base/build"
     }
 
     def getData={

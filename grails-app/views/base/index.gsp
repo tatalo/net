@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to Grails</title>
+    <title>網贏</title>
 
     <script type="text/javascript">
         function a1() {
@@ -64,10 +64,9 @@
                 </h4>
                 <g:each in="${sportTabs}" var="tab" status="i">
                     <p class="text-nowrap">
-                        <g:remoteLink controller="sports" action="index" update="mainbody"
-                                      params="[fragment: 'tab' + tab.tab]">
+                        <g:link controller="sports" action="index" fragment="tab${tab.tab}">
                             <g:message code="sports.tab${tab.tab}.label"/>
-                        </g:remoteLink>
+                        </g:link>
                     </p>
                 </g:each>
             </div>
@@ -80,10 +79,9 @@
                 </h4>
                 <g:each in="${nationGambleTabs}" var="tab" status="i">
                     <p class="text-nowrap">
-                        <g:remoteLink controller="nationGamble" action="index" update="mainbody"
-                                      params="[fragment: 'tab' + tab.tab]">
+                        <g:link controller="nationGamble" action="index" fragment="tab${tab.tab}">
                             <g:message code="nationGamble.tab${tab.tab}.label"/>
-                        </g:remoteLink>
+                        </g:link>
                     </p>
                 </g:each>
             </div>
@@ -96,10 +94,9 @@
                 </h4>
                 <g:each in="${gambletechTabs}" var="tab" status="i">
                     <p class="text-nowrap">
-                        <g:remoteLink controller="gambleTech" action="index" update="mainbody"
-                                      params="[fragment: 'tab' + tab.tab]">
+                        <g:link controller="gambleTech" action="index" fragment="tab${tab.tab}">
                             <g:message code="gambleTech.tab${tab.tab}.label"/>
-                        </g:remoteLink>
+                        </g:link>
                     </p>
                 </g:each>
             </div>
@@ -114,10 +111,9 @@
                 </h4>
                 <g:each in="${lottoTabs}" var="tab" status="i">
                     <p class="text-nowrap">
-                        <g:remoteLink controller="lotto" action="index" update="mainbody"
-                                      params="[fragment: 'tab' + tab.tab]">
+                        <g:link controller="lotto" action="index" fragment="tab${tab.tab}">
                             <g:message code="lotto.tab${tab.tab}.label"/>
-                        </g:remoteLink>
+                        </g:link>
                     </p>
                 </g:each>
             </div>
@@ -145,41 +141,41 @@
                     <div class="panel-body">
                         <ul class="nav nav-tabs nav-justified">
                             <li>
-                                <a data-toggle="tab" name="tab01" class="autoclick" href="#tab01">
+                                <a data-toggle="tab" class="autoclick active" href="#taba01">
                                     彩球
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="autoclick" href="#tab02">
+                                <a data-toggle="tab" class="autoclick" href="#taba02">
                                     即時比分
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="autoclick" href="#tab03">
+                                <a data-toggle="tab" class="autoclick" href="#taba03">
                                     新聞
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="autoclick" href="#tab04">
+                                <a data-toggle="tab" class="autoclick" href="#taba04">
                                     當日賽事
                                 </a>
                             </li>
                         </ul>
 
                         <div class="tab-content">
-                            <div id="tab01" class="tab-pane">
+                            <div id="taba01" class="tab-pane">
                                 彩球資料建置中
                             </div>
 
-                            <div id="tab02" class="tab-pane">
+                            <div id="taba02" class="tab-pane">
                                 即時比分資料建置中
                             </div>
 
-                            <div id="tab03" class="tab-pane">
+                            <div id="taba03" class="tab-pane">
                                 新聞資料建置中
                             </div>
 
-                            <div id="tab04" class="tab-pane">
+                            <div id="taba04" class="tab-pane">
                                 當日賽事資料建置中
                             </div>
                         </div>
@@ -208,31 +204,31 @@
                     <div class="panel-body">
                         <ul class="nav nav-tabs nav-justified">
                             <li>
-                                <a data-toggle="tab" name="tab01" class="autoclick" href="#taba01">
+                                <a data-toggle="tab" class="autoclick active" href="#tabb01">
                                     <img src="${assetPath(src: '01.nba.png')}" class="img-responsive text-center"
                                          alt="Responsive image">
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="autoclick" href="#taba02">
+                                <a data-toggle="tab" class="autoclick" href="#tabb02">
                                     <img src="${assetPath(src: '02.mlb.jpg')}" class="img-responsive"
                                          alt="Responsive image">
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="autoclick" href="#taba03">
+                                <a data-toggle="tab" class="autoclick" href="#tabb03">
                                     <img src="${assetPath(src: '03.cpbl.png')}" class="img-responsive"
                                          alt="Responsive image">
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="autoclick" href="#taba04">
+                                <a data-toggle="tab" class="autoclick" href="#tabb04">
                                     <img src="${assetPath(src: '04.npb.png')}" class="img-responsive"
                                          alt="Responsive image">
                                 </a>
                             </li>
                             <li>
-                                <a data-toggle="tab" class="autoclick" href="#taba05">
+                                <a data-toggle="tab" class="autoclick" href="#tabb05">
                                     <img src="${assetPath(src: '05.kbo.jpg')}" class="img-responsive"
                                          alt="Responsive image">
                                 </a>
@@ -240,23 +236,23 @@
                         </ul>
 
                         <div class="tab-content">
-                            <div id="taba01" class="tab-pane">
+                            <div id="tabb01" class="tab-pane">
                                 NBA資料建置中
                             </div>
 
-                            <div id="taba02" class="tab-pane">
+                            <div id="tabb02" class="tab-pane">
                                 MLB資料建置中
                             </div>
 
-                            <div id="taba03" class="tab-pane">
+                            <div id="tabb03" class="tab-pane">
                                 CPBL資料建置中
                             </div>
 
-                            <div id="taba04" class="tab-pane">
+                            <div id="tabb04" class="tab-pane">
                                 NPB資料建置中
                             </div>
 
-                            <div id="taba05" class="tab-pane">
+                            <div id="tabb05" class="tab-pane">
                                 KBO資料建置中
                             </div>
                         </div>

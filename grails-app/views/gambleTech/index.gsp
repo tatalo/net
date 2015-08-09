@@ -50,7 +50,7 @@
                 <g:each in="${tab?.lv2Tab as List}" var="lv2Tab" status="i2">
                     <div id="${lv2Tab?.id}" class="tab-pane">
                         <g:if test="${tab?.tab in ["01"]}">
-                            <g:render template="/base/build"/>
+                            %{--<g:render template="/base/build"/>--}%
                         </g:if>
                         <g:elseif test="${tab?.tab in ["02","03","04","05","06","07","08","09"]}">
                             <g:if test="${lv2Tab?.tab in ["01"]}">

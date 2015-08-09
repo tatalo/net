@@ -1,6 +1,6 @@
-import grails.gorm.*
-
 class SportsController {
+    def netWinService
+
     static void main(String[] args){
     }
 
@@ -9,22 +9,27 @@ class SportsController {
     //       context => NW400
     //       list => NW500
     static def alltabs = [
-        [id: UUID.randomUUID(), tab: '01', Type: 'webLink', dataType: ['01']],
-        [id: UUID.randomUUID(), tab: '02', Type: 'webLink', dataType: ['02']],
-        [id: UUID.randomUUID(), tab: '03', Type: 'webLink', dataType: ['03']],
-        [id: UUID.randomUUID(), tab: '04', Type: 'webLink', dataType: ['04']],
-        [id: UUID.randomUUID(), tab: '05', Type: 'webLink', dataType: ['05']],
-        [id: UUID.randomUUID(), tab: '06', Type: 'webLink', dataType: ['06']],
-        [id: UUID.randomUUID(), tab: '07', Type: 'webLink', dataType: ['99']]
+        [tab: '01', Type: 'webLink', dataType: ['01']],
+        [tab: '02', Type: 'webLink', dataType: ['02']],
+        [tab: '03', Type: 'webLink', dataType: ['03']],
+        [tab: '04', Type: 'webLink', dataType: ['04']],
+        [tab: '05', Type: 'webLink', dataType: ['05']],
+        [tab: '06', Type: 'webLink', dataType: ['06']],
+        [tab: '07', Type: 'webLink', dataType: ['99']]
     ]
 
     def index() { //運動
-        //取得類型webLink all types
-        def nw200Types = alltabs?.findAll(){it?.Type == 'webLink'}.dataType.flatten().findAll()
+        render view: "/sports/index", model: [alltabs : alltabs]
+    }
 
-        //取得類型webLink資料
-        def nw200I = Nw200.findAllByTypeInList(nw200Types)
+    def list() {
+        params.pType = Eval.me(params.pTypes)[0]
+        def nw200I = netWinService.getNw200List(params)
 
-        render view: "/sports/index", model: [nw200I : nw200I, fragment : params?.fragment, alltabs : alltabs]
+        if (params.pTab in ["01","05"]) {
+            render template: "/sports/webLink1", model: [nw200I : nw200I]
+        } else if (params.pTab in ["02","03","04","06","07"]) {
+            render template: "/sports/webLink2", model: [nw200I : nw200I]
+        }
     }
 }

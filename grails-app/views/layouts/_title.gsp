@@ -9,10 +9,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <g:remoteLink class="navbar-brand active" controller="base" action="index" update="mainbody">
+            <g:link class="navbar-brand active" controller="base" action="index">
                 <i class="fa fa-home fa-lg"></i>
                 <g:message code="default.home.label"/>
-            </g:remoteLink>
+            </g:link>
             %{--<a class="navbar-brand active" href="#">--}%
             %{--首頁--}%
             %{--<asset:image src="favicon.ico"/>--}%
@@ -23,9 +23,12 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-left">
                 <li>
-                    <g:remoteLink controller="sports" action="index" update="mainbody">
+                    %{--<g:link controller="sports" action="index">--}%
+                        %{--<g:message code="default.tab01.label"/>--}%
+                    %{--</g:link>--}%
+                    <g:link controller="sports" action="index">
                         <g:message code="default.tab01.label"/>
-                    </g:remoteLink>
+                    </g:link>
                 </li>
                 %{--<li>--}%
                 %{--<g:remoteLink controller="base" action="build" update="mainbody">--}%
@@ -33,9 +36,9 @@
                 %{--</g:remoteLink>--}%
                 %{--</li>--}%
                 <li>
-                    <g:remoteLink controller="lotto" action="index" update="mainbody">
+                    <g:link controller="lotto" action="index">
                         <g:message code="default.tab02.label"/>
-                    </g:remoteLink>
+                    </g:link>
                 </li>
                 %{--<li>--}%
                 %{--<g:remoteLink controller="base" action="build" update="mainbody">--}%
@@ -43,42 +46,42 @@
                 %{--</g:remoteLink>--}%
                 %{--</li>--}%
                 <li>
-                    <g:remoteLink controller="nationGamble" action="index" update="mainbody">
+                    <g:link controller="nationGamble" action="index">
                         <g:message code="default.tab03.label"/>
-                    </g:remoteLink>
+                    </g:link>
                 </li>
                 <li>
-                    <g:remoteLink controller="base" action="build" update="mainbody">
+                    <g:link controller="base" action="build">
                         <g:message code="default.tab04.label"/>
-                    </g:remoteLink>
+                    </g:link>
                 </li>
                 <li>
-                    <g:remoteLink controller="gambleTech" action="index" update="mainbody">
+                    <g:link controller="gambleTech" action="index">
                         <g:message code="default.tab05.label"/>
-                    </g:remoteLink>
+                    </g:link>
                 </li>
                 <li>
-                    <g:remoteLink controller="base" action="build" update="mainbody">
+                    <g:link controller="base" action="build">
                         <g:message code="default.tab06.label"/>
-                    </g:remoteLink>
+                    </g:link>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li data-toggle="tooltip" data-placement="bottom" title="facebook分享">
-                    <a href="#" class="fa fa-facebook-square fa-lg"></a>
+                    <a href="javascript:void(0)" class="fa fa-facebook-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="google+分享">
-                    <a href="#" class="fa fa-google-plus-square fa-lg"></a>
+                    <a href="javascript:void(0)" class="fa fa-google-plus-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="twitter分享">
-                    <a href="#" class="fa fa-twitter-square fa-lg"></a>
+                    <a href="javascript:void(0)" class="fa fa-twitter-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="列印">
                     <a href="javascript:self.print()" class="fa fa-print fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="加入書籤">
-                    <a href="#" class="fa fa-heart fa-lg" onClick="addToFavorite('${message(code: "default.webname.label")}', 'http://ww899.net/')" ></a>
+                    <a href="javascript:addToFavorite('${message(code: "default.webname.label")}', '${grailsApplication.config.grails.serverURL}')" class="fa fa-heart fa-lg" ></a>
                 </li>
             </ul>
 
