@@ -5,7 +5,7 @@
     <title><g:message code="default.webname.label"/></title>
     <script>
         function getList(pTab, pTypes, updateId) { //加入取得後不需再更新功能
-            if (!$.trim($('#' + updateId).html())) {
+//            if (!$.trim($('#' + updateId).html())) {
                 $.ajax({
                     type: 'POST',
                     url: "${createLink(controller: "nationGamble", action: "list")}",
@@ -17,7 +17,7 @@
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                     }
                 });
-            }
+//            }
         }
     </script>
 </head>

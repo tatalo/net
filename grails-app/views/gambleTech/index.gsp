@@ -5,7 +5,7 @@
     <title><g:message code="default.webname.label"/></title>
     <script>
         function getList(pTab, pSubTab, pTypes, updateId, offset, refresh) { //加入取得後不需再更新功能
-            if (!$.trim($('#' + updateId).html()) || refresh) {
+//            if (!$.trim($('#' + updateId).html()) || refresh) {
                 $.ajax({
                     type: 'POST',
                     url: "${createLink(controller: "gambleTech", action: "list")}",
@@ -17,11 +17,11 @@
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                     }
                 });
-            }
+//            }
         }
 
         function showContent(id, pTab, pSubTab, pTypes, updateId, offset) { //顯示文章
-            if (id) {
+//            if (id) {
                 $.ajax({
                     type: 'POST',
                     url: "${createLink(controller: "gambleTech", action: "list2Content")}?id=" + id,
@@ -33,7 +33,7 @@
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                     }
                 });
-            }
+//            }
         }
     </script>
 </head>
@@ -62,15 +62,18 @@
                     <ul class="list-inline">
                         <g:each in="${tab?.subTab as List}" var="subTab" status="i2">
                             <li>
-                                <a data-toggle="pill" class="${[0: 'active'][i+i2]}"
-                                   onclick="getList('${tab?.tab}', '${subTab?.tab}', '${subTab?.dataType as grails.converters.JSON}', 'tab${tab?.tab}_subTab${subTab?.tab}');"
-                                   href="#tab${tab?.tab}_subTab${subTab?.tab}">
-                                    <g:message code="gambleTech.tab${tab?.tab}.subTab${subTab?.tab}.label"/>
-                                </a>
+                                <h5>
+                                    <a data-toggle="pill" class="${[0: 'active'][i + i2]}"
+                                       onclick="getList('${tab?.tab}', '${subTab?.tab}', '${subTab?.dataType as grails.converters.JSON}', 'tab${tab?.tab}_subTab${subTab?.tab}');"
+                                       href="#tab${tab?.tab}_subTab${subTab?.tab}">
+                                        <g:message code="gambleTech.tab${tab?.tab}.subTab${subTab?.tab}.label"/>
+                                    </a>
+                                </h5>
                             <li>
                         </g:each>
                     </ul>
-                    <hr/>
+                    <hr class="soften"/>
+
                     <div class="tab-content">
                         <g:each in="${tab?.subTab as List}" var="subTab" status="i2">
                             <div id="tab${tab?.tab}_subTab${subTab?.tab}" class="tab-pane">

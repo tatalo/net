@@ -9,7 +9,7 @@
 <div class="container">
     <g:form>
         <div class="row">
-            <g:render template="/message"></g:render>
+            %{--<g:render template="/message"></g:render>--}%
         </div>
         <div class="form-group">
             <label for="title">標題</label>
