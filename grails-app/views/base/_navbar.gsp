@@ -51,7 +51,7 @@
                     </g:link>
                 </li>
                 <li>
-                    <g:link controller="base" action="build">
+                    <g:link controller="scoreLive" action="index">
                         <g:message code="default.tab04.label"/>
                     </g:link>
                 </li>
@@ -61,7 +61,7 @@
                     </g:link>
                 </li>
                 <li>
-                    <g:link controller="base" action="build">
+                    <g:link controller="gameAnalytics" action="index">
                         <g:message code="default.tab06.label"/>
                     </g:link>
                 </li>

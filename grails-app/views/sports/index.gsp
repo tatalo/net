@@ -9,7 +9,7 @@
                 $.ajax({
                     type: 'POST',
                     url: "${createLink(controller: "sports", action: "list")}",
-                    data: {'pTypes': pTypes, 'pTab': pTab},
+                    data: {'pTab': pTab, 'pTypes': pTypes},
                     traditional: true,
                     success: function (data, textStatus) {
                         $('#' + updateId).html(data);

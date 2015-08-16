@@ -9,7 +9,7 @@
                 $.ajax({
                     type: 'POST',
                     url: "${createLink(controller: "nationGamble", action: "list")}",
-                    data: {'pTypes': pTypes, 'pTab': pTab},
+                    data: {'pTab': pTab, 'pTypes': pTypes},
                     traditional: true,
                     success: function (data, textStatus) {
                         $('#' + updateId).html(data);
@@ -36,10 +36,6 @@
                             <i class="fa fa-th-list"></i>
                             <g:message code="nationGamble.tab${tab?.tab}.label"/>
                         </a>
-                        %{--<a data-toggle="pill" name="tab${tab?.tab}" class="autoclick text-nowrap" href="#${tab?.id}">--}%
-                            %{--<i class="fa fa-th-list"></i>--}%
-                            %{--<g:message code="nationGamble.tab${tab?.tab}.label"/>--}%
-                        %{--</a>--}%
                     </li>
                 </g:each>
             </ul>

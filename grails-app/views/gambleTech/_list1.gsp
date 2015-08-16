@@ -3,7 +3,7 @@
         <ol class="breadcrumb">
             <li class="active">
                 <i class="fa fa-th-list"></i>
-                <g:message code="gambleTech.tab02.lv2Tab02.label"/>
+                <g:message code="gambleTech.tab${pTab}.subTab${pSubTab}.label"/>
             </li>
         </ol>
         <div class="panel panel-default">
@@ -24,9 +24,9 @@
                                     <g:formatDate format="yyyy/MM/dd" date="${nw400?.issuedt}"/>
                                 </td>
                                 <td>
-                                    <g:remoteLink data-toggle="pill" class="text-nowrap" controller="gambleTech" action="list2Content" id="${nw400?.id}" update="${params.divId}" onSuccess="fbRefresh();" params="[divId : params.divId]">
+                                    <a href="javascript:void(0)" onclick="showContent('${nw400?.id}','${params?.pTab}', '${params?.pSubTab}', '${params?.pTypes}', 'tab${params?.pTab}_subTab${params?.pSubTab}','${params?.offset}');">
                                         ${nw400?.title}
-                                    </g:remoteLink>
+                                    </a>
                                 </td>
                             </tr>
                         </g:each>

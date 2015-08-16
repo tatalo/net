@@ -4,9 +4,6 @@ class HistoryController {
 
     def dataSource
 
-    def index() {
-    }
-
     def showBigLuckToa() {
         def showpage = params?.showpage?:20 //近幾期
         def sdt = params?.sdt //開始日期

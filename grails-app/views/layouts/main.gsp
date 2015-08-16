@@ -24,13 +24,14 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <ckeditor:resources/>
     <g:layoutHead/>
 </head>
 
 <body role="document">
 
 <div id="mainheader">
-    <g:render template="/layouts/title"/>
+    <g:render template="/base/navbar"/>
 </div>
 
 <div id="mainbody">

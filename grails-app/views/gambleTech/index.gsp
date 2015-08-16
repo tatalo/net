@@ -3,6 +3,39 @@
 <head>
     <meta name="layout" content="main"/>
     <title><g:message code="default.webname.label"/></title>
+    <script>
+        function getList(pTab, pSubTab, pTypes, updateId, offset, refresh) { //加入取得後不需再更新功能
+            if (!$.trim($('#' + updateId).html()) || refresh) {
+                $.ajax({
+                    type: 'POST',
+                    url: "${createLink(controller: "gambleTech", action: "list")}",
+                    data: {'pTab': pTab, 'pSubTab': pSubTab, 'pTypes': pTypes, divId: updateId, offset: offset},
+                    traditional: true,
+                    success: function (data, textStatus) {
+                        $('#' + updateId).html(data);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            }
+        }
+
+        function showContent(id, pTab, pSubTab, pTypes, updateId, offset) { //顯示文章
+            if (id) {
+                $.ajax({
+                    type: 'POST',
+                    url: "${createLink(controller: "gambleTech", action: "list2Content")}?id=" + id,
+                    data: {'pTab': pTab, 'pSubTab': pSubTab, 'pTypes': pTypes, divId: updateId, offset: offset},
+                    traditional: true,
+                    success: function (data, textStatus) {
+                        $('#' + updateId).html(data);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -12,7 +45,7 @@
             <ul class="nav nav-pills nav-justified HDivider-outer">
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
-                        <a data-toggle="pill" name="tab${tab?.tab}" class="autoclick text-nowrap" href="#${tab?.id}">
+                        <a data-toggle="pill" class="autoclick ${[0: 'active'][i]}" href="#tab${tab?.tab}">
                             <i class="fa fa-th-list"></i>
                             <g:message code="gambleTech.tab${tab?.tab}.label"/>
                         </a>
@@ -22,47 +55,29 @@
         </div>
     </div>
 
-    <div class="container-fluid lv2navbar">
-        <div class="container">
-            <div class="tab-content">
-                <g:each in="${alltabs}" var="tab" status="i">
-                    <div id="${tab?.id}" class="tab-pane">
-                        <ul class="list-inline">
-                            <g:each in="${tab?.lv2Tab as List}" var="lv2Tab" status="i2">
-                                <li>
-                                    <a data-toggle="pill" name="tab${tab?.tab}${lv2Tab?.tab}" href="#${lv2Tab?.id}">
-                                        <g:message code="gambleTech.tab${tab?.tab}.lv2Tab${lv2Tab?.tab}.label"/>
-                                    </a>
-                                <li>
-                            </g:each>
-                        </ul>
-                    </div>
-                </g:each>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group">
     <div class="container">
         <div class="tab-content">
             <g:each in="${alltabs}" var="tab" status="i">
-                <g:each in="${tab?.lv2Tab as List}" var="lv2Tab" status="i2">
-                    <div id="${lv2Tab?.id}" class="tab-pane">
-                        <g:if test="${tab?.tab in ["01"]}">
-                            %{--<g:render template="/base/build"/>--}%
-                        </g:if>
-                        <g:elseif test="${tab?.tab in ["02","03","04","05","06","07","08","09"]}">
-                            <g:if test="${lv2Tab?.tab in ["01"]}">
-                                <g:render template="/gambleTech/content1"
-                                          model="[nw400I: nw400I.findAll() { it?.type == lv2Tab?.dataType }[0]]"/>
-                            </g:if>
-                            <g:elseif test="${lv2Tab?.tab in ["02"]}">
-                                <g:include controller="gambleTech" action="list" params="[divId: lv2Tab?.id,type:lv2Tab?.dataType]"/>
-                            </g:elseif>
-                        </g:elseif>
+                <div id="tab${tab?.tab}" class="tab-pane">
+                    <ul class="list-inline">
+                        <g:each in="${tab?.subTab as List}" var="subTab" status="i2">
+                            <li>
+                                <a data-toggle="pill" class="${[0: 'active'][i+i2]}"
+                                   onclick="getList('${tab?.tab}', '${subTab?.tab}', '${subTab?.dataType as grails.converters.JSON}', 'tab${tab?.tab}_subTab${subTab?.tab}');"
+                                   href="#tab${tab?.tab}_subTab${subTab?.tab}">
+                                    <g:message code="gambleTech.tab${tab?.tab}.subTab${subTab?.tab}.label"/>
+                                </a>
+                            <li>
+                        </g:each>
+                    </ul>
+                    <hr/>
+                    <div class="tab-content">
+                        <g:each in="${tab?.subTab as List}" var="subTab" status="i2">
+                            <div id="tab${tab?.tab}_subTab${subTab?.tab}" class="tab-pane">
+                            </div>
+                        </g:each>
                     </div>
-                </g:each>
+                </div>
             </g:each>
         </div>
     </div>

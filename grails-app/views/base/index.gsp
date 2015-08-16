@@ -49,7 +49,6 @@
 
         }
     </script>
-
 </head>
 
 <body>
@@ -94,7 +93,7 @@
                 </h4>
                 <g:each in="${gambletechTabs}" var="tab" status="i">
                     <p class="text-nowrap">
-                        <g:link controller="gambleTech" action="index" fragment="tab${tab.tab}">
+                        <g:link controller="gambleTech" action="index" fragment="tab${tab.tab}_subTab01">
                             <g:message code="gambleTech.tab${tab.tab}.label"/>
                         </g:link>
                     </p>
@@ -140,8 +139,8 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <ul class="nav nav-tabs nav-justified">
-                            <li>
-                                <a data-toggle="tab" class="autoclick active" href="#taba01">
+                            <li class="active">
+                                <a data-toggle="tab" class="autoclick" href="#taba01">
                                     彩球
                                 </a>
                             </li>
@@ -163,20 +162,20 @@
                         </ul>
 
                         <div class="tab-content">
-                            <div id="taba01" class="tab-pane">
-                                彩球資料建置中
+                            <div id="taba01" class="tab-pane active">
+                                <g:render template="/base/build"/>
                             </div>
 
                             <div id="taba02" class="tab-pane">
-                                即時比分資料建置中
+                                <g:render template="/base/build"/>
                             </div>
 
                             <div id="taba03" class="tab-pane">
-                                新聞資料建置中
+                                <g:render template="/base/build"/>
                             </div>
 
                             <div id="taba04" class="tab-pane">
-                                當日賽事資料建置中
+                                <g:render template="/base/build"/>
                             </div>
                         </div>
                     </div>
@@ -195,7 +194,6 @@
                             週一至週六晚上08:30pm~09:00pm，您收看的畫面會比電視播出延遲30~60秒
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -203,8 +201,8 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <ul class="nav nav-tabs nav-justified">
-                            <li>
-                                <a data-toggle="tab" class="autoclick active" href="#tabb01">
+                            <li class="active">
+                                <a data-toggle="tab" class="autoclick" href="#tabb01">
                                     <img src="${assetPath(src: '01.nba.png')}" class="img-responsive text-center"
                                          alt="Responsive image">
                                 </a>
@@ -236,24 +234,24 @@
                         </ul>
 
                         <div class="tab-content">
-                            <div id="tabb01" class="tab-pane">
-                                NBA資料建置中
+                            <div id="tabb01" class="tab-pane active">
+                                <g:render template="/base/build"/>
                             </div>
 
                             <div id="tabb02" class="tab-pane">
-                                MLB資料建置中
+                                <g:render template="/base/build"/>
                             </div>
 
                             <div id="tabb03" class="tab-pane">
-                                CPBL資料建置中
+                                <g:render template="/base/build"/>
                             </div>
 
                             <div id="tabb04" class="tab-pane">
-                                NPB資料建置中
+                                <g:render template="/base/build"/>
                             </div>
 
                             <div id="tabb05" class="tab-pane">
-                                KBO資料建置中
+                                <g:render template="/base/build"/>
                             </div>
                         </div>
                     </div>
@@ -272,6 +270,41 @@
 
             <div class="form-group">
                 <h4 class="bg-custome1 text-center">博彩技巧</h4>
+
+                <div class="row-fluid">
+                    <g:each in="${["02","03","04"]}" var="tab" status="i">
+                        <div class="col-md-4">
+                            <g:link class="btn btn-primary square" controller="gambleTech" action="index"
+                                    fragment="tab${tab}_subTab02">
+                                <g:message code="gambleTech.tab${tab}.label"/>
+                            </g:link>
+                        </div>
+                    </g:each>
+                </div>
+
+                <div class="row-fluid spacer">
+                    <g:each in="${["05","06","07"]}" var="tab" status="i">
+                        <div class="col-md-4">
+                            <g:link class="btn btn-primary square" controller="gambleTech" action="index"
+                                    fragment="tab${tab}_subTab02">
+                                <g:message code="gambleTech.tab${tab}.label"/>
+                            </g:link>
+                        </div>
+                    </g:each>
+                </div>
+
+                <div class="row-fluid spacer">
+                    <g:each in="${["08","09"]}" var="tab" status="i">
+                        <div class="col-md-4">
+                            <g:link class="btn btn-primary square" controller="gambleTech" action="index"
+                                    fragment="tab${tab}_subTab02">
+                                <g:message code="gambleTech.tab${tab}.label"/>
+                            </g:link>
+                        </div>
+                    </g:each>
+                    <div class="col-md-4">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

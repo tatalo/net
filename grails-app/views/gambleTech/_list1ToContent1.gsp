@@ -1,11 +1,11 @@
 <ol class="breadcrumb">
     <li>
-        <g:remoteLink class="text-nowrap" controller="gambleTech" action="list"
-                      params="[type: nw400I?.type, divId: params.divId]" update="${params.divId}">
+        <a onclick="getList('${params?.pTab}', '${params?.pSubTab}', '${(Eval.me(params.pTypes) as grails.converters.JSON)}', 'tab${params?.pTab}_subTab${params?.pSubTab}', '${params?.offset}','1');"
+           href="javascript:void(0)">
             <i class="fa fa-th-list"></i>
-            <g:message code="gambleTech.tab02.lv2Tab02.label"/>
-        </g:remoteLink>
-    </a>
+            <g:message code="gambleTech.tab${params?.pTab}.subTab${params?.pSubTab}.label"/>
+        </a>
+    </li>
     </li>
     <li class="active">
         <i class="fa fa-file-o"></i>
@@ -14,7 +14,9 @@
 </ol>
 <div class="panel panel-default">
     <div class="panel-heading text-center">
-        <h4><strong>${raw(nw400I?.title)}</strong></h4>
+        <h4><strong>${raw(nw400I?.title)}</strong>
+            <g:link class="btn btn-primary btn-xs" controller="base" action="getContent" target="${nw400I?.id}" id="${nw400I?.id}">編輯
+            </g:link>
     </div>
 
     <div class="panel-body">

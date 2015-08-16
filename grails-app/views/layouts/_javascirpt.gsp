@@ -1,7 +1,8 @@
 <script>
-    function list1ToContent1() {
-        <g:remoteFunction controller="gambleTech" action="list2Content" id="${nw400?.id}"
-            update="${params.divId}" />
+    function CKupdate(){ //編輯器內容更新
+        for ( i in CKEDITOR.instances ) {
+            CKEDITOR.instances[i].updateElement();
+        }
     }
 
     //facebook留言版
@@ -29,20 +30,34 @@
 
     $('[data-toggle="tooltip"]').tooltip(); //使用tooltip
 
-    $(".autoclick").on("mouseover", function () { //滑鼠指標移到後自動選取
+    $(".autoclick").on("mouseover", function (e) { //滑鼠指標移到後自動選取
+        e.preventDefault()
         $(this).trigger("click");
     });
 
     //hash anchor fix
     var options = {
-        selectorAttribute: "data-target",
-        backToTop: true
+        selectorAttribute: "data-target"
+//        backToTop: true
     };
-    $('.nav-tabs,.nav-pills').stickyTabs(options);
+    $('.nav-tabs,.nav-pills,.list-inline').stickyTabs(options);
+
+
+    //自動開啟tab用
+    function TabByHash(hash) {
+        var $myTab = $(hash);
+        if ($myTab.size() != 0) {
+            var $topTab = $myTab.parent().closest('.tab-pane');
+            if ($topTab.size() != 0) {
+                $('a[href=#' + $topTab.attr('id') + ']').trigger('click');
+            }
+            $('a[href=#' + $myTab.attr('id') + ']').trigger('click');
+        }
+    }
 
     var hash = window.location.hash;
     if (hash) {
-        $('a[href*="' + hash + '"]').trigger('click');
+        TabByHash(hash);
     } else {
         $('.active').trigger('click');
     }

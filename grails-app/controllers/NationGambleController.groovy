@@ -31,7 +31,9 @@ class NationGambleController {
             params.pType = Eval.me(params.pTypes)[1]
             def nw200Ib = netWinService.getNw200List(params)
 
-            render template: "/nationGamble/webLink1", model: [nw200Ia: nw200Ia, nw200Ib: nw200Ib]
+            def nw200I = nw200Ia + nw200Ib
+
+            render template: "/nationGamble/webLink1", model: [nw200I: nw200I, dataTypes: Eval.me(params.pTypes)]
         } else if (params.pTab in ["02", "03"]) {
             params.pType = Eval.me(params.pTypes)[0]
             def nw200I = netWinService.getNw200List(params)

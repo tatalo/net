@@ -6,9 +6,10 @@
 </head>
 
 <body>
-<div class="container">
-    <img src="${assetPath(src: 'build.png')}" class="img-responsive center-block"
-         alt="Responsive image">
+<div class="form-group">
+    <div class="container">
+        <g:render template="/base/build"/>
+    </div>
 </div>
 </body>
 </html>

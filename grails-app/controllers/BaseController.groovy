@@ -1,5 +1,5 @@
 class BaseController {
-
+    def netWinService
     def netReptileService
 
     static void main(String[] args){
@@ -15,7 +15,30 @@ class BaseController {
     }
 
     def build() {
-        render view: "/base/build"
+        render template: "/base/build"
+    }
+
+    def getContent() {
+        println "params1234 = " + params
+        println "id = " + params.id
+        def nw400I = netWinService.getNw400(params)
+        render view: "/base/editContent", model: [nw400I: nw400I, params: params]
+    }
+
+    def saveContent() {
+
+        println "params = " + params
+
+        def nw400I = netWinService.saveNw400(params)
+
+        println "nw400I.has = " + nw400I.hasErrors()
+        if (nw400I.hasErrors()) {
+            render view: "/base/editContent", model: [nw400I: nw400I]
+        } else {
+            redirect action: "getContent", id: params.id, params: params
+        }
+
+
     }
 
     def getData={
