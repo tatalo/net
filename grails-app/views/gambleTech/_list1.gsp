@@ -6,6 +6,7 @@
                 <g:message code="gambleTech.tab${pTab}.subTab${pSubTab}.label"/>
             </li>
         </ol>
+
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="table-responsive">
@@ -24,7 +25,8 @@
                                     <g:formatDate format="yyyy/MM/dd" date="${nw400?.issuedt}"/>
                                 </td>
                                 <td>
-                                    <a href="javascript:void(0)" onclick="showContent('${nw400?.id}','${params?.pTab}', '${params?.pSubTab}', '${params?.pTypes}', 'tab${params?.pTab}_subTab${params?.pSubTab}','${params?.offset}');">
+                                    <a href="javascript:void(0)"
+                                       onclick="showContent('${nw400?.id}', '${params?.pTab}', '${params?.pSubTab}', '${params?.pTypes}', 'tab${params?.pTab}_subTab${params?.pSubTab}', '${params?.offset}');">
                                         ${nw400?.title}
                                     </a>
                                 </td>
@@ -32,6 +34,7 @@
                         </g:each>
                         </tbody>
                     </table>
+
                     <div class="text-center">
                         <util:remotePaginate controller="gambleTech" action="list" total="${totalCount}"
                                              params="${params}" update="${params.divId}"/>

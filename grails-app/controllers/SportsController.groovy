@@ -23,6 +23,8 @@ class SportsController {
     }
 
     def list() {
+        println "params = " + params
+
         params.pType = Eval.me(params.pTypes)[0]
         def nw200I = netWinService.getNw200List(params)
 
