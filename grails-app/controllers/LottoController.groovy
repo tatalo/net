@@ -75,7 +75,7 @@ class LottoController {
     def list() {
         println "params = " + params
 
-        if (params.pTab in ["01"] && params.pSubTab in ["01"]) {
+        if (params.pTab in ["01"]) {
             if (params.pSubTab in ["01"]) {
                 render template: "/lotto/video"
             } else {
@@ -97,21 +97,6 @@ class LottoController {
         } else {
             render template: "/base/build"
         }
-//        else if (params.pTab in ["02", "03", "04", "05", "06", "07", "08", "09"]
-//                && params.pSubTab in ["01"]) {
-//            params.pType = Eval.me(params.pTypes)[0]
-//            def nw400I = netWinService.getNw400List(params)
-//
-//            render template: "/gambleTech/content1", model: [nw400I: nw400I]
-//        } else if (params.pTab in ["02", "03", "04", "05", "06", "07", "08", "09"]
-//                && params.pSubTab in ["02"]) {
-//            params.pType = Eval.me(params.pTypes)[0]
-//            params.max = grailsApplication.config.grails.plugins.remotepagination.max
-//            def nw400I = netWinService.getNw400List(params)
-//
-//            render template: "/gambleTech/list1", model: [nw400I: nw400I, totalCount: nw400I?.totalCount,
-//                                                          divId : params.divId, pTab: params.pTab, pSubTab: params.pSubTab, pTypes : params.pTypes, offset : params.offset]
-//        }
     }
 
     def showBigLuckToa() {
@@ -272,6 +257,6 @@ class LottoController {
             everNum = (list2.max())?.toInteger()
         }
 
-        render(view: '/lotto/_history', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300EverInstance: result3, everNum: everNum])
+        render(template: '/lotto/history', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300EverInstance: result3, everNum: everNum])
     }
 }

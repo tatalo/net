@@ -71,10 +71,6 @@
     var sortCountType = 'desc';
     var sortEverType = 'desc';
 
-    $(function(){
-
-    });
-
     function sortNumber() {
         var s = sortNumberType;
         if(sortNumberType=='desc'){

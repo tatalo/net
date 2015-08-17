@@ -1,15 +1,16 @@
 <script>
-    function CKupdate(){ //編輯器內容更新
-        for ( i in CKEDITOR.instances ) {
+    function CKupdate() { //編輯器內容更新
+        for (i in CKEDITOR.instances) {
             CKEDITOR.instances[i].updateElement();
         }
     }
 
     //facebook留言版
-    (function(d, s, id) {
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.4";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
@@ -18,15 +19,17 @@
         FB.XFBML.parse();
     }
 
-    function addToFavorite(title, url){ //加入我的最愛
+    function addToFavorite(title, url) { //加入我的最愛
         try {
             window.external.AddFavorite(url, title);
-        } catch(e) {
+        } catch (e) {
             alert("<g:message message="toFavorite.alert.message"/>");
         }
     }
 
-    function eid(v) { return v.replace(/\./g, "\\."); }
+    function eid(v) {
+        return v.replace(/\./g, "\\.");
+    }
 
     $('[data-toggle="tooltip"]').tooltip(); //使用tooltip
 
@@ -41,7 +44,6 @@
 //        backToTop: true
     };
     $('.nav-tabs,.nav-pills,.list-inline').stickyTabs(options);
-
 
     //自動開啟tab用
     function TabByHash(hash) {
@@ -61,4 +63,23 @@
     } else {
         $('.active').trigger('click');
     }
+
+    %{--CKEDITOR.plugins.addExternal('divarea', '${resource(dir: '/ckeditor/plugins/divarea/')}');--}%
+    CKEDITOR.editorConfig = function (config) {
+//        config.extraPlugins = 'divarea';
+        config.skin = 'office2013, ${resource(dir:"/ckeditor/skins/office2013/")}';
+//        config.removePlugins = "elementspath,resize";
+//        config.resize_enabled = "false";
+//        config.toolbar_custom = [ [ '
+//        Styles
+//        ', ' - ', '
+//            FontSize
+//            ',' - ', '
+//            Bold
+//            ', '
+//            Italic
+//            ', '
+//            Underline
+//        '] ] };
+    };
 </script>

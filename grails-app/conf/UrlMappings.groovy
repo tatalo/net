@@ -7,7 +7,7 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: "base")
+        "/"(controller: "base", action: "index")
 
 //        "/sports"(resources:"sports")
 //        "/nationGamble"(resources:"nationGamble")

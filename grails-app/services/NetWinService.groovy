@@ -60,4 +60,8 @@ class NetWinService {
         }
         return nw500I
     }
+
+    def getLottoList() {
+
+    }
 }

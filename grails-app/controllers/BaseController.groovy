@@ -19,10 +19,9 @@ class BaseController {
     }
 
     def getContent() {
-        println "params1234 = " + params
-        println "id = " + params.id
+        println "params = " + params
         def nw400I = netWinService.getNw400(params)
-        render view: "/base/editContent", model: [nw400I: nw400I, params: params]
+        render view: "/base/editContent", model: [nw400I: nw400I], params: params
     }
 
     def saveContent() {
@@ -31,14 +30,19 @@ class BaseController {
 
         def nw400I = netWinService.saveNw400(params)
 
-        println "nw400I.has = " + nw400I.hasErrors()
-        if (nw400I.hasErrors()) {
-            render view: "/base/editContent", model: [nw400I: nw400I]
-        } else {
-            redirect action: "getContent", id: params.id, params: params
+        println "nw400I.hasErrors() = " +nw400I.hasErrors()
+        nw400I.errors.each {
+            println "it = " + it
         }
 
-
+        if (nw400I.hasErrors()) {
+            flash.failed = g.message(code:"default.failure.updated.message",args: ['' , ''])
+            flash.bean = nw400I
+            render view: "/base/editContent", model: [nw400I: nw400I],params : params
+        } else {
+            flash.success = g.message(code:"default.updated.message",args: ['' , ''])
+            redirect action: "getContent", id: params.id
+        }
     }
 
     def getData={
