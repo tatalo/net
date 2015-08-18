@@ -81,4 +81,29 @@
 %{--//            Underline--}%
 %{--//        '] ] };--}%
     %{--};--}%
+
+
+    function shareToSocial(type){
+        var url = '';
+        var title = '';
+        var fbUrl = 'https://www.facebook.com/sharer/sharer.php?sdk=joey&u=http%3A%2F%2Fwww.yahoo.com.tw%2F&display=popup&ref=plugin&src=share_button';
+        var googleUrl = 'https://plus.google.com/share?url=http%3A%2F%2Fwww.yahoo.com.tw';
+        var twitterUrl = 'https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Flocalhost%3A8080%2FnetWin%2F&ref_src=twsrc%5Etfw&text=%E7%B6%B2%E8%B4%8F&tw_p=tweetbutton&url=http%3A%2F%2Flocalhost%3A8080%2FnetWin%2F%23taba04';
+
+        if(type=='fb'){
+            url = fbUrl;
+            title = 'facebook';
+        }else if(type=='google'){
+            url = googleUrl;
+            title = 'google';
+        }else if(type=='twitter'){
+            url = twitterUrl;
+            title = 'twitter';
+        }
+
+        var x = (screen.width)/2;
+        var y = 150;
+        window.open(url, title, config='height=500,width=500,top='+y+',left='+x);
+    }
+
 </script>
