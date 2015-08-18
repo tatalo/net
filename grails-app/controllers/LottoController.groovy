@@ -25,19 +25,21 @@ class LottoController {
                                  [tab: '10' ,Type: '', dataType: [''] ],
                                  [tab: '11' ,Type: '', dataType: [''] ],
                                  [tab: '12' ,Type: '', dataType: [''] ]]],
-            [tab: '02', subTab: [[tab: '01' ,Type: '', dataType: [''] ],
-                                 [tab: '02' ,Type: '', dataType: [''] ],
-                                 [tab: '03' ,Type: '', dataType: [''] ],
-                                 [tab: '04' ,Type: '', dataType: [''] ],
-                                 [tab: '05' ,Type: '', dataType: [''] ],
-                                 [tab: '06' ,Type: '', dataType: [''] ],
-                                 [tab: '07' ,Type: '', dataType: [''] ],
-                                 [tab: '08' ,Type: '', dataType: [''] ],
-                                 [tab: '09' ,Type: '', dataType: [''] ],
-                                 [tab: '10' ,Type: '', dataType: [''] ],
-                                 [tab: '11' ,Type: '', dataType: [''] ]]],
+//            [tab: '02', subTab: [[tab: '01' ,Type: '', dataType: [''] ],
+//                                 [tab: '02' ,Type: '', dataType: [''] ],
+//                                 [tab: '03' ,Type: '', dataType: [''] ],
+//                                 [tab: '04' ,Type: '', dataType: [''] ],
+//                                 [tab: '05' ,Type: '', dataType: [''] ],
+//                                 [tab: '06' ,Type: '', dataType: [''] ],
+//                                 [tab: '07' ,Type: '', dataType: [''] ],
+//                                 [tab: '08' ,Type: '', dataType: [''] ],
+//                                 [tab: '09' ,Type: '', dataType: [''] ],
+//                                 [tab: '10' ,Type: '', dataType: [''] ],
+//                                 [tab: '11' ,Type: '', dataType: [''] ]]],
             [tab: '03', subTab: [[tab: '01' ,Type: 'context', dataType: ['101'] ],
                                  [tab: '02' ,Type: 'history', dataType: [''] ],
+                                 [tab: '03' ,Type: 'history', dataType: [''] ],
+                                 [tab: '04' ,Type: 'history', dataType: [''] ],
                                  [tab: '05' ,Type: '', dataType: [''] ]]],
             [tab: '04', subTab: [[tab: '01' ,Type: 'context', dataType: ['102'] ],
                                  [tab: '02' ,Type: 'history', dataType: [''] ],
@@ -427,7 +429,7 @@ class LottoController {
             lastNum = (list2.max())?.toInteger()
         }
 
-        render(view: '/lotto/lastNumberAnalysis', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300LastInstance: result3, lastNum: lastNum])
+        render(template: '/lotto/lastNumberAnalysis', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300LastInstance: result3, lastNum: lastNum])
     }
 
 

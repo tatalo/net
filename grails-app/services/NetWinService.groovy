@@ -24,6 +24,8 @@ class NetWinService {
     def getNw400List(params) { //回傳Nw400 List
         def nw400I = Nw400.findAll(params) {
             eq("type", params.pType)
+
+            order("idx", "asc")
         }
         return nw400I
     }

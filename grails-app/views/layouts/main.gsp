@@ -38,6 +38,6 @@
     <g:layoutBody/>
 </div>
 
-<g:render template="/layouts/javascirpt"/>
+<g:render template="/base/javascirpt"/>
 </body>
 </html>

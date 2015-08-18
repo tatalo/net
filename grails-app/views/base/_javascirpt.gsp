@@ -34,7 +34,6 @@
     $('[data-toggle="tooltip"]').tooltip(); //使用tooltip
 
     $(".autoclick").on("mouseover", function (e) { //滑鼠指標移到後自動選取
-        e.preventDefault()
         $(this).trigger("click");
     });
 
@@ -65,21 +64,21 @@
     }
 
     %{--CKEDITOR.plugins.addExternal('divarea', '${resource(dir: '/ckeditor/plugins/divarea/')}');--}%
-    CKEDITOR.editorConfig = function (config) {
-//        config.extraPlugins = 'divarea';
-        config.skin = 'office2013, ${resource(dir:"/ckeditor/skins/office2013/")}';
-//        config.removePlugins = "elementspath,resize";
-//        config.resize_enabled = "false";
-//        config.toolbar_custom = [ [ '
-//        Styles
-//        ', ' - ', '
-//            FontSize
-//            ',' - ', '
-//            Bold
-//            ', '
-//            Italic
-//            ', '
-//            Underline
-//        '] ] };
-    };
+    %{--CKEDITOR.editorConfig = function (config) {--}%
+%{--//        config.extraPlugins = 'divarea';--}%
+        %{--config.skin = 'office2013, ${resource(dir:"/ckeditor/skins/office2013/")}';--}%
+%{--//        config.removePlugins = "elementspath,resize";--}%
+%{--//        config.resize_enabled = "false";--}%
+%{--//        config.toolbar_custom = [ [ '--}%
+%{--//        Styles--}%
+%{--//        ', ' - ', '--}%
+%{--//            FontSize--}%
+%{--//            ',' - ', '--}%
+%{--//            Bold--}%
+%{--//            ', '--}%
+%{--//            Italic--}%
+%{--//            ', '--}%
+%{--//            Underline--}%
+%{--//        '] ] };--}%
+    %{--};--}%
 </script>
