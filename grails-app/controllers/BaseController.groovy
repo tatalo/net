@@ -19,21 +19,12 @@ class BaseController {
     }
 
     def getContent() {
-        println "params = " + params
         def nw400I = netWinService.getNw400(params)
         render view: "/base/editContent", model: [nw400I: nw400I], params: params
     }
 
     def saveContent() {
-
-        println "params = " + params
-
         def nw400I = netWinService.saveNw400(params)
-
-        println "nw400I.hasErrors() = " +nw400I.hasErrors()
-        nw400I.errors.each {
-            println "it = " + it
-        }
 
         if (nw400I.hasErrors()) {
             flash.failed = g.message(code:"default.failure.updated.message",args: ['' , ''])

@@ -13,18 +13,18 @@ class LottoController {
     //       context => NW400
     //       list => NW500
     static def alltabs = [
-            [tab: '01', subTab: [[tab: '01' ,Type: 'video', dataType: [] ],
-                                 [tab: '02' ,Type: '', dataType: [''] ],
-                                 [tab: '03' ,Type: '', dataType: [''] ],
-                                 [tab: '04' ,Type: '', dataType: [''] ],
-                                 [tab: '05' ,Type: '', dataType: [''] ],
-                                 [tab: '06' ,Type: '', dataType: [''] ],
-                                 [tab: '07' ,Type: '', dataType: [''] ],
-                                 [tab: '08' ,Type: '', dataType: [''] ],
-                                 [tab: '09' ,Type: '', dataType: [''] ],
-                                 [tab: '10' ,Type: '', dataType: [''] ],
-                                 [tab: '11' ,Type: '', dataType: [''] ],
-                                 [tab: '12' ,Type: '', dataType: [''] ]]],
+            [tab: '01', subTab: [[tab: '01' ,viewType: 'video', dataType: [] ],
+                                 [tab: '02' ,viewType: '', dataType: [''] ],
+                                 [tab: '03' ,viewType: '', dataType: [''] ],
+                                 [tab: '04' ,viewType: '', dataType: [''] ],
+                                 [tab: '05' ,viewType: '', dataType: [''] ],
+                                 [tab: '06' ,viewType: '', dataType: [''] ],
+                                 [tab: '07' ,viewType: '', dataType: [''] ],
+                                 [tab: '08' ,viewType: '', dataType: [''] ],
+                                 [tab: '09' ,viewType: '', dataType: [''] ],
+                                 [tab: '10' ,viewType: '', dataType: [''] ],
+                                 [tab: '11' ,viewType: '', dataType: [''] ],
+                                 [tab: '12' ,viewType: '', dataType: [''] ]]],
 //            [tab: '02', subTab: [[tab: '01' ,Type: '', dataType: [''] ],
 //                                 [tab: '02' ,Type: '', dataType: [''] ],
 //                                 [tab: '03' ,Type: '', dataType: [''] ],
@@ -36,38 +36,52 @@ class LottoController {
 //                                 [tab: '09' ,Type: '', dataType: [''] ],
 //                                 [tab: '10' ,Type: '', dataType: [''] ],
 //                                 [tab: '11' ,Type: '', dataType: [''] ]]],
-            [tab: '03', subTab: [[tab: '01' ,Type: 'context', dataType: ['101'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ],
-                                 [tab: '03' ,Type: 'history', dataType: [''] ],
-                                 [tab: '04' ,Type: 'history', dataType: [''] ],
-                                 [tab: '05' ,Type: '', dataType: [''] ]]],
-            [tab: '04', subTab: [[tab: '01' ,Type: 'context', dataType: ['102'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ],
-                                 [tab: '05' ,Type: '', dataType: [''] ]]],
-            [tab: '05', subTab: [[tab: '01' ,Type: 'context', dataType: ['103'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ],
-                                 [tab: '05' ,Type: '', dataType: [''] ]]],
-            [tab: '06', subTab: [[tab: '01' ,Type: 'context', dataType: ['104'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ],
-                                 [tab: '05' ,Type: '', dataType: [''] ]]],
-            [tab: '07', subTab: [[tab: '01' ,Type: 'context', dataType: ['105'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ],
-                                 [tab: '05' ,Type: '', dataType: [''] ]]],
-            [tab: '08', subTab: [[tab: '01' ,Type: 'context', dataType: ['106'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ],
-                                 [tab: '05' ,Type: '', dataType: [''] ]]],
-            [tab: '09', subTab: [[tab: '01' ,Type: 'context', dataType: ['107'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ],
-                                 [tab: '05' ,Type: '', dataType: [''] ]]],
-            [tab: '10', subTab: [[tab: '01' ,Type: 'context', dataType: ['108'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ],
-                                 [tab: '05' ,Type: '', dataType: [''] ]]],
-            [tab: '11', subTab: [[tab: '01' ,Type: 'context', dataType: ['109'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ]]],
-            [tab: '12', subTab: [[tab: '01' ,Type: 'context', dataType: ['110'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ]]],
-            [tab: '13', subTab: [[tab: '01' ,Type: 'context', dataType: ['111'] ],
-                                 [tab: '02' ,Type: 'history', dataType: [''] ]]]
+            [tab: '03', subTab: [[tab: '01' ,viewType: 'context', dataType: ['101'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['01'] ],
+                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
+            [tab: '04', subTab: [[tab: '01' ,viewType: 'context', dataType: ['102'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['02'] ],
+                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
+            [tab: '05', subTab: [[tab: '01' ,viewType: 'context', dataType: ['103'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['03'] ],
+                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
+            [tab: '06', subTab: [[tab: '01' ,viewType: 'context', dataType: ['104'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['04'] ],
+                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
+            [tab: '07', subTab: [[tab: '01' ,viewType: 'context', dataType: ['105'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['05'] ],
+                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
+            [tab: '08', subTab: [[tab: '01' ,viewType: 'context', dataType: ['106'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['06'] ],
+                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
+            [tab: '09', subTab: [[tab: '01' ,viewType: 'context', dataType: ['107'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['07'] ],
+                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
+            [tab: '10', subTab: [[tab: '01' ,viewType: 'context', dataType: ['108'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['08'] ],
+                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
+                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
+            [tab: '11', subTab: [[tab: '01' ,viewType: 'context', dataType: ['109'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['09'] ]]],
+            [tab: '12', subTab: [[tab: '01' ,viewType: 'context', dataType: ['110'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['10'] ]]],
+            [tab: '13', subTab: [[tab: '01' ,viewType: 'context', dataType: ['111'] ],
+                                 [tab: '02' ,viewType: 'history', dataType: ['11'] ]]]
     ]
 
     def index() {
@@ -92,6 +106,12 @@ class LottoController {
 
                 render template: "/lotto/content1", model: [nw400I: nw400I]
             } else if (params.pSubTab in ["02"]) {
+                params.pType = Eval.me(params.pTypes)[0]
+                params.pRows = 25
+                def result = netWinService.getLottoList(params)
+
+                render template: "/lotto/history1", model: [nw300I: result.list, totalCount: result.counts, rowCount: result.rowCounts]
+            } else if (params.pSubTab in ["03"]) {
                 redirect action: "showBigLuckToa"
             } else if (params.pSubTab in ["03","04","05"]) {
                 println 'XXXXXXXXXXXXXXXXXXXXX'
@@ -100,6 +120,13 @@ class LottoController {
         } else {
             render template: "/base/build"
         }
+    }
+
+    def historyFilter(params) {
+        //呼叫Service
+        def result = netWinService.getLottoList(params)
+        //輸出查詢結果
+        render template: "/lotto/history1", model: [nw300I: result.list, totalCount: result.counts, rowCount: result.rowCounts]
     }
 
     def showBigLuckToa () {

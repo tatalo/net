@@ -22,12 +22,12 @@
 
         <div class="form-group">
             <label for="context"><g:message code="nw400.context.label"/></label>
-            <ckeditor:editor name="context" height="600px" width="100%">
+            <ckeditor:editor name="context" height="500px" width="100%">
                 ${raw(nw400I?.context)}
             </ckeditor:editor>
         </div>
 
-        <g:actionSubmit name="save" value="儲存" action="saveContent"/>
+        <g:actionSubmit class="btn btn-primary" name="save" value="儲存" action="saveContent"/>
     </div>
 </g:form>
 </body>

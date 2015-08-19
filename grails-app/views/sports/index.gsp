@@ -31,7 +31,7 @@
                     <li class="HDivider-inner">
                         <a data-toggle="pill"
                            onclick="getList('${tab?.tab}', '${tab?.dataType as grails.converters.JSON}', 'tab${tab?.tab}');"
-                           class="autoclick ${[0: 'active'][i]}" href="#tab${tab?.tab}">
+                           class="${[0: 'active'][i]}" href="#tab${tab?.tab}">
                             <i class="fa fa-th-list"></i>
                             <g:message code="sports.tab${tab?.tab}.label"/>
                         </a>

@@ -9,15 +9,15 @@ class NationGambleController {
     //       context => NW400
     //       list => NW500
     static def alltabs = [
-            [tab: '01', Type: 'webLink', dataType: ['201', '202']],
-            [tab: '02', Type: 'webLink', dataType: ['203']],
-            [tab: '03', Type: 'webLink', dataType: ['204']],
-            [tab: '04', Type: 'context', dataType: ['201']],
-            [tab: '05', Type: 'context', dataType: ['202']],
-            [tab: '06', Type: 'context', dataType: ['203']],
-            [tab: '07', Type: 'list', dataType: ['201']],
-            [tab: '08', Type: 'context', dataType: ['204']],
-            [tab: '09', Type: 'context', dataType: ['205']]
+            [tab: '01', viewType: 'webLink', dataType: ['201', '202']],
+            [tab: '02', viewType: 'webLink', dataType: ['203']],
+            [tab: '03', viewType: 'webLink', dataType: ['204']],
+            [tab: '04', viewType: 'context', dataType: ['201']],
+            [tab: '05', viewType: 'context', dataType: ['202']],
+            [tab: '06', viewType: 'context', dataType: ['203']],
+            [tab: '07', viewType: 'list', dataType: ['201']],
+            [tab: '08', viewType: 'context', dataType: ['204']],
+            [tab: '09', viewType: 'context', dataType: ['205']]
     ]
 
     def index() { //國際博彩

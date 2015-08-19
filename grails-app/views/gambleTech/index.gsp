@@ -38,7 +38,7 @@
         }
     </script>
 </head>
-
+<class=""
 <body>
 <div class="form-group">
     <div class="container-fluid bg-custome1">
@@ -46,7 +46,7 @@
             <ul class="nav nav-pills nav-justified HDivider-outer">
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
-                        <a data-toggle="pill" class="autoclick ${[0: 'active'][i]}" href="#tab${tab?.tab}">
+                        <a data-toggle="pill" class="${[0: 'active'][i]}" href="#tab${tab?.tab}">
                             <i class="fa fa-th-list"></i>
                             <g:message code="gambleTech.tab${tab?.tab}.label"/>
                         </a>

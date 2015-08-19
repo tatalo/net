@@ -10,23 +10,23 @@ class GambleTechController {
     //       context => NW400
     //       list => NW500
     static def alltabs = [
-            [tab: '01', subTab: [[tab: '01' ,Type: '', dataType: [] ]]],
-            [tab: '02', subTab: [[tab: '01' ,Type: 'context', dataType: ['302'] ],
-                                 [tab: '02' ,Type: 'context_list', dataType: ['352'] ]]],
-            [tab: '03', subTab: [[tab: '01' ,Type: 'context', dataType: ['303'] ],
-                                 [tab: '02' ,Type: 'context_list', dataType: ['353'] ]]],
-            [tab: '04', subTab: [[tab: '01' ,Type: 'context', dataType: ['304'] ],
-                                 [tab: '02' ,Type: 'context_list', dataType: ['354'] ]]],
-            [tab: '05', subTab: [[tab: '01' ,Type: 'context', dataType: ['305'] ],
-                                 [tab: '02' ,Type: 'context_list', dataType: ['355'] ]]],
-            [tab: '06', subTab: [[tab: '01' ,Type: 'context', dataType: ['306'] ],
-                                 [tab: '02' ,Type: 'context_list', dataType: ['356'] ]]],
-            [tab: '07', subTab: [[tab: '01' ,Type: 'context', dataType: ['307'] ],
-                                 [tab: '02' ,Type: 'context_list', dataType: ['357'] ]]],
-            [tab: '08', subTab: [[tab: '01' ,Type: 'context', dataType: ['308'] ],
-                                 [tab: '02' ,Type: 'context_list', dataType: ['358'] ]]],
-            [tab: '09', subTab: [[tab: '01' ,Type: 'context', dataType: ['309'] ],
-                                 [tab: '02' ,Type: 'context_list', dataType: ['359'] ]]]
+            [tab: '01', subTab: [[tab: '01' ,viewType: '', dataType: [] ]]],
+            [tab: '02', subTab: [[tab: '01' ,viewType: 'context', dataType: ['302'] ],
+                                 [tab: '02' ,viewType: 'context_list', dataType: ['352'] ]]],
+            [tab: '03', subTab: [[tab: '01' ,viewType: 'context', dataType: ['303'] ],
+                                 [tab: '02' ,viewType: 'context_list', dataType: ['353'] ]]],
+            [tab: '04', subTab: [[tab: '01' ,viewType: 'context', dataType: ['304'] ],
+                                 [tab: '02' ,viewType: 'context_list', dataType: ['354'] ]]],
+            [tab: '05', subTab: [[tab: '01' ,viewType: 'context', dataType: ['305'] ],
+                                 [tab: '02' ,viewType: 'context_list', dataType: ['355'] ]]],
+            [tab: '06', subTab: [[tab: '01' ,viewType: 'context', dataType: ['306'] ],
+                                 [tab: '02' ,viewType: 'context_list', dataType: ['356'] ]]],
+            [tab: '07', subTab: [[tab: '01' ,viewType: 'context', dataType: ['307'] ],
+                                 [tab: '02' ,viewType: 'context_list', dataType: ['357'] ]]],
+            [tab: '08', subTab: [[tab: '01' ,viewType: 'context', dataType: ['308'] ],
+                                 [tab: '02' ,viewType: 'context_list', dataType: ['358'] ]]],
+            [tab: '09', subTab: [[tab: '01' ,viewType: 'context', dataType: ['309'] ],
+                                 [tab: '02' ,viewType: 'context_list', dataType: ['359'] ]]]
     ]
     def index() { //博彩技巧
         render view: "/gambleTech/index", model: [alltabs : alltabs]

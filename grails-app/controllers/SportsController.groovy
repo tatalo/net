@@ -9,13 +9,13 @@ class SportsController {
     //       context => NW400
     //       list => NW500
     static def alltabs = [
-        [tab: '01', Type: 'webLink', dataType: ['01']],
-        [tab: '02', Type: 'webLink', dataType: ['02']],
-        [tab: '03', Type: 'webLink', dataType: ['03']],
-        [tab: '04', Type: 'webLink', dataType: ['04']],
-        [tab: '05', Type: 'webLink', dataType: ['05']],
-        [tab: '06', Type: 'webLink', dataType: ['06']],
-        [tab: '07', Type: 'webLink', dataType: ['99']]
+        [tab: '01', viewType: 'webLink', dataType: ['01']],
+        [tab: '02', viewType: 'webLink', dataType: ['02']],
+        [tab: '03', viewType: 'webLink', dataType: ['03']],
+        [tab: '04', viewType: 'webLink', dataType: ['04']],
+        [tab: '05', viewType: 'webLink', dataType: ['05']],
+        [tab: '06', viewType: 'webLink', dataType: ['06']],
+        [tab: '07', viewType: 'webLink', dataType: ['99']]
     ]
 
     def index() { //運動
@@ -23,8 +23,6 @@ class SportsController {
     }
 
     def list() {
-        println "params = " + params
-
         params.pType = Eval.me(params.pTypes)[0]
         def nw200I = netWinService.getNw200List(params)
 

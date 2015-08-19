@@ -20,6 +20,7 @@
 //            }
         }
 
+
         %{--function showContent(id, pTab, pSubTab, pTypes, updateId, offset) { //顯示文章--}%
         %{--if (id) {--}%
         %{--$.ajax({--}%
@@ -45,7 +46,7 @@
             <ul class="nav nav-pills nav-justified HDivider-outer">
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
-                        <a data-toggle="pill" class="autoclick ${[0: 'active'][i]}" href="#tab${tab?.tab}">
+                        <a data-toggle="pill" class="${[0: 'active'][i]}" href="#tab${tab?.tab}">
                             <i class="fa fa-th-list"></i>
                             <g:message code="lotto.tab${tab?.tab}.label"/>
                         </a>

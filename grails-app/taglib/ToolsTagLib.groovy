@@ -21,5 +21,4 @@ class ToolsTagLib {
         def list = Bs101.findAllByPtype(ptype, [sort: "porder", order: "asc"])
         return list
     }
-
 }
