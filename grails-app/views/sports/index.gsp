@@ -26,7 +26,7 @@
 <div class="form-group">
     <div class="container-fluid bg-custome1">
         <div class="container">
-            <ul class="nav nav-pills nav-justified HDivider-outer">
+            <ul class="nav nav-pills nav-justified HDivider-outer stickyTabs">
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
                         <a data-toggle="pill"

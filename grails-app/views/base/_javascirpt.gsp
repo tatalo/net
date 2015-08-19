@@ -42,7 +42,7 @@
         selectorAttribute: "data-target"
 //        backToTop: true
     };
-    $('.nav-tabs,.nav-pills,.list-inline').stickyTabs(options);
+    $('.stickyTabs').stickyTabs(options);
 
     //自動開啟tab用
     function TabByHash(hash) {

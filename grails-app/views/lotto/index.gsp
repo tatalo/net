@@ -43,7 +43,7 @@
 <div class="form-group">
     <div class="container-fluid bg-custome1">
         <div class="container">
-            <ul class="nav nav-pills nav-justified HDivider-outer">
+            <ul class="nav nav-pills nav-justified HDivider-outer stickyTabs">
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
                         <a data-toggle="pill" class="${[0: 'active'][i]}" href="#tab${tab?.tab}">
@@ -60,7 +60,7 @@
         <div class="tab-content">
             <g:each in="${alltabs}" var="tab" status="i">
                 <div id="tab${tab?.tab}" class="tab-pane">
-                    <ul class="list-inline">
+                    <ul class="list-inline stickyTabs">
                         <g:each in="${tab?.subTab as List}" var="subTab" status="i2">
                             <li>
                                 <h5>
