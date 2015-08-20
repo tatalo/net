@@ -4,12 +4,12 @@
     <meta name="layout" content="main"/>
     <title><g:message code="default.webname.label"/></title>
     <script>
-        function getList(pTab, pSubTab, pTypes, updateId, offset, refresh) { //加入取得後不需再更新功能
+        function getList(pTab, pSubTab, pType, updateId, offset, refresh) { //加入取得後不需再更新功能
 //            if (!$.trim($('#' + updateId).html()) || refresh) {
                 $.ajax({
                     type: 'POST',
                     url: "${createLink(controller: "lotto", action: "list")}",
-                    data: {'pTab': pTab, 'pSubTab': pSubTab, 'pTypes': pTypes, divId: updateId, offset: offset},
+                    data: {'pTab': pTab, 'pSubTab': pSubTab, 'pType': pType, divId: updateId, offset: offset},
                     traditional: true,
                     success: function (data, textStatus) {
                         $('#' + updateId).html(data);
@@ -64,8 +64,8 @@
                         <g:each in="${tab?.subTab as List}" var="subTab" status="i2">
                             <li>
                                 <h5>
-                                    <a data-toggle="pill" class="${[0: 'active'][i + i2]}"
-                                       onclick="getList('${tab?.tab}', '${subTab?.tab}', '${subTab?.dataType as grails.converters.JSON}', 'tab${tab?.tab}_subTab${subTab?.tab}');"
+                                    <a data-toggle="pill" class="${[0: 'active'][i+i2]}"
+                                       onclick="getList('${tab?.tab}', '${subTab?.tab}', '${subTab?.dataType}', 'tab${tab?.tab}_subTab${subTab?.tab}');"
                                        href="#tab${tab?.tab}_subTab${subTab?.tab}">
                                         <g:message code="lotto.tab${tab?.tab}.subTab${subTab?.tab}.label"/>
                                     </a>

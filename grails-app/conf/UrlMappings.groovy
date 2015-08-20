@@ -13,6 +13,7 @@ class UrlMappings {
 //        "/nationGamble"(resources:"nationGamble")
 //        "/gambleTech"(resources:"gambleTech")
 //        "/lotto"(resources:"lotto")
+        "/editContent"(controller: "base", action: "editContent")
 
         "/sports"(controller: "sports", action: "index")
         "/lotto"(controller: "lotto", action: "index")

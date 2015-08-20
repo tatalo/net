@@ -6,8 +6,7 @@
 </head>
 
 <body>
-<g:form>
-    <g:hiddenField name="id" value="${nw400I?.id}" />
+<g:form id="${nw400I?.id}">
     <div class="container">
         <div class="form-group">
             <g:render template="/base/message"></g:render>

@@ -1,4 +1,12 @@
 <div class="panel panel-default">
+    <div class="panel-heading text-center">
+        <h4>
+            <strong>
+                <g:message code="nationGamble.tab${pTab}.label"/>
+            </strong>
+        </h4>
+    </div>
+
     <div class="panel-body">
         <div class="table-responsive">
             <!-- Default panel contents -->

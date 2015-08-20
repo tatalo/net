@@ -16,9 +16,7 @@
     <div class="panel-heading text-center">
         <h4>
             <strong>${raw(nw400I?.title)}</strong>
-            %{--<g:submitToRemote class="btn btn-primary btn-xs" value="編輯" url="[controller:'base',action:'getContent', params:[id:nw400I?.id]+params]"--}%
-                              %{--update="tab${params?.pTab}_subTab${params?.pSubTab}"/>--}%
-            <g:link class="btn btn-primary btn-xs" controller="base" action="getContent" target="${nw400I?.id}"
+            <g:link class="btn btn-primary btn-xs" controller="base" action="editContent" target="${nw400I?.id}"
                     id="${nw400I?.id}">編輯
             </g:link>
         </h4>

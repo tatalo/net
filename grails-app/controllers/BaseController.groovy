@@ -18,7 +18,7 @@ class BaseController {
         render template: "/base/build"
     }
 
-    def getContent() {
+    def editContent() {
         def nw400I = netWinService.getNw400(params)
         render view: "/base/editContent", model: [nw400I: nw400I], params: params
     }
@@ -32,7 +32,7 @@ class BaseController {
             render view: "/base/editContent", model: [nw400I: nw400I],params : params
         } else {
             flash.success = g.message(code:"default.updated.message",args: ['' , ''])
-            redirect action: "getContent", id: params.id
+            redirect action: "editContent", id: params.id
         }
     }
 

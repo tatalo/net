@@ -37,6 +37,14 @@
   width: 100% !important;
 }
 
+ul > li > span.active,
+ul > li > span:hover.active,
+ul > li > span:focus.active{
+  background-color: @brand-primary;
+  border-color: @brand-primary;
+  color: #fff;
+}
+
 .square{
   width : 60px;
   max-width: 60px;
@@ -60,4 +68,71 @@ hr.soften {
   background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
   border: 0;
   margin-top: 0px !important;
+}
+
+
+//樂透表格用
+.perPeriodsNumber tr:hover {
+  background-color: #97FFFF;
+}
+
+//樂透表格用
+th.lottoTitleNumber {
+  text-align: center;
+  background-color: #E0EEEE;
+  width: 40px !important;
+  font-size: 16px;
+}
+
+//樂透表格用
+th.lottoTitlePERIODS {
+  text-align: center;
+  background-color: #E0EEEE;
+  width: 80px !important;
+  font-size: 16px;
+}
+
+//樂透表格用
+th.lottoTitleOPENDT {
+  text-align: center;
+  background-color: #E0EEEE;
+  width: 75px !important;
+  font-size: 16px;
+}
+
+//樂透表格用
+th.lottoTitleNO {
+  text-align: center;
+  background-color: #FCF6CF;
+  color: #000000;
+  font-size: 14px;
+}
+
+
+//樂透表格用
+th.lottoTitleSPNO {
+  text-align: center;
+  background-color: #d0e9c6;
+  color: #000000;
+  font-size: 14px;
+}
+
+//樂透表格用
+td.lottoTD {
+  background-color: #fff;
+  font-size: 15px;
+}
+
+//樂透表格用
+td.lottoDataNO {
+  background-color: #D2691E;
+  color: #fff;
+  font-size: 14px;
+}
+
+//樂透表格用
+td.lottoDataSPNO {
+  background-color: #53868B;
+  color: #fff;
+  font-size: 14px;
 }

@@ -4,12 +4,12 @@
     <meta name="layout" content="main"/>
     <title><g:message code="default.webname.label"/></title>
     <script>
-        function getList(pTab, pTypes, updateId) { //加入取得後不需再更新功能
+        function getList(pTab, pType, updateId) { //加入取得後不需再更新功能
 //            if (!$.trim($('#' + updateId).html())) {
                 $.ajax({
                     type: 'POST',
                     url: "${createLink(controller: "sports", action: "list")}",
-                    data: {'pTab': pTab, 'pTypes': pTypes},
+                    data: {'pTab': pTab, 'pType': pType},
                     traditional: true,
                     success: function (data, textStatus) {
                         $('#' + updateId).html(data);
@@ -30,7 +30,7 @@
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
                         <a data-toggle="pill"
-                           onclick="getList('${tab?.tab}', '${tab?.dataType as grails.converters.JSON}', 'tab${tab?.tab}');"
+                           onclick="getList('${tab?.tab}', '${tab?.dataType}', 'tab${tab?.tab}');"
                            class="${[0: 'active'][i]}" href="#tab${tab?.tab}">
                             <i class="fa fa-th-list"></i>
                             <g:message code="sports.tab${tab?.tab}.label"/>

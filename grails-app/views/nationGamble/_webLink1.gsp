@@ -1,7 +1,11 @@
-<g:each in="${dataTypes}" var="dataType" status="i">
+<g:each in="${Types}" var="Type" status="i">
     <div class="panel panel-default">
         <div class="panel-heading text-center">
-            <h4><strong><bs:bs101 ptype="NW200TYPE" pcode="${dataType}"/></strong></h4>
+            <h4>
+                <strong>
+                    <g:message code="nationGamble.tab${pTab}.label"/>
+                </strong>
+            </h4>
         </div>
 
         <div class="panel-body">
@@ -16,7 +20,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${nw200I.findAll { it.type in dataType }}" var="nw200" status="i2">
+                    <g:each in="${nw200I.findAll { it.type in Type }}" var="nw200" status="i2">
                         <tr>
                             <td>${i2 + 1}</td>
                             <td>

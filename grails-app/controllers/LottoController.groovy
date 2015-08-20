@@ -13,75 +13,75 @@ class LottoController {
     //       context => NW400
     //       list => NW500
     static def alltabs = [
-            [tab: '01', subTab: [[tab: '01' ,viewType: 'video', dataType: [] ],
-                                 [tab: '02' ,viewType: '', dataType: [''] ],
-                                 [tab: '03' ,viewType: '', dataType: [''] ],
-                                 [tab: '04' ,viewType: '', dataType: [''] ],
-                                 [tab: '05' ,viewType: '', dataType: [''] ],
-                                 [tab: '06' ,viewType: '', dataType: [''] ],
-                                 [tab: '07' ,viewType: '', dataType: [''] ],
-                                 [tab: '08' ,viewType: '', dataType: [''] ],
-                                 [tab: '09' ,viewType: '', dataType: [''] ],
-                                 [tab: '10' ,viewType: '', dataType: [''] ],
-                                 [tab: '11' ,viewType: '', dataType: [''] ],
-                                 [tab: '12' ,viewType: '', dataType: [''] ]]],
-//            [tab: '02', subTab: [[tab: '01' ,Type: '', dataType: [''] ],
-//                                 [tab: '02' ,Type: '', dataType: [''] ],
-//                                 [tab: '03' ,Type: '', dataType: [''] ],
-//                                 [tab: '04' ,Type: '', dataType: [''] ],
-//                                 [tab: '05' ,Type: '', dataType: [''] ],
-//                                 [tab: '06' ,Type: '', dataType: [''] ],
-//                                 [tab: '07' ,Type: '', dataType: [''] ],
-//                                 [tab: '08' ,Type: '', dataType: [''] ],
-//                                 [tab: '09' ,Type: '', dataType: [''] ],
-//                                 [tab: '10' ,Type: '', dataType: [''] ],
-//                                 [tab: '11' ,Type: '', dataType: [''] ]]],
-            [tab: '03', subTab: [[tab: '01' ,viewType: 'context', dataType: ['101'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['01'] ],
-                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
-            [tab: '04', subTab: [[tab: '01' ,viewType: 'context', dataType: ['102'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['02'] ],
-                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
-            [tab: '05', subTab: [[tab: '01' ,viewType: 'context', dataType: ['103'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['03'] ],
-                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
-            [tab: '06', subTab: [[tab: '01' ,viewType: 'context', dataType: ['104'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['04'] ],
-                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
-            [tab: '07', subTab: [[tab: '01' ,viewType: 'context', dataType: ['105'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['05'] ],
-                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
-            [tab: '08', subTab: [[tab: '01' ,viewType: 'context', dataType: ['106'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['06'] ],
-                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
-            [tab: '09', subTab: [[tab: '01' ,viewType: 'context', dataType: ['107'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['07'] ],
-                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
-            [tab: '10', subTab: [[tab: '01' ,viewType: 'context', dataType: ['108'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['08'] ],
-                                 [tab: '03' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '04' ,viewType: 'history', dataType: [''] ],
-                                 [tab: '05' ,viewType: '', dataType: [''] ]]],
-            [tab: '11', subTab: [[tab: '01' ,viewType: 'context', dataType: ['109'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['09'] ]]],
-            [tab: '12', subTab: [[tab: '01' ,viewType: 'context', dataType: ['110'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['10'] ]]],
-            [tab: '13', subTab: [[tab: '01' ,viewType: 'context', dataType: ['111'] ],
-                                 [tab: '02' ,viewType: 'history', dataType: ['11'] ]]]
+            [tab: '01', subTab: [[tab: '01' ,viewType: 'video', dataType: '' ],
+                                 [tab: '02' ,viewType: 'build', dataType: '' ],
+                                 [tab: '03' ,viewType: 'build', dataType: '' ],
+                                 [tab: '04' ,viewType: 'build', dataType: '' ],
+                                 [tab: '05' ,viewType: 'build', dataType: '' ],
+                                 [tab: '06' ,viewType: 'build', dataType: '' ],
+                                 [tab: '07' ,viewType: 'build', dataType: '' ],
+                                 [tab: '08' ,viewType: 'build', dataType: '' ],
+                                 [tab: '09' ,viewType: 'build', dataType: '' ],
+                                 [tab: '10' ,viewType: 'build', dataType: '' ],
+                                 [tab: '11' ,viewType: 'build', dataType: '' ],
+                                 [tab: '12' ,viewType: 'build', dataType: '' ]]],
+            [tab: '02', subTab: [[tab: '01' ,viewType: 'build', dataType: '' ],
+                                 [tab: '02' ,viewType: 'build', dataType: '' ],
+                                 [tab: '03' ,viewType: 'build', dataType: '' ],
+                                 [tab: '04' ,viewType: 'build', dataType: '' ],
+                                 [tab: '05' ,viewType: 'build', dataType: '' ],
+                                 [tab: '06' ,viewType: 'build', dataType: '' ],
+                                 [tab: '07' ,viewType: 'build', dataType: '' ],
+                                 [tab: '08' ,viewType: 'build', dataType: '' ],
+                                 [tab: '09' ,viewType: 'build', dataType: '' ],
+                                 [tab: '10' ,viewType: 'build', dataType: '' ],
+                                 [tab: '11' ,viewType: 'build', dataType: '' ]]],
+            [tab: '03', subTab: [[tab: '01' ,viewType: 'content1', dataType: '101' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '01' ],
+                                 [tab: '03' ,viewType: '', dataType: '' ],
+                                 [tab: '04' ,viewType: '', dataType: '' ],
+                                 [tab: '05' ,viewType: '', dataType: '' ]]],
+            [tab: '04', subTab: [[tab: '01' ,viewType: 'content1', dataType: '102' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '02' ],
+                                 [tab: '03' ,viewType: '', dataType: '' ],
+                                 [tab: '04' ,viewType: '', dataType: '' ],
+                                 [tab: '05' ,viewType: '', dataType: '' ]]],
+            [tab: '05', subTab: [[tab: '01' ,viewType: 'content1', dataType: '103' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis2', dataType: '03' ],
+                                 [tab: '03' ,viewType: '', dataType: '' ],
+                                 [tab: '04' ,viewType: '', dataType: '' ],
+                                 [tab: '05' ,viewType: '', dataType: '' ]]],
+            [tab: '06', subTab: [[tab: '01' ,viewType: 'content1', dataType: '104' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '04' ],
+                                 [tab: '03' ,viewType: '', dataType: '' ],
+                                 [tab: '04' ,viewType: '', dataType: '' ],
+                                 [tab: '05' ,viewType: '', dataType: '' ]]],
+            [tab: '07', subTab: [[tab: '01' ,viewType: 'content1', dataType: '105' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '05' ],
+                                 [tab: '03' ,viewType: '', dataType: '' ],
+                                 [tab: '04' ,viewType: '', dataType: '' ],
+                                 [tab: '05' ,viewType: '', dataType: '' ]]],
+            [tab: '08', subTab: [[tab: '01' ,viewType: 'content1', dataType: '106' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '06' ],
+                                 [tab: '03' ,viewType: '', dataType: '' ],
+                                 [tab: '04' ,viewType: '', dataType: '' ],
+                                 [tab: '05' ,viewType: '', dataType: '' ]]],
+            [tab: '09', subTab: [[tab: '01' ,viewType: 'content1', dataType: '107' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '07' ],
+                                 [tab: '03' ,viewType: '', dataType: '' ],
+                                 [tab: '04' ,viewType: '', dataType: '' ],
+                                 [tab: '05' ,viewType: '', dataType: '' ]]],
+            [tab: '10', subTab: [[tab: '01' ,viewType: 'content1', dataType: '108' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '08' ],
+                                 [tab: '03' ,viewType: '', dataType: '' ],
+                                 [tab: '04' ,viewType: '', dataType: '' ],
+                                 [tab: '05' ,viewType: '', dataType: '' ]]],
+            [tab: '11', subTab: [[tab: '01' ,viewType: 'content1', dataType: '109' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis3', dataType: '09' ]]],
+            [tab: '12', subTab: [[tab: '01' ,viewType: 'content1', dataType: '110' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis3', dataType: '10' ]]],
+            [tab: '13', subTab: [[tab: '01' ,viewType: 'content1', dataType: '111' ],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis4', dataType: '11' ]]]
     ]
 
     def index() {
@@ -89,8 +89,6 @@ class LottoController {
     }
 
     def list() {
-        println "params = " + params
-
         if (params.pTab in ["01"]) {
             if (params.pSubTab in ["01"]) {
                 render template: "/lotto/video"
@@ -100,21 +98,31 @@ class LottoController {
         } else if (params.pTab in ["02"]) {
             render template: "/base/build"
         } else if (params.pTab in ["03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13"]) {
-            if (params.pSubTab in ["01"]) {
-                params.pType = Eval.me(params.pTypes)[0]
+            if (params.pSubTab in ["01"]) { //遊戲介紹
                 def nw400I = netWinService.getNw400List(params)
 
                 render template: "/lotto/content1", model: [nw400I: nw400I]
-            } else if (params.pSubTab in ["02"]) {
-                params.pType = Eval.me(params.pTypes)[0]
-                params.pRows = 25
-                def result = netWinService.getLottoList(params)
-
-                render template: "/lotto/history1", model: [nw300I: result.list, totalCount: result.counts, rowCount: result.rowCounts]
-            } else if (params.pSubTab in ["03"]) {
+            } else if (params.pSubTab in ["02"]) { //歷史數據
+                if (params.pType in ["01","02","04","05","06","07","08"]) {
+                    params.max = 25
+                    def result = netWinService.getHistoryDataAnyalysis1(params)
+                    render template: "/lotto/historyDataAnalysis1", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
+                                                                            pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+                } else if (params.pType in ["03"]) { //威力彩
+                    params.max = 25
+                    def result = netWinService.getHistoryDataAnyalysis2(params)
+                    render template: "/lotto/historyDataAnalysis2", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
+                                                                            pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+                } else if (params.pType in ["09","10"]) { //3星彩, 4星彩
+                    render template: "/base/build"
+                } else if (params.pType in ["11"]) { //賓果
+                    render template: "/base/build"
+                }
+            } else if (params.pSubTab in ["03"]) { //連開號分布圖
                 redirect action: "showBigLuckToa"
-            } else if (params.pSubTab in ["03","04","05"]) {
-                println 'XXXXXXXXXXXXXXXXXXXXX'
+            } else if (params.pSubTab in ["04"]) { //連續號分布圖
+                redirect action: "showBigLuckToa"
+            } else if (params.pSubTab in ["05"]) { //尾數分析
                 redirect action: "showLastNumberAnalysis"
             }
         } else {
@@ -122,11 +130,21 @@ class LottoController {
         }
     }
 
-    def historyFilter(params) {
+    def historyDataAnyalysis1Filter() {
         //呼叫Service
-        def result = netWinService.getLottoList(params)
+        def result = netWinService.getHistoryDataAnyalysis1(params)
         //輸出查詢結果
-        render template: "/lotto/history1", model: [nw300I: result.list, totalCount: result.counts, rowCount: result.rowCounts]
+        render template: "/lotto/historyDataAnalysis1", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
+                                                                pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+    }
+
+
+    def historyDataAnyalysis2Filter() {
+        //呼叫Service
+        def result = netWinService.getHistoryDataAnyalysis2(params)
+        //輸出查詢結果
+        render template: "/lotto/historyDataAnalysis2", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
+                                                                pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def showBigLuckToa () {
@@ -170,7 +188,7 @@ class LottoController {
                   FROM NW300 NW3
                   LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
                   WHERE 1=1
-                  AND NW3.TYPE = '08'
+                  AND NW3.TYPE = '05'
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
                   ) X
                   WHERE ROWNUM <= 20
@@ -216,7 +234,7 @@ class LottoController {
                   FROM NW300 NW3
                   LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
                   WHERE 1=1
-                  AND NW3.TYPE = '08'
+                  AND NW3.TYPE = '05'
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
                   ) x
                   where rownum <= 20
@@ -267,11 +285,11 @@ class LottoController {
                       MAX(NW32.PERIODS) PER
                       FROM NW300 NW32
                       WHERE 1=1
-                      and nw32.TYPE = '08'
+                      and nw32.TYPE = '05'
                       and nw32.opendt between to_date('20140101','yyyymmdd') and to_date('20141202','yyyymmdd')
                    ) NWMAX ON 1=1
                    WHERE 1=1
-                   AND NW3.TYPE = '08'
+                   AND NW3.TYPE = '05'
                    and nw3.opendt between to_date('20140101','yyyymmdd') and to_date('20141202','yyyymmdd')
                    """
 
@@ -287,7 +305,7 @@ class LottoController {
             everNum = (list2.max())?.toInteger()
         }
 
-        render(template: '/lotto/history', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300EverInstance: result3, everNum: everNum])
+        render(template: '/lotto/tpShowBigLuckToa', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300EverInstance: result3, everNum: everNum])
     }
 
 
@@ -336,7 +354,7 @@ class LottoController {
                   FROM NW300 NW3
                   LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
                   WHERE 1=1
-                  AND NW3.TYPE = '08'
+                  AND NW3.TYPE = '05'
                   AND NW31.ISSPNO = 0
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
                   ) X
@@ -382,7 +400,7 @@ class LottoController {
                   FROM NW300 NW3
                   LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
                   WHERE 1=1
-                  AND NW3.TYPE = '08'
+                  AND NW3.TYPE = '05'
                   AND NW31.ISSPNO = 0
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
                   ) x
@@ -437,7 +455,7 @@ class LottoController {
                   FROM NW300 NW3
                   LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
                   WHERE 1=1
-                  AND NW3.TYPE = '08'
+                  AND NW3.TYPE = '05'
                   AND NW31.ISSPNO = 0
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
                   ) x
