@@ -445,12 +445,12 @@ class NetWinService {
 
         result.maxNum = resultList[0].collect {it.value}.max()
 
-        resultList[0].collect {
-            println "it = " + it
-            println "it2 = " + it2
+//        resultList[0].collect {
+//            println "it = " + it
+//            println "it2 = " + it2
 //            cnts += result.columnsNOs.findAll{it2 -> (it2%10) == it}.size()
 //            result.createColumn += cnts
-        }
+//        }
 
         result.list = resultList
         result.counts = resultList.size()
