@@ -537,4 +537,95 @@ class LottoController {
     }
 
 
+
+    def showBingoAnalysis () {
+
+        println '===showBingoAnalysis==='
+
+        def showpage = params?.showpage?:20 //近幾期
+        def sdt = params?.sdt //開始日期
+        def edt = params?.edt //結束日期
+        def speriods = params?.speriods //開始期數
+        def eperiods = params?.eperiods //結束期數
+        def s = new Sql(dataSource)
+
+        def sql = """
+                  SELECT x.*,
+                  (X.NO01+X.NO02+X.NO03+X.NO04+X.NO05+X.NO06+X.NO07+X.NO08+X.NO09+X.NO10) tr10,
+                  (X.NO11+X.NO12+X.NO13+X.NO14+X.NO15+X.NO16+X.NO17+X.NO18+X.NO19+X.NO20) tr20,
+                  (X.NO21+X.NO22+X.NO23+X.NO24+X.NO25+X.NO26+X.NO27+X.NO28+X.NO29+X.NO30) tr30,
+                  (X.NO31+X.NO32+X.NO33+X.NO34+X.NO35+X.NO36+X.NO37+X.NO38+X.NO39+X.NO40) tr40,
+                  (X.NO41+X.NO42+X.NO43+X.NO44+X.NO45+X.NO46+X.NO47+X.NO48+X.NO49+X.NO50) tr50,
+                  (X.NO51+X.NO52+X.NO53+X.NO54+X.NO55+X.NO56+X.NO57+X.NO58+X.NO59+X.NO60) tr60,
+                  (X.NO61+X.NO62+X.NO63+X.NO64+X.NO65+X.NO66+X.NO67+X.NO68+X.NO69+X.NO70) tr70,
+                  (X.NO71+X.NO72+X.NO73+X.NO74+X.NO75+X.NO76+X.NO77+X.NO78+X.NO79+X.NO80) tr80,
+                  (X.NO01+X.NO11+X.NO21+X.NO31+X.NO41+X.NO51+X.NO61+X.NO71) tdx1,
+                  (X.NO02+X.NO12+X.NO22+X.NO32+X.NO42+X.NO52+X.NO62+X.NO72) tdx2,
+                  (X.NO03+X.NO13+X.NO23+X.NO33+X.NO43+X.NO53+X.NO63+X.NO73) tdx3,
+                  (X.NO04+X.NO14+X.NO24+X.NO34+X.NO44+X.NO54+X.NO64+X.NO74) tdx4,
+                  (X.NO05+X.NO15+X.NO25+X.NO35+X.NO45+X.NO55+X.NO65+X.NO75) tdx5,
+                  (X.NO06+X.NO16+X.NO26+X.NO36+X.NO46+X.NO56+X.NO66+X.NO76) tdx6,
+                  (X.NO07+X.NO17+X.NO27+X.NO37+X.NO47+X.NO57+X.NO67+X.NO77) tdx7,
+                  (X.NO08+X.NO18+X.NO28+X.NO38+X.NO48+X.NO58+X.NO68+X.NO78) tdx8,
+                  (X.NO09+X.NO19+X.NO29+X.NO39+X.NO49+X.NO59+X.NO69+X.NO79) tdx9,
+                  (X.NO10+X.NO20+X.NO30+X.NO40+X.NO50+X.NO60+X.NO70+X.NO80) tdx0
+                  FROM (
+                  SELECT
+                  NW3.PERIODS,
+                  TRUNC(NW3.OPENDT) OPENDT,
+                  SUM(DECODE(NW31.NO,1,1,0)) NO01, SUM(DECODE(NW31.NO,2,1,0)) NO02,
+                  SUM(DECODE(NW31.NO,3,1,0)) NO03, SUM(DECODE(NW31.NO,4,1,0)) NO04,
+                  SUM(DECODE(NW31.NO,5,1,0)) NO05, SUM(DECODE(NW31.NO,6,1,0)) NO06,
+                  SUM(DECODE(NW31.NO,7,1,0)) NO07, SUM(DECODE(NW31.NO,8,1,0)) NO08,
+                  SUM(DECODE(NW31.NO,9,1,0)) NO09, SUM(DECODE(NW31.NO,10,1,0)) NO10,
+                  SUM(DECODE(NW31.NO,11,1,0)) NO11, SUM(DECODE(NW31.NO,12,1,0)) NO12,
+                  SUM(DECODE(NW31.NO,13,1,0)) NO13, SUM(DECODE(NW31.NO,14,1,0)) NO14,
+                  SUM(DECODE(NW31.NO,15,1,0)) NO15, SUM(DECODE(NW31.NO,16,1,0)) NO16,
+                  SUM(DECODE(NW31.NO,17,1,0)) NO17, SUM(DECODE(NW31.NO,18,1,0)) NO18,
+                  SUM(DECODE(NW31.NO,19,1,0)) NO19, SUM(DECODE(NW31.NO,20,1,0)) NO20,
+                  SUM(DECODE(NW31.NO,21,1,0)) NO21, SUM(DECODE(NW31.NO,22,1,0)) NO22,
+                  SUM(DECODE(NW31.NO,23,1,0)) NO23, SUM(DECODE(NW31.NO,24,1,0)) NO24,
+                  SUM(DECODE(NW31.NO,25,1,0)) NO25, SUM(DECODE(NW31.NO,26,1,0)) NO26,
+                  SUM(DECODE(NW31.NO,27,1,0)) NO27, SUM(DECODE(NW31.NO,28,1,0)) NO28,
+                  SUM(DECODE(NW31.NO,29,1,0)) NO29, SUM(DECODE(NW31.NO,30,1,0)) NO30,
+                  SUM(DECODE(NW31.NO,31,1,0)) NO31, SUM(DECODE(NW31.NO,32,1,0)) NO32,
+                  SUM(DECODE(NW31.NO,33,1,0)) NO33, SUM(DECODE(NW31.NO,34,1,0)) NO34,
+                  SUM(DECODE(NW31.NO,35,1,0)) NO35, SUM(DECODE(NW31.NO,36,1,0)) NO36,
+                  SUM(DECODE(NW31.NO,37,1,0)) NO37, SUM(DECODE(NW31.NO,38,1,0)) NO38,
+                  SUM(DECODE(NW31.NO,39,1,0)) NO39, SUM(DECODE(NW31.NO,40,1,0)) NO40,
+                  SUM(DECODE(NW31.NO,41,1,0)) NO41, SUM(DECODE(NW31.NO,42,1,0)) NO42,
+                  SUM(DECODE(NW31.NO,43,1,0)) NO43, SUM(DECODE(NW31.NO,44,1,0)) NO44,
+                  SUM(DECODE(NW31.NO,45,1,0)) NO45, SUM(DECODE(NW31.NO,46,1,0)) NO46,
+                  SUM(DECODE(NW31.NO,47,1,0)) NO47, SUM(DECODE(NW31.NO,48,1,0)) NO48,
+                  SUM(DECODE(NW31.NO,49,1,0)) NO49, SUM(DECODE(NW31.NO,50,1,0)) NO50,
+                  SUM(DECODE(NW31.NO,51,1,0)) NO51, SUM(DECODE(NW31.NO,52,1,0)) NO52,
+                  SUM(DECODE(NW31.NO,53,1,0)) NO53, SUM(DECODE(NW31.NO,54,1,0)) NO54,
+                  SUM(DECODE(NW31.NO,55,1,0)) NO55, SUM(DECODE(NW31.NO,56,1,0)) NO56,
+                  SUM(DECODE(NW31.NO,57,1,0)) NO57, SUM(DECODE(NW31.NO,58,1,0)) NO58,
+                  SUM(DECODE(NW31.NO,59,1,0)) NO59, SUM(DECODE(NW31.NO,60,1,0)) NO60,
+                  SUM(DECODE(NW31.NO,61,1,0)) NO61, SUM(DECODE(NW31.NO,62,1,0)) NO62,
+                  SUM(DECODE(NW31.NO,63,1,0)) NO63, SUM(DECODE(NW31.NO,64,1,0)) NO64,
+                  SUM(DECODE(NW31.NO,65,1,0)) NO65, SUM(DECODE(NW31.NO,66,1,0)) NO66,
+                  SUM(DECODE(NW31.NO,67,1,0)) NO67, SUM(DECODE(NW31.NO,68,1,0)) NO68,
+                  SUM(DECODE(NW31.NO,69,1,0)) NO69, SUM(DECODE(NW31.NO,70,1,0)) NO70,
+                  SUM(DECODE(NW31.NO,71,1,0)) NO71, SUM(DECODE(NW31.NO,72,1,0)) NO72,
+                  SUM(DECODE(NW31.NO,73,1,0)) NO73, SUM(DECODE(NW31.NO,74,1,0)) NO74,
+                  SUM(DECODE(NW31.NO,75,1,0)) NO75, SUM(DECODE(NW31.NO,76,1,0)) NO76,
+                  SUM(DECODE(NW31.NO,77,1,0)) NO77, SUM(DECODE(NW31.NO,78,1,0)) NO78,
+                  SUM(DECODE(NW31.NO,79,1,0)) NO79, SUM(DECODE(NW31.NO,80,1,0)) NO80
+                  FROM NW300 NW3
+                  LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
+                  WHERE 1=1
+                  AND NW3.TYPE = '11'
+                  AND NW31.ISSPNO = 0
+                  GROUP BY TRUNC(NW3.OPENDT), PERIODS
+                  ) X
+                  WHERE ROWNUM <= 20
+                  """
+        def result1 = s.rows(sql)
+
+        render(template: '/lotto/bingoDataAnalysis', model: [nw300InstanceList: result1])
+    }
+
+
 }
