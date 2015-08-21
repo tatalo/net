@@ -364,7 +364,7 @@ class LottoController {
             everNum = (list2.max())?.toInteger()
         }
 
-        render(template: '/lotto/tpShowBigLuckToa', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300EverInstance: result3, everNum: everNum])
+        render(template: '/lotto/＿ShowBigLuckToa', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300EverInstance: result3, everNum: everNum])
     }
 
 
