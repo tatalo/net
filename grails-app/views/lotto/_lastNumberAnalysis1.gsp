@@ -15,19 +15,19 @@
             </div>
 
             <div class="pull-right">
-                <g:remoteLink class="btn btn-primary" action="cntsOpenAnalysis1Filter"
+                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis1Filter"
                               params="[max: 25, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">25</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="cntsOpenAnalysis1Filter"
+                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis1Filter"
                               params="[max: 50, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">50</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="cntsOpenAnalysis1Filter"
+                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis1Filter"
                               params="[max: 100, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">100</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="cntsOpenAnalysis1Filter"
+                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis1Filter"
                               params="[max: 150, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">150</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="cntsOpenAnalysis1Filter"
+                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis1Filter"
                               params="[max: 200, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">200</g:remoteLink>
             </div>
@@ -40,84 +40,73 @@
             <table border="1" style="width: 100%">
                 <tbody id="tbody3">
                 <tr>
-                    <th class="lottoTitleINSERTNO" colspan="3">
-                        <div class="center-block">投注號碼</div>
+                    <th class="lottoTitleINSERTNO" colspan="3" >
+                        <div class="center-block">標注號碼</div>
                     </th>
-                    <g:each var="i" in="${(columnsNOs)}">
+                    <g:set var="vClass" value="lottoTitleNO"/>
+                    <g:each var="i" in="${(columnsNOs)}" status="j">
                         <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
-                        <th class="lottoTitleNO">
+                        <th class="${vClass}">
                             <div class="center-block">
                                 ${pNum}
                             </div>
+                            <g:if test="${(j+1) in createColumn}">
+                                <g:if test="${createColumn.indexOf(j+1)%2 == 1}">
+                                    <g:set var="vClass" value="lottoTitleNO"/>
+                                </g:if>
+                                <g:else>
+                                    <g:set var="vClass" value="lottoTitleNO2"/>
+                                </g:else>
+                            </g:if>
                         </th>
                     </g:each>
                 </tr>
                 </tbody>
-                <tbody id="tbody4">
-                <th class="lottoTitleCNTS" colspan="3">
-                    <div class="center-block">出現次數</div>
+                <tbody id="tbody3">
+                <th class="lottoTitleCNTS_NoH" colspan="3">
+                    <div class="center-block">標注號碼次數</div>
                 </th>
-                <g:each var="i" in="${(columnsNOs)}">
+                <g:set var="vClass" value="lottoTD"/>
+                <g:each var="i" in="${(columnsNOs)}" status="j">
                     <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
-                    <td class="tbody4td pull-down lottoTD" style=" height: 100px">
+                    <td class="tbody4td ${vClass}">
                         <div class="text-center">
                             ${nw300CNTSI[0]?."NO${pNum}"}
                         </div>
-                        <div class="linepercent" style="height: ${(75 * (nw300CNTSI[0]?."NO${pNum}")) / maxNum}px;"/>
                     </td>
+                    <g:if test="${(j+1) in createColumn}">
+                        <g:if test="${createColumn.indexOf(j+1)%2 == 1}">
+                            <g:set var="vClass" value="lottoTD"/>
+                        </g:if>
+                        <g:else>
+                            <g:set var="vClass" value="lottoTD2"/>
+                        </g:else>
+                    </g:if>
                 </g:each>
                 </tbody>
-
-                <tbody id="tbody1">
-                <tr>
-                    <th class="lottoTitleNumber">
-                        <div class="center-block">#</div>
-                    </th>
-                    <th class="lottoTitlePERIODS">
-                        <div class="center-block">期次</div>
-                    </th>
-                    <th class="lottoTitleOPENDT">
-                        <div class="center-block">日期</div>
-                    </th>
-                    <g:each var="i" in="${(columnsNOs)}">
-                        <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
-                        <th class="lottoTitleNO">
-                            <div class="center-block">
-                                ${pNum}
+                <tbody id="tbody4">
+                <th class="lottoTitleSERIAL" colspan="3">
+                    <div class="center-block">出現次數</div>
+                </th>
+                <g:set var="chkColumn" value="${0}"/>
+                <g:set var="sumCnts" value="${0}"/>
+                <g:each var="i" in="${(columnsNOs)}" status="j">
+                    <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
+                    <g:set var="chkColumn" value="${chkColumn+1}"/>
+                    <g:set var="sumCnts" value="${sumCnts+(nw300CNTSI[0]?."NO${pNum}")}"/>
+                    <g:if test="${(j+1) in createColumn}">
+                        <td class="tbody4td pull-down lottoTD" colspan="${chkColumn}" style=" height: 100px">
+                            <div class="text-center boldRed">
+                                ${sumCnts}
                             </div>
-                        </th>
-                    </g:each>
-                </tr>
-                </tbody>
-                <tbody class="perPeriodsNumber" id="tbody2">
-                <g:each in="${nw300I}" var="nw300" status="i">
-                    <tr id="tbody2tr${i + 1}">
-                        <td class="lottoTD text-center">
-                            <div class="center-block">
-                                ${i + 1}
-                            </div>
+                            <div class="linepercent_60p text-center" style="height: ${(80 * (sumCnts/(sumCnts+40)))}px;"/>
                         </td>
-                        <td class="lottoTD text-center">
-                            <div class="center-block">
-                                ${nw300?.PERIODS}
-                            </div>
-                        </td>
-                        <td class="lottoTD  text-center">
-                            <div class="center-block">
-                                <g:formatDate format="yyyyMMdd" date="${nw300?.OPENDT}"/>
-                            </div>
-                        </td>
-                        <g:each var="i2" in="${(columnsNOs)}">
-                            <g:set var="pNum" value="${g.formatNumber(number: i2, format: "00")}"/>
-                            <td class="text-center ${[0: '', 1: 'lottoDataNO', 2: 'lottoDataSPNO'][(nw300?."NO${pNum}" ?: 0) as Integer]}">
-                                <div class="center-block">
-                                    ${[0: '', 1: pNum, 2: pNum][(nw300?."NO${pNum}" ?: 0) as Integer]}
-                                </div>
-                            </td>
-                        </g:each>
-                    </tr>
+                        <g:set var="chkColumn" value="${0}"/>
+                        <g:set var="sumCnts" value="${0}"/>
+                    </g:if>
                 </g:each>
                 </tbody>
+                <g:render template="/lotto/lottoDataList1" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
             </table>
         </div>
     </div>

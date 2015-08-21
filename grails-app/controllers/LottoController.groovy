@@ -30,7 +30,6 @@ class LottoController {
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '01' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis1', dataType: '01' ],
                                  [tab: '04' ,viewType: 'serialOpenAnalysis1', dataType: '01' ],
-                                 [tab: '06' ,viewType: 'serialOpenAnalysis1', dataType: '01' ],
                                  [tab: '05' ,viewType: '', dataType: '01' ]]],
             [tab: '04', subTab: [[tab: '01' ,viewType: 'content1', dataType: '102' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '02' ],
@@ -137,12 +136,12 @@ class LottoController {
                 if (params.pType in ["01","02","04","05","06","07","08"]) {
                     def result = netWinService.getHistoryDataAnyalysis1(params)
                     def result2 = netWinService.getLastNumberAnalysis1(params)
-                    render template: "/lotto/lastNumberAnalysis1", model: [nw300LASTNUMI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
+                    render template: "/lotto/lastNumberAnalysis1", model: [createColumn: result2.createColumn, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["03"]) { //威力彩
                     def result = netWinService.getHistoryDataAnyalysis2(params)
                     def result2 = netWinService.getLastNumberAnalysis2(params)
-                    render template: "/lotto/lastNumberAnalysis2", model: [nw300LASTNUMI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
+                    render template: "/lotto/lastNumberAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 }
             } else if (params.pSubTab in ["06"]) { //test
@@ -175,9 +174,9 @@ class LottoController {
 
     def lastNumberAnalysis1Filter() {
         def result = netWinService.getHistoryDataAnyalysis1(params)
-        def result2 = netWinService.getCntsOpenAnalysis1(params)
-        render template: "/lotto/lastNumberAnalysis1", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
-                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+        def result2 = netWinService.getLastNumberAnalysis1(params)
+        render template: "/lotto/lastNumberAnalysis1", model: [createColumn: result2.createColumn, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
+                                                               pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def historyDataAnyalysis2Filter() {
@@ -201,7 +200,7 @@ class LottoController {
 
     def lastNumberAnalysis2Filter() {
         def result = netWinService.getHistoryDataAnyalysis1(params)
-        def result2 = netWinService.getCntsOpenAnalysis1(params)
+        def result2 = netWinService.getLastNumberAnalysis2(params)
         render template: "/lotto/lastNumberAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                              pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }

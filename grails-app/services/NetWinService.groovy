@@ -70,7 +70,7 @@ class NetWinService {
 
     def getHistoryDataAnyalysis1(params) { //歷史數據: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
         def result = [:]
-        result.columnsNOs = dataService."lotto${params.pType}".NOs
+        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort()
         result.haveSPNO = dataService."lotto${params.pType}".haveSPNO
 
         def query = new Sql(dataSource)
@@ -116,9 +116,9 @@ class NetWinService {
 
     def getHistoryDataAnyalysis2(params) { //歷史數據: 威力彩
         def result = [:]
-        result.columnsNOs = dataService."lotto${params.pType}".NOs
+        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort()
         result.haveSPNO = dataService."lotto${params.pType}".haveSPNO
-        result.columnsSPNOs = dataService."lotto${params.pType}".SPNOs
+        result.columnsSPNOs = dataService."lotto${params.pType}".SPNOs.sort()
 
         def query = new Sql(dataSource)
 
@@ -175,7 +175,7 @@ class NetWinService {
 
     def getCntsOpenAnalysis1(params) { //出現次數分析: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
         def result = [:]
-        result.columnsNOs = dataService."lotto${params.pType}".NOs
+        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort()
         result.haveSPNO = dataService."lotto${params.pType}".haveSPNO
 
         def query = new Sql(dataSource)
@@ -224,9 +224,9 @@ class NetWinService {
 
     def getCntsOpenAnalysis2(params) { //出現次數分析: 威力彩
         def result = [:]
-        result.columnsNOs = dataService."lotto${params.pType}".NOs
+        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort()
         result.haveSPNO = dataService."lotto${params.pType}".haveSPNO
-        result.columnsSPNOs = dataService."lotto${params.pType}".SPNOs
+        result.columnsSPNOs = dataService."lotto${params.pType}".SPNOs.sort()
 
 
         def query = new Sql(dataSource)
@@ -280,7 +280,7 @@ class NetWinService {
 
     def getLastOpenAnalysis1(params) { //最久未開分析: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
         def result = [:]
-        result.columnsNOs = dataService."lotto${params.pType}".NOs
+        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort()
         result.haveSPNO = dataService."lotto${params.pType}".haveSPNO
 
         def query = new Sql(dataSource)
@@ -333,11 +333,12 @@ class NetWinService {
 
     def getLastOpenAnalysis2(params) { //最久未開分析: 威力彩
         def result = [:]
-        result.columnsNOs = dataService."lotto${params.pType}".NOs
+        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort()
         result.haveSPNO = dataService."lotto${params.pType}".haveSPNO
-        result.columnsSPNOs = dataService."lotto${params.pType}".SPNOs
+        result.columnsSPNOs = dataService."lotto${params.pType}".SPNOs.sort()
 
         def query = new Sql(dataSource)
+
 
         def nosSql = ""
         result.columnsNOs.each {it
@@ -393,6 +394,68 @@ class NetWinService {
     }
 
     def getLastNumberAnalysis1(params) { //尾數分析: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
+        def result = [:]
+        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort{(it-1)%10}
+        result.haveSPNO = dataService."lotto${params.pType}".haveSPNO
+
+        result.createColumn = [] //算出需要產生td欄位
+        def cnts = 0
+        result.columnsNOs.collect{it%10}.unique().each{ it
+            cnts += result.columnsNOs.findAll{it2 -> (it2%10) == it}.size()
+            result.createColumn += cnts
+        }
+
+        println "result.creatColumn = " + result.createColumn
+
+        def query = new Sql(dataSource)
+
+        def nosSql = ""
+        result.columnsNOs.each {it
+            it = String.format('%02d', it)
+            nosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,1,1),0)) NO${it}, "
+        }
+
+        def mainSql = """
+                            SELECT
+                            ${nosSql}
+                            0 END
+                            FROM (
+                                SELECT
+                                NW3.OBJID,
+                                NW3.TYPE,
+                                NW3.PERIODS,
+                                NW3.OPENDT
+                                FROM NW300 NW3
+                                WHERE 1 = :pNum
+                                AND NW3.TYPE = :pType
+                                AND ROWNUM <= :max
+                                ORDER BY NW3.PERIODS DESC
+                            ) NW3
+                            LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
+                            ORDER BY NW3.PERIODS DESC
+                        """
+        def condition = [:]
+        condition.pNum = 1 //default parameters, avoid condition is null then happen exception
+        condition.pType = params.pType ?: "01" //require
+        condition.max = params.max ?: 25 //require
+
+//        println "sql = " + toolsService.transPRSSql(mainSql,condition)
+
+        def resultList = query.rows(mainSql, condition)
+
+        result.maxNum = resultList[0].collect {it.value}.max()
+
+        resultList[0].collect {
+            println "it = " + it
+            println "it2 = " + it2
+//            cnts += result.columnsNOs.findAll{it2 -> (it2%10) == it}.size()
+//            result.createColumn += cnts
+        }
+
+        result.list = resultList
+        result.counts = resultList.size()
+
+        return result
     }
     def getLastNumberAnalysis2(params) { //尾數分析: 威力彩
     }
