@@ -105,9 +105,4 @@
         var y = 150;
         window.open(url, title, config='height=500,width=500,top='+y+',left='+x);
     }
-
-    $('.pull-down').each(function() {
-        alert("1");
-        $(this).css('margin-top', $(this).parent().height()-$(this).height())
-    });
 </script>

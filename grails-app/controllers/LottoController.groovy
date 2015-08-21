@@ -14,17 +14,7 @@ class LottoController {
     //       list => NW500
     static def alltabs = [
             [tab: '01', subTab: [[tab: '01' ,viewType: 'video', dataType: '' ],
-                                 [tab: '02' ,viewType: 'build', dataType: '' ],
-                                 [tab: '03' ,viewType: 'build', dataType: '' ],
-                                 [tab: '04' ,viewType: 'build', dataType: '' ],
-                                 [tab: '05' ,viewType: 'build', dataType: '' ],
-                                 [tab: '06' ,viewType: 'build', dataType: '' ],
-                                 [tab: '07' ,viewType: 'build', dataType: '' ],
-                                 [tab: '08' ,viewType: 'build', dataType: '' ],
-                                 [tab: '09' ,viewType: 'build', dataType: '' ],
-                                 [tab: '10' ,viewType: 'build', dataType: '' ],
-                                 [tab: '11' ,viewType: 'build', dataType: '' ],
-                                 [tab: '12' ,viewType: 'build', dataType: '' ]]],
+                                 [tab: '02' ,viewType: 'build', dataType: '' ]]],
             [tab: '02', subTab: [[tab: '01' ,viewType: 'build', dataType: '' ],
                                  [tab: '02' ,viewType: 'build', dataType: '' ],
                                  [tab: '03' ,viewType: 'build', dataType: '' ],

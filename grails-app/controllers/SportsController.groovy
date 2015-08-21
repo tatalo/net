@@ -23,8 +23,6 @@ class SportsController {
     }
 
     def list() {
-        println "params = " + params
-
         def nw200I = netWinService.getNw200List(params)
 
         if (params.pTab in ["01","05"]) {
