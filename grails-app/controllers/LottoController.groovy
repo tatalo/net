@@ -136,16 +136,14 @@ class LottoController {
                 if (params.pType in ["01","02","04","05","06","07","08"]) {
                     def result = netWinService.getHistoryDataAnyalysis1(params)
                     def result2 = netWinService.getLastNumberAnalysis1(params)
-                    render template: "/lotto/lastNumberAnalysis1", model: [createColumn: result2.createColumn, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
+                    render template: "/lotto/lastNumberAnalysis1", model: [createColumn: result2.createColumn,columnsCNTS: result2.columnsCNTS, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["03"]) { //威力彩
                     def result = netWinService.getHistoryDataAnyalysis2(params)
                     def result2 = netWinService.getLastNumberAnalysis2(params)
-                    render template: "/lotto/lastNumberAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
-                                                                         pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+                    render template: "/lotto/lastNumberAnalysis2", model: [createColumn: result2.createColumn,columnsCNTS: result2.columnsCNTS, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
+                                                                           pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 }
-            } else if (params.pSubTab in ["06"]) { //test
-                redirect action: "showLastNumberAnalysis"
             }
         } else {
             render template: "/base/build"
@@ -175,7 +173,7 @@ class LottoController {
     def lastNumberAnalysis1Filter() {
         def result = netWinService.getHistoryDataAnyalysis1(params)
         def result2 = netWinService.getLastNumberAnalysis1(params)
-        render template: "/lotto/lastNumberAnalysis1", model: [createColumn: result2.createColumn, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
+        render template: "/lotto/lastNumberAnalysis1", model: [createColumn: result2.createColumn,columnsCNTS: result2.columnsCNTS, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
@@ -199,10 +197,10 @@ class LottoController {
     }
 
     def lastNumberAnalysis2Filter() {
-        def result = netWinService.getHistoryDataAnyalysis1(params)
+        def result = netWinService.getHistoryDataAnyalysis2(params)
         def result2 = netWinService.getLastNumberAnalysis2(params)
-        render template: "/lotto/lastNumberAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
-                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+        render template: "/lotto/lastNumberAnalysis2", model: [createColumn: result2.createColumn,columnsCNTS: result2.columnsCNTS, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
+                                                               pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def showBigLuckToa () {
@@ -363,7 +361,7 @@ class LottoController {
             everNum = (list2.max())?.toInteger()
         }
 
-        render(template: '/lotto/＿ShowBigLuckToa', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300EverInstance: result3, everNum: everNum])
+        render(template: '/lotto/BK/＿ShowBigLuckToa', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300EverInstance: result3, everNum: everNum])
     }
 
 
@@ -532,7 +530,7 @@ class LottoController {
             lastNum = (list2.max())?.toInteger()
         }
 
-        render(template: '/lotto/lastNumberAnalysis', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300LastInstance: result3, lastNum: lastNum])
+        render(template: '/lotto/BK/lastNumberAnalysis', model: [nw300InstanceList: result1, nw300CountInstance: result2, maxNum: maxNum, nw300LastInstance: result3, lastNum: lastNum])
     }
 
 

@@ -9,25 +9,23 @@
     <th class="lottoTitleOPENDT">
         <div class="center-block">日期</div>
     </th>
-    <g:each var="i" in="${(columnsNOs)}">
-        <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
+    <g:each var="Num" in="${(columnsNOs)}">
         <th class="lottoTitleNO">
             <div class="center-block">
-                ${pNum}
+                ${Num}
             </div>
         </th>
     </g:each>
-    <g:each var="i" in="${(columnsSPNOs)}">
-        <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
+    <g:each var="Num" in="${(columnsSPNOs)}">
         <th class="lottoTitleSPNO">
             <div class="center-block">
-                ${pNum}
+                ${Num}
             </div>
         </th>
     </g:each>
 </tr>
 </tbody>
-<tbody class="perPeriodsNumber">
+<tbody id="tbody2" class="perPeriodsNumber">
 <g:each in="${nw300I}" var="nw300" status="i">
     <tr id="tbody2tr${i + 1}">
         <td class="lottoTD text-center">
@@ -45,22 +43,30 @@
                 <g:formatDate format="yyyyMMdd" date="${nw300?.OPENDT}"/>
             </div>
         </td>
-        <g:each var="i2" in="${(columnsNOs)}">
-            <g:set var="pNum" value="${g.formatNumber(number: i2, format: "00")}"/>
-            <td class="text-center ${[0: '', 1: 'lottoDataNO', 2: 'lottoDataSPNO'][(nw300?."NO${pNum}" ?: 0) as Integer]}">
+        <g:each var="Num" in="${(columnsNOs)}">
+            <td class="text-center ${[0: '', 1: 'lottoDataNO', 2: 'lottoDataSPNO'][(nw300?."NO${Num}" ?: 0) as Integer]}">
                 <div class="center-block">
-                    ${[0: '', 1: pNum, 2: pNum][(nw300?."NO${pNum}" ?: 0) as Integer]}
+                    ${[0: '', 1: Num, 2: Num][(nw300?."NO${Num}" ?: 0) as Integer]}
                 </div>
             </td>
         </g:each>
-        <g:each var="i2" in="${(columnsSPNOs)}">
-            <g:set var="pNum" value="${g.formatNumber(number: i2, format: "00")}"/>
-            <td class="text-center ${[0: '', 1: 'lottoDataNO', 2: 'lottoDataSPNO'][(nw300?."SPNO${pNum}" ?: 0) as Integer]}">
+        <g:each var="Num" in="${(columnsSPNOs)}">
+            <td class="text-center ${[0: '', 1: 'lottoDataNO', 2: 'lottoDataSPNO'][(nw300?."SPNO${Num}" ?: 0) as Integer]}">
                 <div class="center-block">
-                    ${[0: '', 1: pNum, 2: pNum][(nw300?."SPNO${pNum}" ?: 0) as Integer]}
+                    ${[0: '', 1: Num, 2: Num][(nw300?."SPNO${Num}" ?: 0) as Integer]}
                 </div>
             </td>
         </g:each>
     </tr>
 </g:each>
 </tbody>
+<script>
+    $('tbody.perPeriodsNumber > tr > td').mouseover(function () {
+        var ind = $(this).index();
+        $('tbody.perPeriodsNumber > tr > td:nth-child(' + (ind + 1) + ')').css('background-color', '#97FFFF');
+    });
+    $('tbody.perPeriodsNumber > tr > td').mouseleave(function () {
+        var ind = $(this).index();
+        $('tbody.perPeriodsNumber > tr > td:nth-child(' + (ind + 1) + ')').css('background-color', '');
+    });
+</script>

@@ -15,19 +15,19 @@
             </div>
 
             <div class="pull-right">
-                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis1Filter"
+                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis2Filter"
                               params="[max: 25, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">25</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis1Filter"
+                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis2Filter"
                               params="[max: 50, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">50</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis1Filter"
+                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis2Filter"
                               params="[max: 100, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">100</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis1Filter"
+                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis2Filter"
                               params="[max: 150, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">150</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis1Filter"
+                <g:remoteLink class="btn btn-primary" action="lastNumberAnalysis2Filter"
                               params="[max: 200, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">200</g:remoteLink>
             </div>
@@ -59,6 +59,13 @@
                             </g:if>
                         </th>
                     </g:each>
+                    <g:each var="Num" in="${(columnsSPNOs)}">
+                        <th class="lottoTitleSPNO">
+                            <div class="center-block">
+                                ${Num}
+                            </div>
+                        </th>
+                    </g:each>
                 </tr>
                 </tbody>
                 <tbody id="tbody3">
@@ -81,6 +88,13 @@
                         </g:else>
                     </g:if>
                 </g:each>
+                <g:each var="Num" in="${(columnsSPNOs)}" status="j">
+                    <td class="tbody4td lottoTD">
+                        <div class="text-center">
+                            ${nw300CNTSI[0]?."SPNO${Num}"}
+                        </div>
+                    </td>
+                </g:each>
                 </tbody>
                 <tbody id="tbody4">
                 <th class="lottoTitleSERIAL" colspan="3">
@@ -96,7 +110,7 @@
                     </td>
                 </g:each>
                 </tbody>
-                <g:render template="/lotto/lottoDataList1" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
+                <g:render template="/lotto/lottoDataList2" model="[columnsNOs: columnsNOs, columnsSPNOs: columnsSPNOs, nw300I: nw300I]"/>
             </table>
         </div>
     </div>

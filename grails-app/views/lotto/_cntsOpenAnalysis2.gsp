@@ -8,7 +8,7 @@
     </div>
 
     <div class="panel-body">
-
+        <div class="panel panel-primary text-center">已顯示 ${totalCount} 筆最新資料</div>
         <div class="form-group center-block">
             <div class="pull-left">
                 <g:img dir="images" file="lotto/lotto${pType}.gif"/>
@@ -43,19 +43,17 @@
                     <th class="lottoTitleINSERTNO" colspan="3">
                         <div class="center-block">投注號碼</div>
                     </th>
-                    <g:each var="i" in="${(columnsNOs)}">
-                        <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
+                    <g:each var="Num" in="${(columnsNOs)}">
                         <th class="lottoTitleNO">
                             <div class="center-block">
-                                ${pNum}
+                                ${Num}
                             </div>
                         </th>
                     </g:each>
-                    <g:each var="i" in="${(columnsSPNOs)}">
-                        <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
+                    <g:each var="Num" in="${(columnsSPNOs)}">
                         <th class="lottoTitleSPNO">
                             <div class="center-block">
-                                ${pNum}
+                                ${Num}
                             </div>
                         </th>
                     </g:each>
@@ -65,24 +63,20 @@
                 <th class="lottoTitleCNTS" colspan="3">
                     <div class="center-block">出現次數</div>
                 </th>
-                <g:each var="i" in="${(columnsNOs)}">
-                    <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
-                    <td class="tbody4td pull-down lottoTD" style=" height: 100px">
+                <g:each var="Num" in="${(columnsNOs)}">
+                    <td class="tbody4td pull-down lottoTD">
                         <div class="text-center">
-                            ${nw300CNTSI[0]?."NO${pNum}"}
+                            ${nw300CNTSI[0]?."NO${Num}"}
                         </div>
-
-                        <div class="linepercent" style="height: ${(75 * (nw300CNTSI[0]?."NO${pNum}")) / maxNum}px;"/>
+                        <div class="linepercent" style="height: ${(75 * (nw300CNTSI[0]?."NO${Num}")) / maxNum}px;"/>
                     </td>
                 </g:each>
-                <g:each var="i" in="${(columnsSPNOs)}">
-                    <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
-                    <td class="tbody4td pull-down lottoTD" style=" height: 100px">
+                <g:each var="Num" in="${(columnsSPNOs)}">
+                    <td class="tbody4td pull-down lottoTD">
                         <div class="text-center">
-                            ${nw300CNTSI[0]?."SPNO${pNum}"}
+                            ${nw300CNTSI[0]?."SPNO${Num}"}
                         </div>
-
-                        <div class="linepercent" style="height: ${(75 * (nw300CNTSI[0]?."SPNO${pNum}")) / maxNum}px;"/>
+                        <div class="linepercent" style="height: ${(75 * (nw300CNTSI[0]?."SPNO${Num}")) / maxNum}px;"/>
                     </td>
                 </g:each>
                 </tbody>
