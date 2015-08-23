@@ -109,7 +109,9 @@ class LottoController {
                 } else if (params.pType in ["09","10"]) { //3星彩, 4星彩
                     render template: "/base/build"
                 } else if (params.pType in ["11"]) { //賓果
-                    render template: "/base/build"
+                    println '123123456'
+//                    render template: "/lotto/bingoDataAnalysis"
+                    showBingoAnalysis()
                 }
             } else if (params.pSubTab in ["03"]) { //連開號分布圖
                 if (params.pType in ["01","02","04","05","06","07","08"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
@@ -583,16 +585,16 @@ class LottoController {
                   (X.NO51+X.NO52+X.NO53+X.NO54+X.NO55+X.NO56+X.NO57+X.NO58+X.NO59+X.NO60) tr60,
                   (X.NO61+X.NO62+X.NO63+X.NO64+X.NO65+X.NO66+X.NO67+X.NO68+X.NO69+X.NO70) tr70,
                   (X.NO71+X.NO72+X.NO73+X.NO74+X.NO75+X.NO76+X.NO77+X.NO78+X.NO79+X.NO80) tr80,
-                  (X.NO01+X.NO11+X.NO21+X.NO31+X.NO41+X.NO51+X.NO61+X.NO71) tdx1,
-                  (X.NO02+X.NO12+X.NO22+X.NO32+X.NO42+X.NO52+X.NO62+X.NO72) tdx2,
-                  (X.NO03+X.NO13+X.NO23+X.NO33+X.NO43+X.NO53+X.NO63+X.NO73) tdx3,
-                  (X.NO04+X.NO14+X.NO24+X.NO34+X.NO44+X.NO54+X.NO64+X.NO74) tdx4,
-                  (X.NO05+X.NO15+X.NO25+X.NO35+X.NO45+X.NO55+X.NO65+X.NO75) tdx5,
-                  (X.NO06+X.NO16+X.NO26+X.NO36+X.NO46+X.NO56+X.NO66+X.NO76) tdx6,
-                  (X.NO07+X.NO17+X.NO27+X.NO37+X.NO47+X.NO57+X.NO67+X.NO77) tdx7,
-                  (X.NO08+X.NO18+X.NO28+X.NO38+X.NO48+X.NO58+X.NO68+X.NO78) tdx8,
-                  (X.NO09+X.NO19+X.NO29+X.NO39+X.NO49+X.NO59+X.NO69+X.NO79) tdx9,
-                  (X.NO10+X.NO20+X.NO30+X.NO40+X.NO50+X.NO60+X.NO70+X.NO80) tdx0
+                  (X.NO01+X.NO11+X.NO21+X.NO31+X.NO41+X.NO51+X.NO61+X.NO71) tdy1,
+                  (X.NO02+X.NO12+X.NO22+X.NO32+X.NO42+X.NO52+X.NO62+X.NO72) tdy2,
+                  (X.NO03+X.NO13+X.NO23+X.NO33+X.NO43+X.NO53+X.NO63+X.NO73) tdy3,
+                  (X.NO04+X.NO14+X.NO24+X.NO34+X.NO44+X.NO54+X.NO64+X.NO74) tdy4,
+                  (X.NO05+X.NO15+X.NO25+X.NO35+X.NO45+X.NO55+X.NO65+X.NO75) tdy5,
+                  (X.NO06+X.NO16+X.NO26+X.NO36+X.NO46+X.NO56+X.NO66+X.NO76) tdy6,
+                  (X.NO07+X.NO17+X.NO27+X.NO37+X.NO47+X.NO57+X.NO67+X.NO77) tdy7,
+                  (X.NO08+X.NO18+X.NO28+X.NO38+X.NO48+X.NO58+X.NO68+X.NO78) tdy8,
+                  (X.NO09+X.NO19+X.NO29+X.NO39+X.NO49+X.NO59+X.NO69+X.NO79) tdy9,
+                  (X.NO10+X.NO20+X.NO30+X.NO40+X.NO50+X.NO60+X.NO70+X.NO80) tdy0
                   FROM (
                   SELECT
                   NW3.PERIODS,
@@ -644,7 +646,7 @@ class LottoController {
                   AND NW31.ISSPNO = 0
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
                   ) X
-                  WHERE ROWNUM <= 20
+                  WHERE ROWNUM <= 6
                   """
         def result1 = s.rows(sql)
 
