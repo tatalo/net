@@ -16,9 +16,9 @@
     <div class="panel-heading text-center">
         <h4>
             <strong>${raw(nw400I?.title)}</strong>
-            <g:link class="btn btn-primary btn-xs" controller="base" action="editContent" target="${nw400I?.id}"
-                    id="${nw400I?.id}">編輯
-            </g:link>
+            %{--<g:link class="btn btn-primary btn-xs" controller="base" action="editContent" target="${nw400I?.id}"--}%
+                    %{--id="${nw400I?.id}">編輯--}%
+            %{--</g:link>--}%
         </h4>
     </div>
 

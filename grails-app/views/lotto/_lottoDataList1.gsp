@@ -9,10 +9,10 @@
     <th class="lottoTitleOPENDT">
         <div class="center-block">日期</div>
     </th>
-    <g:each var="i" in="${(columnsNOs)}">
+    <g:each var="Num" in="${(columnsNOs)}">
         <th class="lottoTitleNO">
             <div class="center-block">
-                ${i}
+                ${Num}
             </div>
         </th>
     </g:each>
@@ -47,11 +47,11 @@
 </g:each>
 </tbody>
 <script>
-    $('tbody[id="tbody2"] > tr > td').mouseover(function () {
+    $('tbody[id="tbody2"] > tr > td').on("mouseover", function (e) {
         var ind = $(this).index();
         $('tbody[id="tbody2"] > tr > td:nth-child(' + (ind + 1) + ')').css('background-color', '#97FFFF');
     });
-    $('tbody[id="tbody2"] > tr > td').mouseleave(function () {
+    $('tbody[id="tbody2"] > tr > td').on("mouseleave", function (e) {
         var ind = $(this).index();
         $('tbody[id="tbody2"] > tr > td:nth-child(' + (ind + 1) + ')').css('background-color', '');
     });

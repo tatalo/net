@@ -67,11 +67,18 @@ class LottoController {
                                  [tab: '04' ,viewType: 'lastOpenAnalysis1', dataType: '08' ],
                                  [tab: '05' ,viewType: 'lastNumberAnalysis1', dataType: '08' ]]],
             [tab: '11', subTab: [[tab: '01' ,viewType: 'content1', dataType: '109' ],
-                                 [tab: '02' ,viewType: 'historyDataAnalysis3', dataType: '09' ]]],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis3', dataType: '09' ],
+                                 [tab: '03' ,viewType: 'cntsOpenAnalysis3', dataType: '09' ],
+                                 [tab: '04' ,viewType: 'lastOpenAnalysis3', dataType: '09' ]]],
             [tab: '12', subTab: [[tab: '01' ,viewType: 'content1', dataType: '110' ],
-                                 [tab: '02' ,viewType: 'historyDataAnalysis3', dataType: '10' ]]],
+                                 [tab: '02' ,viewType: 'historyDataAnalysis3', dataType: '10' ],
+                                 [tab: '03' ,viewType: 'cntsOpenAnalysis3', dataType: '10' ],
+                                 [tab: '04' ,viewType: 'lastOpenAnalysis3', dataType: '10' ]]],
             [tab: '13', subTab: [[tab: '01' ,viewType: 'content1', dataType: '111' ],
-                                 [tab: '02' ,viewType: 'historyDataAnalysis4', dataType: '11' ]]]
+                                 [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '11' ],
+                                 [tab: '03' ,viewType: 'cntsOpenAnalysis1', dataType: '11' ],
+                                 [tab: '04' ,viewType: 'lastOpenAnalysis1', dataType: '11' ],
+                                 [tab: '06' ,viewType: 'historyDataAnalysis1', dataType: '11' ]]]
     ]
 
     def index() {
@@ -98,7 +105,7 @@ class LottoController {
 
                 render template: "/lotto/content1", model: [nw400I: nw400I]
             } else if (params.pSubTab in ["02"]) { //歷史數據
-                if (params.pType in ["01","02","04","05","06","07","08"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
+                if (params.pType in ["01","02","04","05","06","07","08","11"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
                     def result = netWinService.getHistoryDataAnyalysis1(params)
                     render template: "/lotto/historyDataAnalysis1", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
@@ -107,14 +114,12 @@ class LottoController {
                     render template: "/lotto/historyDataAnalysis2", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["09","10"]) { //3星彩, 4星彩
-                    render template: "/base/build"
-                } else if (params.pType in ["11"]) { //賓果
-                    println '123123456'
-//                    render template: "/lotto/bingoDataAnalysis"
-                    showBingoAnalysis()
+                    def result = netWinService.getHistoryDataAnyalysis3(params)
+                    render template: "/lotto/historyDataAnalysis3", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
+                                                                            pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 }
-            } else if (params.pSubTab in ["03"]) { //連開號分布圖
-                if (params.pType in ["01","02","04","05","06","07","08"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
+            } else if (params.pSubTab in ["03"]) { //出現次數分析
+                if (params.pType in ["01","02","04","05","06","07","08","11"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
                     def result = netWinService.getHistoryDataAnyalysis1(params)
                     def result2 = netWinService.getCntsOpenAnalysis1(params)
                     render template: "/lotto/cntsOpenAnalysis1", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
@@ -124,9 +129,14 @@ class LottoController {
                     def result2 = netWinService.getCntsOpenAnalysis2(params)
                     render template: "/lotto/cntsOpenAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+                } else if (params.pType in ["09","10"]) { //3星彩, 4星彩
+                    def result = netWinService.getHistoryDataAnyalysis3(params)
+                    def result2 = netWinService.getCntsOpenAnalysis3(params)
+                    render template: "/lotto/cntsOpenAnalysis3", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
+                                                                         pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 }
-            } else if (params.pSubTab in ["04"]) { //連續號分布圖
-                if (params.pType in ["01","02","04","05","06","07","08"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
+            } else if (params.pSubTab in ["04"]) { //最久未開分析
+                if (params.pType in ["01","02","04","05","06","07","08","11"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
                     def result = netWinService.getHistoryDataAnyalysis1(params)
                     def result2 = netWinService.getLastOpenAnalysis1(params)
                     render template: "/lotto/lastOpenAnalysis1", model: [nw300SERIALI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
@@ -135,6 +145,11 @@ class LottoController {
                     def result = netWinService.getHistoryDataAnyalysis2(params)
                     def result2 = netWinService.getLastOpenAnalysis2(params)
                     render template: "/lotto/lastOpenAnalysis2", model: [nw300SERIALI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
+                                                                         pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+                } else if (params.pType in ["09","10"]) { //3星彩, 4星彩
+                    def result = netWinService.getHistoryDataAnyalysis3(params)
+                    def result2 = netWinService.getLastOpenAnalysis3(params)
+                    render template: "/lotto/lastOpenAnalysis3", model: [nw300SERIALI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 }
             } else if (params.pSubTab in ["05"]) { //尾數分析
@@ -148,6 +163,12 @@ class LottoController {
                     def result2 = netWinService.getLastNumberAnalysis2(params)
                     render template: "/lotto/lastNumberAnalysis2", model: [createColumn: result2.createColumn,columnsCNTS: result2.columnsCNTS, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                            pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+                }
+            } else if (params.pSubTab in ["06"]) { //綜合分析
+                if (params.pType in ["11"]) { //賓果
+                    println '123123456'
+//                    render template: "/lotto/bingoDataAnalysis"
+                    showBingoAnalysis()
                 }
             }
         } else {
@@ -230,6 +251,25 @@ class LottoController {
         def result2 = netWinService.getLastNumberAnalysis2(params)
         render template: "/lotto/lastNumberAnalysis2", model: [createColumn: result2.createColumn,columnsCNTS: result2.columnsCNTS, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+    }
+    def historyDataAnyalysis3Filter() {
+        def result = netWinService.getHistoryDataAnyalysis3(params)
+        render template: "/lotto/historyDataAnalysis3", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
+                                                                pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+    }
+
+    def cntsOpenAnalysis3Filter() {
+        def result = netWinService.getHistoryDataAnyalysis3(params)
+        def result2 = netWinService.getCntsOpenAnalysis3(params)
+        render template: "/lotto/cntsOpenAnalysis3", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
+                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+    }
+
+    def lastOpenAnalysis3Filter() {
+        def result = netWinService.getHistoryDataAnyalysis3(params)
+        def result2 = netWinService.getLastOpenAnalysis3(params)
+        render template: "/lotto/lastOpenAnalysis3", model: [nw300SERIALI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
+                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def showBigLuckToa () {
@@ -645,6 +685,7 @@ class LottoController {
                   AND NW3.TYPE = '11'
                   AND NW31.ISSPNO = 0
                   GROUP BY TRUNC(NW3.OPENDT), PERIODS
+                  ORDER BY NW3.PERIODS DESC
                   ) X
                   WHERE ROWNUM <= 6
                   """

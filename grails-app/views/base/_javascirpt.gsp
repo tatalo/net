@@ -16,7 +16,7 @@
     }(document, 'script', 'facebook-jssdk'));
 
     function fbRefresh() {
-        FB.XFBML.parse();
+        FB.XFBML.parse(document.getElementById(''));
     }
 
     function addToFavorite(title, url) { //加入我的最愛

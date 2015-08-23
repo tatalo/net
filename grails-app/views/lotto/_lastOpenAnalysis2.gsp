@@ -72,15 +72,14 @@
                              style="height: ${(75 * (nw300SERIALI[0]?."NO${Num}")) / maxNum}px;"/>
                     </td>
                 </g:each>
-                <g:each var="i" in="${(columnsSPNOs)}">
-                    <g:set var="pNum" value="${g.formatNumber(number: i, format: "00")}"/>
+                <g:each var="Num" in="${(columnsSPNOs)}">
                     <td class="tbody4td pull-down lottoTD" style=" height: 100px">
                         <div class="text-center">
-                            ${nw300SERIALI[0]?."SPNO${pNum}"}
+                            ${nw300SERIALI[0]?."SPNO${Num}"}
                         </div>
 
                         <div class="linepercentEver"
-                             style="height: ${(75 * (nw300SERIALI[0]?."SPNO${pNum}")) / maxNum}px;"/>
+                             style="height: ${(75 * (nw300SERIALI[0]?."SPNO${Num}")) / maxNum}px;"/>
                     </td>
                 </g:each>
                 </tbody>
@@ -89,4 +88,9 @@
             </table>
         </div>
     </div>
+</div>
+
+<div class="form-group">
+    <div class="fb-comments" data-href="${grailsApplication.config.grails.serverURL}"
+         data-numposts="5"></div>
 </div>

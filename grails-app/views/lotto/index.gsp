@@ -13,6 +13,7 @@
                 traditional: true,
                 success: function (data, textStatus) {
                     $('#' + updateId).html(data);
+                    fbRefresh();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                 }

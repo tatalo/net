@@ -61,12 +61,12 @@
 </g:each>
 </tbody>
 <script>
-    $('tbody.perPeriodsNumber > tr > td').mouseover(function () {
+    $('tbody[id="tbody2"] > tr > td').on("mouseover", function (e) {
         var ind = $(this).index();
-        $('tbody.perPeriodsNumber > tr > td:nth-child(' + (ind + 1) + ')').css('background-color', '#97FFFF');
+        $('tbody[id="tbody2"] > tr > td:nth-child(' + (ind + 1) + ')').css('background-color', '#97FFFF');
     });
-    $('tbody.perPeriodsNumber > tr > td').mouseleave(function () {
+    $('tbody[id="tbody2"] > tr > td').on("mouseleave", function (e) {
         var ind = $(this).index();
-        $('tbody.perPeriodsNumber > tr > td:nth-child(' + (ind + 1) + ')').css('background-color', '');
+        $('tbody[id="tbody2"] > tr > td:nth-child(' + (ind + 1) + ')').css('background-color', '');
     });
 </script>

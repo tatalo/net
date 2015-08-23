@@ -15,19 +15,19 @@
             </div>
 
             <div class="pull-right">
-                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis2Filter"
+                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis3Filter"
                               params="[max: 25, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">25</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis2Filter"
+                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis3Filter"
                               params="[max: 50, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">50</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis2Filter"
+                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis3Filter"
                               params="[max: 100, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">100</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis2Filter"
+                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis3Filter"
                               params="[max: 150, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">150</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis2Filter"
+                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis3Filter"
                               params="[max: 200, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
                               update="${divId}">200</g:remoteLink>
             </div>
@@ -38,8 +38,7 @@
         <div class="table-responsive">
             <!-- Default panel contents -->
             <table border="1" style="width: 100%">
-                <g:render template="/lotto/lottoDataList2"
-                          model="[columnsNOs: columnsNOs, columnsSPNOs: columnsSPNOs, nw300I: nw300I]"/>
+                <g:render template="/lotto/lottoDataList3" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
             </table>
         </div>
     </div>
