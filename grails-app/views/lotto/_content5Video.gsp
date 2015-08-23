@@ -6,7 +6,7 @@
             </strong>
         </h4>
     </div>
-test
+
     <div class="panel-body">
         <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item"

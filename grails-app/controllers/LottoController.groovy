@@ -13,19 +13,19 @@ class LottoController {
     //       context => NW400
     //       list => NW500
     static def alltabs = [
-            [tab: '01', subTab: [[tab: '01' ,viewType: 'video', dataType: '' ],
-                                 [tab: '02' ,viewType: 'latestLotto', dataType: '' ]]],
-            [tab: '02', subTab: [[tab: '01' ,viewType: 'history', dataType: '01' ],
-                                 [tab: '02' ,viewType: 'history', dataType: '02' ],
-                                 [tab: '03' ,viewType: 'history', dataType: '03' ],
-                                 [tab: '04' ,viewType: 'history', dataType: '04' ],
-                                 [tab: '05' ,viewType: 'history', dataType: '05' ],
-                                 [tab: '06' ,viewType: 'history', dataType: '06' ],
-                                 [tab: '07' ,viewType: 'history', dataType: '07' ],
-                                 [tab: '08' ,viewType: 'history', dataType: '08' ],
-                                 [tab: '09' ,viewType: 'history', dataType: '09' ],
-                                 [tab: '10' ,viewType: 'history', dataType: '10' ],
-                                 [tab: '11' ,viewType: 'history', dataType: '11' ]]],
+            [tab: '01', subTab: [[tab: '01' ,viewType: 'content5Video', dataType: '' ],
+                                 [tab: '02' ,viewType: 'content2LatestLotto', dataType: '' ]]],
+            [tab: '02', subTab: [[tab: '01' ,viewType: 'content3History1', dataType: '01' ],
+                                 [tab: '02' ,viewType: 'content3History1', dataType: '02' ],
+                                 [tab: '03' ,viewType: 'content3History1', dataType: '03' ],
+                                 [tab: '04' ,viewType: 'content3History1', dataType: '04' ],
+                                 [tab: '05' ,viewType: 'content3History1', dataType: '05' ],
+                                 [tab: '06' ,viewType: 'content3History1', dataType: '06' ],
+                                 [tab: '07' ,viewType: 'content3History1', dataType: '07' ],
+                                 [tab: '08' ,viewType: 'content3History1', dataType: '08' ],
+                                 [tab: '09' ,viewType: 'content3History1', dataType: '09' ],
+                                 [tab: '10' ,viewType: 'content3History1', dataType: '10' ],
+                                 [tab: '11' ,viewType: 'content3History2', dataType: '11' ]]],
             [tab: '03', subTab: [[tab: '01' ,viewType: 'content1', dataType: '101' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '01' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis1', dataType: '01' ],
@@ -81,7 +81,7 @@ class LottoController {
     def list() {
         if (params.pTab in ["01"]) {
             if (params.pSubTab in ["01"]) {
-                render template: "/lotto/content4Video"
+                render template: "/lotto/content5Video"
             } else {
                 render template: "/lotto/content2LatestLotto"
             }
