@@ -6,36 +6,55 @@
     <script>
         function getList(pTab, pSubTab, pType, updateId, offset, refresh) { //加入取得後不需再更新功能
 //            if (!$.trim($('#' + updateId).html()) || refresh) {
+            $.ajax({
+                type: 'POST',
+                url: "${createLink(controller: "lotto", action: "list")}",
+                data: {'pTab': pTab, 'pSubTab': pSubTab, 'pType': pType, divId: updateId, offset: offset},
+                traditional: true,
+                success: function (data, textStatus) {
+                    $('#' + updateId).html(data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                }
+            });
+//            }
+        }
+
+        function getLottoHistory(pTab, pSubTab, pType, divId, modalId, queryType) { //取得查詢結果
+            var pYyyymm = "",pPeriods = "", pOpendt = ""
+            if (queryType == '1') {
+                pPeriods = $('#P_PERIODS_' + divId).val();
+            } else if (queryType == '2') {
+                pYyyymm = $('#P_YYYYMM_' + divId + "_year").val() + padLeft($('#P_YYYYMM_' + divId + "_month").val(), 2);
+            } else if (queryType == '3') {
+                pOpendt += $('#P_YYYYMM_' + divId + "_year").val() + padLeft($('#P_YYYYMM_' + divId + "_month").val(), 2) + padLeft($('#P_YYYYMM_' + divId + "_day").val(),2);
+            }
+            if (pYyyymm || pPeriods || pOpendt) {
                 $.ajax({
                     type: 'POST',
-                    url: "${createLink(controller: "lotto", action: "list")}",
-                    data: {'pTab': pTab, 'pSubTab': pSubTab, 'pType': pType, divId: updateId, offset: offset},
+                    url: "${createLink(controller: "lotto", action: "lottoHistoryFilter")}",
+                    data: {
+                        'pTab': pTab,
+                        'pSubTab': pSubTab,
+                        'pType': pType,
+                        'divId': divId,
+                        'queryType': queryType,
+                        'pOpendt': pOpendt,
+                        'pYyyymm': pYyyymm,
+                        'pPeriods': pPeriods
+                    },
                     traditional: true,
                     success: function (data, textStatus) {
-                        $('#' + updateId).html(data);
+                        closeModal(modalId);
+                        $('#Div_' + divId).html(data);
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                     }
                 });
-//            }
+            } else {
+                alert("請輸入正確條件！");
+            }
         }
-
-
-        %{--function showContent(id, pTab, pSubTab, pTypes, updateId, offset) { //顯示文章--}%
-        %{--if (id) {--}%
-        %{--$.ajax({--}%
-        %{--type: 'POST',--}%
-        %{--url: "${createLink(controller: "gambleTech", action: "list2Content")}?id=" + id,--}%
-        %{--data: {'pTab': pTab, 'pSubTab': pSubTab, 'pTypes': pTypes, divId: updateId, offset: offset},--}%
-        %{--traditional: true,--}%
-        %{--success: function (data, textStatus) {--}%
-        %{--$('#' + updateId).html(data);--}%
-        %{--},--}%
-        %{--error: function (XMLHttpRequest, textStatus, errorThrown) {--}%
-        %{--}--}%
-        %{--});--}%
-        %{--}--}%
-        %{--}--}%
     </script>
 </head>
 
@@ -64,7 +83,7 @@
                         <g:each in="${tab?.subTab as List}" var="subTab" status="i2">
                             <li>
                                 <h5>
-                                    <a data-toggle="pill" class="${[0: 'active'][i+i2]}"
+                                    <a data-toggle="pill" class="${[0: 'active'][i + i2]}"
                                        onclick="getList('${tab?.tab}', '${subTab?.tab}', '${subTab?.dataType}', 'tab${tab?.tab}_subTab${subTab?.tab}');"
                                        href="#tab${tab?.tab}_subTab${subTab?.tab}">
                                         <g:message code="lotto.tab${tab?.tab}.subTab${subTab?.tab}.label"/>

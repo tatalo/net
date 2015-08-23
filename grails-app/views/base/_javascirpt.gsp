@@ -105,4 +105,17 @@
         var y = 150;
         window.open(url, title, config='height=500,width=500,top='+y+',left='+x);
     }
+
+    //關閉Bootstrap Model
+    function closeModal(id) {
+        $('#' + id).modal('hide');
+    }
+
+    //左邊補0
+    function padLeft(str,lenght){
+        if(str.length >= lenght)
+            return str;
+        else
+            return padLeft("0" +str,lenght);
+    }
 </script>

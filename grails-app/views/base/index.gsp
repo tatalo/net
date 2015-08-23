@@ -235,7 +235,7 @@
                         </div>
                     </g:each>
                 </div>
-
+                <div class="clearfix"/>
                 <div class="row-fluid spacer">
                     <g:each in="${["05","06","07"]}" var="tab" status="i">
                         <div class="col-md-4">
@@ -246,7 +246,7 @@
                         </div>
                     </g:each>
                 </div>
-
+                <div class="clearfix"/>
                 <div class="row-fluid spacer">
                     <g:each in="${["08","09"]}" var="tab" status="i">
                         <div class="col-md-4">

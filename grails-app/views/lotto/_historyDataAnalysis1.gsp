@@ -9,9 +9,9 @@
 
     <div class="panel-body">
         <div class="panel panel-primary text-center">已顯示 ${totalCount} 筆最新資料</div>
-        <div class="form-group center-block">
+        <div class="form-group">
             <div class="pull-left">
-                <g:img dir="images" file="lotto/lotto${pType}.gif"/>
+                <g:img dir="images" file="lotto/lotto${pType}.png"/>
             </div>
 
             <div class="pull-right">

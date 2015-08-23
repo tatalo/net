@@ -17,17 +17,35 @@ class NetWinService {
     static void main(String[] args) {
     }
 
-    def getNw200List(params) { //回傳Nw200 List
-        println "params.pType = " + params.pType
-
-        def nw200I = Nw200.findAll() {
+    def getNw200List(params) { //回傳Nw200(連結)
+        def nw200I = Nw200.createCriteria().list(params) {
             eq("type", params.pType)
         }
         return nw200I
     }
 
-    def getNw400List(params) { //回傳Nw400 List
-        def nw400I = Nw400.findAll(params) {
+    def getNw300List(params) { //取得Nw300(彩球)
+        def nw300I = Nw300.createCriteria().list(params) {
+            if (params.pYyyymm) {
+                ge("opendt", params.pYyyymmS)
+                lt("opendt", params.pYyyymmE-1)
+            }
+            if (params.pOpendt) {
+                eq("opendt", params.pOpendt)
+            }
+            if (params.pPeriods) {
+                eq("periods", params.pPeriods)
+            }
+
+            eq("type", params.pType)
+            order("opendt", "desc")
+            order("periods", "desc")
+        }
+        return nw300I
+    }
+
+    def getNw400List(params) { //回傳Nw400(文章)
+        def nw400I = Nw400.createCriteria().list(params) {
             eq("type", params.pType)
 
             order("idx", "asc")
@@ -35,12 +53,20 @@ class NetWinService {
         return nw400I
     }
 
-    def getNw400(params) { //取得Nw400
+    def getNw500List(params) { //回傳Nw500(清單)
+        def nw500I = Nw500.createCriteria().list(params) {
+            eq("type", params.pType)
+        }
+        return nw500I
+    }
+
+
+    def getNw400(params) { //取得Nw400(文章) Data
         def nw400I = Nw400.get(params.id)
         return nw400I
     }
 
-    def saveNw400(params) { //更新Nw400
+    def saveNw400(params) { //更新Nw400(文章) Data
         def nw400I = Nw400.get(params.id)
 
         bindData(nw400I, params)
@@ -61,13 +87,6 @@ class NetWinService {
         return nw400I
     }
 
-    def getNw500List(params) { //回傳Nw500 List
-        def nw500I = Nw500.findAll() {
-            eq("type", params.pType)
-        }
-        return nw500I
-    }
-
     def getHistoryDataAnyalysis1(params) { //歷史數據: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
         def result = [:]
         result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
@@ -77,7 +96,8 @@ class NetWinService {
 
         def nosSql = ""
         result.columnsNOs.each { it ->
-            nosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,2,1),0)) NO${it}, "
+//            nosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,2,1),0)) NO${it}, "
+            nosSql += "SUM(CASE WHEN NW31.NO = ${it} THEN (CASE WHEN NW31.ISSPNO = 1 THEN 2 ELSE 1 END) ELSE 0 END) NO${it}, "
         }
 
         def mainSql = """
@@ -122,12 +142,14 @@ class NetWinService {
 
         def nosSql = ""
         result.columnsNOs.each { it ->
-            nosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,0,1),0)) NO${it}, "
+//            nosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,0,1),0)) NO${it}, "
+            nosSql += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 0 THEN 1 ELSE 0 END) NO${it}, "
         }
 
         def spnosSql = ""
         result.columnsSPNOs.each { it ->
-            spnosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,2,0),0)) SPNO${it}, "
+//            spnosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,2,0),0)) SPNO${it}, "
+            spnosSql += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 1 THEN 2 ELSE 0 END) SPNO${it}, "
         }
 
         def mainSql = """
@@ -178,7 +200,8 @@ class NetWinService {
 
         def nosSql = ""
         result.columnsNOs.each { it ->
-            nosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,1,1),0)) NO${it}, "
+//            nosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,1,1),0)) NO${it}, "
+            nosSql += "SUM(CASE WHEN NW31.NO = ${it} THEN 1 ELSE 0 END) NO${it}, "
         }
 
         def mainSql = """
@@ -226,12 +249,14 @@ class NetWinService {
 
         def nosSql = ""
         result.columnsNOs.each { it ->
-            nosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,0,1),0)) NO${it}, "
+//            nosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,0,1),0)) NO${it}, "
+            nosSql += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 0 THEN 1 ELSE 0 END) NO${it}, "
         }
 
         def spnosSql = ""
         result.columnsSPNOs.each { it ->
-            spnosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,1,0),0)) SPNO${it}, "
+//            spnosSql += "SUM(DECODE(NW31.NO,${it},DECODE(NW31.ISSPNO,1,1,0),0)) SPNO${it}, "
+            spnosSql += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 1 THEN 1 ELSE 0 END) SPNO${it}, "
         }
 
         def mainSql = """
