@@ -1,32 +1,49 @@
 @custome-c1: #7092BE;
 @custome-c2: #3F48CC;
 
-.custome1 {
+//.custome1 {
+//  color: @custome-c1;
+//}
+//
+//.custome2 {
+//  color: @custome-c2;
+//}
+
+//.bg-custome1 {
+//  color: #fff;
+//  background: @custome-c1;
+//}
+//
+//.bg-custome2 {
+//  color: #fff;
+//  background: @custome-c2;
+//}
+
+.defaultColor1 {
   color: @custome-c1;
 }
 
-.custome2 {
-  color: @custome-c2;
-}
-
-.bg-custome1 {
+.defaultBgColor1 {
   color: #fff;
   background: @custome-c1;
 }
 
-.bg-custome2 {
+.defaultColor2 {
+  color: @custome-c2;
+}
+
+.defaultBgColor2 {
   color: #fff;
   background: @custome-c2;
 }
 
+//Narbar排版用
 .lv2navbar {
   background: @gray-lighter;
 }
-
 .HDivider-inner {
   border-left: 1px solid @gray-light;
 }
-
 .HDivider-outer {
   border-right: 1px solid @gray-light;
 }
@@ -45,6 +62,7 @@ ul > li > span:focus.active{
   color: #fff;
 }
 
+//正方型
 .square{
   width : 60px;
   max-width: 60px;
@@ -56,10 +74,12 @@ ul > li > span:focus.active{
   white-space: inherit !important;
 }
 
-.spacer {
+//向上空格
+.padding-top {
   padding-top: 15px !important; /* define margin as you see fit */
 }
 
+//漸層直線
 hr.soften {
   height: 1px;
   background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
@@ -69,6 +89,37 @@ hr.soften {
   border: 0;
   margin-top: 0px !important;
 }
+
+
+//樂透表格用(一般號碼)
+td.lottoNO {
+  background-color: #D2691E !important;
+  color: #fff !important;
+  font-size: 14px;
+}
+
+//樂透表格用(特別號)
+td.lottoSPNO {
+  background-color: #53868B !important;
+  color: #fff !important;
+  font-size: 14px;
+}
+
+//樂透表格用(連開號)
+td.lottoRepeatNO {
+  background-color: #27007A !important;
+  color: #fff !important;
+  font-size: 14px;
+}
+
+//樂透表格用(連續號)
+td.lottoContinueNO {
+  background-color: #27007A !important;
+  color: #fff !important;
+  font-size: 14px;
+}
+
+//----整理完成分隔線
 
 
 //樂透表格用
@@ -160,20 +211,6 @@ td.lottoTD {
 //樂透表格用
 td.lottoTD2 {
   background-color: #C1DC5A !important;
-  font-size: 14px;
-}
-
-//樂透表格用
-td.lottoDataNO {
-  background-color: #D2691E !important;
-  color: #fff !important;
-  font-size: 14px;
-}
-
-//樂透表格用
-td.lottoDataSPNO {
-  background-color: #53868B !important;
-  color: #fff !important;
   font-size: 14px;
 }
 

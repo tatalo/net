@@ -16,7 +16,7 @@
     }(document, 'script', 'facebook-jssdk'));
 
     function fbRefresh() {
-        FB.XFBML.parse(document.getElementById(''));
+        FB.XFBML.parse();
     }
 
     function addToFavorite(title, url) { //加入我的最愛
@@ -60,7 +60,7 @@
     if (hash) {
         TabByHash(hash);
     } else {
-        $('.active').trigger('click');
+        $('.activeAuto').trigger('click');
     }
 
     %{--CKEDITOR.plugins.addExternal('divarea', '${resource(dir: '/ckeditor/plugins/divarea/')}');--}%

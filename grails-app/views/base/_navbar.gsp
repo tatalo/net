@@ -91,10 +91,10 @@
     <div class="container-fluid" style="background: white;">
         <div class="container">
             <div class="row">
-                <div class="col-md-2 text-center">
-                    <img src="${assetPath(src: 'logo.png')}"/>
+                <div class="col-xs-3 col-sm-2 col-md-1">
+                    <img src="${assetPath(src: 'logo.png')}" height="45px"/>
                 </div>
-                <div class="col-md-5 ">
+                <div class="col-xs-9 col-sm-10 col-md-11">
                     原搜尋
                 </div>
             </div>

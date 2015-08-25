@@ -30,41 +30,57 @@ class LottoController {
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '01' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis1', dataType: '01' ],
                                  [tab: '04' ,viewType: 'lastOpenAnalysis1', dataType: '01' ],
+                                 [tab: '07' ,viewType: '', dataType: '01' ],
+                                 [tab: '08' ,viewType: '', dataType: '01' ],
                                  [tab: '05' ,viewType: 'lastNumberAnalysis1', dataType: '01' ]]],
             [tab: '04', subTab: [[tab: '01' ,viewType: 'content1', dataType: '102' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '02' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis1', dataType: '02' ],
                                  [tab: '04' ,viewType: 'lastOpenAnalysis1', dataType: '02' ],
+                                 [tab: '07' ,viewType: '', dataType: '02' ],
+                                 [tab: '08' ,viewType: '', dataType: '02' ],
                                  [tab: '05' ,viewType: 'lastNumberAnalysis1', dataType: '02' ]]],
             [tab: '05', subTab: [[tab: '01' ,viewType: 'content1', dataType: '103' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis2', dataType: '03' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis2', dataType: '03' ],
                                  [tab: '04' ,viewType: 'lastOpenAnalysis2', dataType: '03' ],
+                                 [tab: '07' ,viewType: '', dataType: '03' ],
+                                 [tab: '08' ,viewType: '', dataType: '03' ],
                                  [tab: '05' ,viewType: 'lastNumberAnalysis2', dataType: '03' ]]],
             [tab: '06', subTab: [[tab: '01' ,viewType: 'content1', dataType: '104' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '04' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis1', dataType: '04' ],
                                  [tab: '04' ,viewType: 'serialOpenAnalysis1', dataType: '04' ],
+                                 [tab: '07' ,viewType: '', dataType: '04' ],
+                                 [tab: '08' ,viewType: '', dataType: '04' ],
                                  [tab: '05' ,viewType: 'lastNumberAnalysis1', dataType: '04' ]]],
             [tab: '07', subTab: [[tab: '01' ,viewType: 'content1', dataType: '105' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '05' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis', dataType: '05' ],
                                  [tab: '04' ,viewType: 'lastOpenAnalysis1', dataType: '05' ],
+                                 [tab: '07' ,viewType: '', dataType: '05' ],
+                                 [tab: '08' ,viewType: '', dataType: '05' ],
                                  [tab: '05' ,viewType: 'lastNumberAnalysis1', dataType: '05' ]]],
             [tab: '08', subTab: [[tab: '01' ,viewType: 'content1', dataType: '106' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '06' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis1', dataType: '06' ],
                                  [tab: '04' ,viewType: 'lastOpenAnalysis1', dataType: '06' ],
+                                 [tab: '07' ,viewType: '', dataType: '06' ],
+                                 [tab: '08' ,viewType: '', dataType: '06' ],
                                  [tab: '05' ,viewType: 'lastNumberAnalysis1', dataType: '06' ]]],
             [tab: '09', subTab: [[tab: '01' ,viewType: 'content1', dataType: '107' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '07' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis1', dataType: '07' ],
                                  [tab: '04' ,viewType: 'lastOpenAnalysis1', dataType: '07' ],
+                                 [tab: '07' ,viewType: '', dataType: '07' ],
+                                 [tab: '08' ,viewType: '', dataType: '07' ],
                                  [tab: '05' ,viewType: 'lastNumberAnalysis1', dataType: '07' ]]],
             [tab: '10', subTab: [[tab: '01' ,viewType: 'content1', dataType: '108' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '08' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis1', dataType: '08' ],
                                  [tab: '04' ,viewType: 'lastOpenAnalysis1', dataType: '08' ],
+                                 [tab: '07' ,viewType: '', dataType: '08' ],
+                                 [tab: '08' ,viewType: '', dataType: '08' ],
                                  [tab: '05' ,viewType: 'lastNumberAnalysis1', dataType: '08' ]]],
             [tab: '11', subTab: [[tab: '01' ,viewType: 'content1', dataType: '109' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis3', dataType: '09' ],
@@ -131,6 +147,7 @@ class LottoController {
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["09","10"]) { //3星彩, 4星彩
                     def result = netWinService.getHistoryDataAnyalysis3(params)
+                    println "result = " + result
                     def result2 = netWinService.getCntsOpenAnalysis3(params)
                     render template: "/lotto/cntsOpenAnalysis3", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
@@ -169,6 +186,24 @@ class LottoController {
                     println '123123456'
 //                    render template: "/lotto/bingoDataAnalysis"
                     showBingoAnalysis()
+                }
+            } else if (params.pSubTab in ["07"]) { //連開
+                if (params.pType in ["11"]) { //賓果
+                    println '123123456'
+//                    render template: "/lotto/bingoDataAnalysis"
+                    showBingoAnalysis()
+                }
+            } else if (params.pSubTab in ["08"]) { //連續
+                if (params.pType in ["01","02","04","05","06","07","08"])  { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
+                    def result = netWinService.getContinueDataAnyalysis1(params)
+                    def result2 = netWinService.getCntsOpenAnalysis1(params)
+                    render template: "/lotto/continueOpenAnalysis1", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
+                                                                         pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+                } else if (params.pType in ["03"])  { //威力彩
+                    def result = netWinService.getContinueDataAnyalysis2(params)
+                    def result2 = netWinService.getCntsOpenAnalysis2(params)
+                    render template: "/lotto/continueOpenAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
+                                                                         pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 }
             }
         } else {
@@ -213,6 +248,13 @@ class LottoController {
                                                              pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
+    def continueOpenAnalysis1Filter() {
+        def result = netWinService.getContinueDataAnyalysis1(params)
+        def result2 = netWinService.getCntsOpenAnalysis1(params)
+        render template: "/lotto/continueOpenAnalysis1", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
+                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+    }
+
     def lastOpenAnalysis1Filter() {
         def result = netWinService.getHistoryDataAnyalysis1(params)
         def result2 = netWinService.getLastOpenAnalysis1(params)
@@ -232,10 +274,18 @@ class LottoController {
         render template: "/lotto/historyDataAnalysis2", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                 pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
+
     def cntsOpenAnalysis2Filter() {
         def result = netWinService.getHistoryDataAnyalysis2(params)
         def result2 = netWinService.getCntsOpenAnalysis2(params)
         render template: "/lotto/cntsOpenAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
+                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
+    }
+
+    def continueOpenAnalysis2Filter() {
+        def result = netWinService.getContinueDataAnyalysis2(params)
+        def result2 = netWinService.getCntsOpenAnalysis2(params)
+        render template: "/lotto/continueOpenAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                              pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 

@@ -65,10 +65,10 @@ grails.project.dependency.resolution = {
         // plugins for the compile step
         compile ":scaffolding:2.1.2"
         compile ':cache:1.1.8'
-        compile ":asset-pipeline:2.1.5"
+        compile ":asset-pipeline:2.5.1"
         compile ":quartz:1.0.2"
         compile ":remote-pagination:0.4.8"
-        compile ":disqus:0.3"
+//        compile ":disqus:0.3"
         compile ":ckeditor:4.4.1.0"
 //        compile ':twitter-bootstrap:3.3.4' // current: 3.3.4
 

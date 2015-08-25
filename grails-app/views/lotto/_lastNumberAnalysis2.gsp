@@ -41,7 +41,7 @@
                 <tbody id="tbody3">
                 <tr>
                     <th class="lottoTitleINSERTNO" colspan="3" >
-                        <div class="center-block">標注號碼</div>
+                        <div class="center-block">投注號碼</div>
                     </th>
                     <g:set var="vClass" value="lottoTitleNO"/>
                     <g:each var="Num" in="${(columnsNOs)}" status="j">
@@ -70,7 +70,7 @@
                 </tbody>
                 <tbody id="tbody3">
                 <th class="lottoTitleCNTS_NoH" colspan="3">
-                    <div class="center-block">標注號碼次數</div>
+                    <div class="center-block">投注號碼次數</div>
                 </th>
                 <g:set var="vClass" value="lottoTD"/>
                 <g:each var="Num" in="${(columnsNOs)}" status="j">
@@ -116,7 +116,7 @@
     </div>
 </div>
 
-<div class="form-group">
-    <div class="fb-comments" data-href="${grailsApplication.config.grails.serverURL}"
-         data-numposts="5"></div>
-</div>
+%{--<div class="form-group">--}%
+    %{--<div class="fb-comments" data-href="${grailsApplication.config.grails.serverURL}"--}%
+         %{--data-numposts="5"></div>--}%
+%{--</div>--}%

@@ -23,7 +23,7 @@
     </div>
 
     <div class="panel-body">
-        <div class="form-group custome1">
+        <div class="form-group defaultColor1">
             <div class="pull-left">發布日期：<g:formatDate format="yyyy/MM/dd" date="${nw400I?.issuedt}"/></div>
 
             <div class="pull-right">瀏覽次數：${nw400I?.browsercnts}</div><!-- 作為類別使用 -->

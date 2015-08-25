@@ -56,15 +56,15 @@
         <td class="lottoTD text-center">
             <g:each var="IDX" in="${(columnIDXS?.IDX)}">
                 <g:each var="Num" in="${(columnsNOs)}">
-                    ${[0: '', 1: (Num as Integer), 2: (Num as Integer)][(nw300?."NO${IDX}${Num}" ?: 0) as Integer]}
+                    ${nw300?."NO${IDX}${Num}"? Num?.toInteger() : ""}
                 </g:each>
             </g:each>
         </td>
         <g:each var="IDX" in="${(columnIDXS?.IDX)}">
             <g:each var="Num" in="${(columnsNOs)}">
-                <td class="text-center ${[0: '', 1: 'lottoDataNO', 2: 'lottoDataSPNO'][(nw300?."NO${IDX}${Num}" ?: 0) as Integer]}">
+                <td class="text-center ${hl.chkLottoDataClass(chkValue: nw300?."NO${IDX}${Num}")}">
                     <div class="center-block">
-                        ${[0: '', 1: (Num as Integer), 2: (Num as Integer)][(nw300?."NO${IDX}${Num}" ?: 0) as Integer]}
+                        ${nw300?."NO${IDX}${Num}"? Num?.toInteger() : ""}
                     </div>
                 </td>
             </g:each>

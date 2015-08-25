@@ -10,22 +10,22 @@
     <div class="row">
         <div class="col-md-1">
             <div class="form-group">
-                <h4 class="custome2 page-header text-center text-nowrap">
+                <h4 class="defaultColor2 page-header text-center text-nowrap">
                     <strong>
                         <g:message code="default.tab01.label"/>
                     </strong>
                 </h4>
-                <g:each in="${sportTabs}" var="tab" status="i">
+                <g:each in="${hl.sportsTabs()}" var="tab" status="i">
                     <p class="text-nowrap">
-                        <g:link controller="sports" action="index" fragment="tab${tab.tab}">
-                            <g:message code="sports.tab${tab.tab}.label"/>
-                        </g:link>
+                        <a href="${tab?.link}">
+                            ${tab?.text}
+                        </a>
                     </p>
                 </g:each>
             </div>
 
             <div class="form-group">
-                <h4 class="custome2 page-header text-center text-nowrap">
+                <h4 class="defaultColor2 page-header text-center text-nowrap">
                     <strong>
                         <g:message code="default.tab03.label"/>
                     </strong>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-group">
-                <h4 class="custome2 page-header text-center text-nowrap">
+                <h4 class="defaultColor2 page-header text-center text-nowrap">
                     <strong>
                         <g:message code="default.tab05.label"/>
                     </strong>
@@ -57,7 +57,7 @@
 
         <div class="col-md-1">
             <div class="form-group">
-                <h4 class="custome2 page-header text-center text-nowrap">
+                <h4 class="defaultColor2 page-header text-center text-nowrap">
                     <strong>
                         <g:message code="default.tab02.label"/>
                     </strong>
@@ -72,7 +72,7 @@
             </div>
 
             <div class="form-group">
-                <h4 class="custome2 page-header text-center text-nowrap">
+                <h4 class="defaultColor2 page-header text-center text-nowrap">
                     <strong>
                         <g:message code="default.tab04.label"/>
                     </strong>
@@ -80,7 +80,7 @@
             </div>
 
             <div class="form-group">
-                <h4 class="custome2 page-header text-center text-nowrap">
+                <h4 class="defaultColor2 page-header text-center text-nowrap">
                     <strong>
                         <g:message code="default.tab06.label"/>
                     </strong>
@@ -117,19 +117,19 @@
 
                         <div class="tab-content">
                             <div id="taba01" class="tab-pane active">
-                                <g:render template="/base/build"/>
+                                A<g:render template="/base/build"/>
                             </div>
 
                             <div id="taba02" class="tab-pane">
-                                <g:render template="/base/build"/>
+                                B<g:render template="/base/build"/>
                             </div>
 
                             <div id="taba03" class="tab-pane">
-                                <g:render template="/base/build"/>
+                                C<g:render template="/base/build"/>
                             </div>
 
                             <div id="taba04" class="tab-pane">
-                                <g:render template="/base/build"/>
+                                D<g:render template="/base/build"/>
                             </div>
                         </div>
                     </div>
@@ -189,23 +189,23 @@
 
                         <div class="tab-content">
                             <div id="tabb01" class="tab-pane active">
-                                <g:render template="/base/build"/>
+                                A<g:render template="/base/build"/>
                             </div>
 
                             <div id="tabb02" class="tab-pane">
-                                <g:render template="/base/build"/>
+                                B<g:render template="/base/build"/>
                             </div>
 
                             <div id="tabb03" class="tab-pane">
-                                <g:render template="/base/build"/>
+                                C<g:render template="/base/build"/>
                             </div>
 
                             <div id="tabb04" class="tab-pane">
-                                <g:render template="/base/build"/>
+                                D<g:render template="/base/build"/>
                             </div>
 
                             <div id="tabb05" class="tab-pane">
-                                <g:render template="/base/build"/>
+                                E<g:render template="/base/build"/>
                             </div>
                         </div>
                     </div>
@@ -215,19 +215,19 @@
 
         <div class="col-md-3">
             <div class="form-group">
-                <h4 class="bg-custome1 text-center">當日開獎</h4>
+                <h4 class="defaultBgColor1 text-center">當日開獎</h4>
             </div>
 
             <div class="form-group">
-                <h4 class="bg-custome1 text-center">當日賽事</h4>
+                <h4 class="defaultBgColor1 text-center">當日賽事</h4>
             </div>
 
             <div class="form-group">
-                <h4 class="bg-custome1 text-center">博彩技巧</h4>
+                <h4 class="defaultBgColor1 text-center">博彩技巧</h4>
 
                 <div class="row-fluid">
                     <g:each in="${["02","03","04"]}" var="tab" status="i">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-xs-4 col-sm-4">
                             <g:link class="btn btn-primary square" controller="gambleTech" action="index"
                                     fragment="tab${tab}_subTab02">
                                 <g:message code="gambleTech.tab${tab}.label"/>
@@ -236,9 +236,9 @@
                     </g:each>
                 </div>
                 <div class="clearfix"/>
-                <div class="row-fluid spacer">
+                <div class="row-fluid padding-top">
                     <g:each in="${["05","06","07"]}" var="tab" status="i">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-xs-4 col-sm-4">
                             <g:link class="btn btn-primary square" controller="gambleTech" action="index"
                                     fragment="tab${tab}_subTab02">
                                 <g:message code="gambleTech.tab${tab}.label"/>
@@ -247,9 +247,9 @@
                     </g:each>
                 </div>
                 <div class="clearfix"/>
-                <div class="row-fluid spacer">
+                <div class="row-fluid padding-top">
                     <g:each in="${["08","09"]}" var="tab" status="i">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-xs-4 col-sm-4">
                             <g:link class="btn btn-primary square" controller="gambleTech" action="index"
                                     fragment="tab${tab}_subTab02">
                                 <g:message code="gambleTech.tab${tab}.label"/>

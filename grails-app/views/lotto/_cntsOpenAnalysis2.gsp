@@ -87,7 +87,7 @@
     </div>
 </div>
 
-<div class="form-group">
-    <div class="fb-comments" data-href="${grailsApplication.config.grails.serverURL}"
-         data-numposts="5"></div>
-</div>
+%{--<div class="form-group">--}%
+    %{--<div class="fb-comments" data-href="${grailsApplication.config.grails.serverURL}"--}%
+         %{--data-numposts="5"></div>--}%
+%{--</div>--}%

@@ -44,16 +44,16 @@
             </div>
         </td>
         <g:each var="Num" in="${(columnsNOs)}">
-            <td class="text-center ${[0: '', 1: 'lottoDataNO', 2: 'lottoDataSPNO'][(nw300?."NO${Num}" ?: 0) as Integer]}">
+            <td class="text-center ${hl.chkLottoDataClass(chkValue: nw300?."NO${Num}")}">
                 <div class="center-block">
-                    ${[0: '', 1: Num, 2: Num][(nw300?."NO${Num}" ?: 0) as Integer]}
+                    ${nw300?."NO${Num}"? Num: ""}
                 </div>
             </td>
         </g:each>
         <g:each var="Num" in="${(columnsSPNOs)}">
-            <td class="text-center ${[0: '', 1: 'lottoDataNO', 2: 'lottoDataSPNO'][(nw300?."SPNO${Num}" ?: 0) as Integer]}">
+            <td class="text-center ${hl.chkLottoDataClass(chkValue: nw300?."SPNO${Num}")}">
                 <div class="center-block">
-                    ${[0: '', 1: Num, 2: Num][(nw300?."SPNO${Num}" ?: 0) as Integer]}
+                    ${nw300?."SPNO${Num}"? Num: ""}
                 </div>
             </td>
         </g:each>

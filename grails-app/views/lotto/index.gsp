@@ -61,12 +61,12 @@
 
 <body>
 <div class="form-group">
-    <div class="container-fluid bg-custome1">
+    <div class="container-fluid defaultBgColor1">
         <div class="container">
             <ul class="nav nav-pills nav-justified HDivider-outer stickyTabs">
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
-                        <a data-toggle="pill" class="${[0: 'active'][i]}" href="#tab${tab?.tab}">
+                        <a data-toggle="pill" class="${[0: 'activeAuto'][i]}" href="#tab${tab?.tab}">
                             <i class="fa fa-th-list"></i>
                             <g:message code="lotto.tab${tab?.tab}.label"/>
                         </a>
@@ -84,7 +84,7 @@
                         <g:each in="${tab?.subTab as List}" var="subTab" status="i2">
                             <li>
                                 <h5>
-                                    <a data-toggle="pill" class="${[0: 'active'][i + i2]}"
+                                    <a data-toggle="pill" class="${[0: 'activeAuto'][i2]}"
                                        onclick="getList('${tab?.tab}', '${subTab?.tab}', '${subTab?.dataType}', 'tab${tab?.tab}_subTab${subTab?.tab}');"
                                        href="#tab${tab?.tab}_subTab${subTab?.tab}">
                                         <g:message code="lotto.tab${tab?.tab}.subTab${subTab?.tab}.label"/>

@@ -25,14 +25,14 @@
 <body>
 
 <div class="form-group">
-    <div class="container-fluid bg-custome1">
+    <div class="container-fluid defaultBgColor1">
         <div class="container">
             <ul class="nav nav-pills nav-justified HDivider-outer stickyTabs">
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
                         <a data-toggle="pill"
                            onclick="getList('${tab?.tab}', '${tab?.dataType}', '${tab?.dataType2}', 'tab${tab?.tab}');"
-                           class="${[0: 'active'][i]}" href="#tab${tab?.tab}">
+                           class="${[0: 'activeAuto'][i]}" href="#tab${tab?.tab}">
                             <i class="fa fa-th-list"></i>
                             <g:message code="nationGamble.tab${tab?.tab}.label"/>
                         </a>

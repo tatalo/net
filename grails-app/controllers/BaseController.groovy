@@ -6,12 +6,12 @@ class BaseController {
     }
 
     def index() {
-        def sportTabs = SportsController.alltabs
+//        def sportTabs = SportsController.alltabs
         def lottoTabs = LottoController.alltabs
         def nationGambleTabs = NationGambleController.alltabs
         def gambletechTabs = GambleTechController.alltabs
 
-        render view:"/base/index", model: [ sportTabs: sportTabs, lottoTabs: lottoTabs, nationGambleTabs : nationGambleTabs , gambletechTabs :gambletechTabs]
+        render view:"/base/index", model: [ lottoTabs: lottoTabs, nationGambleTabs : nationGambleTabs , gambletechTabs :gambletechTabs]
     }
 
     def build() {
