@@ -20,12 +20,12 @@
 //            }
         }
 
-        function showContent(id, pTab, pSubTab, pTypes, updateId, offset) { //顯示文章
+        function showContent(id, pTab, pSubTab, pType, updateId, offset) { //顯示文章
 //            if (id) {
                 $.ajax({
                     type: 'POST',
                     url: "${createLink(controller: "gambleTech", action: "list2Content")}?id=" + id,
-                    data: {'pTab': pTab, 'pSubTab': pSubTab, 'pTypes': pTypes, divId: updateId, offset: offset},
+                    data: {'pTab': pTab, 'pSubTab': pSubTab, 'pType': pType, divId: updateId, offset: offset},
                     traditional: true,
                     success: function (data, textStatus) {
                         $('#' + updateId).html(data);

@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
     <li>
-        <a onclick="getList('${params?.pTab}', '${params?.pSubTab}', '${(Eval.me(params.pTypes) as grails.converters.JSON)}', 'tab${params?.pTab}_subTab${params?.pSubTab}', '${params?.offset}', '1');"
+        <a onclick="getList('${params?.pTab}', '${params?.pSubTab}', '${params.pType}', 'tab${params?.pTab}_subTab${params?.pSubTab}', '${params?.offset}', '1');"
            href="javascript:void(0)">
             <i class="fa fa-th-list"></i>
             <g:message code="gambleTech.tab${params?.pTab}.subTab${params?.pSubTab}.label"/>
@@ -11,7 +11,6 @@
         ${nw400I?.title}
     </li>
 </ol>
-
 <div class="panel panel-default">
     <div class="panel-heading text-center">
         <h4>
@@ -37,10 +36,10 @@
 </div>
 
 <div class="form-group">
-    <div class="fb-comments" data-href="${grailsApplication.config.grails.serverURL + nw400I?.id}"
+    <div class="fb-comments" data-href="${"http://localhost:8080/netWin" + nw400I?.id}"
          data-numposts="5"></div>
 </div>
 
 %{--<div class="form-group">--}%
-    %{--<disqus:comments url="${grailsApplication.config.grails.serverURL + nw400I?.id}" identifier="${nw400I?.id}"/>--}%
+    %{--<disqus:comments url="${"http://localhost:8080/netWin?id=" + nw400I?.id}" identifier="${nw400I?.id}"/>--}%
 %{--</div>--}%

@@ -26,7 +26,7 @@
                                 </td>
                                 <td>
                                     <a href="javascript:void(0)"
-                                       onclick="showContent('${nw400?.id}', '${params?.pTab}', '${params?.pSubTab}', '${params?.pTypes}', 'tab${params?.pTab}_subTab${params?.pSubTab}', '${params?.offset}');">
+                                       onclick="showContent('${nw400?.id}', '${params?.pTab}', '${params?.pSubTab}', '${params?.pType}', 'tab${params?.pTab}_subTab${params?.pSubTab}', '${params?.offset}');">
                                         ${nw400?.title}
                                     </a>
                                 </td>
