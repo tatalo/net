@@ -149,7 +149,6 @@ environments {
     production {
         grails.logging.jul.usebridge = false
         grails.dbconsole.enabled = true
-//        facebook.commts.url = "http://ww899.net/"
 //        grails.serverURL = "http://ww899.net/" + appName
         // TODO: grails.serverURL = "http://www.changeme.com"
     }

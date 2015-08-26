@@ -14,9 +14,6 @@ class NetWinService {
         i.addDynamicMethodInvocation(new BindDynamicMethod())
     }
 
-    static void main(String[] args) {
-    }
-
     def getNw200List(params) { //回傳Nw200(連結)
         def nw200I = Nw200.createCriteria().list(params) {
             if (params.pType) {
@@ -399,41 +396,39 @@ class NetWinService {
 
         def nosSql = ""
         result.columnsNOs.each { it ->
-            nosSql += "NVL(MAX(REPLACE(NWMAX.PER,'/','')) - MAX((CASE WHEN NW31.NO = ${it} THEN REPLACE(NW3.PERIODS,'/','') END)),:max) NO${it}, "
+            nosSql += "MAX(NW3.FIXPERIODS) - NVL(MAX(CASE WHEN NW31.NO = ${it} THEN NW3.FIXPERIODS END),0) NO${it}, "
         }
 
         def mainSql = """
-                           SELECT
-                           ${nosSql}
-                           0 END
-                           FROM (
+                            SELECT
+                            ${nosSql}
+                            0 END
+                            FROM (
                                 SELECT
-                                NW3.OBJID,
-                                NW3.TYPE,
-                                NW3.PERIODS,
-                                NW3.OPENDT
-                                FROM NW300 NW3
-                                WHERE 1 = :pNum
-                                AND NW3.TYPE = :pType
-                                AND ROWNUM <= :max
-                                ORDER BY NW3.PERIODS DESC
-                           ) NW3
-                           LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
-                           LEFT JOIN (
-                                SELECT
-                                MAX(NW32.PERIODS) PER
-                                FROM NW300 NW32
-                                WHERE 1 = :pNum
-                                AND NW32.TYPE = :pType
-                           ) NWMAX ON 1=1
-                           WHERE 1=1
-                           ORDER BY NW3.PERIODS DESC
+                                ROW_NUMBER() OVER(ORDER BY NW3T.OPENDT ASC,NW3T.PERIODS ASC) FIXPERIODS,
+                                NW3T.*
+                                FROM (
+                                    SELECT
+                                    NW3.OBJID,
+                                    NW3.TYPE,
+                                    NW3.PERIODS,
+                                    NW3.OPENDT
+                                    FROM NW300 NW3
+                                    WHERE 1 = :pNum
+                                    AND NW3.TYPE = :pType
+                                    AND ROWNUM <= :max
+                                    ORDER BY NW3.PERIODS DESC
+                                ) NW3T
+                            ) NW3
+                            LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
+                            GROUP BY 1
                         """
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
         condition.max = params.max ? params.max as Integer : 25 //require
 
+//        println "sql = " + toolsService.transPRSSql(mainSql, condition)
         def resultList = query.rows(mainSql, condition)
 
         result.maxNum = resultList[0].max { it.value }.value
@@ -450,44 +445,40 @@ class NetWinService {
 
         def query = new Sql(dataSource)
 
-
         def nosSql = ""
         result.columnsNOs.each { it ->
-            nosSql += "NVL(MAX(REPLACE(NWMAX.PER,'/','')) - MAX((CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 0 THEN REPLACE(NW3.PERIODS,'/','') END)),:max) NO${it}, "
+            nosSql += "MAX(NW3.FIXPERIODS) - NVL(MAX(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 0 THEN NW3.FIXPERIODS END),0) NO${it}, "
         }
 
         def spnosSql = ""
         result.columnsSPNOs.each { it ->
-            spnosSql += "NVL(MAX(REPLACE(NWMAX.PER,'/','')) - MAX((CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 1 THEN REPLACE(NW3.PERIODS,'/','') END)),:max) SPNO${it}, "
+            spnosSql += "MAX(NW3.FIXPERIODS) - NVL(MAX(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 1 THEN NW3.FIXPERIODS END),0) SPNO${it}, "
         }
 
         def mainSql = """
-                           SELECT
-                           ${nosSql}
-                           ${spnosSql}
-                           0 END
-                           FROM (
+                            SELECT
+                            ${nosSql}
+                            ${spnosSql}
+                            0 END
+                            FROM (
                                 SELECT
-                                NW3.OBJID,
-                                NW3.TYPE,
-                                NW3.PERIODS,
-                                NW3.OPENDT
-                                FROM NW300 NW3
-                                WHERE 1 = :pNum
-                                AND NW3.TYPE = :pType
-                                AND ROWNUM <= :max
-                                ORDER BY NW3.PERIODS DESC
-                           ) NW3
-                           LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
-                           LEFT JOIN (
-                                SELECT
-                                MAX(NW32.PERIODS) PER
-                                FROM NW300 NW32
-                                WHERE 1 = :pNum
-                                AND NW32.TYPE = :pType
-                           ) NWMAX ON 1=1
-                           WHERE 1=1
-                           ORDER BY NW3.PERIODS DESC
+                                ROW_NUMBER() OVER(ORDER BY NW3T.OPENDT ASC,NW3T.PERIODS ASC) FIXPERIODS,
+                                NW3T.*
+                                FROM (
+                                    SELECT
+                                    NW3.OBJID,
+                                    NW3.TYPE,
+                                    NW3.PERIODS,
+                                    NW3.OPENDT
+                                    FROM NW300 NW3
+                                    WHERE 1 = :pNum
+                                    AND NW3.TYPE = :pType
+                                    AND ROWNUM <= :max
+                                    ORDER BY NW3.PERIODS DESC
+                                ) NW3T
+                            ) NW3
+                            LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
+                            GROUP BY 1
                         """
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
@@ -718,7 +709,7 @@ class NetWinService {
 
         def nosSql = ""
         result.columnsNOs.each { it ->
-                nosSql += "DECODE(SUM(CASE WHEN NW31.NO = ${it} THEN (CASE WHEN (NVL(NW31B.NO,0) > 0 OR NVL(NW31C.NO,0) > 0) THEN 3 ELSE 1 END) ELSE 0 END),3,'CTNO',2,'SPNO',1,'NO','') NO${it}, "
+                nosSql += "DECODE(SUM(CASE WHEN NW31.NO = ${it} THEN (CASE WHEN (NVL(NW31B.NO,0) > 0 OR NVL(NW31C.NO,0) > 0) THEN 3 ELSE (CASE WHEN NW31.ISSPNO = 1 THEN 2 ELSE 1 END) END) ELSE 0 END),3,'CTNO',2,'SPNO',1,'NO','') NO${it}, "
         }
 
         def mainSql = """
@@ -739,9 +730,9 @@ class NetWinService {
                             AND ROWNUM <= :max
                             ORDER BY NW3.PERIODS DESC
                         ) NW3
-                        LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
-                        LEFT JOIN NW301 NW31B ON NW31.NW300ID = NW31B.NW300ID AND NW31.NO = (NW31B.NO+1) AND NW31.ISSPNO = 0
-                        LEFT JOIN NW301 NW31C ON NW31.NW300ID = NW31C.NW300ID AND NW31.NO = (NW31C.NO-1) AND NW31.ISSPNO = 0
+                        LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
+                        LEFT JOIN NW301 NW31B ON NW31.NW300ID = NW31B.NW300ID AND NW31.NO = (NW31B.NO+1) AND NW31.ISSPNO = NW31B.ISSPNO
+                        LEFT JOIN NW301 NW31C ON NW31.NW300ID = NW31C.NW300ID AND NW31.NO = (NW31C.NO-1) AND NW31.ISSPNO = NW31C.ISSPNO
                         GROUP BY NW3.PERIODS, NW3.OPENDT
                         ORDER BY NW3.PERIODS DESC
                   """
@@ -750,7 +741,7 @@ class NetWinService {
         condition.pType = params.pType ?: "01" //require
         condition.max = params.max ? params.max as Integer : 25 //require
 
-        println "sql = " + toolsService.transPRSSql(mainSql, condition)
+//        println "sql = " + toolsService.transPRSSql(mainSql, condition)
 
         def resultList = query.rows(mainSql, condition)
 
@@ -808,7 +799,7 @@ class NetWinService {
         condition.pType = params.pType ?: "01" //require
         condition.max = params.max ? params.max as Integer : 25 //require
 
-        println "sql = " + toolsService.transPRSSql(mainSql, condition)
+//        println "sql = " + toolsService.transPRSSql(mainSql, condition)
 
         def resultList = query.rows(mainSql, condition)
 

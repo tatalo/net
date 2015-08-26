@@ -18,18 +18,18 @@ environments {
         dataSource {
 //            dbCreate = "update"
 //            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
-            url      = "jdbc:oracle:thin:@192.168.31.181:1521:xe"
+            url      = "jdbc:oracle:thin:@104.155.211.29:1521:xe"
             username = "netwin"
-            password = "1234"
+            password = "Ppn1234.."
         }
     }
     test {
         dataSource {
 //            dbCreate = "update"
 //            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
-            url      = "jdbc:oracle:thin:@192.168.31.181:1521:xe"
+            url      = "jdbc:oracle:thin:@127.0.0.1:xe"
             username = "netwin"
-            password = "1234"
+            password = "Ppn1234.."
 
             properties {
                 // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
@@ -59,9 +59,9 @@ environments {
         dataSource {
 //            dbCreate = "update"
 //            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
-            url      = "jdbc:oracle:thin:@192.168.31.181:1521:xe"
+            url      = "jdbc:oracle:thin:@127.0.0.1:xe"
             username = "netwin"
-            password = "1234"
+            password = "Ppn1234.."
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                jmxEnabled = true

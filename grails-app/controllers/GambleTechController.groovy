@@ -46,13 +46,13 @@ class GambleTechController {
             def nw400I = netWinService.getNw400List(params)
 
             render template: "/gambleTech/list1", model: [nw400I: nw400I, totalCount: nw400I?.totalCount,
-                                                          divId : params.divId, pTab: params.pTab, pSubTab: params.pSubTab, pTypes : params.pTypes, offset : params.offset]
+                                                          divId : params.divId, pTab: params.pTab, pSubTab: params.pSubTab, pType : params.pType, offset : params.offset]
         }
     }
 
     def list2Content() {
         def nw400I = netWinService.updateNw400BrowsCnts(params)
         render template: "/gambleTech/list1ToContent1", model: [nw400I: nw400I ,
-                                                             divId : params.divId, pTab: params.pTab, pSubTab: params.pSubTab, pTypes : params.pTypes, offset : params.offset]
+                                                             divId : params.divId, pTab: params.pTab, pSubTab: params.pSubTab, pType : params.pType, offset : params.offset]
     }
 }
