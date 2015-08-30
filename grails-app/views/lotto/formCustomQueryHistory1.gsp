@@ -50,16 +50,17 @@
         <div class="clearfix"/>
     </div>
 
-    <div class="pull-left">
-        <g:render template="/lotto/lottoHelp1"/>
-    </div>
-    <div class="pull-right">查詢最新 ${totalCount} 期</div>
-    <div class="clearfix"></div>
+    <div class="text-center">查詢最新 ${totalCount} 期</div>
 
     <div class="table-responsive">
         <!-- Default panel contents -->
         <table border="1" style="width: 100%">
-            <g:render template="/lotto/lottoDataList3" model="[columnsNOs: columnsNOs, columnIDXS: columnIDXS, nw300I: nw300I]"/>
+            <g:render template="/lotto/lottoDataList1" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
+            <g:render template="/lotto/lottoDataTitleList1" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
+            <g:render template="/lotto/lottoDataCntsList1"
+                      model="[columnsNOs: columnsNOs, nw300IC: nw300IC, nw300ICMax: nw300ICMax]"/>
+            <g:render template="/lotto/lottoDataLastOpenList1"
+                      model="[columnsNOs: columnsNOs, nw300IL: nw300IL, nw300ILMax: nw300ILMax]"/>
         </table>
     </div>
 </div>

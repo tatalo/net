@@ -23,7 +23,7 @@
                         <td>
                             <g:each in="${nw300?.nw301s.findAll { it.isspno == 0 }.sort { it.opidx }.no}" var="no"
                                     status="i2">
-                                <button type="button" class="btn btn-success btn-circle btn-lg">
+                                <button type="button" class="btn btn-primary btn-circle btn-lg">
                                     ${no}
                                 </button>
                             </g:each>

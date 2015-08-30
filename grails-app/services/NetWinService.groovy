@@ -895,8 +895,6 @@ class NetWinService {
         condition.pType = params.pType ?: "01" //require
         condition.max = params.max ? params.max as Integer : 25 //require
 
-        println "sql = " + toolsService.transPRSSql(mainSql, condition)
-
         def resultList = query.rows(mainSql, condition)
 
         result.list = resultList
@@ -968,7 +966,7 @@ class NetWinService {
         condition.pType = params.pType ?: "01" //require
         condition.max = params.max ? params.max as Integer : 25 //require
 
-        println "sql = " + toolsService.transPRSSql(mainSql, condition)
+//        println "sql = " + toolsService.transPRSSql(mainSql, condition)
 
         def resultList = query.rows(mainSql, condition)
 

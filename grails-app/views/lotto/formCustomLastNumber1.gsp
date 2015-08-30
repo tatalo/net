@@ -38,7 +38,11 @@
         <div class="clearfix"/>
     </div>
 
-    <div class="text-center">查詢最新 ${totalCount} 期</div>
+    <div class="pull-left">
+        <g:render template="/lotto/lottoHelp1"/>
+    </div>
+    <div class="pull-right">查詢最新 ${totalCount} 期</div>
+    <div class="clearfix"></div>
 
     <div class="table-responsive">
         <!-- Default panel contents -->

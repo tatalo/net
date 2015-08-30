@@ -107,6 +107,29 @@ class HtmlTagLib {
         result << [lv1IDX: 13, tabLv: 1, text: g.message(code: "lotto.tab13.label"),
                    link  : g.createLink(controller: "lotto", action: "contentBingoBingo", params: [lv1IDX: 13])]
 
+        result << [lv1IDX: 2, lv2IDX: 1, tabLv: 2, text: g.message(code: "lotto.tab02.subTab01.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 1])]
+        result << [lv1IDX: 2, lv2IDX: 2, tabLv: 2, text: g.message(code: "lotto.tab02.subTab02.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 2])]
+        result << [lv1IDX: 2, lv2IDX: 3, tabLv: 2, text: g.message(code: "lotto.tab02.subTab03.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 3])]
+        result << [lv1IDX: 2, lv2IDX: 4, tabLv: 2, text: g.message(code: "lotto.tab02.subTab04.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 4])]
+        result << [lv1IDX: 2, lv2IDX: 5, tabLv: 2, text: g.message(code: "lotto.tab02.subTab05.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 5])]
+        result << [lv1IDX: 2, lv2IDX: 6, tabLv: 2, text: g.message(code: "lotto.tab02.subTab06.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 6])]
+        result << [lv1IDX: 2, lv2IDX: 7, tabLv: 2, text: g.message(code: "lotto.tab02.subTab07.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 7])]
+        result << [lv1IDX: 2, lv2IDX: 8, tabLv: 2, text: g.message(code: "lotto.tab02.subTab08.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 8])]
+        result << [lv1IDX: 2, lv2IDX: 9, tabLv: 2, text: g.message(code: "lotto.tab02.subTab09.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 9])]
+        result << [lv1IDX: 2, lv2IDX: 10, tabLv: 2, text: g.message(code: "lotto.tab02.subTab10.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 10])]
+        result << [lv1IDX: 2, lv2IDX: 11, tabLv: 2, text: g.message(code: "lotto.tab02.subTab11.label"),
+                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 11])]
+
         result << [lv1IDX: 3, lv2IDX: 1, tabLv: 2, text: g.message(code: "lotto.tab03.subTab01.label"),
                    link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 3, lv2IDX: 1])]
         result << [lv1IDX: 3, lv2IDX: 2, tabLv: 2, text: g.message(code: "lotto.tab03.subTab02.label"),
@@ -213,30 +236,6 @@ class HtmlTagLib {
                    link  : g.createLink(controller: "lotto", action: "customStatistBingo", params: [lv1IDX: 13, lv2IDX: 3])]
         result << [lv1IDX: 13, lv2IDX: 4, tabLv: 2, text: g.message(code: "lotto.tab13.subTab04.label"),
                    link  : g.createLink(controller: "lotto", action: "customAnalysisBingo", params: [lv1IDX: 13, lv2IDX: 4])]
-
-
-//        result << [tabIDX: 3, text: g.message(code: "lotto.tab03.subTab01.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLink35688China", params: [tabLv1: 3, tablv2: 1])]
-//        result << [tabIDX: 4, text: g.message(code: "lotto.tab04.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLinkSinSinBao", params: [tabLv1: 4])]
-//        result << [tabIDX: 5, text: g.message(code: "lotto.tab05.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLinkYingSyong", params: [tabLv1: 5])]
-//        result << [tabIDX: 6, text: g.message(code: "lotto.tab06.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLinkRongHuaHuei", params: [tabLv1: 6])]
-//        result << [tabIDX: 7, text: g.message(code: "lotto.tab07.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLinkOther", params: [tabLv1: 7])]
-//        result << [tabIDX: 8, text: g.message(code: "lotto.tab08.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLinkOther", params: [tabLv1: 8])]
-//        result << [tabIDX: 9, text: g.message(code: "lotto.tab09.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLinkOther", params: [tabLv1: 9])]
-//        result << [tabIDX: 10, text: g.message(code: "lotto.tab10.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLinkOther", params: [tabLv1: 10])]
-//        result << [tabIDX: 11, text: g.message(code: "lotto.tab11.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLinkOther", params: [tabLv1: 11])]
-//        result << [tabIDX: 12, text: g.message(code: "lotto.tab12.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLinkOther", params: [tabLv1: 12])]
-//        result << [tabIDX: 13, text: g.message(code: "lotto.tab13.label"),
-//                   link  : g.createLink(controller: "lotto", action: "webLinkOther", params: [tabLv1: 13])]
 
 //        println "result = " + result
         return result
