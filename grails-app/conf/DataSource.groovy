@@ -17,7 +17,7 @@ environments {
     development {
         dataSource {
 //            dbCreate = "update"
-//            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
+//            url      = "jdbc:oracle:thin:@127.0.0.1:xe"
             url      = "jdbc:oracle:thin:@104.155.211.29:1521:xe"
             username = "netwin"
             password = "Ppn1234.."
@@ -26,7 +26,6 @@ environments {
     test {
         dataSource {
 //            dbCreate = "update"
-//            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
             url      = "jdbc:oracle:thin:@127.0.0.1:xe"
             username = "netwin"
             password = "Ppn1234.."
@@ -58,7 +57,6 @@ environments {
     production {
         dataSource {
 //            dbCreate = "update"
-//            url      = "jdbc:oracle:thin:@61.228.55.178:1521:xe"
             url      = "jdbc:oracle:thin:@127.0.0.1:xe"
             username = "netwin"
             password = "Ppn1234.."
