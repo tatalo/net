@@ -82,8 +82,8 @@ class HtmlTagLib {
         //tablv1
         result << [lv1IDX: 1, tabLv: 1, text: g.message(code: "lotto.tab01.label"),
                    link  : g.createLink(controller: "lotto", action: "customNewOpen", params: [lv1IDX: 1])]
-        result << [lv1IDX: 2, tabLv: 1, text: g.message(code: "lotto.tab02.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2])]
+//        result << [lv1IDX: 2, tabLv: 1, text: g.message(code: "lotto.tab02.label"),
+//                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2])]
         result << [lv1IDX: 3, tabLv: 1, text: g.message(code: "lotto.tab03.label"),
                    link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 3])]
         result << [lv1IDX: 4, tabLv: 1, text: g.message(code: "lotto.tab04.label"),
@@ -237,7 +237,6 @@ class HtmlTagLib {
         result << [lv1IDX: 13, lv2IDX: 4, tabLv: 2, text: g.message(code: "lotto.tab13.subTab04.label"),
                    link  : g.createLink(controller: "lotto", action: "customAnalysisBingo", params: [lv1IDX: 13, lv2IDX: 4])]
 
-//        println "result = " + result
         return result
     }
 }

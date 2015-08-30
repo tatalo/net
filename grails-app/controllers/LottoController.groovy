@@ -16,6 +16,12 @@ class LottoController {
         render view: "/lotto/formCustomNewOpen"
     }
 
+    def customQueryHistoryMarkSix() { //六合彩查詢
+//        render template: "/lotto/BK/content3History1", model: [pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab, max: params.max]
+//        params.pType = "101"
+//        def nw400I = netWinService.getNw400List(params)
+//        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab03.subTab01.label"), lv1IDX: 3]
+    }
 
     def contentMarkSix() { //六合彩介紹
         params.pType = "101"
