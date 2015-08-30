@@ -43,8 +43,8 @@
     <div class="table-responsive">
         <!-- Default panel contents -->
         <table border="1" style="width: 100%">
-            <g:render template="/lotto/lottoDataList1" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
-            <g:render template="/lotto/lottoDataLastNumberList1" model="[columnsNOs: columnsNOs, nw300ILN: nw300ILN, nw300ILNMax: nw300ILNMax, createColumn: createColumn, columnsCNTS: columnsCNTS]"/>
+            <g:render template="/lotto/lottoDataList2" model="[columnsNOs: columnsNOs, columnsSPNOs: columnsSPNOs, nw300I: nw300I]"/>
+            <g:render template="/lotto/lottoDataLastNumberList2" model="[columnsNOs: columnsNOs, columnsSPNOs: columnsSPNOs, nw300ILN: nw300ILN, nw300ILNMax: nw300ILNMax, createColumn: createColumn, columnsCNTS: columnsCNTS]"/>
         </table>
     </div>
 </div>

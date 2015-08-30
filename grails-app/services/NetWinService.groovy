@@ -349,54 +349,54 @@ class NetWinService {
 
     }
 
-    def getCntsOpenAnalysis3(params) { //出現次數分析: 3星彩, 4星彩
-        def result = [:]
-        result.columnIDXS = dataService."lotto${params.pType}".IDXs
-        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
-
-        def query = new Sql(dataSource)
-
-        def nosSql = ""
-        result.columnIDXS.IDX.each { it ->
-            result.columnsNOs.each { it2 ->
-                nosSql += "SUM(CASE WHEN NW31.NO = ${it2} AND NW31.OPIDX = ${it} THEN 1 ELSE 0 END) NO${it}${it2}, "
-            }
-        }
-        result.columnsNOs.each { it ->
-        }
-
-        def mainSql = """
-                            SELECT
-                            ${nosSql}
-                            0 END
-                            FROM (
-                                SELECT
-                                NW3.OBJID,
-                                NW3.TYPE,
-                                NW3.PERIODS,
-                                NW3.OPENDT
-                                FROM NW300 NW3
-                                WHERE 1 = :pNum
-                                AND NW3.TYPE = :pType
-                                AND ROWNUM <= :max
-                                ORDER BY NW3.PERIODS DESC
-                            ) NW3
-                            LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
-                            ORDER BY NW3.PERIODS DESC
-                        """
-        def condition = [:]
-        condition.pNum = 1 //default parameters, avoid condition is null then happen exception
-        condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
-
-        def resultList = query.rows(mainSql, condition)
-
-        result.maxNum = resultList[0].max { it.value }.value
-        result.list = resultList
-
-        return result
-
-    }
+//    def getCntsOpenAnalysis3(params) { //出現次數分析: 3星彩, 4星彩
+//        def result = [:]
+//        result.columnIDXS = dataService."lotto${params.pType}".IDXs
+//        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
+//
+//        def query = new Sql(dataSource)
+//
+//        def nosSql = ""
+//        result.columnIDXS.IDX.each { it ->
+//            result.columnsNOs.each { it2 ->
+//                nosSql += "SUM(CASE WHEN NW31.NO = ${it2} AND NW31.OPIDX = ${it} THEN 1 ELSE 0 END) NO${it}${it2}, "
+//            }
+//        }
+//        result.columnsNOs.each { it ->
+//        }
+//
+//        def mainSql = """
+//                            SELECT
+//                            ${nosSql}
+//                            0 END
+//                            FROM (
+//                                SELECT
+//                                NW3.OBJID,
+//                                NW3.TYPE,
+//                                NW3.PERIODS,
+//                                NW3.OPENDT
+//                                FROM NW300 NW3
+//                                WHERE 1 = :pNum
+//                                AND NW3.TYPE = :pType
+//                                AND ROWNUM <= :max
+//                                ORDER BY NW3.PERIODS DESC
+//                            ) NW3
+//                            LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
+//                            ORDER BY NW3.PERIODS DESC
+//                        """
+//        def condition = [:]
+//        condition.pNum = 1 //default parameters, avoid condition is null then happen exception
+//        condition.pType = params.pType ?: "01" //require
+//        condition.max = params.max ? params.max as Integer : 25 //require
+//
+//        def resultList = query.rows(mainSql, condition)
+//
+//        result.maxNum = resultList[0].max { it.value }.value
+//        result.list = resultList
+//
+//        return result
+//
+//    }
 
     def getLastOpenAnalysis1(params) { //最久未開分析: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
         def result = [:]
@@ -448,7 +448,6 @@ class NetWinService {
         condition.pType = params.pType ?: "01" //require
         condition.max = params.max ? params.max as Integer : 25 //require
 
-//        println "sql = " + toolsService.transPRSSql(mainSql, condition)
         def resultList = query.rows(mainSql, condition)
 
         result.maxNum = resultList[0].max { it.value }.value
@@ -511,59 +510,59 @@ class NetWinService {
         return result
     }
 
-    def getLastOpenAnalysis3(params) { //最久未開分析: 3星彩, 4星彩
-        def result = [:]
-        result.columnIDXS = dataService."lotto${params.pType}".IDXs
-        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
-
-        def query = new Sql(dataSource)
-
-        def nosSql = ""
-        result.columnIDXS.IDX.each { it ->
-            result.columnsNOs.each { it2 ->
-                nosSql += "NVL(MAX(REPLACE(NWMAX.PER,'/','')) - MAX((CASE WHEN NW31.NO = ${it2} AND NW31.OPIDX = ${it} THEN REPLACE(NW3.PERIODS,'/','') END)),:max) NO${it}${it2}, "
-            }
-        }
-
-        def mainSql = """
-                           SELECT
-                           ${nosSql}
-                           0 END
-                           FROM (
-                                SELECT
-                                NW3.OBJID,
-                                NW3.TYPE,
-                                NW3.PERIODS,
-                                NW3.OPENDT
-                                FROM NW300 NW3
-                                WHERE 1 = :pNum
-                                AND NW3.TYPE = :pType
-                                AND ROWNUM <= :max
-                                ORDER BY NW3.PERIODS DESC
-                           ) NW3
-                           LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
-                           LEFT JOIN (
-                                SELECT
-                                MAX(NW32.PERIODS) PER
-                                FROM NW300 NW32
-                                WHERE 1 = :pNum
-                                AND NW32.TYPE = :pType
-                           ) NWMAX ON 1=1
-                           WHERE 1=1
-                           ORDER BY NW3.PERIODS DESC
-                        """
-        def condition = [:]
-        condition.pNum = 1 //default parameters, avoid condition is null then happen exception
-        condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
-
-        def resultList = query.rows(mainSql, condition)
-
-        result.maxNum = resultList[0].max { it.value }.value
-        result.list = resultList
-
-        return result
-    }
+//    def getLastOpenAnalysis3(params) { //最久未開分析: 3星彩, 4星彩
+//        def result = [:]
+//        result.columnIDXS = dataService."lotto${params.pType}".IDXs
+//        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
+//
+//        def query = new Sql(dataSource)
+//
+//        def nosSql = ""
+//        result.columnIDXS.IDX.each { it ->
+//            result.columnsNOs.each { it2 ->
+//                nosSql += "NVL(MAX(REPLACE(NWMAX.PER,'/','')) - MAX((CASE WHEN NW31.NO = ${it2} AND NW31.OPIDX = ${it} THEN REPLACE(NW3.PERIODS,'/','') END)),:max) NO${it}${it2}, "
+//            }
+//        }
+//
+//        def mainSql = """
+//                           SELECT
+//                           ${nosSql}
+//                           0 END
+//                           FROM (
+//                                SELECT
+//                                NW3.OBJID,
+//                                NW3.TYPE,
+//                                NW3.PERIODS,
+//                                NW3.OPENDT
+//                                FROM NW300 NW3
+//                                WHERE 1 = :pNum
+//                                AND NW3.TYPE = :pType
+//                                AND ROWNUM <= :max
+//                                ORDER BY NW3.PERIODS DESC
+//                           ) NW3
+//                           LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
+//                           LEFT JOIN (
+//                                SELECT
+//                                MAX(NW32.PERIODS) PER
+//                                FROM NW300 NW32
+//                                WHERE 1 = :pNum
+//                                AND NW32.TYPE = :pType
+//                           ) NWMAX ON 1=1
+//                           WHERE 1=1
+//                           ORDER BY NW3.PERIODS DESC
+//                        """
+//        def condition = [:]
+//        condition.pNum = 1 //default parameters, avoid condition is null then happen exception
+//        condition.pType = params.pType ?: "01" //require
+//        condition.max = params.max ? params.max as Integer : 25 //require
+//
+//        def resultList = query.rows(mainSql, condition)
+//
+//        result.maxNum = resultList[0].max { it.value }.value
+//        result.list = resultList
+//
+//        return result
+//    }
 
     def getLastNumberAnalysis1(params) { //尾數分析: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
         def result = [:]
@@ -774,8 +773,6 @@ class NetWinService {
         condition.pType = params.pType ?: "01" //require
         condition.max = params.max ? params.max as Integer : 25 //require
 
-        println "sql = " + toolsService.transPRSSql(mainSql, condition)
-
         def resultList = query.rows(mainSql, condition)
 
         result.list = resultList
@@ -887,10 +884,81 @@ class NetWinService {
                                 ORDER BY NW3.PERIODS DESC
                             ) NW3
                             LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
-                            LEFT JOIN NW301 NW31B ON NW31.NW300ID = NW31B.NW300ID AND NW31.NO = (NW31B.NO+1) AND NW31.ISSPNO = NW31B.ISSPNO ${unspnoSql}
-                            LEFT JOIN NW301 NW31C ON NW31.NW300ID = NW31C.NW300ID AND NW31.NO = (NW31C.NO-1) AND NW31.ISSPNO = NW31C.ISSPNO ${unspnoSql}
                             WHERE 1=1
                             ${unspnoSql}
+                            GROUP BY NW3.PERIODS, NW3.OPENDT
+                        ) NW3
+                        ORDER BY NW3.PERIODS DESC
+                  """
+        def condition = [:]
+        condition.pNum = 1 //default parameters, avoid condition is null then happen exception
+        condition.pType = params.pType ?: "01" //require
+        condition.max = params.max ? params.max as Integer : 25 //require
+
+        println "sql = " + toolsService.transPRSSql(mainSql, condition)
+
+        def resultList = query.rows(mainSql, condition)
+
+        result.list = resultList
+        result.counts = resultList.size()
+
+        return result
+    }
+
+
+    def getRepeatAnyalysis2(params) { // 連開分析: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
+        def result = [:]
+        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
+        result.columnsSPNOs = dataService."lotto${params.pType}".SPNOs.sort { it.toInteger() }
+
+        def query = new Sql(dataSource)
+
+        def nosSql = ""
+        result.columnsNOs.each { it ->
+            nosSql += "DECODE((case when (NW3.NO${it} > 0 and (LEAD(NW3.NO${it}) OVER (ORDER BY NW3.PERIODS DESC) > 0)) or (NW3.NO${it} > 0 and (LAG(NW3.NO${it}) OVER (ORDER BY NW3.PERIODS DESC)) > 0) then 4 ELSE NW3.NO${it} END),4,'RPNO',2,'SPNO',1,'NO','') NO${it}, "
+        }
+
+        def nosSql2 = ""
+        result.columnsNOs.each { it ->
+            nosSql2 += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 0 THEN 1 ELSE 0 END) NO${it}, "
+        }
+
+        def spnosSql = ""
+        result.columnsSPNOs.each { it ->
+            nosSql += "DECODE((case when (NW3.SPNO${it} > 0 and (LEAD(NW3.SPNO${it}) OVER (ORDER BY NW3.PERIODS DESC) > 0)) or (NW3.SPNO${it} > 0 and (LAG(NW3.SPNO${it}) OVER (ORDER BY NW3.PERIODS DESC)) > 0) then 4 ELSE NW3.SPNO${it} END),4,'RPNO',2,'SPNO',1,'NO','') SPNO${it}, "
+        }
+
+        def spnosSql2 = ""
+        result.columnsSPNOs.each { it ->
+            nosSql2 += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 1 THEN 2 ELSE 0 END) SPNO${it}, "
+        }
+
+        def mainSql = """
+                        SELECT
+                        NW3.PERIODS,
+                        NW3.OPENDT,
+                        ${nosSql}
+                        ${spnosSql}
+                        0 END
+                        FROM ( SELECT
+                            NW3.PERIODS,
+                            NW3.OPENDT,
+                            ${nosSql2}
+                            ${spnosSql2}
+                            0 END
+                            FROM (
+                                SELECT
+                                NW3.OBJID,
+                                NW3.TYPE,
+                                NW3.PERIODS,
+                                NW3.OPENDT
+                                FROM NW300 NW3
+                                WHERE 1 = :pNum
+                                AND NW3.TYPE = :pType
+                                AND ROWNUM <= :max
+                                ORDER BY NW3.PERIODS DESC
+                            ) NW3
+                            LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
                             GROUP BY NW3.PERIODS, NW3.OPENDT
                         ) NW3
                         ORDER BY NW3.PERIODS DESC

@@ -31,7 +31,7 @@
                 ${nw300?.PERIODS}
             </div>
         </td>
-        <td class="lottoOpendte text-center">
+        <td class="lottoOpendt text-center">
             <div class="center-block">
                 <g:formatDate format="yyyyMMdd" date="${nw300?.OPENDT}"/>
             </div>

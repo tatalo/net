@@ -46,7 +46,6 @@
             <g:render template="/lotto/lottoDataList1" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
             <g:render template="/lotto/lottoDataTitleList1" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
             <g:render template="/lotto/lottoDataCntsList1" model="[columnsNOs: columnsNOs, nw300IC: nw300IC, nw300ICMax: nw300ICMax]"/>
-            %{--<g:render template="/lotto/lottoDataLastOpenList1" model="[columnsNOs: columnsNOs, nw300IL: nw300IL, nw300ILMax: nw300ILMax]"/>--}%
         </table>
     </div>
 </div>

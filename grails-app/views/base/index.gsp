@@ -62,11 +62,11 @@
                         <g:message code="default.tab02.label"/>
                     </strong>
                 </h4>
-                <g:each in="${lottoTabs}" var="tab" status="i">
+                <g:each in="${hl.getLottoTabs().findAll{it.tabLv == 1}}" var="tab" status="i">
                     <p class="text-nowrap">
-                        <g:link controller="lotto" action="index" fragment="tab${tab.tab}">
-                            <g:message code="lotto.tab${tab.tab}.label"/>
-                        </g:link>
+                        <a href="${tab?.link}">
+                            ${tab?.text}
+                        </a>
                     </p>
                 </g:each>
             </div>

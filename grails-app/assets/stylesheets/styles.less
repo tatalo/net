@@ -122,9 +122,25 @@ td.lottoContinueNO {
   font-size: 14px;
 }
 
-//樂透表格用(分析數字)
+//樂透表格用(開獎號碼)
 th.lottoTitleAnalysisNo {
   background-color: #009999;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+//樂透表格用(開獎號碼)
+th.lottoTitleAnalysisType {
+  background-color: #009999;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+//樂透表格用(特別號)
+th.lottoTitleAnalysisSPNo {
+  background-color: #996600;
   color: #fff;
   text-align: center;
   font-size: 14px;
@@ -154,6 +170,21 @@ th.lottoTitleOpendt {
   font-size: 16px;
 }
 
+//樂透表格用(開獎號碼title)
+th.lottoTitleOpenNum {
+  text-align: center;
+  background-color: #E0EEEE;
+  width: 60px;
+  font-size: 16px;
+}
+
+//樂透表格用(開獎號碼title)
+th.lottoTitleType {
+  text-align: center;
+  background-color: #E0EEEE;
+  font-size: 16px;
+}
+
 //樂透表格用(編號)
 td.lottoNum {
   font-size: 14px;
@@ -165,8 +196,13 @@ td.lottoPeriods {
 }
 
 //樂透表格用(日期)
-td.lottoOpendte {
+td.lottoOpendt {
   font-size: 14px;
+}
+
+//樂透表格用(開獎號碼)
+td.lottoOpenNum {
+  font-size: 16px;
 }
 
 //樂透表格用
@@ -181,12 +217,27 @@ th.lottoTitleInsertText {
   font-size: 16px;
 }
 
-//樂透表格用(投注號碼)
+//樂透表格用(投注號碼Title)
 th.lottoTitleInsertNO {
   text-align: center;
   background-color: #FF3366;
   color: #fff;
   font-size: 14px;
+}
+
+//樂透表格用(投注號碼-特別號 Title)
+th.lottoTitleInsertSPNO {
+  text-align: center;
+  background-color: #996600;
+  color: #fff;
+  font-size: 14px;
+}
+
+//樂透表格用(投注號碼次數Title)
+th.lottoTitleInsertNOCnts {
+  text-align: center;
+  background-color: #FFAEB9;
+  font-size: 16px;
 }
 
 //樂透表格用(出現次數Title)
@@ -256,119 +307,119 @@ div.lottoAnalysisNo {
 
 
 
-//樂透表格用
-.perPeriodsNumber tr:hover {
-  background-color: #97FFFF;
-}
-
-//樂透表格用
-th.lottoTitleNumber {
-  text-align: center;
-  background-color: #E0EEEE;
-  width: 40px !important;
-  font-size: 16px;
-}
-
-//樂透表格用
-th.lottoTitlePERIODS {
-  text-align: center;
-  background-color: #E0EEEE;
-  width: 80px !important;
-  font-size: 16px;
-}
-
-//樂透表格用
-th.lottoTitleOPENDT {
-  text-align: center;
-  background-color: #E0EEEE;
-  width: 75px !important;
-  font-size: 16px;
-}
-
-//樂透表格用
-th.lottoTitleNO {
-  text-align: center;
-  background-color: #FCF6CF;
-  font-size: 14px;
-}
-
-//樂透表格用
-th.lottoTitleNO2 {
-  text-align: center;
-  background-color: #C1DC5A;
-  font-size: 14px;
-}
-
-//樂透表格用
-th.lottoTitleSPNO {
-  text-align: center;
-  background-color: #b2d1ff;
-  font-size: 14px;
-}
-
-//樂透表格用(投注號碼)
-th.lottoTitleINSERTNO {
-  text-align: center;
-  background-color: #FFD700;
-  font-size: 16px;
-}
-
-//樂透表格用(出現次數)
-th.lottoTitleCNTS {
-  text-align: center;
-  background-color: #FFAEB9;
-  font-size: 16px;
-  height: 100px !important;
-}
-
-//樂透表格用(出現次數)
-th.lottoTitleCNTS_NoH {
-  text-align: center;
-  background-color: #FFAEB9;
-  font-size: 16px;
-}
-
-//樂透表格用(最久未開)
-th.lottoTitleSERIAL {
-  text-align: center;
-  background-color: #90EE90;
-  font-size: 16px;
-  height: 100px;
-}
-
-//樂透表格用
-td.lottoTD {
-  font-size: 14px;
-}
-
-//樂透表格用
-td.lottoTD2 {
-  background-color: #C1DC5A !important;
-  font-size: 14px;
-}
-
-.boldRed {
-  color: #aa0000;
-  font-weight: bold;
-}
-
-.linepercent {
-  background-color: #6495ED;
-  border: 1px solid;
-}
-
-.linepercent_60p {
-  position:relative;
-  background-color: #6495ED;
-  border: 1px solid;
-  width: 60%;
-  left: 20%;
-}
-
-.linepercentEver{
-  background-color: #A2CD5A ;
-  border:1px solid;
-}
+////樂透表格用
+//.perPeriodsNumber tr:hover {
+//  background-color: #97FFFF;
+//}
+//
+////樂透表格用
+//th.lottoTitleNumber {
+//  text-align: center;
+//  background-color: #E0EEEE;
+//  width: 40px !important;
+//  font-size: 16px;
+//}
+//
+////樂透表格用
+//th.lottoTitlePERIODS {
+//  text-align: center;
+//  background-color: #E0EEEE;
+//  width: 80px !important;
+//  font-size: 16px;
+//}
+//
+////樂透表格用
+//th.lottoTitleOPENDT {
+//  text-align: center;
+//  background-color: #E0EEEE;
+//  width: 75px !important;
+//  font-size: 16px;
+//}
+//
+////樂透表格用
+//th.lottoTitleNO {
+//  text-align: center;
+//  background-color: #FCF6CF;
+//  font-size: 14px;
+//}
+//
+////樂透表格用
+//th.lottoTitleNO2 {
+//  text-align: center;
+//  background-color: #C1DC5A;
+//  font-size: 14px;
+//}
+//
+////樂透表格用
+//th.lottoTitleSPNO {
+//  text-align: center;
+//  background-color: #b2d1ff;
+//  font-size: 14px;
+//}
+//
+////樂透表格用(投注號碼)
+//th.lottoTitleINSERTNO {
+//  text-align: center;
+//  background-color: #FFD700;
+//  font-size: 16px;
+//}
+//
+////樂透表格用(出現次數)
+//th.lottoTitleCNTS {
+//  text-align: center;
+//  background-color: #FFAEB9;
+//  font-size: 16px;
+//  height: 100px !important;
+//}
+//
+////樂透表格用(出現次數)
+//th.lottoTitleCNTS_NoH {
+//  text-align: center;
+//  background-color: #FFAEB9;
+//  font-size: 16px;
+//}
+//
+////樂透表格用(最久未開)
+//th.lottoTitleSERIAL {
+//  text-align: center;
+//  background-color: #90EE90;
+//  font-size: 16px;
+//  height: 100px;
+//}
+//
+////樂透表格用
+//td.lottoTD {
+//  font-size: 14px;
+//}
+//
+////樂透表格用
+//td.lottoTD2 {
+//  background-color: #C1DC5A !important;
+//  font-size: 14px;
+//}
+//
+//.boldRed {
+//  color: #aa0000;
+//  font-weight: bold;
+//}
+//
+//.linepercent {
+//  background-color: #6495ED;
+//  border: 1px solid;
+//}
+//
+//.linepercent_60p {
+//  position:relative;
+//  background-color: #6495ED;
+//  border: 1px solid;
+//  width: 60%;
+//  left: 20%;
+//}
+//
+//.linepercentEver{
+//  background-color: #A2CD5A ;
+//  border:1px solid;
+//}
 
 ////置底
 //.pull-down {

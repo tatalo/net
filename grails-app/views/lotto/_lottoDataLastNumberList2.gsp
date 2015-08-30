@@ -33,6 +33,13 @@
             </g:if>
         </th>
     </g:each>
+    <g:each var="Num" in="${(columnsSPNOs)}">
+        <th class="lottoTitleInsertSPNO">
+            <div class="center-block">
+                ${Num}
+            </div>
+        </th>
+    </g:each>
 </tr>
 </tbody>
 <tbody>
@@ -54,5 +61,12 @@
             <g:set var="vClass" value="font14"/>
         </g:else>
     </g:if>
+</g:each>
+<g:each var="Num" in="${(columnsSPNOs)}" status="j">
+    <td class="tbody4td lottoTD">
+        <div class="text-center">
+            ${nw300ILN[0]?."SPNO${Num}"}
+        </div>
+    </td>
 </g:each>
 </tbody>

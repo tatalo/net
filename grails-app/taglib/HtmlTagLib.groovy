@@ -208,11 +208,11 @@ class HtmlTagLib {
         result << [lv1IDX: 13, lv2IDX: 1, tabLv: 2, text: g.message(code: "lotto.tab13.subTab01.label"),
                    link  : g.createLink(controller: "lotto", action: "contentBingoBingo", params: [lv1IDX: 13, lv2IDX: 1])]
         result << [lv1IDX: 13, lv2IDX: 2, tabLv: 2, text: g.message(code: "lotto.tab13.subTab02.label"),
-                   link  : g.createLink(controller: "lotto", action: "customHistoryBingoBingo", params: [lv1IDX: 13, lv2IDX: 2])]
+                   link  : g.createLink(controller: "lotto", action: "customOpenNumBingo", params: [lv1IDX: 13, lv2IDX: 2])]
         result << [lv1IDX: 13, lv2IDX: 3, tabLv: 2, text: g.message(code: "lotto.tab13.subTab03.label"),
-                   link  : g.createLink(controller: "lotto", action: "customRepeatBingoBingo", params: [lv1IDX: 13, lv2IDX: 3])]
+                   link  : g.createLink(controller: "lotto", action: "customStatistBingo", params: [lv1IDX: 13, lv2IDX: 3])]
         result << [lv1IDX: 13, lv2IDX: 4, tabLv: 2, text: g.message(code: "lotto.tab13.subTab04.label"),
-                   link  : g.createLink(controller: "lotto", action: "customContinueBingoBingo", params: [lv1IDX: 13, lv2IDX: 4])]
+                   link  : g.createLink(controller: "lotto", action: "customAnalysisBingo", params: [lv1IDX: 13, lv2IDX: 4])]
 
 
 //        result << [tabIDX: 3, text: g.message(code: "lotto.tab03.subTab01.label"),
