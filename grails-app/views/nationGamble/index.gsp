@@ -33,7 +33,7 @@
                         <a data-toggle="pill"
                            onclick="getList('${tab?.tab}', '${tab?.dataType}', '${tab?.dataType2}', 'tab${tab?.tab}');"
                            class="${[0: 'activeAuto'][i]}" href="#tab${tab?.tab}">
-                            <i class="fa fa-th-list"></i>
+                            %{--<i class="fa fa-th-list"></i>--}%
                             <g:message code="nationGamble.tab${tab?.tab}.label"/>
                         </a>
                     </li>

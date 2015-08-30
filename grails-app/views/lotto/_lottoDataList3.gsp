@@ -62,7 +62,7 @@
         </td>
         <g:each var="IDX" in="${(columnIDXS?.IDX)}">
             <g:each var="Num" in="${(columnsNOs)}">
-                <td class="text-center ${hl.chkLottoDataClass(chkValue: nw300?."NO${IDX}${Num}")}">
+                <td class="text-center ${hl.chkLottoClass(chkValue: nw300?."NO${IDX}${Num}")}">
                     <div class="center-block">
                         ${nw300?."NO${IDX}${Num}"? Num?.toInteger() : ""}
                     </div>

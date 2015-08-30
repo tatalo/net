@@ -14,6 +14,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <asset:stylesheet src="application.css"/>
+    <asset:javascript src="application.js"/>
     <!-- Custom styles for this template -->
 
     <!-- HTML5 shim and Respond.js 讓 IE8 支援 HTML5 元素與媒體查詢 -->
@@ -27,13 +28,12 @@
     <g:layoutHead/>
 </head>
 
-<body>
+<body role="document">
 
-    <g:render template="/base/navbar"/>
+<g:render template="/base/navbar"/>
 
-    <g:layoutBody/>
+<g:layoutBody/>
 
-<asset:javascript src="application.js"/>
 <g:render template="/base/javascirpt"/>
 </body>
 </html>

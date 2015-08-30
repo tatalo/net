@@ -13,19 +13,21 @@ class LottoController {
     //       context => NW400
     //       list => NW500
     static def alltabs = [
-            [tab: '01', subTab: [[tab: '01' ,viewType: 'content5Video', dataType: '' ],
-                                 [tab: '02' ,viewType: 'content2LatestLotto', dataType: '' ]]],
-            [tab: '02', subTab: [[tab: '01' ,viewType: 'content3History1', dataType: '01' ],
-                                 [tab: '02' ,viewType: 'content3History1', dataType: '02' ],
-                                 [tab: '03' ,viewType: 'content3History1', dataType: '03' ],
-                                 [tab: '04' ,viewType: 'content3History1', dataType: '04' ],
-                                 [tab: '05' ,viewType: 'content3History1', dataType: '05' ],
-                                 [tab: '06' ,viewType: 'content3History1', dataType: '06' ],
-                                 [tab: '07' ,viewType: 'content3History1', dataType: '07' ],
-                                 [tab: '08' ,viewType: 'content3History1', dataType: '08' ],
-                                 [tab: '09' ,viewType: 'content3History1', dataType: '09' ],
-                                 [tab: '10' ,viewType: 'content3History1', dataType: '10' ],
-                                 [tab: '11' ,viewType: 'content3History2', dataType: '11' ]]],
+            [tab: '01', subTab: [[tab: '01' ,viewType: 'content2LatestLotto', dataType: '' ]]],
+//                                 [tab: '02' ,viewType: 'content2LatestLotto', dataType: '' ]]],
+//            [tab: '01', subTab: [[tab: '01' ,viewType: 'content5Video', dataType: '' ],
+//                                 [tab: '02' ,viewType: 'content2LatestLotto', dataType: '' ]]],
+//            [tab: '02', subTab: [[tab: '01' ,viewType: 'content3History1', dataType: '01' ],
+//                                 [tab: '02' ,viewType: 'content3History1', dataType: '02' ],
+//                                 [tab: '03' ,viewType: 'content3History1', dataType: '03' ],
+//                                 [tab: '04' ,viewType: 'content3History1', dataType: '04' ],
+//                                 [tab: '05' ,viewType: 'content3History1', dataType: '05' ],
+//                                 [tab: '06' ,viewType: 'content3History1', dataType: '06' ],
+//                                 [tab: '07' ,viewType: 'content3History1', dataType: '07' ],
+//                                 [tab: '08' ,viewType: 'content3History1', dataType: '08' ],
+//                                 [tab: '09' ,viewType: 'content3History1', dataType: '09' ],
+//                                 [tab: '10' ,viewType: 'content3History1', dataType: '10' ],
+//                                 [tab: '11' ,viewType: 'content3History2', dataType: '11' ]]],
             [tab: '03', subTab: [[tab: '01' ,viewType: 'content1', dataType: '101' ],
                                  [tab: '02' ,viewType: 'historyDataAnalysis1', dataType: '01' ],
                                  [tab: '03' ,viewType: 'cntsOpenAnalysis1', dataType: '01' ],
@@ -98,16 +100,592 @@ class LottoController {
     ]
 
     def index() {
-        render view: "/lotto/index", model: [alltabs : alltabs]
+        redirect action: "customNewOpen"
+    }
+
+    def customNewOpen() { //彩球最新開獎
+        render view: "/lotto/formCustomNewOpen"
+    }
+
+
+    def contentMarkSix() { //六合彩介紹
+        params.pType = "101"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab03.subTab01.label"), lv1IDX: 3]
+    }
+
+    def customHistoryMarkSix() { //六合彩歷史數據分析
+        params.pType = "01"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistoryMarkSix", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "1",
+                                                              nw300I: vHistoryData.list,
+                                                              nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                              nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                              pType: params.pType, title: g.message(code: "lotto.tab03.subTab02.label"), lv1IDX: 3, pLink : vLink]
+    }
+
+    def customContinueMarkSix() { //六合連續分析
+        params.pType = "01"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getContinueAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customContinueMarkSix", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab03.subTab04.label"), lv1IDX: 3, pLink : vLink]
+    }
+
+    def customRepeatMarkSix() { //六合彩連開分析
+        params.pType = "01"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getRepeatAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customRepeatMarkSix", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab03.subTab03.label"), lv1IDX: 3, pLink : vLink]
+    }
+
+    def customLastNumberMarkSix() { //六合彩尾數分析
+        params.pType = "01"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customLastNumberMarkSix", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                          nw300I: vHistoryData.list,
+                                                          nw300ILN: vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn,columnsCNTS: vLastNumberData.columnsCNTS,
+                                                             pType: params.pType, title: g.message(code: "lotto.tab03.subTab05.label"), lv1IDX: 3, pLink : vLink]
+    }
+
+
+    def contentLotto740() { //大福彩介紹
+        params.pType = "102"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab04.subTab01.label"), lv1IDX: 4]
+    }
+
+    def customHistoryLotto740() { //大福彩歷史數據分析
+        params.pType = "02"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistoryLotto740", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab04.subTab02.label"), lv1IDX: 4, pLink : vLink]
+    }
+
+    def customContinueLotto740() { //大福彩連續分析
+        params.pType = "02"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getContinueAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customContinueLotto740", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                           nw300I: vHistoryData.list,
+                                                           nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                           pType: params.pType, title: g.message(code: "lotto.tab04.subTab04.label"), lv1IDX: 4, pLink : vLink]
+    }
+
+    def customRepeatLotto740() { //大福彩連開分析
+        params.pType = "02"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getRepeatAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customRepeatLotto740", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                         nw300I: vHistoryData.list,
+                                                         nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                         pType: params.pType, title: g.message(code: "lotto.tab04.subTab03.label"), lv1IDX: 4, pLink : vLink]
+    }
+
+    def customLastNumberLotto740() { //大福彩尾數分析
+        params.pType = "02"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customLastNumberLotto740", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                             nw300I: vHistoryData.list,
+                                                             nw300ILN: vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn,columnsCNTS: vLastNumberData.columnsCNTS,
+                                                             pType: params.pType, title: g.message(code: "lotto.tab04.subTab05.label"), lv1IDX: 4, pLink : vLink]
+    }
+
+
+    def contentSuperLotto638() { //威力彩介紹
+        params.pType = "103"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab05.subTab01.label"), lv1IDX: 5]
+    }
+
+    def customHistorySuperLotto638() { //威力彩歷史數據分析
+        params.pType = "03"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistorySuperLotto638", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab05.subTab02.label"), lv1IDX: 5, pLink : vLink]
+    }
+
+    def customContinueSuperLotto638() { //威力彩連續分析
+        params.pType = "03"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getContinueAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customContinueSuperLotto638", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                           nw300I: vHistoryData.list,
+                                                           nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                           pType: params.pType, title: g.message(code: "lotto.tab05.subTab04.label"), lv1IDX: 5, pLink : vLink]
+    }
+
+    def customRepeatSuperLotto638() { //威力彩連開分析
+        params.pType = "03"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getRepeatAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customRepeatSuperLotto638", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                         nw300I: vHistoryData.list,
+                                                         nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                         pType: params.pType, title: g.message(code: "lotto.tab05.subTab03.label"), lv1IDX: 5, pLink : vLink]
+    }
+
+    def customLastNumberSuperLotto638() { //威力彩尾數分析
+        params.pType = "03"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customLastNumberSuperLotto638", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                             nw300I: vHistoryData.list,
+                                                             nw300ILN: vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn,columnsCNTS: vLastNumberData.columnsCNTS,
+                                                             pType: params.pType, title: g.message(code: "lotto.tab05.subTab05.label"), lv1IDX: 5, pLink : vLink]
+    }
+
+    def content38M6() { //38樂合彩介紹
+        params.pType = "104"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab06.subTab01.label"), lv1IDX: 6]
+    }
+
+    def customHistory38M6() { //38樂合彩歷史數據分析
+        params.pType = "04"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistory38M6", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab06.subTab02.label"), lv1IDX: 6, pLink : vLink]
+    }
+
+    def customContinue38M6() { //38樂合彩連續分析
+        params.pType = "04"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getContinueAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customContinue38M6", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                           nw300I: vHistoryData.list,
+                                                           nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                           pType: params.pType, title: g.message(code: "lotto.tab06.subTab04.label"), lv1IDX: 6, pLink : vLink]
+    }
+
+    def customRepeat38M6() { //38樂合彩連開分析
+        params.pType = "04"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getRepeatAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customRepeat38M6", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                         nw300I: vHistoryData.list,
+                                                         nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                         pType: params.pType, title: g.message(code: "lotto.tab06.subTab03.label"), lv1IDX: 6, pLink : vLink]
+    }
+
+    def customLastNumber38M6() { //38樂合彩尾數分析
+        params.pType = "04"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customLastNumber38M6", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                             nw300I: vHistoryData.list,
+                                                             nw300ILN: vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn,columnsCNTS: vLastNumberData.columnsCNTS,
+                                                             pType: params.pType, title: g.message(code: "lotto.tab06.subTab05.label"), lv1IDX: 6, pLink : vLink]
+    }
+
+    def contentLotto649() { //大樂透介紹
+        params.pType = "105"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab07.subTab01.label"), lv1IDX: 7]
+    }
+
+    def customHistoryLotto649() { //大樂透歷史數據分析
+        params.pType = "05"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistoryLotto649", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "1",
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab07.subTab02.label"), lv1IDX: 7, pLink : vLink]
+    }
+
+    def customContinueLotto649() { //大樂透連續分析
+        params.pType = "05"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getContinueAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customContinueLotto649", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                           nw300I: vHistoryData.list,
+                                                           nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                           pType: params.pType, title: g.message(code: "lotto.tab07.subTab04.label"), lv1IDX: 7, pLink : vLink]
+    }
+
+    def customRepeatLotto649() { //大樂透連開分析
+        params.pType = "05"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getRepeatAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customRepeatLotto649", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                         nw300I: vHistoryData.list,
+                                                         nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                         pType: params.pType, title: g.message(code: "lotto.tab07.subTab03.label"), lv1IDX: 7, pLink : vLink]
+    }
+
+    def customLastNumberLotto649() { //大樂透尾數分析
+        params.pType = "05"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customLastNumberLotto649", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                             nw300I: vHistoryData.list,
+                                                             nw300ILN: vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn,columnsCNTS: vLastNumberData.columnsCNTS,
+                                                             pType: params.pType, title: g.message(code: "lotto.tab07.subTab05.label"), lv1IDX: 7, pLink : vLink]
+    }
+
+    def content49M6() { //49樂合彩介紹
+        params.pType = "106"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab08.subTab01.label"), lv1IDX: 8]
+    }
+
+    def customHistory49M6() { //49樂合彩歷史數據分析
+        params.pType = "06"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistory49M6", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab08.subTab02.label"), lv1IDX: 8, pLink : vLink]
+    }
+
+    def customContinue49M6() { //49樂合彩連續分析
+        params.pType = "06"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getContinueAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customContinue49M6", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                           nw300I: vHistoryData.list,
+                                                           nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                           pType: params.pType, title: g.message(code: "lotto.tab08.subTab04.label"), lv1IDX: 8, pLink : vLink]
+    }
+
+    def customRepeat49M6() { //49樂合彩連開分析
+        params.pType = "06"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getRepeatAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customRepeat49M6", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                         nw300I: vHistoryData.list,
+                                                         nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                         pType: params.pType, title: g.message(code: "lotto.tab08.subTab03.label"), lv1IDX: 8, pLink : vLink]
+    }
+
+    def customLastNumber49M6() { //49樂合彩尾數分析
+        params.pType = "06"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customLastNumber49M6", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                             nw300I: vHistoryData.list,
+                                                             nw300ILN: vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn,columnsCNTS: vLastNumberData.columnsCNTS,
+                                                             pType: params.pType, title: g.message(code: "lotto.tab08.subTab05.label"), lv1IDX: 8, pLink : vLink]
+    }
+
+    def contentLotto539() { //今彩539介紹
+        params.pType = "107"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab09.subTab01.label"), lv1IDX: 9]
+    }
+
+    def customHistoryLotto539() { //今彩539歷史數據分析
+        params.pType = "07"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistoryLotto539", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab09.subTab02.label"), lv1IDX: 9, pLink : vLink]
+    }
+
+    def customContinueLotto539() { //今彩539連續分析
+        params.pType = "07"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getContinueAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customContinueLotto539", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                           nw300I: vHistoryData.list,
+                                                           nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                           pType: params.pType, title: g.message(code: "lotto.tab09.subTab04.label"), lv1IDX: 9, pLink : vLink]
+    }
+
+    def customRepeatLotto539() { //今彩539連開分析
+        params.pType = "07"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getRepeatAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customRepeatLotto539", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                         nw300I: vHistoryData.list,
+                                                         nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                         pType: params.pType, title: g.message(code: "lotto.tab09.subTab03.label"), lv1IDX: 9, pLink : vLink]
+    }
+
+    def customLastNumberLotto539() { //今彩539尾數分析
+        params.pType = "07"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customLastNumberLotto539", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                             nw300I: vHistoryData.list,
+                                                             nw300ILN: vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn,columnsCNTS: vLastNumberData.columnsCNTS,
+                                                             pType: params.pType, title: g.message(code: "lotto.tab09.subTab05.label"), lv1IDX: 9, pLink : vLink]
+    }
+
+    def content39M5() { //39樂合彩介紹
+        params.pType = "108"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab10.subTab01.label"), lv1IDX: 10]
+    }
+
+    def customHistory39M5() { //39樂合彩歷史數據分析
+        params.pType = "08"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistory39M5", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab10.subTab02.label"), lv1IDX: 10, pLink : vLink]
+    }
+
+    def customContinue39M5() { //39樂合彩連續分析
+        params.pType = "08"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getContinueAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customContinue39M5", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                           nw300I: vHistoryData.list,
+                                                           nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                           pType: params.pType, title: g.message(code: "lotto.tab10.subTab04.label"), lv1IDX: 10, pLink : vLink]
+    }
+
+    def customRepeat39M5() { //39樂合彩連開分析
+        params.pType = "08"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getRepeatAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customRepeat39M5", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                         nw300I: vHistoryData.list,
+                                                         nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                         pType: params.pType, title: g.message(code: "lotto.tab10.subTab03.label"), lv1IDX: 10, pLink : vLink]
+    }
+
+    def customLastNumber39M5() { //39樂合彩尾數分析
+        params.pType = "08"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customLastNumber39M5", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                             nw300I: vHistoryData.list,
+                                                             nw300ILN: vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn,columnsCNTS: vLastNumberData.columnsCNTS,
+                                                             pType: params.pType, title: g.message(code: "lotto.tab10.subTab05.label"), lv1IDX: 10, pLink : vLink]
+    }
+
+    def content3D() { //3星彩介紹
+        params.pType = "109"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab11.subTab01.label"), lv1IDX: 11]
+    }
+
+    def customHistory3D() { //3星彩歷史數據分析
+        params.pType = "09"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistory3D", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab11.subTab02.label"), lv1IDX: 11, pLink : vLink]
+    }
+
+    def content4D() { //4星彩介紹
+        params.pType = "110"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab12.subTab01.label"), lv1IDX: 12]
+    }
+
+    def customHistory4D() { //4星彩歷史數據分析
+        params.pType = "10"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistory4D", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab12.subTab02.label"), lv1IDX: 12, pLink : vLink]
+    }
+
+    def contentBingoBingo() { //賓果介紹
+        params.pType = "111"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab13.subTab01.label"), lv1IDX: 13]
+    }
+
+    def customHistoryBingoBingo() { //賓果歷史數據分析
+        params.pType = "11"
+
+        def vHistoryData = netWinService.getHistoryAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+        def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customHistoryBingoBingo", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
+                                                          nw300I: vHistoryData.list,
+                                                          nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                          nw300IL: vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
+                                                          pType: params.pType, title: g.message(code: "lotto.tab13.subTab02.label"), lv1IDX: 13, pLink : vLink]
+    }
+
+    def customContinueBingoBingo() { //賓果連續分析
+        params.pType = "11"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getContinueAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customContinueBingoBingo", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                           nw300I: vHistoryData.list,
+                                                           nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                           pType: params.pType, title: g.message(code: "lotto.tab13.subTab04.label"), lv1IDX: 13, pLink : vLink]
+    }
+
+    def customRepeatBingoBingo() { //賓果連開分析
+        params.pType = "11"
+        params.pUnSPNO = "1"
+        def vHistoryData = netWinService.getRepeatAnyalysis1(params)
+        def vCntsData = netWinService.getCntsOpenAnalysis1(params)
+
+        def vLink = g.createLink(controller: "lotto", action: "customRepeatBingoBingo", params: [lv1IDX: params.lv1IDX, lv2IDX: params.lv2IDX])
+        render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
+                                                         nw300I: vHistoryData.list,
+                                                         nw300IC: vCntsData.list, nw300ICMax: vCntsData.maxNum,
+                                                         pType: params.pType, title: g.message(code: "lotto.tab13.subTab03.label"), lv1IDX: 13, pLink : vLink]
     }
 
     def list() {
         if (params.pTab in ["01"]) {
-            if (params.pSubTab in ["01"]) {
-                render template: "/lotto/content5Video"
-            } else {
+//            if (params.pSubTab in ["01"]) {
+//                render template: "/lotto/content5Video"
+//            } else {
                 render template: "/lotto/content2LatestLotto"
-            }
+//            }
         } else if (params.pTab in ["02"]) {
             params.max = 1
             if (params.pSubTab in ["01","02","03", "04", "05", "06", "07", "08", "09", "10"]) {
@@ -122,61 +700,60 @@ class LottoController {
                 render template: "/lotto/content1", model: [nw400I: nw400I]
             } else if (params.pSubTab in ["02"]) { //歷史數據
                 if (params.pType in ["01","02","04","05","06","07","08","11"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
-                    def result = netWinService.getHistoryDataAnyalysis1(params)
+                    def result = netWinService.getHistoryAnyalysis1(params)
                     render template: "/lotto/historyDataAnalysis1", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["03"]) { //威力彩
-                    def result = netWinService.getHistoryDataAnyalysis2(params)
+                    def result = netWinService.getHistoryAnyalysis2(params)
                     render template: "/lotto/historyDataAnalysis2", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["09","10"]) { //3星彩, 4星彩
-                    def result = netWinService.getHistoryDataAnyalysis3(params)
+                    def result = netWinService.getHistoryAnyalysis3(params)
                     render template: "/lotto/historyDataAnalysis3", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
                                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 }
             } else if (params.pSubTab in ["03"]) { //出現次數分析
                 if (params.pType in ["01","02","04","05","06","07","08","11"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
-                    def result = netWinService.getHistoryDataAnyalysis1(params)
+                    def result = netWinService.getHistoryAnyalysis1(params)
                     def result2 = netWinService.getCntsOpenAnalysis1(params)
                     render template: "/lotto/cntsOpenAnalysis1", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                             pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["03"]) { //威力彩
-                    def result = netWinService.getHistoryDataAnyalysis2(params)
+                    def result = netWinService.getHistoryAnyalysis2(params)
                     def result2 = netWinService.getCntsOpenAnalysis2(params)
                     render template: "/lotto/cntsOpenAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["09","10"]) { //3星彩, 4星彩
-                    def result = netWinService.getHistoryDataAnyalysis3(params)
-                    println "result = " + result
+                    def result = netWinService.getHistoryAnyalysis3(params)
                     def result2 = netWinService.getCntsOpenAnalysis3(params)
                     render template: "/lotto/cntsOpenAnalysis3", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 }
             } else if (params.pSubTab in ["04"]) { //最久未開分析
                 if (params.pType in ["01","02","04","05","06","07","08","11"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
-                    def result = netWinService.getHistoryDataAnyalysis1(params)
+                    def result = netWinService.getHistoryAnyalysis1(params)
                     def result2 = netWinService.getLastOpenAnalysis1(params)
                     render template: "/lotto/lastOpenAnalysis1", model: [nw300SERIALI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["03"]) { //威力彩
-                    def result = netWinService.getHistoryDataAnyalysis2(params)
+                    def result = netWinService.getHistoryAnyalysis2(params)
                     def result2 = netWinService.getLastOpenAnalysis2(params)
                     render template: "/lotto/lastOpenAnalysis2", model: [nw300SERIALI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["09","10"]) { //3星彩, 4星彩
-                    def result = netWinService.getHistoryDataAnyalysis3(params)
+                    def result = netWinService.getHistoryAnyalysis3(params)
                     def result2 = netWinService.getLastOpenAnalysis3(params)
                     render template: "/lotto/lastOpenAnalysis3", model: [nw300SERIALI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 }
             } else if (params.pSubTab in ["05"]) { //尾數分析
                 if (params.pType in ["01","02","04","05","06","07","08"]) { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
-                    def result = netWinService.getHistoryDataAnyalysis1(params)
+                    def result = netWinService.getHistoryAnyalysis1(params)
                     def result2 = netWinService.getLastNumberAnalysis1(params)
                     render template: "/lotto/lastNumberAnalysis1", model: [createColumn: result2.createColumn,columnsCNTS: result2.columnsCNTS, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["03"]) { //威力彩
-                    def result = netWinService.getHistoryDataAnyalysis2(params)
+                    def result = netWinService.getHistoryAnyalysis2(params)
                     def result2 = netWinService.getLastNumberAnalysis2(params)
                     render template: "/lotto/lastNumberAnalysis2", model: [createColumn: result2.createColumn,columnsCNTS: result2.columnsCNTS, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                            pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
@@ -197,12 +774,12 @@ class LottoController {
                 }
             } else if (params.pSubTab in ["08"]) { //連續
                 if (params.pType in ["01","02","04","05","06","07","08"])  { //六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
-                    def result = netWinService.getContinueDataAnyalysis1(params)
+                    def result = netWinService.getContinueAnyalysis1(params)
                     def result2 = netWinService.getCntsOpenAnalysis1(params)
                     render template: "/lotto/continueOpenAnalysis1", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
                 } else if (params.pType in ["03"])  { //威力彩
-                    def result = netWinService.getContinueDataAnyalysis2(params)
+                    def result = netWinService.getContinueAnyalysis2(params)
                     def result2 = netWinService.getCntsOpenAnalysis2(params)
                     render template: "/lotto/continueOpenAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                          pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
@@ -238,87 +815,87 @@ class LottoController {
     }
 
     def historyDataAnyalysis1Filter() {
-        def result = netWinService.getHistoryDataAnyalysis1(params)
+        def result = netWinService.getHistoryAnyalysis1(params)
         render template: "/lotto/historyDataAnalysis1", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                 pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def cntsOpenAnalysis1Filter() {
-        def result = netWinService.getHistoryDataAnyalysis1(params)
+        def result = netWinService.getHistoryAnyalysis1(params)
         def result2 = netWinService.getCntsOpenAnalysis1(params)
         render template: "/lotto/cntsOpenAnalysis1", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                              pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def continueOpenAnalysis1Filter() {
-        def result = netWinService.getContinueDataAnyalysis1(params)
+        def result = netWinService.getContinueAnyalysis1(params)
         def result2 = netWinService.getCntsOpenAnalysis1(params)
         render template: "/lotto/continueOpenAnalysis1", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                              pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def lastOpenAnalysis1Filter() {
-        def result = netWinService.getHistoryDataAnyalysis1(params)
+        def result = netWinService.getHistoryAnyalysis1(params)
         def result2 = netWinService.getLastOpenAnalysis1(params)
         render template: "/lotto/lastOpenAnalysis1", model: [nw300SERIALI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def lastNumberAnalysis1Filter() {
-        def result = netWinService.getHistoryDataAnyalysis1(params)
+        def result = netWinService.getHistoryAnyalysis1(params)
         def result2 = netWinService.getLastNumberAnalysis1(params)
         render template: "/lotto/lastNumberAnalysis1", model: [createColumn: result2.createColumn,columnsCNTS: result2.columnsCNTS, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs,
                                                                pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def historyDataAnyalysis2Filter() {
-        def result = netWinService.getHistoryDataAnyalysis2(params)
+        def result = netWinService.getHistoryAnyalysis2(params)
         render template: "/lotto/historyDataAnalysis2", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                 pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def cntsOpenAnalysis2Filter() {
-        def result = netWinService.getHistoryDataAnyalysis2(params)
+        def result = netWinService.getHistoryAnyalysis2(params)
         def result2 = netWinService.getCntsOpenAnalysis2(params)
         render template: "/lotto/cntsOpenAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                              pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def continueOpenAnalysis2Filter() {
-        def result = netWinService.getContinueDataAnyalysis2(params)
+        def result = netWinService.getContinueAnyalysis2(params)
         def result2 = netWinService.getCntsOpenAnalysis2(params)
         render template: "/lotto/continueOpenAnalysis2", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                              pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def lastOpenAnalysis2Filter() {
-        def result = netWinService.getHistoryDataAnyalysis2(params)
+        def result = netWinService.getHistoryAnyalysis2(params)
         def result2 = netWinService.getLastOpenAnalysis2(params)
         render template: "/lotto/lastOpenAnalysis2", model: [nw300SERIALI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def lastNumberAnalysis2Filter() {
-        def result = netWinService.getHistoryDataAnyalysis2(params)
+        def result = netWinService.getHistoryAnyalysis2(params)
         def result2 = netWinService.getLastNumberAnalysis2(params)
         render template: "/lotto/lastNumberAnalysis2", model: [createColumn: result2.createColumn,columnsCNTS: result2.columnsCNTS, nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnsSPNOs: result.columnsSPNOs,
                                                                pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
     def historyDataAnyalysis3Filter() {
-        def result = netWinService.getHistoryDataAnyalysis3(params)
+        def result = netWinService.getHistoryAnyalysis3(params)
         render template: "/lotto/historyDataAnalysis3", model: [nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
                                                                 pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def cntsOpenAnalysis3Filter() {
-        def result = netWinService.getHistoryDataAnyalysis3(params)
+        def result = netWinService.getHistoryAnyalysis3(params)
         def result2 = netWinService.getCntsOpenAnalysis3(params)
         render template: "/lotto/cntsOpenAnalysis3", model: [nw300CNTSI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
                                                              pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]
     }
 
     def lastOpenAnalysis3Filter() {
-        def result = netWinService.getHistoryDataAnyalysis3(params)
+        def result = netWinService.getHistoryAnyalysis3(params)
         def result2 = netWinService.getLastOpenAnalysis3(params)
         render template: "/lotto/lastOpenAnalysis3", model: [nw300SERIALI: result2.list, maxNum: result2.maxNum, nw300I: result.list, totalCount: result.counts, columnsNOs: result.columnsNOs, columnIDXS : result.columnIDXS,
                                                              pType: params.pType, divId: params.divId, pTab: params.pTab, pSubTab: params.pSubTab]

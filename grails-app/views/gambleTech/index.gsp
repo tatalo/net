@@ -46,7 +46,7 @@
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
                         <a data-toggle="pill" class="${[0: 'activeAuto'][i]}" href="#tab${tab?.tab}">
-                            <i class="fa fa-th-list"></i>
+                            %{--<i class="fa fa-th-list"></i>--}%
                             <g:message code="gambleTech.tab${tab?.tab}.label"/>
                         </a>
                     </li>

@@ -1,50 +1,39 @@
-<div class="panel panel-default">
-    <div class="panel-heading text-center">
-        <h4>
-            <strong>
-                <g:message code="lotto.tab${pTab}.subTab${pSubTab}.label"/>
-            </strong>
-        </h4>
+<div class="form-group">
+    <div class="pull-left">
+        <g:img dir="images" file="lotto/lotto${pType}.png"/>
     </div>
 
-    <div class="panel-body">
-        <div class="panel panel-primary text-center">已顯示 ${totalCount} 筆最新資料</div>
-        <div class="form-group">
-            <div class="pull-left">
-                <g:img dir="images" file="lotto/lotto${pType}.png"/>
-            </div>
-
-            <div class="pull-right">
-                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis1Filter"
-                              params="[max: 25, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
-                              update="${divId}">25</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis1Filter"
-                              params="[max: 50, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
-                              update="${divId}">50</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis1Filter"
-                              params="[max: 100, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
-                              update="${divId}">100</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis1Filter"
-                              params="[max: 150, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
-                              update="${divId}">150</g:remoteLink>
-                <g:remoteLink class="btn btn-primary" action="historyDataAnyalysis1Filter"
-                              params="[max: 200, pType: pType, divId: divId, pSubTab: pSubTab, pTab: pTab]"
-                              update="${divId}">200</g:remoteLink>
-            </div>
-
-            <div class="clearfix"/>
-        </div>
-
-        <div class="table-responsive">
-            <!-- Default panel contents -->
-            <table border="1" style="width: 100%">
-                <g:render template="/lotto/lottoDataList1" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
-            </table>
-        </div>
+    <div class="pull-right">
+        <a class="btn btn-primary" href="${pLink}&max=25">
+            25
+        </a>
+        <a class="btn btn-primary" href="${pLink}&max=50">
+            50
+        </a>
+        <a class="btn btn-primary" href="${pLink}&max=100">
+            100
+        </a>
+        <a class="btn btn-primary" href="${pLink}&max=150">
+            150
+        </a>
+        <a class="btn btn-primary" href="${pLink}&max=200">
+            200
+        </a>
     </div>
+
+    <div class="clearfix"/>
+</div>
+<div class="text-center">查詢最新 ${totalCount} 期</div>
+
+<div class="table-responsive">
+    <!-- Default panel contents -->
+    <table border="1" style="width: 100%">
+        <g:render template="/lotto/lottoHistoryData1" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
+        <g:render template="/lotto/lottoDataList1" model="[columnsNOs: columnsNOs, nw300I: nw300I]"/>
+    </table>
 </div>
 
 %{--<div class="form-group">--}%
-    %{--<div class="fb-comments" data-href="${grailsApplication.config.grails.serverURL}"--}%
-         %{--data-numposts="5"></div>--}%
+%{--<div class="fb-comments" data-href="${grailsApplication.config.grails.serverURL}"--}%
+%{--data-numposts="5"></div>--}%
 %{--</div>--}%

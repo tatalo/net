@@ -10,7 +10,7 @@
 <g:render template="/sports/narbar"/>
 
 <div class="container">
-    <g:render template="/base/webLink/webLink1" model="[title: title]"/>
+    <g:render template="/base/webLink/webLink1" model="[nw200I: nw200I, title: title]"/>
 </div>
 
 </body>

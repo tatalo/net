@@ -15,7 +15,7 @@
                         <g:message code="default.tab01.label"/>
                     </strong>
                 </h4>
-                <g:each in="${hl.sportsTabs()}" var="tab" status="i">
+                <g:each in="${hl.getSportsTabs().findAll{it.tabLv == 1}}" var="tab" status="i">
                     <p class="text-nowrap">
                         <a href="${tab?.link}">
                             ${tab?.text}
@@ -137,18 +137,7 @@
             </div>
 
             <div class="form-group">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/tW4vLmcsqig"></iframe>
-                        </div>
-
-                        <div class="well well-sm">
-                            週一至週六晚上08:30pm~09:00pm，您收看的畫面會比電視播出延遲30~60秒
-                        </div>
-                    </div>
-                </div>
+                <g:render template="/lotto/video"/>
             </div>
 
             <div class="form-group">

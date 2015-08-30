@@ -10,8 +10,9 @@
                 <span class="icon-bar"></span>
             </button>
             <g:link class="navbar-brand active" controller="base" action="index">
-                <i class="fa fa-home fa-lg"></i>
-                <g:message code="default.home.label"/>
+                <img src="${assetPath(src: 'logo.png')}" height="30px"/>
+                %{--<i class="fa fa-home fa-lg"></i>--}%
+                %{--<g:message code="default.home.label"/>--}%
             </g:link>
             %{--<a class="navbar-brand active" href="#">--}%
             %{--首頁--}%
@@ -46,23 +47,23 @@
                 %{--</g:remoteLink>--}%
                 %{--</li>--}%
                 <li>
-                    <g:link controller="nationGamble" action="index">
-                        <g:message code="default.tab03.label"/>
-                    </g:link>
-                </li>
-                <li>
                     <g:link controller="scoreLive" action="index">
                         <g:message code="default.tab04.label"/>
                     </g:link>
                 </li>
                 <li>
-                    <g:link controller="gambleTech" action="index">
-                        <g:message code="default.tab05.label"/>
+                    <g:link controller="gameAnalytics" action="index">
+                        <g:message code="default.tab06.label"/>
                     </g:link>
                 </li>
                 <li>
-                    <g:link controller="gameAnalytics" action="index">
-                        <g:message code="default.tab06.label"/>
+                    <g:link controller="nationGamble" action="index">
+                        <g:message code="default.tab03.label"/>
+                    </g:link>
+                </li>
+                <li>
+                    <g:link controller="gambleTech" action="index">
+                        <g:message code="default.tab05.label"/>
                     </g:link>
                 </li>
             </ul>
@@ -88,16 +89,16 @@
         </div><!--/.nav-collapse -->
     </div>
 
-    <div class="container-fluid" style="background: white;">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-3 col-sm-2 col-md-1">
-                    <img src="${assetPath(src: 'logo.png')}" height="45px"/>
-                </div>
-                <div class="col-xs-9 col-sm-10 col-md-11">
-                    原搜尋
-                </div>
-            </div>
-        </div>
-    </div>
+    %{--<div class="container-fluid" style="background: white;">--}%
+        %{--<div class="container">--}%
+            %{--<div class="row">--}%
+                %{--<div class="col-xs-3 col-sm-2 col-md-1">--}%
+                    %{--<img src="${assetPath(src: 'logo.png')}" height="45px"/>--}%
+                %{--</div>--}%
+                %{--<div class="col-xs-9 col-sm-10 col-md-11">--}%
+                    %{--原搜尋--}%
+                %{--</div>--}%
+            %{--</div>--}%
+        %{--</div>--}%
+    %{--</div>--}%
 </nav>

@@ -3,7 +3,8 @@
         <div class="panel-heading text-center">
             <h4>
                 <strong>
-                    <g:message code="nationGamble.tab${pTab}.label"/>
+                    <bs:bs101 ptype="NW200TYPE" pcode="${Type}"/>
+                    %{--<g:message code="nationGamble.tab${pTab}.label"/>--}%
                 </strong>
             </h4>
         </div>
