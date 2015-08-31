@@ -12,9 +12,7 @@
 <hr class="soften"/>
 
 <div class="container">
-    <div class="table-responsive">
-        <g:include controller="lotto" action="showBingoAnalysis"></g:include>
-    </div>
+    <g:include controller="lotto" action="showBingoAnalysis"></g:include>
 </div>
 
 </body>
