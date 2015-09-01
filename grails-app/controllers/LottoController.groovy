@@ -733,7 +733,7 @@ class LottoController {
         }
     }
 
-    def showBingoAnalysis () {
+    def showBingoAnalysis3 () {
 
         println '===showBingoAnalysis==='
 
@@ -885,4 +885,64 @@ class LottoController {
     }
 
 
+    /**
+     * 賓果綜合分析
+     * @return
+     */
+    def showBingoAnalysis () {
+
+        println '===showBingoAnalysis==='
+
+        def showpage = params?.showpage?:20 //近幾期
+        def sdt = params?.sdt //開始日期
+        def edt = params?.edt //結束日期
+        def speriods = params?.speriods //開始期數
+        def eperiods = params?.eperiods //結束期數
+        def s = new Sql(dataSource)
+
+        def sql = """
+                  SELECT
+　　　　　　　　　NW3.OPENDT,
+　　　　　　　　　NW31.NO,
+　　　　　　　　　COUNT(1) CNT1, --連續
+　　　　　　　　　(MAX(MAX(NW3.CNT)) OVER()) - MAX(NW3.CNT) CNT2, --最久
+　　　　　　　　　0 END
+　　　　　　　　　FROM (
+　　　　　　　　　    SELECT
+　　　　　　　　　    ROW_NUMBER() OVER(ORDER BY NW3.PERIODS ASC) CNT,
+　　　　　　　　　    NW3.OBJID,
+　　　　　　　　　    NW3.TYPE,
+　　　　　　　　　    NW3.PERIODS,
+　　　　　　　　　    NW3.OPENDT
+　　　　　　　　　    FROM NW300 NW3
+　　　　　　　　　    WHERE 1 = 1
+　　　　　　　　　    AND NW3.TYPE = 11
+　　　　　　　　　    and NW3.OPENDT = to_date('2015/8/25','yyyy/MM/dd')
+　　　　　　　　　) NW3
+　　　　　　　　　LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
+　　　　　　　　　WHERE 1=1
+　　　　　　　　　GROUP BY NW3.OPENDT,NW31.NO
+　　　　　　　　　ORDER BY COUNT(1) DESC
+                  """
+        def result1 = s.rows(sql)
+
+        def LMAXNO = 0
+        def RMAXNO = 0
+        def list1 = []
+        def list2 = []
+
+        if (result1 != null) {
+            def i = 0
+            while (result1[i]!=null){
+                list1 << result1[i].CNT1
+                list2 << result1[i].CNT2
+                i++
+            }
+
+            LMAXNO = ((list1.max())?.toInteger())==0?1:((list1.max())?.toInteger())
+            RMAXNO = ((list2.max())?.toInteger())==0?1:((list2.max())?.toInteger())
+        }
+
+        render(template: '/lotto/bingoDataAnalysis3', model: [nw300InstanceList: result1, LMAXNO:LMAXNO, RMAXNO:RMAXNO])
+    }
 }
