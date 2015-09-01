@@ -20,7 +20,7 @@
         <div class="clearfix"/>
     </div>
 
-    <div class="pull-right">已查詢到 ${totalCount} 期結果</div>
+    <div class="pull-right">已查詢到 ${totalCount} 期</div>
     <div class="clearfix"></div>
 
     <div class="form-group">
