@@ -42,7 +42,7 @@
 <div class="form-group">
     <div class="container-fluid defaultBgColor1">
         <div class="container">
-            <ul class="nav nav-pills nav-justified HDivider-outer stickyTabs">
+            <ul class="nav nav-pills text-nowrap nav-justified HDivider-outer stickyTabs">
                 <g:each in="${alltabs}" var="tab" status="i">
                     <li class="HDivider-inner">
                         <a data-toggle="pill" class="${[0: 'activeAuto'][i]}" href="#tab${tab?.tab}">

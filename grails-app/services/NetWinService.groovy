@@ -15,6 +15,8 @@ class NetWinService {
     }
 
     def getNw200List(params) { //回傳Nw200(連結)
+        params.max = params.int('max')
+        params.offset = params.int('offset')
         def nw200I = Nw200.createCriteria().list(params) {
             if (params.pType) {
                 eq("type", params.pType)
@@ -24,8 +26,10 @@ class NetWinService {
     }
 
     def getNw300List(params) { //取得Nw300(彩球)
+        params.max = params.int('max')
+        params.offset = params.int('offset')
         def nw300I = Nw300.createCriteria().list(params) {
-            if (params.pYyyymm) {
+            if (params.pYyyymmS && params.pYyyymmE) {
                 ge("opendt", params.pYyyymmS)
                 lt("opendt", params.pYyyymmE - 1)
             }
@@ -44,6 +48,8 @@ class NetWinService {
     }
 
     def getNw400List(params) { //回傳Nw400(文章)
+        params.max = params.int('max')
+        params.offset = params.int('offset')
         def nw400I = Nw400.createCriteria().list(params) {
             eq("type", params.pType)
 
@@ -53,6 +59,8 @@ class NetWinService {
     }
 
     def getNw500List(params) { //回傳Nw500(清單)
+        params.max = params.int('max')
+        params.offset = params.int('offset')
         def nw500I = Nw500.createCriteria().list(params) {
             eq("type", params.pType)
         }
@@ -131,7 +139,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
         def resultList = query.rows(mainSql, condition)
 
         result.list = resultList
@@ -183,7 +191,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "03" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
         def resultList = query.rows(mainSql, condition)
 
         result.list = resultList
@@ -232,7 +240,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -287,7 +295,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -338,65 +346,15 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
 
         def resultList = query.rows(mainSql, condition)
 
         result.maxNum = resultList[0].max { it.value }.value
         result.list = resultList
-
         return result
 
     }
-
-//    def getCntsOpenAnalysis3(params) { //出現次數分析: 3星彩, 4星彩
-//        def result = [:]
-//        result.columnIDXS = dataService."lotto${params.pType}".IDXs
-//        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
-//
-//        def query = new Sql(dataSource)
-//
-//        def nosSql = ""
-//        result.columnIDXS.IDX.each { it ->
-//            result.columnsNOs.each { it2 ->
-//                nosSql += "SUM(CASE WHEN NW31.NO = ${it2} AND NW31.OPIDX = ${it} THEN 1 ELSE 0 END) NO${it}${it2}, "
-//            }
-//        }
-//        result.columnsNOs.each { it ->
-//        }
-//
-//        def mainSql = """
-//                            SELECT
-//                            ${nosSql}
-//                            0 END
-//                            FROM (
-//                                SELECT
-//                                NW3.OBJID,
-//                                NW3.TYPE,
-//                                NW3.PERIODS,
-//                                NW3.OPENDT
-//                                FROM NW300 NW3
-//                                WHERE 1 = :pNum
-//                                AND NW3.TYPE = :pType
-//                                AND ROWNUM <= :max
-//                                ORDER BY NW3.PERIODS DESC
-//                            ) NW3
-//                            LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
-//                            ORDER BY NW3.PERIODS DESC
-//                        """
-//        def condition = [:]
-//        condition.pNum = 1 //default parameters, avoid condition is null then happen exception
-//        condition.pType = params.pType ?: "01" //require
-//        condition.max = params.max ? params.max as Integer : 25 //require
-//
-//        def resultList = query.rows(mainSql, condition)
-//
-//        result.maxNum = resultList[0].max { it.value }.value
-//        result.list = resultList
-//
-//        return result
-//
-//    }
 
     def getLastOpenAnalysis1(params) { //最久未開分析: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
         def result = [:]
@@ -446,7 +404,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -501,7 +459,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
         def resultList = query.rows(mainSql, condition)
 
         result.maxNum = resultList[0].max { it.value }.value
@@ -509,60 +467,6 @@ class NetWinService {
 
         return result
     }
-
-//    def getLastOpenAnalysis3(params) { //最久未開分析: 3星彩, 4星彩
-//        def result = [:]
-//        result.columnIDXS = dataService."lotto${params.pType}".IDXs
-//        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
-//
-//        def query = new Sql(dataSource)
-//
-//        def nosSql = ""
-//        result.columnIDXS.IDX.each { it ->
-//            result.columnsNOs.each { it2 ->
-//                nosSql += "NVL(MAX(REPLACE(NWMAX.PER,'/','')) - MAX((CASE WHEN NW31.NO = ${it2} AND NW31.OPIDX = ${it} THEN REPLACE(NW3.PERIODS,'/','') END)),:max) NO${it}${it2}, "
-//            }
-//        }
-//
-//        def mainSql = """
-//                           SELECT
-//                           ${nosSql}
-//                           0 END
-//                           FROM (
-//                                SELECT
-//                                NW3.OBJID,
-//                                NW3.TYPE,
-//                                NW3.PERIODS,
-//                                NW3.OPENDT
-//                                FROM NW300 NW3
-//                                WHERE 1 = :pNum
-//                                AND NW3.TYPE = :pType
-//                                AND ROWNUM <= :max
-//                                ORDER BY NW3.PERIODS DESC
-//                           ) NW3
-//                           LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
-//                           LEFT JOIN (
-//                                SELECT
-//                                MAX(NW32.PERIODS) PER
-//                                FROM NW300 NW32
-//                                WHERE 1 = :pNum
-//                                AND NW32.TYPE = :pType
-//                           ) NWMAX ON 1=1
-//                           WHERE 1=1
-//                           ORDER BY NW3.PERIODS DESC
-//                        """
-//        def condition = [:]
-//        condition.pNum = 1 //default parameters, avoid condition is null then happen exception
-//        condition.pType = params.pType ?: "01" //require
-//        condition.max = params.max ? params.max as Integer : 25 //require
-//
-//        def resultList = query.rows(mainSql, condition)
-//
-//        result.maxNum = resultList[0].max { it.value }.value
-//        result.list = resultList
-//
-//        return result
-//    }
 
     def getLastNumberAnalysis1(params) { //尾數分析: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
         def result = [:]
@@ -606,7 +510,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -678,7 +582,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -771,7 +675,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -826,7 +730,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -893,7 +797,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -964,7 +868,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.max ? params.max as Integer : 25 //require
+        condition.max = params.int('max')?:25 //require
 
 //        println "sql = " + toolsService.transPRSSql(mainSql, condition)
 

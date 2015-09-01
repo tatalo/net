@@ -14,7 +14,7 @@
             <button type="button" class="btn btn-primary" data-toggle="modal"
                     data-target="#modalPeriods">期數查詢</button>
             <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#modalYYYYMM">年月查詢</button>
+                    data-target="#modalYYYYMMDD">日期查詢</button>
         </div>
 
         <div class="clearfix"/>
@@ -26,8 +26,8 @@
     <div class="form-group">
         <div class="row">
             <g:each in="${nw300I}" var="nw300" status="i">
-                <div class="col-md-6">
-                    <g:render template="/lotto/lottoContent1" model="[nw300I: nw300, pType: pType]"/>
+                <div class="col-md-12">
+                    <g:render template="/lotto/lottoContent4" model="[nw300I: nw300, pType: pType]"/>
                 </div>
             </g:each>
         </div>

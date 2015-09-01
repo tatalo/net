@@ -82,8 +82,8 @@ class HtmlTagLib {
         //tablv1
         result << [lv1IDX: 1, tabLv: 1, text: g.message(code: "lotto.tab01.label"),
                    link  : g.createLink(controller: "lotto", action: "customNewOpen", params: [lv1IDX: 1])]
-//        result << [lv1IDX: 2, tabLv: 1, text: g.message(code: "lotto.tab02.label"),
-//                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2])]
+        result << [lv1IDX: 2, tabLv: 1, text: g.message(code: "lotto.tab02.label"),
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistoryMarkSix", params: [lv1IDX: 2, max: 1])]
         result << [lv1IDX: 3, tabLv: 1, text: g.message(code: "lotto.tab03.label"),
                    link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 3])]
         result << [lv1IDX: 4, tabLv: 1, text: g.message(code: "lotto.tab04.label"),
@@ -108,27 +108,27 @@ class HtmlTagLib {
                    link  : g.createLink(controller: "lotto", action: "contentBingoBingo", params: [lv1IDX: 13])]
 
         result << [lv1IDX: 2, lv2IDX: 1, tabLv: 2, text: g.message(code: "lotto.tab02.subTab01.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 1])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistoryMarkSix", params: [lv1IDX: 2, lv2IDX: 1, max: 1])]
         result << [lv1IDX: 2, lv2IDX: 2, tabLv: 2, text: g.message(code: "lotto.tab02.subTab02.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 2])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistoryLotto740", params: [lv1IDX: 2, lv2IDX: 2, max: 1])]
         result << [lv1IDX: 2, lv2IDX: 3, tabLv: 2, text: g.message(code: "lotto.tab02.subTab03.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 3])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistorySuperLotto638", params: [lv1IDX: 2, lv2IDX: 3, max: 1])]
         result << [lv1IDX: 2, lv2IDX: 4, tabLv: 2, text: g.message(code: "lotto.tab02.subTab04.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 4])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistory38M6", params: [lv1IDX: 2, lv2IDX: 4, max: 1])]
         result << [lv1IDX: 2, lv2IDX: 5, tabLv: 2, text: g.message(code: "lotto.tab02.subTab05.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 5])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistoryLotto649", params: [lv1IDX: 2, lv2IDX: 5, max: 1])]
         result << [lv1IDX: 2, lv2IDX: 6, tabLv: 2, text: g.message(code: "lotto.tab02.subTab06.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 6])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistory49M6", params: [lv1IDX: 2, lv2IDX: 6, max: 1])]
         result << [lv1IDX: 2, lv2IDX: 7, tabLv: 2, text: g.message(code: "lotto.tab02.subTab07.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 7])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistoryLotto539", params: [lv1IDX: 2, lv2IDX: 7, max: 1])]
         result << [lv1IDX: 2, lv2IDX: 8, tabLv: 2, text: g.message(code: "lotto.tab02.subTab08.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 8])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistory39M5", params: [lv1IDX: 2, lv2IDX: 8, max: 1])]
         result << [lv1IDX: 2, lv2IDX: 9, tabLv: 2, text: g.message(code: "lotto.tab02.subTab09.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 9])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistory3D", params: [lv1IDX: 2, lv2IDX: 9, max: 1])]
         result << [lv1IDX: 2, lv2IDX: 10, tabLv: 2, text: g.message(code: "lotto.tab02.subTab10.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 10])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistory4D", params: [lv1IDX: 2, lv2IDX: 10, max: 1])]
         result << [lv1IDX: 2, lv2IDX: 11, tabLv: 2, text: g.message(code: "lotto.tab02.subTab11.label"),
-                   link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 2, lv2IDX: 11])]
+                   link  : g.createLink(controller: "lotto", action: "customQueryHistoryBingoBingo", params: [lv1IDX: 2, lv2IDX: 11, max: 1])]
 
         result << [lv1IDX: 3, lv2IDX: 1, tabLv: 2, text: g.message(code: "lotto.tab03.subTab01.label"),
                    link  : g.createLink(controller: "lotto", action: "contentMarkSix", params: [lv1IDX: 3, lv2IDX: 1])]

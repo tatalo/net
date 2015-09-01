@@ -27,7 +27,7 @@
         <div class="row">
             <g:each in="${nw300I}" var="nw300" status="i">
                 <div class="col-md-6">
-                    <g:render template="/lotto/lottoContent1" model="[nw300I: nw300, pType: pType]"/>
+                    <g:render template="/lotto/lottoContent2" model="[nw300I: nw300, pType: pType]"/>
                 </div>
             </g:each>
         </div>
