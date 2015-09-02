@@ -176,173 +176,130 @@
 
         <table class="" style="border:1px #cccccc solid;" rules="all">
 
-            <tr class="tdbg2" style="">
+            <tr class="tdbg2">
                 <td class="rowTitle" rowspan="2">本期球號</td>
                 <td colspan="3">
-                    <div class="thisPeriodBallNum"><div class="circle">02</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">03</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">05</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">08</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">09</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">12</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">13</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">21</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">28</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">34</div></div>
+                    <g:each in="${resultAList}" var="resultAInstance" status="i">
+                        <g:if test="${i<10}">
+                            <div class="thisPeriodBallNum"><div class="circle">${resultAInstance?.NO}</div></div>
+                        </g:if>
+                    </g:each>
                 </td>
             </tr>
-
             <tr class="tdbg2">
                 <td colspan="3">
-                    <div class="thisPeriodBallNum"><div class="circle">52</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle3">58</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle3">59</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">61</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">62</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">67</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle3">70</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle3">71</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">73</div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">78</div></div>
+                    <g:each in="${resultAList}" var="resultAInstance" status="i">
+                        <g:if test="${i>=10}">
+                            <div class="thisPeriodBallNum"><div class="circle">${resultAInstance?.NO}</div></div>
+                        </g:if>
+                    </g:each>
                 </td>
             </tr>
 
             <tr class="tdbg1">
                 <td class="rowTitle">熱門球號</td>
                 <td colspan="3">
-                    <div class="thisPeriodBallNum"><div class="circle2">05<label style="font-size: 11px;font-weight: normal;">8</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">33<label style="font-size: 11px;font-weight: normal;">8</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">07<label style="font-size: 11px;font-weight: normal;">8</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">13<label style="font-size: 11px;font-weight: normal;">7</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">71<label style="font-size: 11px;font-weight: normal;">7</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">72<label style="font-size: 11px;font-weight: normal;">7</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">02<label style="font-size: 11px;font-weight: normal;">7</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">59<label style="font-size: 11px;font-weight: normal;">6</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">21<label style="font-size: 11px;font-weight: normal;">6</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">20<label style="font-size: 11px;font-weight: normal;">6</label></div></div>
+                    <g:each in="${resultBList}" var="resultBInstance" status="i">
+                        <div class="thisPeriodBallNum"><div class="circle2">${resultBInstance?.NO}<label style="font-size: 11px;font-weight: normal;">${resultBInstance?.NUM}</label></div></div>
+                    </g:each>
                 </td>
             </tr>
 
             <tr class="tdbg2">
                 <td class="rowTitle">冷門球號</td>
                 <td colspan="3">
-                    <div class="thisPeriodBallNum"><div class="circle">65<label style="font-size: 11px;font-weight: normal;">0</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">66<label style="font-size: 11px;font-weight: normal;">0</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">22<label style="font-size: 11px;font-weight: normal;">1</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">15<label style="font-size: 11px;font-weight: normal;">1</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">31<label style="font-size: 11px;font-weight: normal;">1</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">32<label style="font-size: 11px;font-weight: normal;">1</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">46<label style="font-size: 11px;font-weight: normal;">1</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">43<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">38<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">35<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
+                    <g:each in="${resultCList}" var="resultCInstance" status="i">
+                        <div class="thisPeriodBallNum"><div class="circle">${resultCInstance?.NO}<label style="font-size: 11px;font-weight: normal;">${resultCInstance?.NUM}</label></div></div>
+                    </g:each>
                 </td>
             </tr>
 
             <tr class="tdbg1">
                 <td class="rowTitle">熱門連莊</td>
                 <td colspan="3">
-                    <div class="thisPeriodBallNum"><div class="circle2">07<label style="font-size: 11px;font-weight: normal;">4</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">59<label style="font-size: 11px;font-weight: normal;">4</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">05<label style="font-size: 11px;font-weight: normal;">3</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">33<label style="font-size: 11px;font-weight: normal;">3</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">72<label style="font-size: 11px;font-weight: normal;">3</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">50<label style="font-size: 11px;font-weight: normal;">3</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">21<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">12<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">02<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle2">64<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
+                   <g:each in="${ (0..9) }" var="i">
+                       <div class="thisPeriodBallNum"><div class="circle2">${listD1.get(i)}<label style="font-size: 11px;font-weight: normal;">${listD2.get(i)}</label></div></div>
+                   </g:each>
                 </td>
             </tr>
 
             <tr class="tdbg2">
                 <td class="rowTitle">熱門跳期</td>
                 <td colspan="3">
-                    <div class="thisPeriodBallNum"><div class="circle">05<label style="font-size: 11px;font-weight: normal;">4</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">21<label style="font-size: 11px;font-weight: normal;">3</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">72<label style="font-size: 11px;font-weight: normal;">3</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">07<label style="font-size: 11px;font-weight: normal;">3</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">33<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">49<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">71<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">51<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">30<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
-                    <div class="thisPeriodBallNum"><div class="circle">75<label style="font-size: 11px;font-weight: normal;">2</label></div></div>
+                    <g:each in="${ (0..9) }" var="i">
+                        <div class="thisPeriodBallNum"><div class="circle">${listE1.get(i)}<label style="font-size: 11px;font-weight: normal;">${listE2.get(i)}</label></div></div>
+                    </g:each>
                 </td>
             </tr>
 
             <tr class="tdbg1">
                 <td class="rowTitle">二連號</td>
                 <td colspan="3">
-                    <div class="twoContinuousNum"><div class="circle2">70</div> <div class="circle2">71</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">4</div></div>
-                    <div class="twoContinuousNum"><div class="circle2">33</div> <div class="circle2">34</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">4</div></div>
-                    <div class="twoContinuousNum"><div class="circle2">12</div> <div class="circle2">13</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">4</div></div>
-                    <div class="twoContinuousNum"><div class="circle2">19</div> <div class="circle2">20</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">4</div></div>
-                    <div class="twoContinuousNum"><div class="circle2">23</div> <div class="circle2">24</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">3</div></div>
-                    <div class="twoContinuousNum"><div class="circle2">75</div> <div class="circle2">76</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">3</div></div>
-                    <div class="twoContinuousNum"><div class="circle2">79</div> <div class="circle2">80</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">2</div></div>
-                    <div class="twoContinuousNum"><div class="circle2">04</div> <div class="circle2">05</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">2</div></div>
+                    <g:each in="${resultFList}" var="resultFInstance" status="i">
+                        <div class="twoContinuousNum"><div class="circle2">${resultFInstance?.NOA}</div> <div class="circle2">${resultFInstance?.NOB}</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">${resultFInstance?.NUM}</div></div>
+                    </g:each>
                 </td>
             </tr>
 
             <tr class="tdbg2">
                 <td class="rowTitle">三連號</td>
                 <td colspan="3">
-                    <div class="threeContinuousNum"><div class="circle">19</div> <div class="circle">20</div> <div class="circle">21</div><div style="width: 126px;height: 15px;text-align: center;font-size: 12px;">2</div></div>
-                    <div class="threeContinuousNum"><div class="circle">18</div> <div class="circle">19</div> <div class="circle">20</div><div style="width: 126px;height: 15px;text-align: center;font-size: 12px;">1</div></div>
-                    <div class="threeContinuousNum"><div class="circle">74</div> <div class="circle">75</div> <div class="circle">76</div><div style="width: 126px;height: 15px;text-align: center;font-size: 12px;">1</div></div>
-                    <div class="threeContinuousNum"><div class="circle">11</div> <div class="circle">12</div> <div class="circle">13</div><div style="width: 126px;height: 15px;text-align: center;font-size: 12px;">1</div></div>
-                    <div class="threeContinuousNum"><div class="circle">04</div> <div class="circle">05</div> <div class="circle">06</div><div style="width: 126px;height: 15px;text-align: center;font-size: 12px;">1</div></div>
+                    <g:each in="${resultGList}" var="resultGInstance" status="i">
+                        <div class="threeContinuousNum"><div class="circle">${resultGInstance?.NOA}</div> <div class="circle">${resultGInstance?.NOB}</div> <div class="circle">${resultGInstance?.NOC}</div><div style="width: 126px;height: 15px;text-align: center;font-size: 12px;">${resultGInstance?.NUM}</div></div>
+                    </g:each>
                 </td>
             </tr>
 
             <tr class="tdbg1">
                 <td class="rowTitle">四連號</td>
                 <td colspan="3">
-                    <div class="fourContinuousNum">
-                        <div class="circle2">17</div> <div class="circle2">18</div> <div class="circle2">19</div> <div class="circle2">20</div>
-                        <div style="width: 172px;height: 15px;text-align: center;font-size: 12px;">1</div>
-                    </div>
+                    <g:each in="${resultHList}" var="resultHInstance" status="i">
+                        <div class="fourContinuousNum">
+                            <div class="circle2">${resultHInstance?.NOA}</div>
+                            <div class="circle2">${resultHInstance?.NOB}</div>
+                            <div class="circle2">${resultHInstance?.NOC}</div>
+                            <div class="circle2">${resultHInstance?.NOD}</div>
+                            <div style="width: 172px;height: 15px;text-align: center;font-size: 12px;">${resultHInstance?.NUM}</div>
+                        </div>
+                    </g:each>
+
                 </td>
             </tr>
 
             <tr class="tdbg1">
                 <td class="rowTitle">熱門頭號</td>
                 <td>
-                    <div class="hotFirstNum"><div class="circle2" style="color: red;">0<label style="font-size: 11px;font-weight: normal;color: #000000;">x</label></div></div>
-                    <div class="hotFirstNum"><div class="circle2" style="color: red;">7<label style="font-size: 11px;font-weight: normal;color: #000000;">x</label></div></div>
-                    <div class="hotFirstNum"><div class="circle2" style="color: red;">1<label style="font-size: 11px;font-weight: normal;color: #000000;">x</label></div></div>
+                    <g:each in="${resultIList}" var="resultIInstance" status="i">
+                        <g:if test="${i<3}">
+                            <div class="hotFirstNum"><div class="circle2" style="color: red;">${resultIInstance?.NO}<label style="font-size: 11px;font-weight: normal;color: #000000;">x</label></div></div>
+                        </g:if>
+                    </g:each>
                 </td>
                 <td class="rowTitle">熱門尾號</td>
                 <td>
-                    <div class="hotLastNum"><div class="circle2" style="color: red;"><label style="font-size: 11px;font-weight: normal;color: #000000;">x</label>4</div></div>
-                    <div class="hotLastNum"><div class="circle2" style="color: red;"><label style="font-size: 11px;font-weight: normal;color: #000000;">x</label>0</div></div>
-                    <div class="hotLastNum"><div class="circle2" style="color: red;"><label style="font-size: 11px;font-weight: normal;color: #000000;">x</label>1</div></div>
+                    <g:each in="${resultIList}" var="resultIInstance" status="i">
+                        <g:if test="${i>=3}">
+                            <div class="hotLastNum"><div class="circle2" style="color: red;"><label style="font-size: 11px;font-weight: normal;color: #000000;">x</label>${resultIInstance?.NO}</div></div>
+                        </g:if>
+                    </g:each>
                 </td>
             </tr>
 
             <tr>
                 <td class="rowTitle">二同出</td>
                 <td colspan="3">
-                    <div class="twoContinuousNum"><div class="circle">05</div> <div class="circle">07</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">5</div></div>
-                    <div class="twoContinuousNum"><div class="circle">07</div> <div class="circle">33</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">5</div></div>
-                    <div class="twoContinuousNum"><div class="circle">07</div> <div class="circle">13</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">5</div></div>
-                    <div class="twoContinuousNum"><div class="circle">13</div> <div class="circle">24</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">5</div></div>
-                    <div class="twoContinuousNum"><div class="circle">07</div> <div class="circle">24</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">5</div></div>
-                    <div class="twoContinuousNum"><div class="circle">02</div> <div class="circle">13</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">5</div></div>
-                    <div class="twoContinuousNum"><div class="circle">02</div> <div class="circle">05</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">5</div></div>
-                    <div class="twoContinuousNum"><div class="circle">07</div> <div class="circle">50</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">4</div></div>
+                     <g:each in="${resultJList}" var="resultJInstance" status="i">
+                         <div class="twoContinuousNum"><div class="circle">${resultJInstance?.NOA}</div> <div class="circle">${resultJInstance?.NOB}</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">${resultJInstance?.NUM}</div></div>
+                     </g:each>
                 </td>
             </tr>
 
             <tr class="tdbg1">
                 <td class="rowTitle">三同出</td>
                 <td colspan="3">
-                    <div class="threeContinuousNum"><div class="circle2">02</div> <div class="circle2">13</div> <div class="circle2">34</div><div style="width: 129px;height: 15px;text-align: center;font-size: 12px;">4</div></div>
-                    <div class="threeContinuousNum"><div class="circle2">02</div> <div class="circle2">34</div> <div class="circle2">52</div><div style="width: 129px;height: 15px;text-align: center;font-size: 12px;">4</div></div>
-                    <div class="threeContinuousNum"><div class="circle2">13</div> <div class="circle2">34</div> <div class="circle2">52</div><div style="width: 129px;height: 15px;text-align: center;font-size: 12px;">4</div></div>
-                    <div class="threeContinuousNum"><div class="circle2">07</div> <div class="circle2">13</div> <div class="circle2">33</div><div style="width: 129px;height: 15px;text-align: center;font-size: 12px;">4</div></div>
-                    <div class="threeContinuousNum"><div class="circle2">02</div> <div class="circle2">13</div> <div class="circle2">52</div><div style="width: 129px;height: 15px;text-align: center;font-size: 12px;">4</div></div>
+                      <g:each in="${resultKList}" var="resultKInstance" status="i">
+                          <div class="threeContinuousNum"><div class="circle2">${resultKInstance?.NOA}</div> <div class="circle2">${resultKInstance?.NOB}</div> <div class="circle2">${resultKInstance?.NOC}</div><div style="width: 129px;height: 15px;text-align: center;font-size: 12px;">${resultKInstance?.NUM}</div></div>
+                      </g:each>
                 </td>
             </tr>
 
