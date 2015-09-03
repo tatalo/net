@@ -9,26 +9,28 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <g:link class="navbar-brand active" controller="base" action="index">
-                <img src="${assetPath(src: 'logo.png')}" height="30px"/>
-                %{--<i class="fa fa-home fa-lg"></i>--}%
-                %{--<g:message code="default.home.label"/>--}%
+            <g:link class="navbar-brand active" controller="base" action="index" style="height: 55px;">
+                <img src="${assetPath(src: 'logo.png')}" height="50px" class="text-center"/>
+            %{--<i class="fa fa-home fa-lg"></i>--}%
+            %{--<g:message code="default.home.label"/>--}%
             </g:link>
-            %{--<a class="navbar-brand active" href="#">--}%
-            %{--首頁--}%
-            %{--<asset:image src="favicon.ico"/>--}%
-            %{--<link rel="shortcut icon" href="${assetPath(src: 'favicon.png')}" type="image/x-icon">--}%
-            %{--</a>--}%
+        %{--<a class="navbar-brand active" href="#">--}%
+        %{--首頁--}%
+        %{--<asset:image src="favicon.ico"/>--}%
+        %{--<link rel="shortcut icon" href="${assetPath(src: 'favicon.png')}" type="image/x-icon">--}%
+        %{--</a>--}%
         </div>
 
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-left">
+        <div class="navbar-collapse collapse ">
+            <ul class="nav navbar-nav marginLeft">
                 <li>
-                    %{--<g:link controller="sports" action="index">--}%
-                        %{--<g:message code="default.tab01.label"/>--}%
-                    %{--</g:link>--}%
+                %{--<g:link controller="sports" action="index">--}%
+                %{--<g:message code="default.tab01.label"/>--}%
+                %{--</g:link>--}%
                     <g:link controller="sports" action="index">
-                        <g:message code="default.tab01.label"/>
+                        <h4>
+                            <g:message code="default.tab01.label"/>
+                        </h4>
                     </g:link>
                 </li>
                 %{--<li>--}%
@@ -38,7 +40,9 @@
                 %{--</li>--}%
                 <li>
                     <g:link controller="lotto" action="index">
-                        <g:message code="default.tab02.label"/>
+                        <h4>
+                            <g:message code="default.tab02.label"/>
+                        </h4>
                     </g:link>
                 </li>
                 %{--<li>--}%
@@ -46,24 +50,28 @@
                 %{--遊戲(無)--}%
                 %{--</g:remoteLink>--}%
                 %{--</li>--}%
-                <li>
-                    <g:link controller="scoreLive" action="index">
-                        <g:message code="default.tab04.label"/>
-                    </g:link>
-                </li>
-                <li>
-                    <g:link controller="gameAnalytics" action="index">
-                        <g:message code="default.tab06.label"/>
-                    </g:link>
-                </li>
+                %{--<li>--}%
+                %{--<g:link controller="scoreLive" action="index">--}%
+                %{--<g:message code="default.tab04.label"/>--}%
+                %{--</g:link>--}%
+                %{--</li>--}%
+                %{--<li>--}%
+                %{--<g:link controller="gameAnalytics" action="index">--}%
+                %{--<g:message code="default.tab06.label"/>--}%
+                %{--</g:link>--}%
+                %{--</li>--}%
                 <li>
                     <g:link controller="nationGamble" action="index">
-                        <g:message code="default.tab03.label"/>
+                        <h4>
+                            <g:message code="default.tab03.label"/>
+                        </h4>
                     </g:link>
                 </li>
                 <li>
                     <g:link controller="gambleTech" action="index">
-                        <g:message code="default.tab05.label"/>
+                        <h4>
+                            <g:message code="default.tab05.label"/>
+                        </h4>
                     </g:link>
                 </li>
             </ul>
@@ -73,16 +81,19 @@
                     <a href="javascript:void(0)" onclick="shareToSocial('fb');" class="fa fa-facebook-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="google+分享">
-                    <a href="javascript:void(0)" onclick="shareToSocial('google');" class="fa fa-google-plus-square fa-lg"></a>
+                    <a href="javascript:void(0)" onclick="shareToSocial('google');"
+                       class="fa fa-google-plus-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="twitter分享">
-                    <a href="javascript:void(0)" onclick="shareToSocial('twitter');" class="fa fa-twitter-square fa-lg"></a>
+                    <a href="javascript:void(0)" onclick="shareToSocial('twitter');"
+                       class="fa fa-twitter-square fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="列印">
                     <a href="javascript:self.print()" class="fa fa-print fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="加入書籤">
-                    <a href="javascript:addToFavorite('${message(code: "default.webname.label")}', '${grailsApplication.config.grails.serverURL}')" class="fa fa-heart fa-lg" ></a>
+                    <a href="javascript:addToFavorite('${message(code: "default.webname.label")}', '${grailsApplication.config.grails.serverURL}')"
+                       class="fa fa-heart fa-lg"></a>
                 </li>
             </ul>
 
@@ -90,15 +101,15 @@
     </div>
 
     %{--<div class="container-fluid" style="background: white;">--}%
-        %{--<div class="container">--}%
-            %{--<div class="row">--}%
-                %{--<div class="col-xs-3 col-sm-2 col-md-1">--}%
-                    %{--<img src="${assetPath(src: 'logo.png')}" height="45px"/>--}%
-                %{--</div>--}%
-                %{--<div class="col-xs-9 col-sm-10 col-md-11">--}%
-                    %{--原搜尋--}%
-                %{--</div>--}%
-            %{--</div>--}%
-        %{--</div>--}%
+    %{--<div class="container">--}%
+    %{--<div class="row">--}%
+    %{--<div class="col-xs-3 col-sm-2 col-md-1">--}%
+    %{--<img src="${assetPath(src: 'logo.png')}" height="45px"/>--}%
+    %{--</div>--}%
+    %{--<div class="col-xs-9 col-sm-10 col-md-11">--}%
+    %{--原搜尋--}%
+    %{--</div>--}%
+    %{--</div>--}%
+    %{--</div>--}%
     %{--</div>--}%
 </nav>

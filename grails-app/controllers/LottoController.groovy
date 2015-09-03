@@ -694,9 +694,44 @@ class LottoController {
         render view: "/lotto/formContent1", model: [nw400I: nw400I, title: g.message(code: "lotto.tab13.subTab01.label"), lv1IDX: 13]
     }
 
-    def customOpenNumBingo() { //賓果開獎號碼
+    def customOpenNoListBingo() { //賓果開獎號碼
+        if (params.pOpendt_year && params.pOpendt_month && params.pOpendt_day) {
+            params.pOpendt = params.pOpendt_year + params.pOpendt_month.padLeft(2, '0') + params.pOpendt_day.padLeft(2, '0')
+            df.params_text_date_transform(params: params, list: ["pOpendt"])
+        }
+
+        params.pType = "11"
+        params.max = 1
+        def nw300I = netWinService.getNw300List(params)
+
+        println "nw300I = " + nw300I
+        println "nw301s = " + nw300I.nw301s
+//        println "nw300I.nw301s = " + nw300I.nw301s.no
+//        println "nw300I.nw301s.sort{it.id} = " + nw300I.nw301s.no.sort()
+//        nw300I.nw301s{order("no","desc")}.each { it ->
+//            println "it = " + it.no
+//        }
+
+        def orders = nw300I.nw301s.sort { it[0].no }
+        println "orders = " + orders.no
+
+//        params.max = 7
+        def nw300OpendtList = Nw300.createCriteria().list() {
+            projections {
+                distinct('opendt')
+            }
+            eq("type", "11")
+            order("opendt", "desc")
+            maxResults(1)
+        }
+
+        println "nw300OpendtList = " + nw300OpendtList
+
+//        def vLink = g.createLink(controller: "lotto", action: "customQueryHistoryBingoBingo", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
+//        render view: "/lotto/formCustomQueryHistory4", model: [nw300I: nw300I, totalCount: nw300I?.size(),
+//                                                               pType : params.pType, lv1IDX: params.int('lv1IDX'), pLink: vLink]
         params.pType = "111"
-        render view: "/lotto/formCustomOpenNum1", model: [title: g.message(code: "lotto.tab13.subTab02.label"), lv1IDX: 13]
+        render view: "/lotto/formCustomOpenNoList", model: [nw300I: nw300I, title: g.message(code: "lotto.tab13.subTab02.label"), lv1IDX: 13]
     }
 
     def customStatistBingo() { //賓果開獎/未開獎統計

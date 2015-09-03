@@ -44,7 +44,7 @@
                                     ${no}
                                 </button>
                             </g:each>
-                    </td>
+                        </th>
                     </tr>
                     <tr>
                         <th width="150px" class="text-center">
