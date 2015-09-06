@@ -13,7 +13,32 @@ class LottoController {
     }
 
     def customNewOpen() { //彩球最新開獎
-        render view: "/lotto/formCustomNewOpen"
+        params.max = 1
+        params.pType = "01"
+        def nw300I01 = netWinService.getNw300List(params)
+        params.pType = "02"
+        def nw300I02 = netWinService.getNw300List(params)
+        params.pType = "03"
+        def nw300I03 = netWinService.getNw300List(params)
+        params.pType = "04"
+        def nw300I04 = netWinService.getNw300List(params)
+        params.pType = "05"
+        def nw300I05 = netWinService.getNw300List(params)
+        params.pType = "06"
+        def nw300I06 = netWinService.getNw300List(params)
+        params.pType = "07"
+        def nw300I07 = netWinService.getNw300List(params)
+        params.pType = "08"
+        def nw300I08 = netWinService.getNw300List(params)
+        params.pType = "09"
+        def nw300I09 = netWinService.getNw300List(params)
+        params.pType = "10"
+        def nw300I10 = netWinService.getNw300List(params)
+        params.pType = "11"
+        def nw300I11 = netWinService.getNw300List(params)
+
+        render view: "/lotto/formCustomNewOpen", model: [nw300I01: nw300I01, nw300I02: nw300I02,nw300I03: nw300I03, nw300I04: nw300I04,nw300I05: nw300I05, nw300I06: nw300I06,
+                                                         nw300I07: nw300I07, nw300I08: nw300I08,nw300I09: nw300I09, nw300I10: nw300I10,nw300I11: nw300I11]
     }
 
     def customQueryHistoryMarkSix() { //六合彩查詢
@@ -701,37 +726,38 @@ class LottoController {
         }
 
         params.pType = "11"
-        params.max = 1
-        def nw300I = netWinService.getNw300List(params)
+//        params.max = 1
+        def nw300I = netWinService.getBingoAnyalysis4(params)
 
-        println "nw300I = " + nw300I
-        println "nw301s = " + nw300I.nw301s
+//        println "nw300I = " + nw300I
+//        println "columnsNOs = " + nw300I.columnsNOs
+//        println "nw301s = " + nw300I.nw301s
 //        println "nw300I.nw301s = " + nw300I.nw301s.no
 //        println "nw300I.nw301s.sort{it.id} = " + nw300I.nw301s.no.sort()
 //        nw300I.nw301s{order("no","desc")}.each { it ->
 //            println "it = " + it.no
 //        }
 
-        def orders = nw300I.nw301s.sort { it[0].no }
-        println "orders = " + orders.no
+//        def orders = nw300I.nw301s.sort { it[0].no }
+//        println "orders = " + orders.no
 
 //        params.max = 7
-        def nw300OpendtList = Nw300.createCriteria().list() {
-            projections {
-                distinct('opendt')
-            }
-            eq("type", "11")
-            order("opendt", "desc")
-            maxResults(1)
-        }
-
-        println "nw300OpendtList = " + nw300OpendtList
+//        def nw300OpendtList = Nw300.createCriteria().list() {
+//            projections {
+//                distinct('opendt')
+//            }
+//            eq("type", "11")
+//            order("opendt", "desc")
+//            maxResults(1)
+//        }
+//
+//        println "nw300OpendtList = " + nw300OpendtList
 
 //        def vLink = g.createLink(controller: "lotto", action: "customQueryHistoryBingoBingo", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
 //        render view: "/lotto/formCustomQueryHistory4", model: [nw300I: nw300I, totalCount: nw300I?.size(),
 //                                                               pType : params.pType, lv1IDX: params.int('lv1IDX'), pLink: vLink]
         params.pType = "111"
-        render view: "/lotto/formCustomOpenNoList", model: [nw300I: nw300I, title: g.message(code: "lotto.tab13.subTab02.label"), lv1IDX: 13]
+        render view: "/lotto/formCustomOpenNoList", model: [nw300I: nw300I.list, columnsNOs: nw300I.columnsNOs, title: g.message(code: "lotto.tab13.subTab02.label"), lv1IDX: 13]
     }
 
     def customStatistBingo() { //賓果開獎/未開獎統計
@@ -742,30 +768,6 @@ class LottoController {
     def customAnalysisBingo() { //賓果綜合分析
         params.pType = "111"
         render view: "/lotto/formCustomAnalysis1", model: [title: g.message(code: "lotto.tab13.subTab04.label"), lv1IDX: 13]
-    }
-
-    def lottoHistoryFilter() {
-        if (params.pYyyymm) {
-            params.pYyyymmS = params.pYyyymm
-            params.pYyyymmE = params.pYyyymm.toInteger() + 1
-            df.params_text_date_transform(params: params, list: ["pYyyymmS", "pYyyymmE"])
-        }
-
-        if (params.pOpendt) {
-            df.params_text_date_transform(params: params, list: ["pOpendt"])
-        }
-
-        def nw300I = netWinService.getNw300List(params)
-
-        if (params?.pType in ["01","02","04","05","06","07","08"]) {
-            render template: "/lotto/lottoContent1", model: [nw300I: nw300I, pType: params?.pType, totalCount: nw300I?.totalCount]
-        } else if (params?.pType in ["03"]) {
-            render template: "/lotto/lottoContent2", model: [nw300I: nw300I, pType: params?.pType, totalCount: nw300I?.totalCount]
-        } else if (params?.pType in ["09","10"]) {
-            render template: "/lotto/lottoContent3", model: [nw300I: nw300I, pType: params?.pType, totalCount: nw300I?.totalCount]
-        } else if (params?.pType in ["11"]) {
-            render template: "/lotto/lottoContent4", model: [nw300I: nw300I, pType: params?.pType, totalCount: nw300I?.totalCount]
-        }
     }
 
     def showBingoAnalysis3 () {

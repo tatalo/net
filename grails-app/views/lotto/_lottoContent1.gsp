@@ -1,3 +1,4 @@
+%{--(最新)開獎號碼MODEL: 六合彩, 大福彩, 38樂合彩, 大樂透, 49樂合彩, 39樂合彩, 今彩539--}%
 <g:each in="${nw300I}" var="nw300" status="i">
     <div class="panel panel-info">
         <div class="panel-heading">
@@ -23,9 +24,9 @@
                         <td>
                             <g:each in="${nw300?.nw301s.findAll { it.isspno == 0 }.sort { it.opidx }.no}" var="no"
                                     status="i2">
-                                <button type="button" class="btn btn-primary btn-circle btn-lg">
-                                    ${no}
-                                </button>
+                                <span class="circle lottoNO">
+                                    ${String.format('%02d', no)}
+                                </span>
                             </g:each>
                         </td>
                     </tr>
@@ -41,9 +42,9 @@
                         <td>
                             <g:each in="${nw300?.nw301s.findAll { it.isspno == 0 }.sort { it.no }.no}" var="no"
                                     status="i2">
-                                <button type="button" class="btn btn-primary btn-circle btn-lg">
-                                    ${no}
-                                </button>
+                                <span class="circle lottoNO">
+                                    ${String.format('%02d', no)}
+                                </span>
                             </g:each>
                         </td>
                     </tr>
@@ -59,9 +60,9 @@
                             <td>
                                 <g:each in="${nw300?.nw301s.findAll { it.isspno == 1 }.sort { it.no }.no}" var="no"
                                         status="i2">
-                                    <button type="button" class="btn btn-danger btn-circle btn-lg">
-                                        ${no}
-                                    </button>
+                                    <span class="circle lottoSPNO">
+                                        ${String.format('%02d', no)}
+                                    </span>
                                 </g:each>
                             </td>
                         </tr>

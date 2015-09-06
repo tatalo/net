@@ -34,7 +34,9 @@ class NetWinService {
                 lt("opendt", params.pYyyymmE - 1)
             }
             if (params.pOpendt) {
-                eq("opendt", params.pOpendt)
+                ge("opendt", params.pOpendt)
+                lt("opendt", params.pOpendt + 1)
+//                eq("opendt", params.pOpendt)
             }
             if (params.pPeriods) {
                 eq("periods", params.pPeriods)
@@ -106,7 +108,7 @@ class NetWinService {
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO?:0) as Integer) {
+        if ((params.pUnSPNO ?: 0) as Integer) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -139,7 +141,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
         def resultList = query.rows(mainSql, condition)
 
         result.list = resultList
@@ -191,7 +193,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "03" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
         def resultList = query.rows(mainSql, condition)
 
         result.list = resultList
@@ -240,7 +242,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -265,7 +267,7 @@ class NetWinService {
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO?:0) as Integer) {
+        if ((params.pUnSPNO ?: 0) as Integer) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -295,7 +297,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -346,7 +348,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -369,7 +371,7 @@ class NetWinService {
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO?:0) as Integer) {
+        if ((params.pUnSPNO ?: 0) as Integer) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -404,7 +406,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -459,7 +461,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
         def resultList = query.rows(mainSql, condition)
 
         result.maxNum = resultList[0].max { it.value }.value
@@ -480,7 +482,7 @@ class NetWinService {
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO?:0) as Integer) {
+        if ((params.pUnSPNO ?: 0) as Integer) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -510,7 +512,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -582,7 +584,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -636,11 +638,11 @@ class NetWinService {
 
         def nosSql = ""
         result.columnsNOs.each { it ->
-                nosSql += "DECODE(SUM(CASE WHEN NW31.NO = ${it} THEN (CASE WHEN (NVL(NW31B.NO,0) > 0 OR NVL(NW31C.NO,0) > 0) THEN 3 ELSE (CASE WHEN NW31.ISSPNO = 1 THEN 2 ELSE 1 END) END) ELSE 0 END),3,'CTNO',2,'SPNO',1,'NO','') NO${it}, "
+            nosSql += "DECODE(SUM(CASE WHEN NW31.NO = ${it} THEN (CASE WHEN (NVL(NW31B.NO,0) > 0 OR NVL(NW31C.NO,0) > 0) THEN 3 ELSE (CASE WHEN NW31.ISSPNO = 1 THEN 2 ELSE 1 END) END) ELSE 0 END),3,'CTNO',2,'SPNO',1,'NO','') NO${it}, "
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO?:0) as Integer) {
+        if ((params.pUnSPNO ?: 0) as Integer) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -675,7 +677,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -730,7 +732,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -747,18 +749,14 @@ class NetWinService {
 
         def query = new Sql(dataSource)
 
-        def nosSql = ""
+        def nosSql = "", nosSql2 = ""
         result.columnsNOs.each { it ->
             nosSql += "DECODE((case when (NW3.NO${it} > 0 and (LEAD(NW3.NO${it}) OVER (ORDER BY NW3.PERIODS DESC) > 0)) or (NW3.NO${it} > 0 and (LAG(NW3.NO${it}) OVER (ORDER BY NW3.PERIODS DESC)) > 0) then 4 ELSE NW3.NO${it} END),4,'RPNO',2,'SPNO',1,'NO','') NO${it}, "
-        }
-
-        def nosSql2 = ""
-        result.columnsNOs.each { it ->
             nosSql2 += "SUM(CASE WHEN NW31.NO = ${it} THEN (CASE WHEN NW31.ISSPNO = 1 THEN 2 ELSE 1 END) ELSE 0 END) NO${it}, "
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO?:0) as Integer) {
+        if ((params.pUnSPNO ?: 0) as Integer) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -797,7 +795,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -808,31 +806,23 @@ class NetWinService {
     }
 
 
-    def getRepeatAnyalysis2(params) { // 連開分析: 六合彩, 大福彩, 38樂合彩, 49樂合彩, 大樂透, 今彩539, 39樂合彩
+    def getRepeatAnyalysis2(params) { // 連開分析: 威力彩
         def result = [:]
         result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
         result.columnsSPNOs = dataService."lotto${params.pType}".SPNOs.sort { it.toInteger() }
 
         def query = new Sql(dataSource)
 
-        def nosSql = ""
+        def nosSql = "", nosSql2 = ""
         result.columnsNOs.each { it ->
             nosSql += "DECODE((case when (NW3.NO${it} > 0 and (LEAD(NW3.NO${it}) OVER (ORDER BY NW3.PERIODS DESC) > 0)) or (NW3.NO${it} > 0 and (LAG(NW3.NO${it}) OVER (ORDER BY NW3.PERIODS DESC)) > 0) then 4 ELSE NW3.NO${it} END),4,'RPNO',2,'SPNO',1,'NO','') NO${it}, "
-        }
-
-        def nosSql2 = ""
-        result.columnsNOs.each { it ->
             nosSql2 += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 0 THEN 1 ELSE 0 END) NO${it}, "
         }
 
-        def spnosSql = ""
+        def spnosSql = "", spnosSql2 = ""
         result.columnsSPNOs.each { it ->
-            nosSql += "DECODE((case when (NW3.SPNO${it} > 0 and (LEAD(NW3.SPNO${it}) OVER (ORDER BY NW3.PERIODS DESC) > 0)) or (NW3.SPNO${it} > 0 and (LAG(NW3.SPNO${it}) OVER (ORDER BY NW3.PERIODS DESC)) > 0) then 4 ELSE NW3.SPNO${it} END),4,'RPNO',2,'SPNO',1,'NO','') SPNO${it}, "
-        }
-
-        def spnosSql2 = ""
-        result.columnsSPNOs.each { it ->
-            nosSql2 += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 1 THEN 2 ELSE 0 END) SPNO${it}, "
+            spnosSql += "DECODE((case when (NW3.SPNO${it} > 0 and (LEAD(NW3.SPNO${it}) OVER (ORDER BY NW3.PERIODS DESC) > 0)) or (NW3.SPNO${it} > 0 and (LAG(NW3.SPNO${it}) OVER (ORDER BY NW3.PERIODS DESC)) > 0) then 4 ELSE NW3.SPNO${it} END),4,'RPNO',2,'SPNO',1,'NO','') SPNO${it}, "
+            spnosSql2 += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 1 THEN 2 ELSE 0 END) SPNO${it}, "
         }
 
         def mainSql = """
@@ -868,9 +858,87 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max')?:25 //require
+        condition.max = params.int('max') ?: 25 //require
 
 //        println "sql = " + toolsService.transPRSSql(mainSql, condition)
+
+        def resultList = query.rows(mainSql, condition)
+
+        result.list = resultList
+        result.counts = resultList.size()
+
+        return result
+    }
+
+    def getBingoAnyalysis4(params) { // 賓果開獎號碼
+        def result = [:]
+        result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
+
+        def query = new Sql(dataSource)
+
+        def nosSql = "", spNosSql = "", rcntNosSql = "", lcntNosSql = "", repNosSql = ""
+        result.columnsNOs.each { it ->
+            nosSql += "NW3.NO${it}, "
+            spNosSql += "NW3.SPNO${it}, "
+            rcntNosSql += "NW3.RCNTNO${it}, "
+            rcntNosSql += "NW3.LCNTNO${it}, "
+            repNosSql += "(CASE WHEN (NW3.NO${it} > 0 AND (LEAD(NW3.NO${it}) OVER (ORDER BY NW3.PERIODS DESC) > 0)) THEN 1 ELSE 0 END) REPNO${it}, "
+        }
+
+        def nosSql2 = "", spNosSql2 = "", rcntNosSql2= "", lcntNosSql2 = ""
+        result.columnsNOs.each { it ->
+            nosSql2 += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 0 THEN 1 ELSE 0 END) NO${it}, "
+            spNosSql2 += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 1 THEN 1 ELSE 0 END) SPNO${it}, "
+            rcntNosSql2 += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 0 AND NVL(NW31B.NO,0) > 0 THEN 1 ELSE 0 END) RCNTNO${it}, "
+            rcntNosSql2 += "SUM(CASE WHEN NW31.NO = ${it} AND NW31.ISSPNO = 0 AND NVL(NW31C.NO,0) > 0 THEN 1 ELSE 0 END) LCNTNO${it}, "
+        }
+
+        def mainSql = """
+                        SELECT
+                        NW3.PERIODS,
+                        NW3.OPENDT,
+                        NW3.RESULT,
+                        ${nosSql}
+                        ${spNosSql}
+                        ${rcntNosSql}
+                        ${lcntNosSql}
+                        ${repNosSql}
+                        0 END
+                        FROM ( SELECT
+                            NW3.PERIODS,
+                            NW3.OPENDT,
+                            NW3.RESULT,
+                            ${nosSql2}
+                            ${spNosSql2}
+                            ${rcntNosSql2}
+                            ${lcntNosSql2}
+                            0 END
+                            FROM (
+                                SELECT
+                                NW3.OBJID,
+                                NW3.TYPE,
+                                NW3.PERIODS,
+                                NW3.OPENDT,
+                                NW3.RESULT
+                                FROM NW300 NW3
+                                WHERE 1 = :pNum
+                                AND NW3.TYPE = :pType
+                                AND ROWNUM <= :max
+                                ORDER BY NW3.PERIODS DESC
+                            ) NW3
+                            LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
+                            LEFT JOIN NW301 NW31B ON NW31.NW300ID = NW31B.NW300ID AND NW31.NO = (NW31B.NO+1) AND NW31.ISSPNO = NW31B.ISSPNO
+                            LEFT JOIN NW301 NW31C ON NW31.NW300ID = NW31C.NW300ID AND NW31.NO = (NW31C.NO-1) AND NW31.ISSPNO = NW31C.ISSPNO
+                            GROUP BY NW3.PERIODS, NW3.OPENDT,NW3.RESULT
+                        ) NW3
+                        ORDER BY NW3.PERIODS DESC
+                  """
+        def condition = [:]
+        condition.pNum = 1 //default parameters, avoid condition is null then happen exception
+        condition.pType = params.pType ?: "01" //require
+        condition.max = params.int('max') ?: 25 //require
+
+        println "sql = " + toolsService.transPRSSql(mainSql, condition)
 
         def resultList = query.rows(mainSql, condition)
 
@@ -884,7 +952,7 @@ class NetWinService {
      * 賓果分析: 本期球號
      * @return
      */
-    def getbingoAnalysisA(){
+    def getbingoAnalysisA() {
         def s = new Sql(dataSource)
         def sql = """
 select
@@ -910,13 +978,11 @@ order by A.NO
         return result
     }
 
-
-
     /**
      * 賓果分析: 熱門球號
      * @return
      */
-    def getbingoAnalysisB(){
+    def getbingoAnalysisB() {
         def s = new Sql(dataSource)
         def sql = """
 select
@@ -954,13 +1020,11 @@ order by x.CNT1 desc, x.no
         return result
     }
 
-
-
     /**
      * 賓果分析: 冷門球號
      * @return
      */
-    def getbingoAnalysisC(){
+    def getbingoAnalysisC() {
         def s = new Sql(dataSource)
         def sql = """
 select
@@ -998,13 +1062,11 @@ order by x.CNT2, X.NO
         return result
     }
 
-
-
     /**
      * 賓果分析: 熱門連莊
      * @return
      */
-    def getbingoAnalysisD(){
+    def getbingoAnalysisD() {
         def s = new Sql(dataSource)
         def sql = """
                   select
@@ -1270,12 +1332,11 @@ SELECT
         return result
     }
 
-
     /**
      * 賓果分析: 熱門跳期
      * @return
      */
-    def getbingoAnalysisE(){
+    def getbingoAnalysisE() {
         def s = new Sql(dataSource)
         def sql = """
                   select
@@ -1545,7 +1606,7 @@ SELECT
      * 賓果分析: 二連號
      * @return
      */
-    def getbingoAnalysisF(){
+    def getbingoAnalysisF() {
         def s = new Sql(dataSource)
         def sql = """
 select
@@ -1577,12 +1638,11 @@ where rownum <= 8
         return result
     }
 
-
     /**
      * 賓果分析: 三連號
      * @return
      */
-    def getbingoAnalysisG(){
+    def getbingoAnalysisG() {
         def s = new Sql(dataSource)
         def sql = """
   select
@@ -1625,12 +1685,11 @@ where rownum <= 5
         return result
     }
 
-
     /**
      * 賓果分析: 四連號
      * @return
      */
-    def getbingoAnalysisH(){
+    def getbingoAnalysisH() {
         def s = new Sql(dataSource)
         def sql = """
                   select
@@ -1670,12 +1729,11 @@ where rownum <= 4
         return result
     }
 
-
     /**
      * 賓果分析: 熱門頭號&熱門尾號
      * @return
      */
-    def getbingoAnalysisI(){
+    def getbingoAnalysisI() {
         def s = new Sql(dataSource)
         def sql = """
                   select d.no from (
@@ -1745,12 +1803,11 @@ where rownum <= 3
         return result
     }
 
-
     /**
      * 賓果分析: 二同出
      * @return
      */
-    def getbingoAnalysisJ(){
+    def getbingoAnalysisJ() {
         def s = new Sql(dataSource)
         def sql = """
 select
@@ -1784,7 +1841,7 @@ and rownum <= 8
      * 賓果分析: 三同出
      * @return
      */
-    def getbingoAnalysisK(){
+    def getbingoAnalysisK() {
         def s = new Sql(dataSource)
         def sql = """
 select

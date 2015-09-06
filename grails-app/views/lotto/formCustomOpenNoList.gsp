@@ -13,7 +13,7 @@
 
 <div class="container">
     <div class="table-responsive">
-        <g:render template="/lotto/bingoDataAnalysis4" model="[nw300I: nw300I]"/>
+        <g:render template="/lotto/bingoDataAnalysis4" model="[nw300I: nw300I, columnsNOs : columnsNOs]"/>
     </div>
 </div>
 

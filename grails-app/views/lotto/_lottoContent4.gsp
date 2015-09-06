@@ -1,3 +1,4 @@
+%{--(最新)開獎號碼MODEL: 賓果--}%
 <g:each in="${nw300I}" var="nw300" status="i">
     <div class="panel panel-info">
         <div class="panel-heading">
@@ -22,12 +23,12 @@
                         </th>
                         <td>
                             <g:each in="${nw300?.nw301s.findAll { it.isspno == 0 && it.opidx <= 10 }.sort {
-                                it.opidx
+                                it.no
                             }.no}" var="no"
                                     status="i2">
-                                <button type="button" class="btn btn-primary btn-circle btn-lg">
-                                    ${no}
-                                </button>
+                                <span class="circle lottoNO">
+                                    ${String.format('%02d', no)}
+                                </span>
                             </g:each>
                         </td>
                         <th width="150px" class="text-center">
@@ -40,9 +41,9 @@
                         <th width="100px" class="text-center">
                             <g:each in="${nw300?.nw301s.findAll { it.isspno == 1 }.sort { it.no }.no}" var="no"
                                     status="i2">
-                                <button type="button" class="btn btn-danger btn-circle btn-lg">
-                                    ${no}
-                                </button>
+                                <span class="circle lottoSPNO">
+                                    ${String.format('%02d', no)}
+                                </span>
                             </g:each>
                         </th>
                     </tr>
@@ -54,9 +55,9 @@
                                 it.opidx
                             }.no}" var="no"
                                     status="i2">
-                                <button type="button" class="btn btn-primary btn-circle btn-lg">
-                                    ${no}
-                                </button>
+                                <span class="circle lottoNO">
+                                    ${String.format('%02d', no)}
+                                </span>
                             </g:each>
                         </td>
                         <th width="150px" class="text-center">
@@ -67,9 +68,9 @@
                             </h4>
                         </th>
                         <th width="100px" class="text-center">
-                            <h4>
+                            <span class="circle">
                                 <bs:bs101 ptype="NW300RESULT" pcode="${nw300?.result}"/>
-                            </h4>
+                            </span>
                         </th>
                     </tr>
                     </tbody>
