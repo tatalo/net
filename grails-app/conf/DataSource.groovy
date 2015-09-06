@@ -72,7 +72,7 @@ environments {
                maxAge = 10 * 60000
                timeBetweenEvictionRunsMillis = 5000
                minEvictableIdleTimeMillis = 60000
-               validationQuery = "SELECT 1"
+               validationQuery = "SELECT 1 FROM DUAL"
                validationQueryTimeout = 3
                validationInterval = 15000
                testOnBorrow = true
