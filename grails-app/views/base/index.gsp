@@ -77,7 +77,7 @@
         <div class="col-md-7">
             <div class="form-group">
                 <div class="panel panel-default">
-                    <div class="panel-body" style="zoom:55%;">
+                    <div class="panel-body zoom55">
                         <table class="bingoTable bingoBackGround" style="border:1px #cccccc solid;" rules="all">
                             <thead>
                             <tr>
@@ -85,7 +85,7 @@
                             </tr>
                             </thead>
                             <g:render template="/lotto/lottoContent5"
-                                      model="[nw300I: nw300IBingo, columnsNOs: columnsBingoNOs]"/>
+                                      model="[nw300I: nw300I11, columnsNOs: columnsNOs11]"/>
                         </table>
 
                         <h3 class="pull-right">
@@ -175,14 +175,6 @@
                                 </a>
                             </div>
                         </div>
-
-                        %{--<div>--}%
-                        %{--<img data-src="holder.js/140x140" class="img-rounded" alt="21點" src="${assetPath(src: 'RouletteButton.png')}" data-holder-rendered="true" style="width: 140px; height: 140px;">--}%
-                        %{--</div>--}%
-                        %{--<div class="test">--}%
-                        %{--測試1--}%
-                        %{--</div>--}%
-                        %{--博彩技巧--}%
                     </div>
                 </div>
             </div>
@@ -191,6 +183,37 @@
         <div class="col-md-3">
             <div class="form-group">
                 <h4 class="defaultBgColor1 text-center">當日開獎</h4>
+            </div>
+
+            <div class="zoom55">
+                <g:render template="/lotto/lottoContent6" model="[pType: '01', nw300I: nw300I01]"/>
+            </div>
+            <div class="zoom55">
+                <g:render template="/lotto/lottoContent6" model="[pType: '02', nw300I: nw300I02]"/>
+            </div>
+            <div class="zoom55">
+                <g:render template="/lotto/lottoContent6" model="[pType: '03', nw300I: nw300I03]"/>
+            </div>
+            <div class="zoom55">
+                <g:render template="/lotto/lottoContent6" model="[pType: '04', nw300I: nw300I04]"/>
+            </div>
+            <div class="zoom55">
+                <g:render template="/lotto/lottoContent6" model="[pType: '05', nw300I: nw300I05]"/>
+            </div>
+            <div class="zoom55">
+                <g:render template="/lotto/lottoContent6" model="[pType: '06', nw300I: nw300I06]"/>
+            </div>
+            <div class="zoom55">
+                <g:render template="/lotto/lottoContent6" model="[pType: '07', nw300I: nw300I07]"/>
+            </div>
+            <div class="zoom55">
+                <g:render template="/lotto/lottoContent6" model="[pType: '08', nw300I: nw300I08]"/>
+            </div>
+            <div class="zoom55">
+                <g:render template="/lotto/lottoContent6" model="[pType: '09', nw300I: nw300I09]"/>
+            </div>
+            <div class="zoom55">
+                <g:render template="/lotto/lottoContent6" model="[pType: '10', nw300I: nw300I10]"/>
             </div>
 
             %{--<div class="form-group">--}%

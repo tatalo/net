@@ -8,9 +8,32 @@ class BaseController {
     def index() {
         params.pType = "11"
         params.max = 5
-        def nw300IBingo = netWinService.getBingoAnyalysis4(params)
+        def nw300I11 = netWinService.getBingoAnyalysis4(params)
 
-        render view:"/base/index", model: [nw300IBingo: nw300IBingo.list, columnsBingoNOs: nw300IBingo.columnsNOs]
+        params.pOpendt = new Date().clearTime()
+        params.pType = "01"
+        def nw300I01 = netWinService.getNw300List(params)
+        params.pType = "02"
+        def nw300I02 = netWinService.getNw300List(params)
+        params.pType = "03"
+        def nw300I03 = netWinService.getNw300List(params)
+        params.pType = "04"
+        def nw300I04 = netWinService.getNw300List(params)
+        params.pType = "05"
+        def nw300I05 = netWinService.getNw300List(params)
+        params.pType = "06"
+        def nw300I06 = netWinService.getNw300List(params)
+        params.pType = "07"
+        def nw300I07 = netWinService.getNw300List(params)
+        params.pType = "08"
+        def nw300I08 = netWinService.getNw300List(params)
+        params.pType = "09"
+        def nw300I09 = netWinService.getNw300List(params)
+        params.pType = "10"
+        def nw300I10 = netWinService.getNw300List(params)
+
+        render view:"/base/index", model: [nw300I11: nw300I11.list, columnsNOs11: nw300I11.columnsNOs,nw300I01: nw300I01, nw300I02: nw300I02, nw300I03: nw300I03, nw300I04: nw300I04, nw300I05: nw300I05, nw300I06: nw300I06,
+                                                                                                                  nw300I07: nw300I07, nw300I08: nw300I08, nw300I09: nw300I09, nw300I10: nw300I10]
     }
 
     def build() {
