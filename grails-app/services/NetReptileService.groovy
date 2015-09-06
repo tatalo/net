@@ -61,7 +61,7 @@ class NetReptileService {
                     result = "${node.text()}"
             }
 
-            def queryNw300Object = Nw300.findByTypeAndPeriods('07',no2)
+            def queryNw300Object = Nw300.findByTypeAndPeriods('11',no2)
 
             if(queryNw300Object==null){
                 println '新的一期'
@@ -72,7 +72,7 @@ class NetReptileService {
                 nw300Instance.dateCreated = new Date()
                 nw300Instance.manLastUpdated = 'system'
                 nw300Instance.lastUpdated = new Date()
-                nw300Instance.type = '07'
+                nw300Instance.type = '11'
                 nw300Instance.periods = no2
                 nw300Instance.opendt = new Date()
                 nw300Instance.result = result
@@ -396,7 +396,7 @@ class NetReptileService {
                     }
             }
 
-            def queryNw300Object = Nw300.findByTypeAndPeriods('08',no2)
+            def queryNw300Object = Nw300.findByTypeAndPeriods('05',no2)
 
             if(queryNw300Object==null){
                 println '新的一期'
@@ -407,7 +407,7 @@ class NetReptileService {
                 nw300Instance.dateCreated = new Date()
                 nw300Instance.manLastUpdated = 'system'
                 nw300Instance.lastUpdated = new Date()
-                nw300Instance.type = '08'
+                nw300Instance.type = '05'
                 nw300Instance.periods = no2
                 nw300Instance.opendt = new Date()
 
@@ -517,7 +517,7 @@ class NetReptileService {
                     }
             }
 
-            def queryNw300Object = Nw300.findByTypeAndPeriods('09',no2)
+            def queryNw300Object = Nw300.findByTypeAndPeriods('06',no2)
 
             if(queryNw300Object==null){
                 println '新的一期'
@@ -528,7 +528,7 @@ class NetReptileService {
                 nw300Instance.dateCreated = new Date()
                 nw300Instance.manLastUpdated = 'system'
                 nw300Instance.lastUpdated = new Date()
-                nw300Instance.type = '09'
+                nw300Instance.type = '06'
                 nw300Instance.periods = no2
                 nw300Instance.opendt = new Date()
 
@@ -709,7 +709,7 @@ class NetReptileService {
                     }
             }
 
-            def queryNw300Object = Nw300.findByTypeAndPeriods('11',no2)
+            def queryNw300Object = Nw300.findByTypeAndPeriods('08',no2)
 
             if(queryNw300Object==null){
                 println '新的一期'
@@ -721,7 +721,7 @@ class NetReptileService {
                 nw300Instance.dateCreated = new Date()
                 nw300Instance.manLastUpdated = 'system'
                 nw300Instance.lastUpdated = new Date()
-                nw300Instance.type = '11'
+                nw300Instance.type = '08'
                 nw300Instance.periods = no2
                 nw300Instance.opendt = new Date()
 
@@ -807,7 +807,7 @@ class NetReptileService {
                     }
             }
 
-            def queryNw300Object = Nw300.findByTypeAndPeriods('10',no2)
+            def queryNw300Object = Nw300.findByTypeAndPeriods('07',no2)
 
             if(queryNw300Object==null){
                 println '新的一期'
@@ -819,7 +819,7 @@ class NetReptileService {
                 nw300Instance.dateCreated = new Date()
                 nw300Instance.manLastUpdated = 'system'
                 nw300Instance.lastUpdated = new Date()
-                nw300Instance.type = '10'
+                nw300Instance.type = '07'
                 nw300Instance.periods = no2
                 nw300Instance.opendt = new Date()
 
@@ -906,7 +906,7 @@ class NetReptileService {
                     }
             }
 
-            def queryNw300Object = Nw300.findByTypeAndPeriods('05',no2)
+            def queryNw300Object = Nw300.findByTypeAndPeriods('09',no2)
 
             if(queryNw300Object==null){
                 println '新的一期'
@@ -918,7 +918,7 @@ class NetReptileService {
                 nw300Instance.dateCreated = new Date()
                 nw300Instance.manLastUpdated = 'system'
                 nw300Instance.lastUpdated = new Date()
-                nw300Instance.type = '05'
+                nw300Instance.type = '09'
                 nw300Instance.periods = no2
                 nw300Instance.opendt = new Date()
 
@@ -1000,7 +1000,7 @@ class NetReptileService {
                     }
             }
 
-            def queryNw300Object = Nw300.findByTypeAndPeriods('06',no2)
+            def queryNw300Object = Nw300.findByTypeAndPeriods('10',no2)
 
             if(queryNw300Object==null){
                 println '新的一期'
@@ -1012,7 +1012,7 @@ class NetReptileService {
                 nw300Instance.dateCreated = new Date()
                 nw300Instance.manLastUpdated = 'system'
                 nw300Instance.lastUpdated = new Date()
-                nw300Instance.type = '06'
+                nw300Instance.type = '10'
                 nw300Instance.periods = no2
                 nw300Instance.opendt = new Date()
 
