@@ -86,7 +86,7 @@ class GambleTechController {
         params.max = params?.max ? params.max : grailsApplication.config.grails.plugins.remotepagination.max
         params.offset = params?.offset ? params.offset : 0
         def nw400I = netWinService.getNw400List(params)
-        render view: "/gambleTech/formList1", model: [nw400I: nw400I, totalCount: nw400I?.totalCount, max: params.max, offset : params.offset, lv1IDX: 5, lv2IDX: 2, pLink: vLink]
+        render view: "/gambleTech/formList1", model: [nw400I: nw400I, totalCount: nw400I?.totalCount, max: params.max, offset : params.offset, lv1IDX: 5, lv2IDX: 2]
     }
 
     def contentListBaccarat() { //百家樂技巧策略
