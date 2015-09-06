@@ -75,6 +75,14 @@ class NetReptileService {
                 nw300Instance.type = '11'
                 nw300Instance.periods = no2
                 nw300Instance.opendt = new Date()
+
+                if(result=='大'){
+                    result = '2'
+                }else if(result=='小'){
+                    result = '1'
+                }else{
+                    result = '0'
+                }
                 nw300Instance.result = result
 
                 nw300Instance.validate()//資料檢查
