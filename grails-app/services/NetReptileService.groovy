@@ -189,7 +189,9 @@ class NetReptileService {
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = '03'
                 nw300Instance.periods = no2
-                nw300Instance.opendt = new Date()
+
+                day = ((day.substring(0,3)).toInteger()+1911).toString() + day.substring(3)
+                nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
 
                 nw300Instance.validate()//資料檢查
 
@@ -314,7 +316,9 @@ class NetReptileService {
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = '04'
                 nw300Instance.periods = no2
-                nw300Instance.opendt = new Date()
+//                nw300Instance.opendt = new Date()
+                day = ((day.substring(0,3)).toInteger()+1911).toString() + day.substring(3)
+                nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
 
                 nw300Instance.validate()//資料檢查
 
@@ -409,7 +413,9 @@ class NetReptileService {
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = '05'
                 nw300Instance.periods = no2
-                nw300Instance.opendt = new Date()
+//                nw300Instance.opendt = new Date()
+                day = ((day.substring(0,3)).toInteger()+1911).toString() + day.substring(3)
+                nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
 
                 nw300Instance.validate()//資料檢查
                 if(!nw300Instance.hasErrors()){
@@ -530,7 +536,9 @@ class NetReptileService {
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = '06'
                 nw300Instance.periods = no2
-                nw300Instance.opendt = new Date()
+//                nw300Instance.opendt = new Date()
+                day = ((day.substring(0,3)).toInteger()+1911).toString() + day.substring(3)
+                nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
 
                 nw300Instance.validate()//資料檢查
 
@@ -626,7 +634,10 @@ class NetReptileService {
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = '02'
                 nw300Instance.periods = no2
-                nw300Instance.opendt = new Date()
+
+//                nw300Instance.opendt = new Date()
+                day = ((day.substring(0,3)).toInteger()+1911).toString() + day.substring(3)
+                nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
 
                 nw300Instance.validate()//資料檢查
 
@@ -723,7 +734,9 @@ class NetReptileService {
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = '08'
                 nw300Instance.periods = no2
-                nw300Instance.opendt = new Date()
+//                nw300Instance.opendt = new Date()
+                day = ((day.substring(0,3)).toInteger()+1911).toString() + day.substring(3)
+                nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
 
                 nw300Instance.validate()//資料檢查
 
@@ -821,7 +834,9 @@ class NetReptileService {
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = '07'
                 nw300Instance.periods = no2
-                nw300Instance.opendt = new Date()
+//                nw300Instance.opendt = new Date()
+                day = ((day.substring(0,3)).toInteger()+1911).toString() + day.substring(3)
+                nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
 
                 nw300Instance.validate()//資料檢查
 
@@ -920,7 +935,9 @@ class NetReptileService {
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = '09'
                 nw300Instance.periods = no2
-                nw300Instance.opendt = new Date()
+//                nw300Instance.opendt = new Date()
+                day = ((day.substring(0,3)).toInteger()+1911).toString() + day.substring(3)
+                nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
 
                 nw300Instance.validate()//資料檢查
 
@@ -1014,7 +1031,9 @@ class NetReptileService {
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = '10'
                 nw300Instance.periods = no2
-                nw300Instance.opendt = new Date()
+//                nw300Instance.opendt = new Date()
+                day = ((day.substring(0,3)).toInteger()+1911).toString() + day.substring(3)
+                nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
 
                 nw300Instance.validate()//資料檢查
 

@@ -966,8 +966,8 @@ and C.PERIODS =
 (
 select max(B.PERIODS) from nw300 b
 where b.type = '11'
-and B.OPENDT = to_date('2015/08/25','yyyy/MM/dd')
-group by B.OPENDT
+and trunc(B.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+group by trunc(B.OPENDT)
 )
 )
 and A.ISSPNO = 0
@@ -1005,7 +1005,7 @@ FROM (
     FROM NW300 NW3
     WHERE 1 = 1
     AND NW3.TYPE = '11'
-    and nw3.OPENDT = to_date('2015/08/25','yyyy/MM/dd')
+    and trunc(nw3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
 ) NW3
 LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
 WHERE 1=1
@@ -1047,7 +1047,7 @@ FROM (
     FROM NW300 NW3
     WHERE 1 = 1
     AND NW3.TYPE = '11'
-    and nw3.OPENDT = to_date('2015/08/25','yyyy/MM/dd')
+    and trunc(nw3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
 ) NW3
 LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
 WHERE 1=1
@@ -1319,7 +1319,7 @@ SELECT
   FROM NW300 a LEFT JOIN nw301 b ON a.objid = b.nw300id
  WHERE     1 = 1
        AND a.TYPE = '11'
-       AND a.OPENDT = TO_DATE ('2015/08/25', 'yyyy/MM/dd')
+       AND trunc(a.OPENDT) = TO_DATE ('2015/08/25', 'yyyy/MM/dd')
        and B.ISSPNO = 0
        group by a.PERIODS
        order by a.PERIODS
@@ -1589,7 +1589,7 @@ SELECT
   FROM NW300 a LEFT JOIN nw301 b ON a.objid = b.nw300id
  WHERE     1 = 1
        AND a.TYPE = '11'
-       AND a.OPENDT = TO_DATE ('2015/08/25', 'yyyy/MM/dd')
+       AND trunc(a.OPENDT) = TO_DATE ('2015/08/25', 'yyyy/MM/dd')
        and B.ISSPNO = 0
        group by a.PERIODS
        order by a.PERIODS
@@ -1626,7 +1626,7 @@ SELECT x.goodno, COUNT (x.goodno) NUM
                     ON     NW31.NW300ID = NW31B.NW300ID
                        AND NW31.OPIDX > NW31B.OPIDX
                        AND NW31B.ISSPNO = 0
-           WHERE 1 = 1 AND NW3.TYPE = '11' AND NW31B.NO > 0) x
+           WHERE 1 = 1 AND NW3.TYPE = '11' AND NW31B.NO > 0 and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')) x
    WHERE x.r = 1
 GROUP BY x.goodno
 ORDER BY COUNT (x.goodno) DESC
@@ -1673,7 +1673,7 @@ y.NUM
                     ON     NW31B.NW300ID = NW31C.NW300ID
                        AND NW31B.NO > NW31C.NO
                        AND NW31C.ISSPNO = 0
-           WHERE 1 = 1 AND NW3.TYPE = '11' AND NW31B.NO > 0 AND NW31C.NO > 0) x
+           WHERE 1 = 1 AND NW3.TYPE = '11' AND NW31B.NO > 0 AND NW31C.NO > 0  and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd') ) x
    WHERE x.r = 1
 GROUP BY x.goodno
 ORDER BY COUNT (x.goodno) DESC
@@ -1718,6 +1718,7 @@ SELECT
     AND NW31B.NO > 0
     AND NW31C.NO > 0
     AND NW31D.NO > 0
+    and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
 ) x
    WHERE x.r = 1
 GROUP BY x.goodno
@@ -1756,7 +1757,7 @@ select
 where exists (
 select b.objid from nw300 b
 where b.type = '11'
-and B.OPENDT = to_date('2015/08/25','yyyy/MM/dd')
+and trunc(B.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
 and a.nw300id = b.objid
 )
 and A.ISSPNO = 0
@@ -1787,7 +1788,7 @@ select
 where exists (
 select b.objid from nw300 b
 where b.type = '11'
-and B.OPENDT = to_date('2015/08/25','yyyy/MM/dd')
+and trunc(B.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
 and a.nw300id = b.objid
 )
 and A.ISSPNO = 0
@@ -1826,6 +1827,7 @@ from (
     WHERE 1=1
     AND NW3.TYPE = '11'
     AND NW31B.NO > 0
+    and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
     GROUP BY NW3.opendt,LPAD(NW31B.NO,2,'0') || LPAD(NW31.NO,2,'0')
     ORDER BY COUNT(1) DESC
 ) tp
@@ -1863,6 +1865,7 @@ from (
     AND NW3.TYPE = '11'
     AND NW31B.NO > 0
     AND NW31C.NO > 0
+    and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
     GROUP BY NW3.opendt,LPAD(NW31C.NO,2,'0') || LPAD(NW31B.NO,2,'0') || LPAD(NW31.NO,2,'0')
     ORDER BY COUNT(1) DESC
 ) tp
