@@ -1,5 +1,5 @@
 quartz {
-    autoStartup = false
+    autoStartup = true
     jdbcStore = false
     waitForJobsToCompleteOnShutdown = true
     exposeSchedulerInRepository = false
@@ -12,7 +12,7 @@ quartz {
 environments {
     test {
         quartz {
-            autoStartup = false
+            autoStartup = true
         }
     }
 }
