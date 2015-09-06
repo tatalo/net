@@ -876,7 +876,7 @@ class LottoController {
 
         def sql = """
                   SELECT
-　　　　　　　　　NW3.OPENDT,
+                  trunc(NW3.OPENDT) OPENDT,
 　　　　　　　　　NW31.NO,
 　　　　　　　　　COUNT(1) CNT1, --連續
 　　　　　　　　　(MAX(MAX(NW3.CNT)) OVER()) - MAX(NW3.CNT) CNT2, --最久
@@ -891,11 +891,11 @@ class LottoController {
 　　　　　　　　　    FROM NW300 NW3
 　　　　　　　　　    WHERE 1 = 1
 　　　　　　　　　    AND NW3.TYPE = 11
-　　　　　　　　　    and NW3.OPENDT = to_date('2015/8/25','yyyy/MM/dd')
+　　　　　　　　　    and trunc(NW3.OPENDT) = to_date('2015/8/25','yyyy/MM/dd')
 　　　　　　　　　) NW3
 　　　　　　　　　LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
 　　　　　　　　　WHERE 1=1
-　　　　　　　　　GROUP BY NW3.OPENDT,NW31.NO
+　　　　　　　　　GROUP BY trunc(NW3.OPENDT),NW31.NO
 　　　　　　　　　ORDER BY COUNT(1) DESC
                   """
         def result1 = s.rows(sql)
@@ -926,17 +926,19 @@ class LottoController {
      * @return
      */
     def showBingoAnalysis () {
-        def resultA = netWinService.getbingoAnalysisA()//本期球號
-        def resultB = netWinService.getbingoAnalysisB()//熱門球號
-        def resultC = netWinService.getbingoAnalysisC()//冷門球號
-        def resultD = netWinService.getbingoAnalysisD()//熱門連莊
-        def resultE = netWinService.getbingoAnalysisE()//熱門跳期
-        def resultF = netWinService.getbingoAnalysisF()//二連號
-        def resultG = netWinService.getbingoAnalysisG()//三連號
-        def resultH = netWinService.getbingoAnalysisH()//四連號
-        def resultI = netWinService.getbingoAnalysisI()//熱門頭號&熱門尾號
-        def resultJ = netWinService.getbingoAnalysisJ()//二同出
-        def resultK = netWinService.getbingoAnalysisK()//三同出
+        def resultA, resultB, resultC, resultD, resultE, resultF, resultG, resultH, resultI, resultJ, resultK
+
+        resultA = netWinService.getbingoAnalysisA()//本期球號
+        resultB = netWinService.getbingoAnalysisB()//熱門球號
+        resultC = netWinService.getbingoAnalysisC()//冷門球號
+        resultD = netWinService.getbingoAnalysisD()//熱門連莊
+        resultE = netWinService.getbingoAnalysisE()//熱門跳期
+        resultF = netWinService.getbingoAnalysisF()//二連號
+        resultG = netWinService.getbingoAnalysisG()//三連號
+        resultH = netWinService.getbingoAnalysisH()//四連號
+        resultI = netWinService.getbingoAnalysisI()//熱門頭號&熱門尾號
+        resultJ = netWinService.getbingoAnalysisJ()//二同出
+        resultK = netWinService.getbingoAnalysisK()//三同出
 
         def modelD = [:] //宣告map
         def listD1 = []
