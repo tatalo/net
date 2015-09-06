@@ -1,11 +1,10 @@
 <div class="text-center">
     <g:each in="${hl.getBingoNewestDays()}" var="pOpendt" status="j">
-        <g:link class="${hl.chkActiveClass(chkValue: params.pOpendt, matchValue: pOpendt)}" controller="lotto" action="customOpenNoListBingo" params="[pOpendt: pOpendt]">
-            ${pOpendt}
+        <g:link class="btn btn-primary ${hl.chkActiveClass(chkValue: params.pOpendt, matchValue: pOpendt)}" controller="lotto" action="customOpenNoListBingo" params="[pOpendt: pOpendt]">
+            ${pOpendt[4..-1]}
         </g:link>
     </g:each>
 </div>
-<BR/>
 <div class="pull-left">
     <g:render template="/lotto/lottoHelp2"/>
 </div>
