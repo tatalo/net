@@ -1,7 +1,7 @@
     <style>
 
     /*圓形1*/
-    .circle{
+    .circle1{
         float: left;
         /*設定字體置中*/
         text-align:center;
@@ -68,17 +68,17 @@
         border-radius:99em;
         margin-left: 3px;
         margin-top: 2px;
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#feccb1+0,f17432+50,ea5507+64,fb955e+100 */
-        background: #feccb1; /* Old browsers */
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#db36a4+0,a80077+60,a80077+63,a80077+63,c146a1+71,c146a1+71,c146a1+72,c146a1+75,cb60b3+100 */
+        background: #db36a4; /* Old browsers */
         /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZWNjYjEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiNmMTc0MzIiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2NCUiIHN0b3AtY29sb3I9IiNlYTU1MDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmI5NTVlIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-        background: -moz-radial-gradient(center, ellipse cover,  #feccb1 0%, #f17432 50%, #ea5507 64%, #fb955e 100%); /* FF3.6+ */
-        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#feccb1), color-stop(50%,#f17432), color-stop(64%,#ea5507), color-stop(100%,#fb955e)); /* Chrome,Safari4+ */
-        background: -webkit-radial-gradient(center, ellipse cover,  #feccb1 0%,#f17432 50%,#ea5507 64%,#fb955e 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-radial-gradient(center, ellipse cover,  #feccb1 0%,#f17432 50%,#ea5507 64%,#fb955e 100%); /* Opera 12+ */
-        background: -ms-radial-gradient(center, ellipse cover,  #feccb1 0%,#f17432 50%,#ea5507 64%,#fb955e 100%); /* IE10+ */
-        background: radial-gradient(ellipse at center,  #feccb1 0%,#f17432 50%,#ea5507 64%,#fb955e 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNkYjM2YTQiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiNhODAwNzciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MyUiIHN0b3AtY29sb3I9IiNhODAwNzciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MyUiIHN0b3AtY29sb3I9IiNhODAwNzciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI3MSUiIHN0b3AtY29sb3I9IiNjMTQ2YTEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI3MSUiIHN0b3AtY29sb3I9IiNjMTQ2YTEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI3MiUiIHN0b3AtY29sb3I9IiNjMTQ2YTEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI3NSUiIHN0b3AtY29sb3I9IiNjMTQ2YTEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjY2I2MGIzIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: -moz-radial-gradient(center, ellipse cover,  #db36a4 0%, #a80077 60%, #a80077 63%, #a80077 63%, #c146a1 71%, #c146a1 71%, #c146a1 72%, #c146a1 75%, #cb60b3 100%); /* FF3.6+ */
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#db36a4), color-stop(60%,#a80077), color-stop(63%,#a80077), color-stop(63%,#a80077), color-stop(71%,#c146a1), color-stop(71%,#c146a1), color-stop(72%,#c146a1), color-stop(75%,#c146a1), color-stop(100%,#cb60b3)); /* Chrome,Safari4+ */
+        background: -webkit-radial-gradient(center, ellipse cover,  #db36a4 0%,#a80077 60%,#a80077 63%,#a80077 63%,#c146a1 71%,#c146a1 71%,#c146a1 72%,#c146a1 75%,#cb60b3 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-radial-gradient(center, ellipse cover,  #db36a4 0%,#a80077 60%,#a80077 63%,#a80077 63%,#c146a1 71%,#c146a1 71%,#c146a1 72%,#c146a1 75%,#cb60b3 100%); /* Opera 12+ */
+        background: -ms-radial-gradient(center, ellipse cover,  #db36a4 0%,#a80077 60%,#a80077 63%,#a80077 63%,#c146a1 71%,#c146a1 71%,#c146a1 72%,#c146a1 75%,#cb60b3 100%); /* IE10+ */
+        background: radial-gradient(ellipse at center,  #db36a4 0%,#a80077 60%,#a80077 63%,#a80077 63%,#c146a1 71%,#c146a1 71%,#c146a1 72%,#c146a1 75%,#cb60b3 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#db36a4', endColorstr='#cb60b3',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
 
     }
 
@@ -173,7 +173,7 @@
 
 <center>
     <div>
-
+        最新期數:${nowPeriods}
         <table class="" style="border:1px #cccccc solid;" rules="all">
 
             <tr class="tdbg2">
@@ -181,7 +181,7 @@
                 <td colspan="3">
                     <g:each in="${resultAList}" var="resultAInstance" status="i">
                         <g:if test="${i<10}">
-                            <div class="thisPeriodBallNum"><div class="circle">${resultAInstance?.NO}</div></div>
+                            <div class="thisPeriodBallNum"><div class="circle${resultAInstance?.ISC}">${resultAInstance?.NO}</div></div>
                         </g:if>
                     </g:each>
                 </td>
@@ -190,7 +190,7 @@
                 <td colspan="3">
                     <g:each in="${resultAList}" var="resultAInstance" status="i">
                         <g:if test="${i>=10}">
-                            <div class="thisPeriodBallNum"><div class="circle">${resultAInstance?.NO}</div></div>
+                            <div class="thisPeriodBallNum"><div class="circle${resultAInstance?.ISC}">${resultAInstance?.NO}</div></div>
                         </g:if>
                     </g:each>
                 </td>
@@ -209,7 +209,7 @@
                 <td class="rowTitle">冷門球號</td>
                 <td colspan="3">
                     <g:each in="${resultCList}" var="resultCInstance" status="i">
-                        <div class="thisPeriodBallNum"><div class="circle">${resultCInstance?.NO}<label style="font-size: 11px;font-weight: normal;">${resultCInstance?.NUM}</label></div></div>
+                        <div class="thisPeriodBallNum"><div class="circle1">${resultCInstance?.NO}<label style="font-size: 11px;font-weight: normal;">${resultCInstance?.NUM}</label></div></div>
                     </g:each>
                 </td>
             </tr>
@@ -227,7 +227,7 @@
                 <td class="rowTitle">熱門跳期</td>
                 <td colspan="3">
                     <g:each in="${ (0..9) }" var="i">
-                        <div class="thisPeriodBallNum"><div class="circle">${listE1.get(i)}<label style="font-size: 11px;font-weight: normal;">${listE2.get(i)}</label></div></div>
+                        <div class="thisPeriodBallNum"><div class="circle1">${listE1.get(i)}<label style="font-size: 11px;font-weight: normal;">${listE2.get(i)}</label></div></div>
                     </g:each>
                 </td>
             </tr>
@@ -245,7 +245,7 @@
                 <td class="rowTitle">三連號</td>
                 <td colspan="3">
                     <g:each in="${resultGList}" var="resultGInstance" status="i">
-                        <div class="threeContinuousNum"><div class="circle">${resultGInstance?.NOA}</div> <div class="circle">${resultGInstance?.NOB}</div> <div class="circle">${resultGInstance?.NOC}</div><div style="width: 126px;height: 15px;text-align: center;font-size: 12px;">${resultGInstance?.NUM}</div></div>
+                        <div class="threeContinuousNum"><div class="circle1">${resultGInstance?.NOA}</div> <div class="circle1">${resultGInstance?.NOB}</div> <div class="circle1">${resultGInstance?.NOC}</div><div style="width: 126px;height: 15px;text-align: center;font-size: 12px;">${resultGInstance?.NUM}</div></div>
                     </g:each>
                 </td>
             </tr>
@@ -289,7 +289,7 @@
                 <td class="rowTitle">二同出</td>
                 <td colspan="3">
                      <g:each in="${resultJList}" var="resultJInstance" status="i">
-                         <div class="twoContinuousNum"><div class="circle">${resultJInstance?.NOA}</div> <div class="circle">${resultJInstance?.NOB}</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">${resultJInstance?.NUM}</div></div>
+                         <div class="twoContinuousNum"><div class="circle1">${resultJInstance?.NOA}</div> <div class="circle1">${resultJInstance?.NOB}</div><div style="width: 86px;height: 15px;text-align: center;font-size: 12px;">${resultJInstance?.NUM}</div></div>
                      </g:each>
                 </td>
             </tr>

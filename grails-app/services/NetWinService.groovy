@@ -995,17 +995,41 @@ class NetWinService {
         def s = new Sql(dataSource)
         def sql = """
 select
-LPAD(a.NO,2,'0') NO
+LPAD(a.NO,2,'0') NO,
+(
+case when a.no in (
+   select x.no from nw301 x where x.nw300id in(
+      select y.objid from nw300 y where y.type = '11' and y.PERIODS = (
+      select max(x.aa)-1 from (
+select max(B.PERIODS) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+      )
+   )
+) then 3 else 1 end
+) ISC,
+(
+select max(x.aa) from (
+select max(B.PERIODS) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+) PERIODS
  from nw301 a
 where a.nw300id = (
 select c.objid from nw300 c
 where C.TYPE = '11'
 and C.PERIODS =
 (
-select max(B.PERIODS) from nw300 b
+select max(x.aa) from (
+select max(B.PERIODS) aa from nw300 b
 where b.type = '11'
-and trunc(B.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
 group by trunc(B.OPENDT)
+) x
+group by 1
 )
 )
 and A.ISSPNO = 0
@@ -1043,7 +1067,15 @@ FROM (
     FROM NW300 NW3
     WHERE 1 = 1
     AND NW3.TYPE = '11'
-    and trunc(nw3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+    --and trunc(nw3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+    and trunc(nw3.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
 ) NW3
 LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
 WHERE 1=1
@@ -1085,7 +1117,15 @@ FROM (
     FROM NW300 NW3
     WHERE 1 = 1
     AND NW3.TYPE = '11'
-    and trunc(nw3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+    --and trunc(nw3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+    and trunc(nw3.OPENDT) =(
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
 ) NW3
 LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
 WHERE 1=1
@@ -1357,7 +1397,15 @@ SELECT
   FROM NW300 a LEFT JOIN nw301 b ON a.objid = b.nw300id
  WHERE     1 = 1
        AND a.TYPE = '11'
-       AND trunc(a.OPENDT) = TO_DATE ('2015/08/25', 'yyyy/MM/dd')
+       --AND trunc(a.OPENDT) = TO_DATE ('2015/08/25', 'yyyy/MM/dd')
+       AND trunc(a.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
        and B.ISSPNO = 0
        group by a.PERIODS
        order by a.PERIODS
@@ -1627,7 +1675,15 @@ SELECT
   FROM NW300 a LEFT JOIN nw301 b ON a.objid = b.nw300id
  WHERE     1 = 1
        AND a.TYPE = '11'
-       AND trunc(a.OPENDT) = TO_DATE ('2015/08/25', 'yyyy/MM/dd')
+       --AND trunc(a.OPENDT) = TO_DATE ('2015/08/25', 'yyyy/MM/dd')
+       AND trunc(a.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
        and B.ISSPNO = 0
        group by a.PERIODS
        order by a.PERIODS
@@ -1664,7 +1720,17 @@ SELECT x.goodno, COUNT (x.goodno) NUM
                     ON     NW31.NW300ID = NW31B.NW300ID
                        AND NW31.OPIDX > NW31B.OPIDX
                        AND NW31B.ISSPNO = 0
-           WHERE 1 = 1 AND NW3.TYPE = '11' AND NW31B.NO > 0 and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')) x
+           WHERE 1 = 1 AND NW3.TYPE = '11' AND NW31B.NO > 0
+           --and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+           and trunc(NW3.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
+           ) x
    WHERE x.r = 1
 GROUP BY x.goodno
 ORDER BY COUNT (x.goodno) DESC
@@ -1711,7 +1777,17 @@ y.NUM
                     ON     NW31B.NW300ID = NW31C.NW300ID
                        AND NW31B.NO > NW31C.NO
                        AND NW31C.ISSPNO = 0
-           WHERE 1 = 1 AND NW3.TYPE = '11' AND NW31B.NO > 0 AND NW31C.NO > 0  and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd') ) x
+           WHERE 1 = 1 AND NW3.TYPE = '11' AND NW31B.NO > 0 AND NW31C.NO > 0
+           --and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+           and trunc(NW3.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
+           ) x
    WHERE x.r = 1
 GROUP BY x.goodno
 ORDER BY COUNT (x.goodno) DESC
@@ -1756,7 +1832,15 @@ SELECT
     AND NW31B.NO > 0
     AND NW31C.NO > 0
     AND NW31D.NO > 0
-    and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+    --and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+    and trunc(NW3.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
 ) x
    WHERE x.r = 1
 GROUP BY x.goodno
@@ -1826,7 +1910,15 @@ select
 where exists (
 select b.objid from nw300 b
 where b.type = '11'
-and trunc(B.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+--and trunc(B.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+and trunc(B.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
 and a.nw300id = b.objid
 )
 and A.ISSPNO = 0
@@ -1865,7 +1957,15 @@ from (
     WHERE 1=1
     AND NW3.TYPE = '11'
     AND NW31B.NO > 0
-    and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+    --and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+    and trunc(NW3.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
     GROUP BY NW3.opendt,LPAD(NW31B.NO,2,'0') || LPAD(NW31.NO,2,'0')
     ORDER BY COUNT(1) DESC
 ) tp
@@ -1903,7 +2003,15 @@ from (
     AND NW3.TYPE = '11'
     AND NW31B.NO > 0
     AND NW31C.NO > 0
-    and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+    --and trunc(NW3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+    and trunc(NW3.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
     GROUP BY NW3.opendt,LPAD(NW31C.NO,2,'0') || LPAD(NW31B.NO,2,'0') || LPAD(NW31.NO,2,'0')
     ORDER BY COUNT(1) DESC
 ) tp

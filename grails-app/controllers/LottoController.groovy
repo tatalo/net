@@ -954,6 +954,12 @@ class LottoController {
         resultJ = netWinService.getbingoAnalysisJ()//二同出
         resultK = netWinService.getbingoAnalysisK()//三同出
 
+        def nowPeriods
+
+        if(resultA!=null){
+            nowPeriods = resultA[0]?.PERIODS
+        }
+
         def modelD = [:] //宣告map
         def listD1 = []
         def listD2 = []
@@ -1006,6 +1012,7 @@ class LottoController {
                                                               listD1     : listD1, listD2: listD2,
                                                               listE1     : listE1, listE2: listE2,
                                                               resultFList: resultF, resultGList: resultG, resultHList: resultH,
-                                                              resultIList: resultI, resultJList: resultJ, resultKList: resultK])
+                                                              resultIList: resultI, resultJList: resultJ, resultKList: resultK,
+                                                              nowPeriods:nowPeriods])
     }
 }
