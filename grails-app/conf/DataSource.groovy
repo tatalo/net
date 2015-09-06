@@ -21,7 +21,7 @@ environments {
             url      = "jdbc:oracle:thin:@104.155.211.29:1521:xe"
             username = "netwin"
             password = "Ppn1234.."
-            logSql = true
+            logSql = false
         }
     }
     test {
