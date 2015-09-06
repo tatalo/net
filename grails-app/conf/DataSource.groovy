@@ -34,10 +34,10 @@ environments {
             properties {
                 // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                 jmxEnabled = true
-                initialSize = 5
+                initialSize = 20
                 maxActive = 150
-                minIdle = 5
-                maxIdle = 25
+                minIdle = 20
+                maxIdle = 30
                 maxWait = 10000
                 maxAge = 10 * 60000
                 timeBetweenEvictionRunsMillis = 5000
@@ -64,10 +64,10 @@ environments {
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                jmxEnabled = true
-               initialSize = 5
+               initialSize = 20
                maxActive = 50
-               minIdle = 5
-               maxIdle = 25
+               minIdle = 20
+               maxIdle = 30
                maxWait = 10000
                maxAge = 10 * 60000
                timeBetweenEvictionRunsMillis = 5000
