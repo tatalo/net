@@ -1,4 +1,4 @@
-%{--(首頁)當日號碼MODEL: 六合彩, 大福彩, 38樂合彩, 大樂透, 49樂合彩, 39樂合彩, 今彩539--}%
+%{--(首頁)當日號碼MODEL: 威力彩--}%
 <g:each in="${nw300I}" var="nw300" status="i">
     <div class="panel panel-info">
         <div class="panel-heading">
@@ -36,7 +36,7 @@
                             <th class="text-center">
                                 <h4>
                                     <strong>
-                                        特別號
+                                        第二區
                                     </strong>
                                 </h4>
                             </th>

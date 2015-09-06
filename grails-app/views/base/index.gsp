@@ -192,7 +192,7 @@
                 <g:render template="/lotto/lottoContent6" model="[pType: '02', nw300I: nw300I02]"/>
             </div>
             <div class="zoom55">
-                <g:render template="/lotto/lottoContent6" model="[pType: '03', nw300I: nw300I03]"/>
+                <g:render template="/lotto/lottoContent7" model="[pType: '03', nw300I: nw300I03]"/>
             </div>
             <div class="zoom55">
                 <g:render template="/lotto/lottoContent6" model="[pType: '04', nw300I: nw300I04]"/>
