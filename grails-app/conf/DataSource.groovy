@@ -59,6 +59,7 @@ environments {
         dataSource {
 //            dbCreate = "update"
             url      = "jdbc:oracle:thin:@127.0.0.1:xe"
+//            url      = "jdbc:oracle:thin:@104.155.211.29:1521:xe"
             username = "netwin"
             password = "Ppn1234.."
             properties {
@@ -79,7 +80,7 @@ environments {
                testWhileIdle = true
                testOnReturn = false
                jdbcInterceptors = "ConnectionState"
-               defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
+//               defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
             }
         }
     }

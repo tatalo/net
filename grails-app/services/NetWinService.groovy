@@ -36,7 +36,6 @@ class NetWinService {
             if (params.pOpendt) {
                 ge("opendt", params.pOpendt)
                 lt("opendt", params.pOpendt + 1)
-//                eq("opendt", params.pOpendt)
             }
             if (params.pPeriods) {
                 eq("periods", params.pPeriods)
