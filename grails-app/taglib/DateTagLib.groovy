@@ -1,5 +1,5 @@
 class DateTagLib {
-    def toolsService
+    def dateService
 
     static namespace = "df"
 
@@ -20,21 +20,25 @@ class DateTagLib {
         def s = (attrs.sqldate == "true" || attrs.sqldate == true)
 
         for (name in l) {
-            if (params[name]) {
-                def v = toolsService.g_date_time_yyyyMMdd(params, name)?.time
+            if (params[name] && !(params[name] instanceof Date)) {
+                def v = dateService.g_date_time_yyyyMMdd(params, name)?.time
+
                 if (!v) {
                     try { //修正切換分頁時date值變null問題
                         params[name] = new Date(params[name])
                     } catch (Exception e) {
                         params[name] = null
-                    } finally {}
+                    } finally {
+                    }
                 } else {
                     if (s) {
-                        params[name] = new java.sql.Date(v.time)
+                        params[name] = new Date(v.time)
                     } else {
                         params[name] = v
                     }
                 }
+            } else if (params[name] && (params[name] instanceof Date)) {
+                params[name] = params[name]
             } else {
                 params[name] = null
             }

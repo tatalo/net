@@ -10,7 +10,6 @@
 <g:render template="/lotto/narbar1"/>
 <g:render template="/lotto/narbar2" model="[lv1IDX: lv1IDX]"/>
 <hr class="soften"/>
-
 <div class="container">
     <div class="table-responsive">
         <g:render template="/lotto/bingoDataAnalysis4" model="[nw300I: nw300I, columnsNOs : columnsNOs]"/>

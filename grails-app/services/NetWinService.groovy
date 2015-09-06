@@ -7,6 +7,7 @@ import grails.transaction.Transactional
 class NetWinService {
     def dataSource
     def dataService
+    def dateService
     def toolsService
 
     NetWinService() {
@@ -869,8 +870,33 @@ class NetWinService {
         return result
     }
 
+    def getBingoNewestDays(params) { //查詢賓果資料最近14天
+        def query = new Sql(dataSource)
+
+        def mainSql = """
+                        SELECT
+                        NW3.OPENDT
+                        FROM (
+                            SELECT
+                            DISTINCT TO_CHAR(NW3.OPENDT, 'YYYYMMDD') OPENDT
+                            FROM NW300 NW3
+                            WHERE 1=1
+                            AND NW3.TYPE = '11'
+                            ORDER BY OPENDT DESC
+                        ) NW3
+                        WHERE 1=1
+                        AND ROWNUM <= 14
+                  """
+
+        def resultList = query.rows(mainSql)?.OPENDT
+
+        return resultList
+
+    }
+
     def getBingoAnyalysis4(params) { // 賓果開獎號碼
         def result = [:]
+
         result.columnsNOs = dataService."lotto${params.pType}".NOs.sort { it.toInteger() }
 
         def query = new Sql(dataSource)
@@ -923,8 +949,7 @@ class NetWinService {
                                 WHERE 1 = :pNum
                                 AND NW3.TYPE = :pType
                                 AND ROWNUM <= :max
-                                AND NW3.OPENDT >= TO_DATE('20150905','yyyymmdd')
-                                AND NW3.OPENDT < TO_DATE('20150906','yyyymmdd')
+                                AND TRUNC(NW3.OPENDT) = TO_DATE(:pOpendt,'yyyymmdd')
                                 ORDER BY NW3.PERIODS DESC
                             ) NW3
                             LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
@@ -937,10 +962,10 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "11" //require
+        condition.pOpendt = params.pOpendt ?: "20150906"
         condition.max = params.int('max') ?: 203 //require
 
-        println "sql = " + toolsService.transPRSSql(mainSql, condition)
-
+//        println "sql = " + toolsService.transPRSSql(mainSql, condition)
         def resultList = query.rows(mainSql, condition)
 
         result.list = resultList

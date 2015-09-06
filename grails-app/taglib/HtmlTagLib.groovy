@@ -1,4 +1,7 @@
 class HtmlTagLib {
+    def netWinService
+    def dateService
+
     static namespace = "hl"
 
     static returnObjectForTags = [
@@ -6,8 +9,14 @@ class HtmlTagLib {
             "getLottoTabs",
             "getDivChartHeight",
             "chkLottoClass",
+            "getBingoNewestDays",
             "chkActiveClass"
     ]
+
+    //取得賓果資料最新天數List
+    def getBingoNewestDays = {attrs, body ->
+        return netWinService.getBingoNewestDays()
+    }
 
     //check Active, if chkValue equals matchValue
     def chkActiveClass = {attrs, body ->
@@ -231,7 +240,7 @@ class HtmlTagLib {
         result << [lv1IDX: 13, lv2IDX: 1, tabLv: 2, text: g.message(code: "lotto.tab13.subTab01.label"),
                    link  : g.createLink(controller: "lotto", action: "contentBingoBingo", params: [lv1IDX: 13, lv2IDX: 1])]
         result << [lv1IDX: 13, lv2IDX: 2, tabLv: 2, text: g.message(code: "lotto.tab13.subTab02.label"),
-                   link  : g.createLink(controller: "lotto", action: "customOpenNoListBingo", params: [lv1IDX: 13, lv2IDX: 2])]
+                   link  : g.createLink(controller: "lotto", action: "customOpenNoListBingo", params: [lv1IDX: 13, lv2IDX: 2, pOpendt: getBingoNewestDays()[0]])]
         result << [lv1IDX: 13, lv2IDX: 3, tabLv: 2, text: g.message(code: "lotto.tab13.subTab03.label"),
                    link  : g.createLink(controller: "lotto", action: "customStatistBingo", params: [lv1IDX: 13, lv2IDX: 3])]
         result << [lv1IDX: 13, lv2IDX: 4, tabLv: 2, text: g.message(code: "lotto.tab13.subTab04.label"),
