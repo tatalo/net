@@ -1,24 +1,6 @@
 @custome-c1: #7092BE;
 @custome-c2: #3F48CC;
 
-//.custome1 {
-//  color: @custome-c1;
-//}
-//
-//.custome2 {
-//  color: @custome-c2;
-//}
-
-//.bg-custome1 {
-//  color: #fff;
-//  background: @custome-c1;
-//}
-//
-//.bg-custome2 {
-//  color: #fff;
-//  background: @custome-c2;
-//}
-
 .defaultColor1 {
   color: @custome-c1;
 }
@@ -38,9 +20,6 @@
 }
 
 //Narbar排版用
-//.lv2navbar {
-//  background: @gray-lighter;
-//}
 .HDivider-inner {
   border-left: 1px solid @gray-light;
 }
@@ -483,5 +462,16 @@ div.lottoAnalysisNo {
 }
 
 .zoom55 {
-  zoom: 55%;
+  zoom: 0.55;
+  -moz-transform: scale(0.55, 0.55);  /* Firefox */
+  -moz-transform-origin: 0 0;
+  width: 182%;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+  /*Chrome CSS here*/
+  .zoom55 {
+    width: 100%;
+  }
 }
