@@ -1,4 +1,4 @@
-%{--文章介紹MODEL1--}%
+%{--介紹文章MODEL1--}%
 <g:each in="${nw400I}" var="nw400" status="i">
     <div class="panel panel-default">
         <div class="panel-heading text-center">

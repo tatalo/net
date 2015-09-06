@@ -18,21 +18,14 @@
         </div>
 
         <div class="pull-right">
-            <a class="btn btn-primary" href="${pLink}?max=25">
-                25
-            </a>
-            <a class="btn btn-primary" href="${pLink}?max=50">
-                50
-            </a>
-            <a class="btn btn-primary" href="${pLink}?max=100">
-                100
-            </a>
-            <a class="btn btn-primary" href="${pLink}?max=150">
-                150
-            </a>
-            <a class="btn btn-primary" href="${pLink}?max=200">
-                200
-            </a>
+            <form method="post">
+                <g:hiddenField name="max" value="${params.int('max')}"/>
+                <g:submitButton class="btn btn-primary" onclick="jQuery('#max').val('25');" name="25"/>
+                <g:submitButton class="btn btn-primary" onclick="jQuery('#max').val('50');" name="50"/>
+                <g:submitButton class="btn btn-primary" onclick="jQuery('#max').val('100');" name="100"/>
+                <g:submitButton class="btn btn-primary" onclick="jQuery('#max').val('150');" name="150"/>
+                <g:submitButton class="btn btn-primary" onclick="jQuery('#max').val('200');" name="200"/>
+            </form>
         </div>
 
         <div class="clearfix"/>

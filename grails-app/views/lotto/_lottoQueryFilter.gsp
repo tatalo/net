@@ -1,5 +1,5 @@
 <!-- Modal -->
-<g:form url="${pLink}" method="POST">
+<form method="post">
     <div class="modal" id="modalPeriods" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -20,9 +20,9 @@
             </div>
         </div>
     </div>
-</g:form>
+</form>
 <!-- Modal -->
-<g:form url="${pLink}" method="POST">
+<form method="post">
     <div id="modalYYYYMM" class="modal" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -44,9 +44,9 @@
             </div>
         </div>
     </div>
-</g:form>
+</form>
 <!-- Modal -->
-<g:form url="${pLink}" method="POST">
+<form method="post">
     <div id="modalYYYYMMDD" class="modal" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -67,5 +67,5 @@
             </div>
         </div>
     </div>
-</g:form>
+    </form>
 

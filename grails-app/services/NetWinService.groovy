@@ -117,7 +117,7 @@ class NetWinService {
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO ?: 0) as Integer) {
+        if ((params.int('pUnSPNO') ?: 0)) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -276,7 +276,7 @@ class NetWinService {
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO ?: 0) as Integer) {
+        if ((params.int('pUnSPNO') ?: 0)) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -380,7 +380,7 @@ class NetWinService {
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO ?: 0) as Integer) {
+        if ((params.int('pUnSPNO') ?: 0)) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -491,7 +491,7 @@ class NetWinService {
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO ?: 0) as Integer) {
+        if ((params.int('pUnSPNO') ?: 0)) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -651,7 +651,7 @@ class NetWinService {
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO ?: 0) as Integer) {
+        if ((params.int('pUnSPNO') ?: 0)) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -765,7 +765,7 @@ class NetWinService {
         }
 
         def unspnoSql = ""
-        if ((params.pUnSPNO ?: 0) as Integer) {
+        if ((params.int('pUnSPNO') ?: 0)) {
             unspnoSql = "AND NW31.ISSPNO IN (0)"
         } else {
             unspnoSql = "AND NW31.ISSPNO IN (1,0)"
@@ -804,7 +804,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
+        condition.max = params.int('max') ?: 25 //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -867,7 +867,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
+        condition.max = params.int('max') ?: 25 //require
 
 //        println "sql = " + toolsService.transPRSSql(mainSql, condition)
 

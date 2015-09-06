@@ -27,7 +27,7 @@ class HtmlTagLib {
         def matchValue = attrs.remove('matchValue')
 
         if (chkValue.equals(matchValue)) {
-            className = "active"
+            className = "active activeLine"
         }
 
         return className

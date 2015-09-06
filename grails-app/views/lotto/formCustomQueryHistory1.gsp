@@ -31,7 +31,7 @@
                 </div>
             </g:each>
         </div>
-        <g:render template="/lotto/lottoQueryFilter" model="[pLink:pLink]"/>
+        <g:render template="/lotto/lottoQueryFilter"/>
         </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-%{--博彩技巧 技巧策略連結--}%
+%{--博彩技巧 介紹--}%
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -12,7 +12,7 @@
 <hr class="soften"/>
 
 <div class="container">
-    <g:render template="/base/list/contentList1" model="[nw400I: nw400I, lv1IDX: lv1IDX, lv2IDX: lv2IDX, controller : params.controller, action: params.action , totalCount: totalCount, max: max, offset: offset]"/>
+    <g:render template="/base/content/content2" model="[nw400I: nw400I, backLink: backLink]"/>
 </div>
 
 </body>

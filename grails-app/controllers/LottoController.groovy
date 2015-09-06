@@ -55,9 +55,8 @@ class LottoController {
         params.pType = "01"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistoryMarkSix", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory1", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 1, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 1]
     }
 
     def customQueryHistoryLotto740() { //大福彩查詢
@@ -74,9 +73,8 @@ class LottoController {
         params.pType = "02"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistoryLotto740", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory1", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 2, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 2]
     }
 
     def customQueryHistorySuperLotto638() { //威力彩查詢
@@ -93,9 +91,8 @@ class LottoController {
         params.pType = "03"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistorySuperLotto638", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory2", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 3, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 3]
     }
 
     def customQueryHistory38M6() { //38樂合彩查詢
@@ -112,9 +109,8 @@ class LottoController {
         params.pType = "04"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistory38M6", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory1", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 4, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 4]
     }
 
     def customQueryHistoryLotto649() { //大樂透查詢
@@ -127,9 +123,8 @@ class LottoController {
         params.pType = "05"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistoryLotto649", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory1", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 5, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 5]
     }
 
     def customQueryHistory49M6() { //49樂合彩查詢
@@ -146,9 +141,8 @@ class LottoController {
         params.pType = "06"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistory49M6", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory1", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 6, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 6]
     }
 
     def customQueryHistoryLotto539() { //今彩539查詢
@@ -165,9 +159,8 @@ class LottoController {
         params.pType = "07"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistoryLotto539", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory1", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 7, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 7]
     }
 
     def customQueryHistory39M5() { //39樂合彩查詢
@@ -184,9 +177,8 @@ class LottoController {
         params.pType = "08"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistory39M5", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory1", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 8, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 8]
     }
 
     def customQueryHistory3D() { //3星彩查詢
@@ -203,9 +195,8 @@ class LottoController {
         params.pType = "09"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistory3D", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory3", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 9, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 9]
     }
 
     def customQueryHistory4D() { //4星彩查詢
@@ -223,9 +214,8 @@ class LottoController {
         params.pType = "10"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistory4D", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory3", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 10, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 10]
     }
 
     def customQueryHistoryBingoBingo() { //賓果
@@ -241,9 +231,8 @@ class LottoController {
         params.pType = "11"
         def nw300I = netWinService.getNw300List(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customQueryHistoryBingoBingo", params: [lv1IDX: params.int('lv1IDX'), lv2IDX: params.int('lv2IDX')])
         render view: "/lotto/formCustomQueryHistory4", model: [nw300I: nw300I, totalCount: nw300I?.size(),
-                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 11, pLink: vLink]
+                                                               pType : params.pType, lv1IDX: 2, lv2IDX: 11]
     }
 
     def contentMarkSix() { //六合彩介紹
@@ -260,12 +249,11 @@ class LottoController {
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
         def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customHistoryMarkSix")
         render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "1",
                                                           nw300I    : vHistoryData.list,
                                                           nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
                                                           nw300IL   : vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
-                                                          pType     : params.pType, lv1IDX: 3, lv2IDX: 2, pLink: vLink]
+                                                          pType     : params.pType, lv1IDX: 3, lv2IDX: 2]
     }
 
     def customContinueMarkSix() { //六合連續分析
@@ -275,11 +263,10 @@ class LottoController {
         def vHistoryData = netWinService.getContinueAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customContinueMarkSix")
         render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                            nw300I    : vHistoryData.list,
                                                            nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                           pType     : params.pType, lv1IDX: 3, lv2IDX: 4, pLink: vLink]
+                                                           pType     : params.pType, lv1IDX: 3, lv2IDX: 4]
     }
 
     def customRepeatMarkSix() { //六合彩連開分析
@@ -288,11 +275,10 @@ class LottoController {
         def vHistoryData = netWinService.getRepeatAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customRepeatMarkSix")
         render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                          nw300I    : vHistoryData.list,
                                                          nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                         pType     : params.pType, lv1IDX: 3, lv2IDX: 3, pLink: vLink]
+                                                         pType     : params.pType, lv1IDX: 3, lv2IDX: 3]
     }
 
     def customLastNumberMarkSix() { //六合彩尾數分析
@@ -302,11 +288,10 @@ class LottoController {
         def vHistoryData = netWinService.getHistoryAnyalysis1(params)
         def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customLastNumberMarkSix")
         render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                              nw300I    : vHistoryData.list,
                                                              nw300ILN  : vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn, columnsCNTS: vLastNumberData.columnsCNTS,
-                                                             pType     : params.pType, lv1IDX: 3, lv2IDX: 5, pLink: vLink]
+                                                             pType     : params.pType, lv1IDX: 3, lv2IDX: 5]
     }
 
 
@@ -323,12 +308,11 @@ class LottoController {
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
         def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customHistoryLotto740")
         render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
                                                           nw300I    : vHistoryData.list,
                                                           nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
                                                           nw300IL   : vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
-                                                          pType     : params.pType, lv1IDX: 4, lv2IDX: 2, pLink: vLink]
+                                                          pType     : params.pType, lv1IDX: 4, lv2IDX: 2]
     }
 
     def customContinueLotto740() { //大福彩連續分析
@@ -338,11 +322,10 @@ class LottoController {
         def vHistoryData = netWinService.getContinueAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customContinueLotto740")
         render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                            nw300I    : vHistoryData.list,
                                                            nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                           pType     : params.pType, lv1IDX: 4, lv2IDX: 4, pLink: vLink]
+                                                           pType     : params.pType, lv1IDX: 4, lv2IDX: 4]
     }
 
     def customRepeatLotto740() { //大福彩連開分析
@@ -352,11 +335,10 @@ class LottoController {
         def vHistoryData = netWinService.getRepeatAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customRepeatLotto740")
         render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                          nw300I    : vHistoryData.list,
                                                          nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                         pType     : params.pType, lv1IDX: 4, lv2IDX: 3, pLink: vLink]
+                                                         pType     : params.pType, lv1IDX: 4, lv2IDX: 3]
     }
 
     def customLastNumberLotto740() { //大福彩尾數分析
@@ -366,11 +348,10 @@ class LottoController {
         def vHistoryData = netWinService.getHistoryAnyalysis1(params)
         def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customLastNumberLotto740")
         render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                              nw300I    : vHistoryData.list,
                                                              nw300ILN  : vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn, columnsCNTS: vLastNumberData.columnsCNTS,
-                                                             pType     : params.pType, lv1IDX: 4, lv2IDX: 5, pLink: vLink]
+                                                             pType     : params.pType, lv1IDX: 4, lv2IDX: 5]
     }
 
 
@@ -387,12 +368,11 @@ class LottoController {
         def vCntsData = netWinService.getCntsOpenAnalysis2(params)
         def vLastOpenData = netWinService.getLastOpenAnalysis2(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customHistorySuperLotto638")
         render view: "/lotto/formCustomHistory2", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, columnsSPNOs: vHistoryData.columnsSPNOs, showSpBtn: "0",
                                                           nw300I    : vHistoryData.list,
                                                           nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
                                                           nw300IL   : vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
-                                                          pType     : params.pType, lv1IDX: 5, lv2IDX: 2, pLink: vLink]
+                                                          pType     : params.pType, lv1IDX: 5, lv2IDX: 2]
     }
 
     def customContinueSuperLotto638() { //威力彩連續分析
@@ -401,11 +381,10 @@ class LottoController {
         def vHistoryData = netWinService.getContinueAnyalysis2(params)
         def vCntsData = netWinService.getCntsOpenAnalysis2(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customContinueSuperLotto638")
         render view: "/lotto/formCustomContinue2", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, columnsSPNOs: vHistoryData.columnsSPNOs,
                                                            nw300I    : vHistoryData.list,
                                                            nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                           pType     : params.pType, lv1IDX: 5, lv2IDX: 4, pLink: vLink]
+                                                           pType     : params.pType, lv1IDX: 5, lv2IDX: 4]
     }
 
     def customRepeatSuperLotto638() { //威力彩連開分析
@@ -414,11 +393,10 @@ class LottoController {
         def vHistoryData = netWinService.getRepeatAnyalysis2(params)
         def vCntsData = netWinService.getCntsOpenAnalysis2(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customRepeatSuperLotto638")
         render view: "/lotto/formCustomRepeat2", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, columnsSPNOs: vHistoryData.columnsSPNOs,
                                                          nw300I    : vHistoryData.list,
                                                          nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                         pType     : params.pType, lv1IDX: 5, lv2IDX: 3, pLink: vLink]
+                                                         pType     : params.pType, lv1IDX: 5, lv2IDX: 3]
     }
 
     def customLastNumberSuperLotto638() { //威力彩尾數分析
@@ -427,11 +405,10 @@ class LottoController {
         def vHistoryData = netWinService.getHistoryAnyalysis2(params)
         def vLastNumberData = netWinService.getLastNumberAnalysis2(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customLastNumberSuperLotto638")
         render view: "/lotto/formCustomLastNumber2", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, columnsSPNOs: vHistoryData.columnsSPNOs,
                                                              nw300I    : vHistoryData.list,
                                                              nw300ILN  : vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn, columnsCNTS: vLastNumberData.columnsCNTS,
-                                                             pType     : params.pType, lv1IDX: 5, lv2IDX: 5, pLink: vLink]
+                                                             pType     : params.pType, lv1IDX: 5, lv2IDX: 5]
     }
 
     def content38M6() { //38樂合彩介紹
@@ -447,12 +424,11 @@ class LottoController {
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
         def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customHistory38M6")
         render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
                                                           nw300I    : vHistoryData.list,
                                                           nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
                                                           nw300IL   : vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
-                                                          pType     : params.pType, lv1IDX: 6, lv2IDX: 2, pLink: vLink]
+                                                          pType     : params.pType, lv1IDX: 6, lv2IDX: 2]
     }
 
     def customContinue38M6() { //38樂合彩連續分析
@@ -462,11 +438,11 @@ class LottoController {
         def vHistoryData = netWinService.getContinueAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customContinue38M6")
+
         render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                            nw300I    : vHistoryData.list,
                                                            nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                           pType     : params.pType, lv1IDX: 6, lv2IDX: 4, pLink: vLink]
+                                                           pType     : params.pType, lv1IDX: 6, lv2IDX: 4]
     }
 
     def customRepeat38M6() { //38樂合彩連開分析
@@ -476,11 +452,11 @@ class LottoController {
         def vHistoryData = netWinService.getRepeatAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customRepeat38M6")
+
         render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                          nw300I    : vHistoryData.list,
                                                          nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                         pType     : params.pType, lv1IDX: 6, lv2IDX: 3, pLink: vLink]
+                                                         pType     : params.pType, lv1IDX: 6, lv2IDX: 3]
     }
 
     def customLastNumber38M6() { //38樂合彩尾數分析
@@ -490,11 +466,11 @@ class LottoController {
         def vHistoryData = netWinService.getHistoryAnyalysis1(params)
         def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customLastNumber38M6")
+
         render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                              nw300I    : vHistoryData.list,
                                                              nw300ILN  : vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn, columnsCNTS: vLastNumberData.columnsCNTS,
-                                                             pType     : params.pType, lv1IDX: 6, lv2IDX: 5, pLink: vLink]
+                                                             pType     : params.pType, lv1IDX: 6, lv2IDX: 5]
     }
 
     def contentLotto649() { //大樂透介紹
@@ -510,12 +486,12 @@ class LottoController {
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
         def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customHistoryLotto649")
+
         render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "1",
                                                           nw300I    : vHistoryData.list,
                                                           nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
                                                           nw300IL   : vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
-                                                          pType     : params.pType, lv1IDX: 7, lv2IDX: 2, pLink: vLink]
+                                                          pType     : params.pType, lv1IDX: 7, lv2IDX: 2]
     }
 
     def customContinueLotto649() { //大樂透連續分析
@@ -525,11 +501,11 @@ class LottoController {
         def vHistoryData = netWinService.getContinueAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customContinueLotto649")
+
         render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                            nw300I    : vHistoryData.list,
                                                            nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                           pType     : params.pType, lv1IDX: 7, lv2IDX: 4, pLink: vLink]
+                                                           pType     : params.pType, lv1IDX: 7, lv2IDX: 4]
     }
 
     def customRepeatLotto649() { //大樂透連開分析
@@ -539,11 +515,11 @@ class LottoController {
         def vHistoryData = netWinService.getRepeatAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customRepeatLotto649")
+
         render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                          nw300I    : vHistoryData.list,
                                                          nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                         pType     : params.pType, lv1IDX: 7, lv2IDX: 3, pLink: vLink]
+                                                         pType     : params.pType, lv1IDX: 7, lv2IDX: 3]
     }
 
     def customLastNumberLotto649() { //大樂透尾數分析
@@ -553,11 +529,11 @@ class LottoController {
         def vHistoryData = netWinService.getHistoryAnyalysis1(params)
         def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customLastNumberLotto649")
+
         render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                              nw300I    : vHistoryData.list,
                                                              nw300ILN  : vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn, columnsCNTS: vLastNumberData.columnsCNTS,
-                                                             pType     : params.pType, lv1IDX: 7, lv2IDX: 5, pLink: vLink]
+                                                             pType     : params.pType, lv1IDX: 7, lv2IDX: 5]
     }
 
     def content49M6() { //49樂合彩介紹
@@ -573,12 +549,12 @@ class LottoController {
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
         def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customHistory49M6")
+
         render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
                                                           nw300I    : vHistoryData.list,
                                                           nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
                                                           nw300IL   : vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
-                                                          pType     : params.pType, lv1IDX: 8, lv2IDX: 2, pLink: vLink]
+                                                          pType     : params.pType, lv1IDX: 8, lv2IDX: 2]
     }
 
     def customContinue49M6() { //49樂合彩連續分析
@@ -588,11 +564,11 @@ class LottoController {
         def vHistoryData = netWinService.getContinueAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customContinue49M6")
+
         render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                            nw300I    : vHistoryData.list,
                                                            nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                           pType     : params.pType, lv1IDX: 8, lv2IDX: 4, pLink: vLink]
+                                                           pType     : params.pType, lv1IDX: 8, lv2IDX: 4]
     }
 
     def customRepeat49M6() { //49樂合彩連開分析
@@ -602,11 +578,11 @@ class LottoController {
         def vHistoryData = netWinService.getRepeatAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customRepeat49M6")
+
         render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                          nw300I    : vHistoryData.list,
                                                          nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                         pType     : params.pType, lv1IDX: 8, lv2IDX: 3, pLink: vLink]
+                                                         pType     : params.pType, lv1IDX: 8, lv2IDX: 3]
     }
 
     def customLastNumber49M6() { //49樂合彩尾數分析
@@ -616,11 +592,11 @@ class LottoController {
         def vHistoryData = netWinService.getHistoryAnyalysis1(params)
         def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customLastNumber49M6")
+
         render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                              nw300I    : vHistoryData.list,
                                                              nw300ILN  : vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn, columnsCNTS: vLastNumberData.columnsCNTS,
-                                                             pType     : params.pType, lv1IDX: 8, lv2IDX: 5, pLink: vLink]
+                                                             pType     : params.pType, lv1IDX: 8, lv2IDX: 5]
     }
 
     def contentLotto539() { //今彩539介紹
@@ -636,12 +612,12 @@ class LottoController {
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
         def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customHistoryLotto539")
+
         render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
                                                           nw300I    : vHistoryData.list,
                                                           nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
                                                           nw300IL   : vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
-                                                          pType     : params.pType, lv1IDX: 9, lv2IDX: 2, pLink: vLink]
+                                                          pType     : params.pType, lv1IDX: 9, lv2IDX: 2]
     }
 
     def customContinueLotto539() { //今彩539連續分析
@@ -651,11 +627,11 @@ class LottoController {
         def vHistoryData = netWinService.getContinueAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customContinueLotto539")
+
         render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                            nw300I    : vHistoryData.list,
                                                            nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                           pType     : params.pType, lv1IDX: 9, lv2IDX: 4, pLink: vLink]
+                                                           pType     : params.pType, lv1IDX: 9, lv2IDX: 4]
     }
 
     def customRepeatLotto539() { //今彩539連開分析
@@ -665,11 +641,11 @@ class LottoController {
         def vHistoryData = netWinService.getRepeatAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customRepeatLotto539")
+
         render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                          nw300I    : vHistoryData.list,
                                                          nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                         pType     : params.pType, lv1IDX: 9, lv2IDX: 3, pLink: vLink]
+                                                         pType     : params.pType, lv1IDX: 9, lv2IDX: 3]
     }
 
     def customLastNumberLotto539() { //今彩539尾數分析
@@ -679,11 +655,11 @@ class LottoController {
         def vHistoryData = netWinService.getHistoryAnyalysis1(params)
         def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customLastNumberLotto539")
+
         render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                              nw300I    : vHistoryData.list,
                                                              nw300ILN  : vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn, columnsCNTS: vLastNumberData.columnsCNTS,
-                                                             pType     : params.pType, lv1IDX: 9, lv2IDX: 5, pLink: vLink]
+                                                             pType     : params.pType, lv1IDX: 9, lv2IDX: 5]
     }
 
     def content39M5() { //39樂合彩介紹
@@ -699,12 +675,12 @@ class LottoController {
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
         def vLastOpenData = netWinService.getLastOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customHistory39M5")
+
         render view: "/lotto/formCustomHistory1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, showSpBtn: "0",
                                                           nw300I    : vHistoryData.list,
                                                           nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
                                                           nw300IL   : vLastOpenData.list, nw300ILMax: vLastOpenData.maxNum,
-                                                          pType     : params.pType, lv1IDX: 10, lv2IDX: 2, pLink: vLink]
+                                                          pType     : params.pType, lv1IDX: 10, lv2IDX: 2]
     }
 
     def customContinue39M5() { //39樂合彩連續分析
@@ -714,11 +690,11 @@ class LottoController {
         def vHistoryData = netWinService.getContinueAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customContinue39M5")
+
         render view: "/lotto/formCustomContinue1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                            nw300I    : vHistoryData.list,
                                                            nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                           pType     : params.pType, lv1IDX: 10, lv2IDX: 4, pLink: vLink]
+                                                           pType     : params.pType, lv1IDX: 10, lv2IDX: 4]
     }
 
     def customRepeat39M5() { //39樂合彩連開分析
@@ -728,11 +704,11 @@ class LottoController {
         def vHistoryData = netWinService.getRepeatAnyalysis1(params)
         def vCntsData = netWinService.getCntsOpenAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customRepeat39M5")
+
         render view: "/lotto/formCustomRepeat1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                          nw300I    : vHistoryData.list,
                                                          nw300IC   : vCntsData.list, nw300ICMax: vCntsData.maxNum,
-                                                         pType     : params.pType, lv1IDX: 10, lv2IDX: 3, pLink: vLink]
+                                                         pType     : params.pType, lv1IDX: 10, lv2IDX: 3]
     }
 
     def customLastNumber39M5() { //39樂合彩尾數分析
@@ -742,11 +718,11 @@ class LottoController {
         def vHistoryData = netWinService.getHistoryAnyalysis1(params)
         def vLastNumberData = netWinService.getLastNumberAnalysis1(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customLastNumber39M5")
+
         render view: "/lotto/formCustomLastNumber1", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs,
                                                              nw300I    : vHistoryData.list,
                                                              nw300ILN  : vLastNumberData.list, nw300ILNMax: vLastNumberData.maxNum, createColumn: vLastNumberData.createColumn, columnsCNTS: vLastNumberData.columnsCNTS,
-                                                             pType     : params.pType, lv1IDX: 10, lv2IDX: 5, pLink: vLink]
+                                                             pType     : params.pType, lv1IDX: 10, lv2IDX: 5]
     }
 
     def content3D() { //3星彩介紹
@@ -760,10 +736,10 @@ class LottoController {
 
         def vHistoryData = netWinService.getHistoryAnyalysis3(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customHistory3D")
+
         render view: "/lotto/formCustomHistory3", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, columnIDXS: vHistoryData.columnIDXS, showSpBtn: "0",
                                                           nw300I    : vHistoryData.list,
-                                                          pType     : params.pType, lv1IDX: 11, lv2IDX: 2, pLink: vLink]
+                                                          pType     : params.pType, lv1IDX: 11, lv2IDX: 2]
     }
 
     def content4D() { //4星彩介紹
@@ -777,10 +753,10 @@ class LottoController {
 
         def vHistoryData = netWinService.getHistoryAnyalysis3(params)
 
-        def vLink = g.createLink(controller: "lotto", action: "customHistory4D")
+
         render view: "/lotto/formCustomHistory3", model: [totalCount: vHistoryData.counts, columnsNOs: vHistoryData.columnsNOs, columnIDXS: vHistoryData.columnIDXS, showSpBtn: "0",
                                                           nw300I    : vHistoryData.list,
-                                                          pType     : params.pType, lv1IDX: 12, lv2IDX: 2, pLink: vLink]
+                                                          pType     : params.pType, lv1IDX: 12, lv2IDX: 2]
     }
 
     def contentBingoBingo() { //賓果介紹
