@@ -7,8 +7,8 @@
 
 <body>
 
-<g:render template="/lotto/narbar1"/>
-<g:render template="/lotto/narbar2" model="[lv1IDX: lv1IDX]"/>
+<g:render template="/lotto/narbar1" model="[lv1IDX: lv1IDX]"/>
+<g:render template="/lotto/narbar2" model="[lv1IDX: lv1IDX,lv2IDX: lv2IDX]"/>
 <hr class="soften"/>
 
 <div class="container">
@@ -20,29 +20,29 @@
         <div class="pull-right">
             <g:if test="${showSpBtn == "1"}">
                 <g:if test="${params.pUnSPNO == "1"}">
-                    <a class="btn btn-danger" href="${pLink}&max=${params.max}&pUnSPNO=0">
+                    <a class="btn btn-danger" href="${pLink}?max=${params.max}&pUnSPNO=0">
                         顯示特別號
                     </a>
                 </g:if>
                 <g:else>
-                    <a class="btn btn-danger" href="${pLink}&max=${params.max}&pUnSPNO=1">
+                    <a class="btn btn-danger" href="${pLink}?max=${params.max}&pUnSPNO=1">
                         不顯示特別號
                     </a>
                 </g:else>
             </g:if>
-            <a class="btn btn-primary" href="${pLink}&max=25&pUnSPNO=${params.pUnSPNO}">
+            <a class="btn btn-primary" href="${pLink}?max=25&pUnSPNO=${params.pUnSPNO}">
                 25
             </a>
-            <a class="btn btn-primary" href="${pLink}&max=50&pUnSPNO=${params.pUnSPNO}">
+            <a class="btn btn-primary" href="${pLink}?max=50&pUnSPNO=${params.pUnSPNO}">
                 50
             </a>
-            <a class="btn btn-primary" href="${pLink}&max=100&pUnSPNO=${params.pUnSPNO}">
+            <a class="btn btn-primary" href="${pLink}?max=100&pUnSPNO=${params.pUnSPNO}">
                 100
             </a>
-            <a class="btn btn-primary" href="${pLink}&max=150&pUnSPNO=${params.pUnSPNO}">
+            <a class="btn btn-primary" href="${pLink}?max=150&pUnSPNO=${params.pUnSPNO}">
                 150
             </a>
-            <a class="btn btn-primary" href="${pLink}&max=200&pUnSPNO=${params.pUnSPNO}">
+            <a class="btn btn-primary" href="${pLink}?max=200&pUnSPNO=${params.pUnSPNO}">
                 200
             </a>
         </div>

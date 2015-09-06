@@ -8,7 +8,7 @@
 
 <body>
 
-<g:render template="/sports/narbar"/>
+<g:render template="/sports/narbar" model="[lv1IDX: lv1IDX]"/>
 
 <div class="container">
     <g:render template="/base/list/webLink1" model="[nw200I: nw200I]"/>

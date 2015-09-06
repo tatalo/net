@@ -27,7 +27,7 @@
             <div class="form-group">
                 <h4 class="defaultColor2 page-header text-center text-nowrap">
                     <strong>
-                        <g:message code="default.tab01.label"/>
+                        <g:message code="default.tab03.label"/>
                     </strong>
                 </h4>
                 <g:each in="${hl.getNationGamebleTabs().findAll{it.tabLv == 1}}" var="tab" status="i">
@@ -45,11 +45,11 @@
                         <g:message code="default.tab05.label"/>
                     </strong>
                 </h4>
-                <g:each in="${gambletechTabs}" var="tab" status="i">
+                <g:each in="${hl.getGamebleTechTabs().findAll{it.tabLv == 1}}" var="tab" status="i">
                     <p class="text-nowrap">
-                        <g:link controller="gambleTech" action="index" fragment="tab${tab.tab}_subTab01">
-                            <g:message code="gambleTech.tab${tab.tab}.label"/>
-                        </g:link>
+                        <a href="${tab?.link}">
+                            ${tab?.text}
+                        </a>
                     </p>
                 </g:each>
             </div>

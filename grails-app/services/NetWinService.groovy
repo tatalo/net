@@ -150,7 +150,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
         def resultList = query.rows(mainSql, condition)
 
         result.list = resultList
@@ -202,7 +202,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "03" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
         def resultList = query.rows(mainSql, condition)
 
         result.list = resultList
@@ -251,7 +251,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -306,7 +306,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -357,7 +357,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -415,7 +415,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -470,7 +470,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
         def resultList = query.rows(mainSql, condition)
 
         result.maxNum = resultList[0].max { it.value }.value
@@ -521,7 +521,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -593,7 +593,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -686,7 +686,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -741,7 +741,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -804,7 +804,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
 
         def resultList = query.rows(mainSql, condition)
 
@@ -867,7 +867,7 @@ class NetWinService {
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
         condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.max = (params.int('max')?:25) > 200 ? 200 : (params.int('max')?:25) //require
 
 //        println "sql = " + toolsService.transPRSSql(mainSql, condition)
 

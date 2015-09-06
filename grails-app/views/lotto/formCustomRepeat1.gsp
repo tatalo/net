@@ -7,8 +7,8 @@
 
 <body>
 
-<g:render template="/lotto/narbar1"/>
-<g:render template="/lotto/narbar2"/>
+<g:render template="/lotto/narbar1" model="[lv1IDX: lv1IDX]"/>
+<g:render template="/lotto/narbar2" model="[lv1IDX: lv1IDX,lv2IDX: lv2IDX]"/>
 <hr class="soften"/>
 
 <div class="container">
@@ -18,19 +18,19 @@
         </div>
 
         <div class="pull-right">
-            <a class="btn btn-primary" href="${pLink}&max=25">
+            <a class="btn btn-primary" href="${pLink}?max=25">
                 25
             </a>
-            <a class="btn btn-primary" href="${pLink}&max=50">
+            <a class="btn btn-primary" href="${pLink}?max=50">
                 50
             </a>
-            <a class="btn btn-primary" href="${pLink}&max=100">
+            <a class="btn btn-primary" href="${pLink}?max=100">
                 100
             </a>
-            <a class="btn btn-primary" href="${pLink}&max=150">
+            <a class="btn btn-primary" href="${pLink}?max=150">
                 150
             </a>
-            <a class="btn btn-primary" href="${pLink}&max=200">
+            <a class="btn btn-primary" href="${pLink}?max=200">
                 200
             </a>
         </div>

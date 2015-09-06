@@ -3,7 +3,7 @@
         <div class="container">
             <ul class="nav nav-pills text-nowrap nav-justified HDivider-outer">
                 <g:each in="${hl.getSportsTabs().findAll{it.tabLv == 1}}" var="tab" status="i">
-                    <li role="presentation" class="${hl.chkActiveClass(chkValue:(params.int('lv1IDX')?:1),matchValue:tab?.lv1IDX)} HDivider-inner">
+                    <li role="presentation" class="${hl.chkActiveClass(chkValue:lv1IDX,matchValue:tab?.lv1IDX)} HDivider-inner">
                         <a href="${tab?.link}">
                             ${tab?.text}
                         </a>

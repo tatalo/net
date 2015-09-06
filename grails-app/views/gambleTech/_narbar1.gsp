@@ -2,7 +2,7 @@
     <div class="container-fluid defaultBgColor1">
         <div class="container">
             <ul class="nav nav-pills text-nowrap nav-justified HDivider-outer">
-                <g:each in="${hl.getNationGamebleTabs().findAll{it.tabLv == 1}}" var="tab" status="i">
+                <g:each in="${hl.getGamebleTechTabs().findAll{it.tabLv == 1}}" var="tab" status="i">
                     <li role="presentation" class="${hl.chkActiveClass(chkValue:lv1IDX,matchValue:tab?.lv1IDX)} HDivider-inner">
                         <a href="${tab?.link}">
                             ${tab?.text}

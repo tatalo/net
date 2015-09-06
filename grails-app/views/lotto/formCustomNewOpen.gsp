@@ -8,7 +8,7 @@
 
 <body>
 
-<g:render template="/lotto/narbar1"/>
+<g:render template="/lotto/narbar1" model="[lv1IDX: lv1IDX]"/>
 
 <div class="container">
     <div class="row">
