@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+%{--運動 網站連結--}%
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -10,7 +11,7 @@
 <g:render template="/sports/narbar"/>
 
 <div class="container">
-    <g:render template="/base/webLink/webLink1" model="[nw200I: nw200I, title: title]"/>
+    <g:render template="/base/list/webLink2" model="[nw200I: nw200I]"/>
 </div>
 
 </body>

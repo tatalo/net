@@ -6,10 +6,8 @@ class BaseController {
     }
 
     def index() {
-        def nationGambleTabs = NationGambleController.alltabs
         def gambletechTabs = GambleTechController.alltabs
-
-        render view:"/base/index", model: [ nationGambleTabs : nationGambleTabs , gambletechTabs :gambletechTabs]
+        render view:"/base/index", model: [ gambletechTabs :gambletechTabs]
     }
 
     def build() {

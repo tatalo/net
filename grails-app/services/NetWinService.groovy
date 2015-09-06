@@ -22,6 +22,9 @@ class NetWinService {
             if (params.pType) {
                 eq("type", params.pType)
             }
+            if (params.pTypeList) {
+                inList("type", params.pTypeList)
+            }
         }
         return nw200I
     }
@@ -42,7 +45,9 @@ class NetWinService {
                 eq("periods", params.pPeriods)
             }
 
-            eq("type", params.pType)
+            if (params.pType) {
+                eq("type", params.pType)
+            }
             order("opendt", "desc")
             order("periods", "desc")
         }
@@ -53,7 +58,9 @@ class NetWinService {
         params.max = params.int('max')
         params.offset = params.int('offset')
         def nw400I = Nw400.createCriteria().list(params) {
-            eq("type", params.pType)
+            if (params.pType) {
+                eq("type", params.pType)
+            }
 
             order("idx", "asc")
         }
@@ -64,7 +71,9 @@ class NetWinService {
         params.max = params.int('max')
         params.offset = params.int('offset')
         def nw500I = Nw500.createCriteria().list(params) {
-            eq("type", params.pType)
+            if (params.pType) {
+                eq("type", params.pType)
+            }
         }
         return nw500I
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-%{--彩球 介紹--}%
+%{--國際博彩 介紹--}%
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -8,9 +8,7 @@
 
 <body>
 
-<g:render template="/lotto/narbar1"/>
-<g:render template="/lotto/narbar2" model="[lv1IDX: lv1IDX]"/>
-<hr class="soften"/>
+<g:render template="/nationGamble/narbar"/>
 
 <div class="container">
     <g:render template="/base/content/content1" model="[nw400I: nw400I]"/>

@@ -27,14 +27,14 @@
             <div class="form-group">
                 <h4 class="defaultColor2 page-header text-center text-nowrap">
                     <strong>
-                        <g:message code="default.tab03.label"/>
+                        <g:message code="default.tab01.label"/>
                     </strong>
                 </h4>
-                <g:each in="${nationGambleTabs}" var="tab" status="i">
+                <g:each in="${hl.getNationGamebleTabs().findAll{it.tabLv == 1}}" var="tab" status="i">
                     <p class="text-nowrap">
-                        <g:link controller="nationGamble" action="index" fragment="tab${tab.tab}">
-                            <g:message code="nationGamble.tab${tab.tab}.label"/>
-                        </g:link>
+                        <a href="${tab?.link}">
+                            ${tab?.text}
+                        </a>
                     </p>
                 </g:each>
             </div>

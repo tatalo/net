@@ -11,45 +11,45 @@ class SportsController {
     def list() {
     }
 
-    def webLinkTianSia() {
+    def webLinkTianSia() { //天下
         params.pType = "01"
         def nw200I = netWinService.getNw200List(params)
-        render view: "/sports/formWebLink1", model: [nw200I: nw200I, title: g.message(code: "sports.tab01.label")]
+        render view: "/sports/formList1", model: [nw200I: nw200I]
     }
 
-    def webLink35688() {
+    def webLink35688() { //36588
         params.pType = "02"
         def nw200I = netWinService.getNw200List(params)
-        render view: "/sports/formWebLink2", model: [nw200I: nw200I, title: g.message(code: "sports.tab02.label")]
+        render view: "/sports/formList2", model: [nw200I: nw200I]
     }
 
-    def webLink35688China() {
+    def webLink35688China() { //36588(大陸)
         params.pType = "03"
         def nw200I = netWinService.getNw200List(params)
-        render view: "/sports/formWebLink2", model: [nw200I: nw200I, title: g.message(code: "sports.tab03.label")]
+        render view: "/sports/formList2", model: [nw200I: nw200I]
     }
 
-    def webLinkSinSinBao() {
+    def webLinkSinSinBao() { //新鑫寶
         params.pType = "04"
         def nw200I = netWinService.getNw200List(params)
-        render view: "/sports/formWebLink2", model: [nw200I: nw200I, title: g.message(code: "sports.tab04.label")]
+        render view: "/sports/formList2", model: [nw200I: nw200I]
     }
 
-    def webLinkYingSyong() {
+    def webLinkYingSyong() { //英雄
         params.pType = "05"
         def nw200I = netWinService.getNw200List(params)
-        render view: "/sports/formWebLink1", model: [nw200I: nw200I, title: g.message(code: "sports.tab05.label")]
+        render view: "/sports/formList1", model: [nw200I: nw200I]
     }
 
-    def webLinkRongHuaHuei() {
+    def webLinkRongHuaHuei() { //榮華會
         params.pType = "06"
         def nw200I = netWinService.getNw200List(params)
-        render view: "/sports/formWebLink2", model: [nw200I: nw200I, title: g.message(code: "sports.tab06.label")]
+        render view: "/sports/formList2", model: [nw200I: nw200I]
     }
 
-    def webLinkOther() {
+    def webLinkOther() { //其他
         params.pType = "99"
         def nw200I = netWinService.getNw200List(params)
-        render view: "/sports/formWebLink2", model: [nw200I: nw200I, title: g.message(code: "sports.tab07.label")]
+        render view: "/sports/formList2", model: [nw200I: nw200I]
     }
 }

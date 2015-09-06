@@ -1,12 +1,12 @@
 class HtmlTagLib {
     def netWinService
-    def dateService
 
     static namespace = "hl"
 
     static returnObjectForTags = [
             "getSportsTabs",
             "getLottoTabs",
+            "getNationGamebleTabs",
             "getDivChartHeight",
             "chkLottoClass",
             "getBingoNewestDays",
@@ -60,6 +60,32 @@ class HtmlTagLib {
         result = (55 * ((value?:0) as Integer) / ((maxValue?:1) as Integer))?:0
 
         return result?:0
+    }
+
+    //國際博彩分頁
+    def getNationGamebleTabs = { attrs, body ->
+        def result = []
+
+        result << [lv1IDX: 1, tabLv: 1, text: g.message(code: "nationGamble.tab01.label"),
+                   link  : g.createLink(controller: "nationGamble", action: "webLinkHot", params: [lv1IDX: 1])]
+        result << [lv1IDX: 2, tabLv: 1, text: g.message(code: "nationGamble.tab02.label"),
+                   link  : g.createLink(controller: "nationGamble", action: "webLinkEurope", params: [lv1IDX: 2])]
+        result << [lv1IDX: 3, tabLv: 1, text: g.message(code: "nationGamble.tab03.label"),
+                   link  : g.createLink(controller: "nationGamble", action: "webLinkAsia", params: [lv1IDX: 3])]
+        result << [lv1IDX: 4, tabLv: 1, text: g.message(code: "nationGamble.tab04.label"),
+                   link  : g.createLink(controller: "nationGamble", action: "contentGamebleGeneral", params: [lv1IDX: 4])]
+        result << [lv1IDX: 5, tabLv: 1, text: g.message(code: "nationGamble.tab05.label"),
+                   link  : g.createLink(controller: "nationGamble", action: "contentGamebleCultural", params: [lv1IDX: 5])]
+        result << [lv1IDX: 6, tabLv: 1, text: g.message(code: "nationGamble.tab06.label"),
+                   link  : g.createLink(controller: "nationGamble", action: "contentNationPosition", params: [lv1IDX: 6])]
+        result << [lv1IDX: 7, tabLv: 1, text: g.message(code: "nationGamble.tab07.label"),
+                   link  : g.createLink(controller: "nationGamble", action: "listTermsHelp", params: [lv1IDX: 7])]
+        result << [lv1IDX: 8, tabLv: 1, text: g.message(code: "nationGamble.tab08.label"),
+                   link  : g.createLink(controller: "nationGamble", action: "contentEuropePercent", params: [lv1IDX: 8])]
+        result << [lv1IDX: 9, tabLv: 1, text: g.message(code: "nationGamble.tab09.label"),
+                   link  : g.createLink(controller: "nationGamble", action: "contentAsiaPercent", params: [lv1IDX: 9])]
+
+        return result
     }
 
     //運動分頁

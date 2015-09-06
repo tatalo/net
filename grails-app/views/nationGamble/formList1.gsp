@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+%{--國際博彩 網站連結--}%
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -7,10 +8,10 @@
 
 <body>
 
-<g:render template="/sports/narbar"/>
+<g:render template="/nationGamble/narbar"/>
 
 <div class="container">
-    <g:render template="/base/webLink/webLink2" model="[nw200I: nw200I, title: title]"/>
+    <g:render template="/base/list/webLink3" model="[nw200I: nw200I]"/>
 </div>
 
 </body>

@@ -1,10 +1,10 @@
-<g:each in="${Types}" var="Type" status="i">
+%{--網站連結MODEL3--}%
+<g:each in="${nw200I?.type.unique()}" var="type" status="i">
     <div class="panel panel-default">
         <div class="panel-heading text-center">
             <h4>
                 <strong>
-                    <bs:bs101 ptype="NW200TYPE" pcode="${Type}"/>
-                    %{--<g:message code="nationGamble.tab${pTab}.label"/>--}%
+                    <bs:bs101 ptype="NW200TYPE" pcode="${type}"/>
                 </strong>
             </h4>
         </div>
@@ -21,7 +21,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <g:each in="${nw200I.findAll { it.type in Type }}" var="nw200" status="i2">
+                        <g:each in="${nw200I.findAll { it.type in type }}" var="nw200" status="i2">
                             <g:if test="${i2 % 2 == 0}">
                                 <tr>
                                     <td>${i2 + 1}</td>
@@ -51,7 +51,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <g:each in="${nw200I.findAll { it.type in Type }}" var="nw200" status="i2">
+                        <g:each in="${nw200I.findAll { it.type in type }}" var="nw200" status="i2">
                             <g:if test="${i2 % 2 == 1}">
                                 <tr>
                                     <td>${i2 + 1}</td>

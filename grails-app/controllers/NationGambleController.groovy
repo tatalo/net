@@ -4,51 +4,62 @@ class NationGambleController {
     static void main(String[] args) {
     }
 
-    // 分頁參數管理
-    // Type: webLink => NW200
-    //       context => NW400
-    //       list => NW500
-    static def alltabs = [
-            [tab: '01', viewType: 'webLink1', dataType: '201', dataType2: '202'],
-            [tab: '02', viewType: 'webLink2', dataType: '203'],
-            [tab: '03', viewType: 'webLink2', dataType: '204'],
-            [tab: '04', viewType: 'context1', dataType: '201'],
-            [tab: '05', viewType: 'context1', dataType: '202'],
-            [tab: '06', viewType: 'context1', dataType: '203'],
-            [tab: '07', viewType: 'list1', dataType: '201'],
-            [tab: '08', viewType: 'context1', dataType: '204'],
-            [tab: '09', viewType: 'context1', dataType: '205']
-    ]
-
-    def index() { //國際博彩
-        render view: "/nationGamble/index", model: [alltabs: alltabs]
+    //國際博彩
+    def index() {
+        redirect action: "webLinkHot"
     }
 
-    def list() {
-        if (params.pTab in ["01"]) {
-            def Types = [] //有兩個Type
-            Types << params.pType
-            Types << params.pType2
+    def webLinkHot() { //熱門 #
+        params.pTypeList = ["201","202"]
+        def nw200I = netWinService.getNw200List(params)
+        render view: "/nationGamble/formList1", model: [nw200I: nw200I]
+    }
 
-            params.pType = params.pType
-            def nw200Ia = netWinService.getNw200List(params)
-            params.pType = params.pType2
-            def nw200Ib = netWinService.getNw200List(params)
+    def webLinkEurope() { //歐洲 #
+        params.pType = "203"
+        def nw200I = netWinService.getNw200List(params)
+        render view: "/nationGamble/formList1", model: [nw200I: nw200I]
+    }
 
-            def nw200I = nw200Ia + nw200Ib
+    def webLinkAsia() { //亞洲 #
+        params.pType = "204"
+        def nw200I = netWinService.getNw200List(params)
+        render view: "/nationGamble/formList1", model: [nw200I: nw200I]
+    }
 
-            render template: "/nationGamble/webLink1", model: [nw200I: nw200I, Types: Types, pTab: params.pTab, pSubTab: params.pSubTab]
-        } else if (params.pTab in ["02", "03"]) {
-            def nw200I = netWinService.getNw200List(params)
+    def contentGamebleGeneral() { //世界博彩概況
+        params.pType = "201"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/nationGamble/formContent1", model: [nw400I: nw400I]
+    }
 
-            render template: "/nationGamble/webLink2", model: [nw200I: nw200I, Type: params.pType, pTab: params.pTab, pSubTab: params.pSubTab]
-        } else if (params.pTab in ["04", "05", "06", "08", "09"]) {
-            def nw400I = netWinService.getNw400List(params)
+    def contentGamebleCultural() { //世界博彩文化
+        params.pType = "202"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/nationGamble/formContent1", model: [nw400I: nw400I]
+    }
 
-            render template: "/nationGamble/content1", model: [nw400I: nw400I]
-        } else if (params.pTab in ["07"]) {
-            def nw500I = netWinService.getNw500List(params)
-            render template: "/nationGamble/list1", model: [nw500I: nw500I, pTab: params.pTab, pSubTab: params.pSubTab]
-        }
+    def contentNationPosition() { //國際盤口
+        params.pType = "203"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/nationGamble/formContent1", model: [nw400I: nw400I]
+    }
+
+    def listTermsHelp() { //術語教學
+        params.pType = "201"
+        def nw500I = netWinService.getNw500List(params)
+        render view: "/nationGamble/formList2", model: [nw500I: nw500I]
+    }
+
+    def contentEuropePercent() { //歐洲賠率
+        params.pType = "204"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/nationGamble/formContent1", model: [nw400I: nw400I]
+    }
+
+    def contentAsiaPercent() { //亞洲賠率
+        params.pType = "205"
+        def nw400I = netWinService.getNw400List(params)
+        render view: "/nationGamble/formContent1", model: [nw400I: nw400I]
     }
 }

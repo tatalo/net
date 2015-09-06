@@ -1,8 +1,9 @@
+%{--網站連結MODEL2--}%
 <div class="panel panel-default">
     <div class="panel-heading text-center">
         <h4>
             <strong>
-                ${title}
+                <bs:bs101 ptype="NW200TYPE" pcode="${nw200I[0]?.type}"/>
             </strong>
         </h4>
     </div>
@@ -14,10 +15,8 @@
             <tr>
                 <th class="col-sm-1">#</th>
                 <th class="col-sm-3">網站</th>
-                <th class="col-sm-2">管理</th>
-                <th class="col-sm-2">備用</th>
-                <th class="col-sm-2">會員</th>
-                <th class="col-sm-2">備用</th>
+                <th class="col-sm-4">管理</th>
+                <th class="col-sm-4">會員</th>
             </tr>
             </thead>
             <tbody>
@@ -28,23 +27,13 @@
                         ${nw200?.webnm}
                     </td>
                     <td>
-                        <g:if test="${nw200?.manageurl}">
+                        <g:if test="${nw200?.manageurl != null}">
                             <a href="${nw200?.manageurl}" class="btn btn-primary btn-sm" target="_blank">登入</a>
                         </g:if>
                     </td>
                     <td>
-                        <g:if test="${nw200?.manageurlBk}">
-                            <a href="${nw200?.manageurlBk}" class="btn btn-primary btn-sm" target="_blank">登入</a>
-                        </g:if>
-                    </td>
-                    <td>
-                        <g:if test="${nw200?.memberurl}">
+                        <g:if test="${nw200?.memberurl != null}">
                             <a href="${nw200?.memberurl}" class="btn btn-primary btn-sm" target="_blank">登入</a>
-                        </g:if>
-                    </td>
-                    <td>
-                        <g:if test="${nw200?.memberurlBk}">
-                            <a href="${nw200?.memberurlBk}" class="btn btn-primary btn-sm" target="_blank">登入</a>
                         </g:if>
                     </td>
                 </tr>
