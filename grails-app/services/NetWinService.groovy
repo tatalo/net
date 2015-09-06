@@ -924,6 +924,8 @@ class NetWinService {
                                 WHERE 1 = :pNum
                                 AND NW3.TYPE = :pType
                                 AND ROWNUM <= :max
+                                AND NW3.OPENDT >= TO_DATE('20150905','yyyymmdd')
+                                AND NW3.OPENDT < TO_DATE('20150906','yyyymmdd')
                                 ORDER BY NW3.PERIODS DESC
                             ) NW3
                             LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
@@ -935,8 +937,8 @@ class NetWinService {
                   """
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception
-        condition.pType = params.pType ?: "01" //require
-        condition.max = params.int('max') ?: 25 //require
+        condition.pType = params.pType ?: "11" //require
+        condition.max = params.int('max') ?: 203 //require
 
         println "sql = " + toolsService.transPRSSql(mainSql, condition)
 

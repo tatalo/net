@@ -726,7 +726,6 @@ class LottoController {
         }
 
         params.pType = "11"
-//        params.max = 1
         def nw300I = netWinService.getBingoAnyalysis4(params)
 
 //        println "nw300I = " + nw300I
