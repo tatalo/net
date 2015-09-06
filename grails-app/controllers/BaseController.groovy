@@ -6,7 +6,11 @@ class BaseController {
     }
 
     def index() {
-        render view:"/base/index"
+        params.pType = "11"
+        params.max = 5
+        def nw300IBingo = netWinService.getBingoAnyalysis4(params)
+
+        render view:"/base/index", model: [nw300IBingo: nw300IBingo.list, columnsBingoNOs: nw300IBingo.columnsNOs]
     }
 
     def build() {

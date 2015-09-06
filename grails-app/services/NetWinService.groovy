@@ -974,7 +974,7 @@ class NetWinService {
         condition.pOpendt = params.pOpendt ?: "20150906"
         condition.max = params.int('max') ?: 203 //require
 
-//        println "sql = " + toolsService.transPRSSql(mainSql, condition)
+        println "sql = " + toolsService.transPRSSql(mainSql, condition)
         def resultList = query.rows(mainSql, condition)
 
         result.list = resultList
