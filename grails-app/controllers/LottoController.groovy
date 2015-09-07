@@ -906,7 +906,15 @@ class LottoController {
 　　　　　　　　　    FROM NW300 NW3
 　　　　　　　　　    WHERE 1 = 1
 　　　　　　　　　    AND NW3.TYPE = 11
-　　　　　　　　　    and trunc(NW3.OPENDT) = to_date('2015/8/25','yyyy/MM/dd')
+　　　　　　　　　    --and trunc(NW3.OPENDT) = to_date('2015/8/25','yyyy/MM/dd')
+　　　　　　　　　    and trunc(NW3.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
 　　　　　　　　　) NW3
 　　　　　　　　　LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
 　　　　　　　　　WHERE 1=1
