@@ -76,8 +76,8 @@
 
         <div class="col-md-7">
             <div class="form-group zoom55">
-                <div class="panel panel-default" style="height: auto;">
-                    <div class="panel-body">
+                <div class="panel panel-default">
+                    <div class="panel-body ">
                         <table class="bingoTable bingoBackGround" style="border:1px #cccccc solid;" rules="all">
                             <thead>
                             <tr>
@@ -200,69 +200,87 @@
                 </h4>
             </div>
 
-            <div class="zoom55">
-                <g:render template="/lotto/lottoContent6" model="[pType: '01', nw300I: nw300I01]"/>
-            </div>
+            <g:if test="${nw300I01}">
+                <div class="zoom55">
+                    <g:render template="/lotto/lottoContent6" model="[pType: '01', nw300I: nw300I01]"/>
+                </div>
+            </g:if>
 
-            <div class="zoom55">
-                <g:render template="/lotto/lottoContent6" model="[pType: '02', nw300I: nw300I02]"/>
-            </div>
+            <g:if test="${nw300I02}">
+                <div class="zoom55">
+                    <g:render template="/lotto/lottoContent6" model="[pType: '02', nw300I: nw300I02]"/>
+                </div>
+            </g:if>
 
-            <div class="zoom55">
-                <g:render template="/lotto/lottoContent7" model="[pType: '03', nw300I: nw300I03]"/>
-            </div>
+            <g:if test="${nw300I03}">
+                <div class="zoom55">
+                    <g:render template="/lotto/lottoContent7" model="[pType: '03', nw300I: nw300I03]"/>
+                </div>
+            </g:if>
 
-            <div class="zoom55">
-                <g:render template="/lotto/lottoContent6" model="[pType: '04', nw300I: nw300I04]"/>
-            </div>
+            <g:if test="${nw300I04}">
+                <div class="zoom55">
+                    <g:render template="/lotto/lottoContent6" model="[pType: '04', nw300I: nw300I04]"/>
+                </div>
+            </g:if>
 
-            <div class="zoom55">
-                <g:render template="/lotto/lottoContent6" model="[pType: '05', nw300I: nw300I05]"/>
-            </div>
+            <g:if test="${nw300I05}">
+                <div class="zoom55">
+                    <g:render template="/lotto/lottoContent6" model="[pType: '05', nw300I: nw300I05]"/>
+                </div>
+            </g:if>
 
-            <div class="zoom55">
-                <g:render template="/lotto/lottoContent6" model="[pType: '06', nw300I: nw300I06]"/>
-            </div>
-
-            <div class="zoom55">
-                <g:render template="/lotto/lottoContent6" model="[pType: '07', nw300I: nw300I07]"/>
-            </div>
-
-            <div class="zoom55">
-                <g:render template="/lotto/lottoContent6" model="[pType: '08', nw300I: nw300I08]"/>
-            </div>
-
-            <div class="zoom55">
-                <g:render template="/lotto/lottoContent6" model="[pType: '09', nw300I: nw300I09]"/>
-            </div>
-
-            <div class="zoom55">
-                <g:render template="/lotto/lottoContent6" model="[pType: '10', nw300I: nw300I10]"/>
-            </div>
-
+            <g:if test="${nw300I06}">
+                <div class="zoom55">
+                    <g:render template="/lotto/lottoContent6" model="[pType: '06', nw300I: nw300I06]"/>
+                </div>
+            </g:if>
+            <g:if test="${nw300I07}">
+                <div class="zoom55">
+                    <g:render template="/lotto/lottoContent6" model="[pType: '07', nw300I: nw300I07]"/>
+                </div>
+            </g:if>
+            <g:if test="${nw300I08}">
+                <div class="zoom55">
+                    <g:render template="/lotto/lottoContent6" model="[pType: '08', nw300I: nw300I08]"/>
+                </div>
+            </g:if>
+            <g:if test="${nw300I09}">
+                <div class="zoom55">
+                    <g:render template="/lotto/lottoContent6" model="[pType: '09', nw300I: nw300I09]"/>
+                </div>
+            </g:if>
+            <g:if test="${nw300I10}">
+                <div class="zoom55">
+                    <g:render template="/lotto/lottoContent6" model="[pType: '10', nw300I: nw300I10]"/>
+                </div>
+            </g:if>
             <div class="form-group">
                 <a href="http://www.htc.com/tw/smartphones/htc-one-e9-plus-dual-sim/" target="_blank" class="thumbnail">
                     <img src="${assetPath(src: 'ad/ad01.jpg')}" class="img-responsive" alt="Responsive image">
                 </a>
-                <a href="http://www.samsung.com/tw/galaxy/note5/" target="_blank"  class="thumbnail">
+                <a href="http://www.samsung.com/tw/galaxy/note5/" target="_blank" class="thumbnail">
                     <img src="${assetPath(src: 'ad/ad02.jpg')}" class="img-responsive" alt="Responsive image">
                 </a>
-                <a href="http://store.sony.com.tw/dslr/A7/index.asp#0" target="_blank"  class="thumbnail">
+                <a href="http://store.sony.com.tw/dslr/A7/index.asp#0" target="_blank" class="thumbnail">
                     <img src="${assetPath(src: 'ad/ad03.jpg')}" class="img-responsive" alt="Responsive image">
                 </a>
-                <a href="http://www.canon.com.tw/specialsite/G7X/" target="_blank"  class="thumbnail">
+                <a href="http://www.canon.com.tw/specialsite/G7X/" target="_blank" class="thumbnail">
                     <img src="${assetPath(src: 'ad/ad04.jpg')}" class="img-responsive" alt="Responsive image">
                 </a>
-                <a href="http://www.canon.com.tw/specialsite/7DmarkII/" target="_blank"  class="thumbnail">
+                <a href="http://www.canon.com.tw/specialsite/7DmarkII/" target="_blank" class="thumbnail">
                     <img src="${assetPath(src: 'ad/ad05.jpg')}" class="img-responsive" alt="Responsive image">
                 </a>
-                <a href="http://www.paneraisubmersible.com/zh/submersibles_collection/" target="_blank"  class="thumbnail">
+                <a href="http://www.paneraisubmersible.com/zh/submersibles_collection/" target="_blank"
+                   class="thumbnail">
                     <img src="${assetPath(src: 'ad/ad06.jpg')}" class="img-responsive" alt="Responsive image">
                 </a>
-                <a href="http://www.dealers.maserati.com/dealers/tw/zh/modena-motori-taiwan/index/ghibli/ghibli.html" target="_blank"  class="thumbnail">
+                <a href="http://www.dealers.maserati.com/dealers/tw/zh/modena-motori-taiwan/index/ghibli/ghibli.html"
+                   target="_blank" class="thumbnail">
                     <img src="${assetPath(src: 'ad/ad07.jpg')}" class="img-responsive" alt="Responsive image">
                 </a>
-                <a href="http://cc.porsche.com/icc_euro/ccCall.do?rt=1441253658&screen=1280x1024&userID=TW&lang=tw&PARAM=parameter_internet_tw&ORDERTYPE=970490&customID=tw&hookURL=http%3a%2f%2fwww.porsche.com%2fpap%2fmodelstart%2fall%2f%3fmodelrange%3dpanamera" target="_blank"  class="thumbnail">
+                <a href="http://cc.porsche.com/icc_euro/ccCall.do?rt=1441253658&screen=1280x1024&userID=TW&lang=tw&PARAM=parameter_internet_tw&ORDERTYPE=970490&customID=tw&hookURL=http%3a%2f%2fwww.porsche.com%2fpap%2fmodelstart%2fall%2f%3fmodelrange%3dpanamera"
+                   target="_blank" class="thumbnail">
                     <img src="${assetPath(src: 'ad/ad08.jpg')}" class="img-responsive" alt="Responsive image">
                 </a>
             </div>
