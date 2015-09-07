@@ -25,7 +25,7 @@
                             <g:each in="${nw300?.nw301s.findAll { it.isspno == 0 }.sort { it.opidx }.no}" var="no"
                                     status="i2">
                                 <span class="circle lottoNO">
-                                    ${String.format('%02d', no)}
+                                    ${no}
                                 </span>
                             </g:each>
                         </td>

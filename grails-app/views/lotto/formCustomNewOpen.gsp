@@ -72,12 +72,12 @@
     <div class="row">
         <div class="col-md-6">
             %{--3星彩--}%
-            <g:render template="/lotto/lottoContent1" model="[pType: '09', nw300I: nw300I09]"/>
+            <g:render template="/lotto/lottoContent3" model="[pType: '09', nw300I: nw300I09]"/>
         </div>
 
         <div class="col-md-6">
             %{--4星彩--}%
-            <g:render template="/lotto/lottoContent1" model="[pType: '10', nw300I: nw300I10]"/>
+            <g:render template="/lotto/lottoContent3" model="[pType: '10', nw300I: nw300I10]"/>
         </div>
     </div>
 

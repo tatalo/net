@@ -1,16 +1,20 @@
 class BaseController {
     def netWinService
     def netReptileService
+    def dateService
 
     static void main(String[] args){
     }
 
     def index() {
+        //賓果最新開獎資料, 取最新一天5筆
         params.pType = "11"
         params.max = 5
+        params.pOpendt  = netWinService.getBingoNewestDays()[0]
         def nw300I11 = netWinService.getBingoAnyalysis4(params)
 
-        params.pOpendt = new Date().clearTime()
+        //當日開獎資料
+        params.pOpendt = dateService.today()
         params.pType = "01"
         def nw300I01 = netWinService.getNw300List(params)
         params.pType = "02"

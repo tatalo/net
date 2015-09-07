@@ -49,4 +49,18 @@ class DateService {
         }
         dateString =dateYearFormat + style + dateMap[1]+style + dateMap[2]
     }
+
+    //超過18點後才計算隔天
+    def today() {
+        Date today = new Date()
+        def chkNowHH = Integer.parseInt(new JDateTime(today).toString("hh"))
+
+        JDateTime jdts
+        if (chkNowHH >= 18) {
+            jdts  = new JDateTime(today.year.toInteger()+1900,today.month+1.toInteger(),(today.date).toInteger(),0,0,00,000)
+        } else {
+            jdts  = new JDateTime(today.year.toInteger()+1900,today.month+1.toInteger(),(today.date).toInteger()-1,0,0,00,000)
+        }
+        jdts.convertTo(java.util.Date.class)
+    }
 }

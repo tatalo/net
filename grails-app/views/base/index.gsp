@@ -195,13 +195,14 @@
 
         <div class="col-md-3">
             <div class="form-group">
-                <h4 class="defaultBgColor1 text-center">當日開獎</h4>
+                <h4 class="defaultBgColor1 text-center">
+                    當日開獎
+                </h4>
             </div>
 
             <div class="zoom55">
                 <g:render template="/lotto/lottoContent6" model="[pType: '01', nw300I: nw300I01]"/>
             </div>
-
 
             <div class="zoom55">
                 <g:render template="/lotto/lottoContent6" model="[pType: '02', nw300I: nw300I02]"/>
@@ -240,47 +241,30 @@
             </div>
 
             <div class="form-group">
-                廣告區
-                %{--<h4 class="defaultBgColor1 text-center">博彩技巧</h4>--}%
-
-                %{--<div class="row-fluid">--}%
-                %{--<g:each in="${["02", "03", "04"]}" var="tab" status="i">--}%
-                %{--<div class="col-md-4 col-xs-4 col-sm-4">--}%
-                %{--<g:link class="btn btn-primary square" controller="gambleTech" action="index"--}%
-                %{--fragment="tab${tab}_subTab02">--}%
-                %{--<g:message code="gambleTech.tab${tab}.label"/>--}%
-                %{--</g:link>--}%
-                %{--</div>--}%
-                %{--</g:each>--}%
-                %{--</div>--}%
-
-                %{--<div class="clearfix"/>--}%
-
-                %{--<div class="row-fluid padding-top">--}%
-                %{--<g:each in="${["05", "06", "07"]}" var="tab" status="i">--}%
-                %{--<div class="col-md-4 col-xs-4 col-sm-4">--}%
-                %{--<g:link class="btn btn-primary square" controller="gambleTech" action="index"--}%
-                %{--fragment="tab${tab}_subTab02">--}%
-                %{--<g:message code="gambleTech.tab${tab}.label"/>--}%
-                %{--</g:link>--}%
-                %{--</div>--}%
-                %{--</g:each>--}%
-                %{--</div>--}%
-
-                %{--<div class="clearfix"/>--}%
-
-                %{--<div class="row-fluid padding-top">--}%
-                %{--<g:each in="${["08", "09"]}" var="tab" status="i">--}%
-                %{--<div class="col-md-4 col-xs-4 col-sm-4">--}%
-                %{--<g:link class="btn btn-primary square" controller="gambleTech" action="index"--}%
-                %{--fragment="tab${tab}_subTab02">--}%
-                %{--<g:message code="gambleTech.tab${tab}.label"/>--}%
-                %{--</g:link>--}%
-                %{--</div>--}%
-                %{--</g:each>--}%
-                %{--<div class="col-md-4">--}%
-                %{--</div>--}%
-                %{--</div>--}%
+                <a href="http://www.htc.com/tw/smartphones/htc-one-e9-plus-dual-sim/" target="_blank" class="thumbnail">
+                    <img src="${assetPath(src: 'ad/ad01.jpg')}" class="img-responsive" alt="Responsive image">
+                </a>
+                <a href="http://www.samsung.com/tw/galaxy/note5/" target="_blank"  class="thumbnail">
+                    <img src="${assetPath(src: 'ad/ad02.jpg')}" class="img-responsive" alt="Responsive image">
+                </a>
+                <a href="http://store.sony.com.tw/dslr/A7/index.asp#0" target="_blank"  class="thumbnail">
+                    <img src="${assetPath(src: 'ad/ad03.jpg')}" class="img-responsive" alt="Responsive image">
+                </a>
+                <a href="http://www.canon.com.tw/specialsite/G7X/" target="_blank"  class="thumbnail">
+                    <img src="${assetPath(src: 'ad/ad04.jpg')}" class="img-responsive" alt="Responsive image">
+                </a>
+                <a href="http://www.canon.com.tw/specialsite/7DmarkII/" target="_blank"  class="thumbnail">
+                    <img src="${assetPath(src: 'ad/ad05.jpg')}" class="img-responsive" alt="Responsive image">
+                </a>
+                <a href="http://www.paneraisubmersible.com/zh/submersibles_collection/" target="_blank"  class="thumbnail">
+                    <img src="${assetPath(src: 'ad/ad06.jpg')}" class="img-responsive" alt="Responsive image">
+                </a>
+                <a href="http://www.dealers.maserati.com/dealers/tw/zh/modena-motori-taiwan/index/ghibli/ghibli.html" target="_blank"  class="thumbnail">
+                    <img src="${assetPath(src: 'ad/ad07.jpg')}" class="img-responsive" alt="Responsive image">
+                </a>
+                <a href="http://cc.porsche.com/icc_euro/ccCall.do?rt=1441253658&screen=1280x1024&userID=TW&lang=tw&PARAM=parameter_internet_tw&ORDERTYPE=970490&customID=tw&hookURL=http%3a%2f%2fwww.porsche.com%2fpap%2fmodelstart%2fall%2f%3fmodelrange%3dpanamera" target="_blank"  class="thumbnail">
+                    <img src="${assetPath(src: 'ad/ad08.jpg')}" class="img-responsive" alt="Responsive image">
+                </a>
             </div>
         </div>
     </div>

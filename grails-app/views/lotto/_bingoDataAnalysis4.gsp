@@ -5,6 +5,7 @@
         </g:link>
     </g:each>
 </div>
+<BR/>
 <div class="pull-left">
     <g:render template="/lotto/lottoHelp2"/>
 </div>
