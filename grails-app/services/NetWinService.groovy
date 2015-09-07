@@ -1052,7 +1052,7 @@ select
 LPAD (x.NO, 2, '0') NO, x.CNT1 NUM
 from (
 SELECT
-NW3.OPENDT,
+trunc(NW3.OPENDT) OPENDT,
 NW31.NO,
 COUNT(1) CNT1,
 (MAX(MAX(NW3.CNT)) OVER()) - MAX(NW3.CNT) CNT2,
@@ -1079,7 +1079,7 @@ group by 1
 ) NW3
 LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
 WHERE 1=1
-GROUP BY NW3.OPENDT,NW31.NO
+GROUP BY trunc(NW3.OPENDT),NW31.NO
 ORDER BY COUNT(1) DESC
 ) x
 where rownum <= 10
@@ -1879,7 +1879,14 @@ select
 where exists (
 select b.objid from nw300 b
 where b.type = '11'
-and trunc(B.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
+and trunc(B.OPENDT) = (
+    select max(x.aa) from (
+select max(trunc(B.OPENDT)) aa from nw300 b
+where b.type = '11'
+group by trunc(B.OPENDT)
+) x
+group by 1
+    )
 and a.nw300id = b.objid
 )
 and A.ISSPNO = 0
@@ -1948,7 +1955,7 @@ substr(tp.goodno,3,2) NOB,
 tp.NUM
 from (
     SELECT
-    NW3.opendt,
+    trunc(NW3.opendt) opendt,
     LPAD(NW31B.NO,2,'0') || LPAD(NW31.NO,2,'0') GOODNO,
     COUNT(1) NUM
     FROM NW300 NW3
@@ -1966,7 +1973,7 @@ group by trunc(B.OPENDT)
 ) x
 group by 1
     )
-    GROUP BY NW3.opendt,LPAD(NW31B.NO,2,'0') || LPAD(NW31.NO,2,'0')
+    GROUP BY trunc(NW3.opendt) ,LPAD(NW31B.NO,2,'0') || LPAD(NW31.NO,2,'0')
     ORDER BY COUNT(1) DESC
 ) tp
 where 1=1
@@ -1992,7 +1999,7 @@ substr(tp.goodno,5,2) NOC,
 tp.NUM
 from (
     SELECT
-    NW3.opendt,
+    trunc(NW3.opendt) opendt,
     LPAD(NW31C.NO,2,'0') || LPAD(NW31B.NO,2,'0') || LPAD(NW31.NO,2,'0') GOODNO,
     COUNT(1) NUM
     FROM NW300 NW3
@@ -2012,7 +2019,7 @@ group by trunc(B.OPENDT)
 ) x
 group by 1
     )
-    GROUP BY NW3.opendt,LPAD(NW31C.NO,2,'0') || LPAD(NW31B.NO,2,'0') || LPAD(NW31.NO,2,'0')
+    GROUP BY trunc(NW3.opendt), LPAD(NW31C.NO,2,'0') || LPAD(NW31B.NO,2,'0') || LPAD(NW31.NO,2,'0')
     ORDER BY COUNT(1) DESC
 ) tp
 where 1=1

@@ -950,17 +950,17 @@ group by 1
     def showBingoAnalysis() {
         def resultA, resultB, resultC, resultD, resultE, resultF, resultG, resultH, resultI, resultJ, resultK
 
-        resultA = netWinService.getbingoAnalysisA()//本期球號
-        resultB = netWinService.getbingoAnalysisB()//熱門球號
-        resultC = netWinService.getbingoAnalysisC()//冷門球號
-        resultD = netWinService.getbingoAnalysisD()//熱門連莊
-        resultE = netWinService.getbingoAnalysisE()//熱門跳期
-        resultF = netWinService.getbingoAnalysisF()//二連號
-        resultG = netWinService.getbingoAnalysisG()//三連號
-        resultH = netWinService.getbingoAnalysisH()//四連號
-        resultI = netWinService.getbingoAnalysisI()//熱門頭號&熱門尾號
-        resultJ = netWinService.getbingoAnalysisJ()//二同出
-        resultK = netWinService.getbingoAnalysisK()//三同出
+        resultA = netWinService.getbingoAnalysisA()//本期球號 ok
+        resultB = netWinService.getbingoAnalysisB()//熱門球號 ok
+        resultC = netWinService.getbingoAnalysisC()//冷門球號 X
+        resultD = netWinService.getbingoAnalysisD()//熱門連莊 ok
+        resultE = netWinService.getbingoAnalysisE()//熱門跳期 X
+        resultF = netWinService.getbingoAnalysisF()//二連號 ok
+        resultG = netWinService.getbingoAnalysisG()//三連號 ok
+        resultH = netWinService.getbingoAnalysisH()//四連號 ok
+        resultI = netWinService.getbingoAnalysisI()//熱門頭號&熱門尾號 ok
+        resultJ = netWinService.getbingoAnalysisJ()//二同出 ok
+        resultK = netWinService.getbingoAnalysisK()//三同出 ok
 
         def nowPeriods
 
