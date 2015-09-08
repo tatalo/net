@@ -11,7 +11,12 @@ class NetReptileService {
         NetReptileService netReptileService = new NetReptileService()
         def url = "http://www.taiwanlottery.com.tw/index_new.aspx"
 
-        netReptileService.getBingo(url)//賓果
+        def aaa = '2015-09-08 23:55:00.0'
+        def b = Date.parse('yyyy-MM-dd HH:mm:ss',aaa) //2015-09-08 23:55:00
+
+        println 'b = '+b
+
+//        netReptileService.getBingo(url)//賓果
 //        netReptileService.getWayLiTry(url)//威力彩
 //        netReptileService.getThreeEightTry(url)//38樂合彩
 //        netReptileService.getBigLuckToa(url)//大樂透
@@ -63,6 +68,13 @@ class NetReptileService {
 
             def queryNw300Object = Nw300.findByTypeAndPeriods('11',no2)
 
+
+            def ds = new Sql(dataSource)
+            def sql = " select GETBINGODT($no2) dt from dual a "
+
+            def r = ds.firstRow(sql)
+            def opdt = r?.dt?.toString()
+
             if(queryNw300Object==null){
                 println '新的一期'
                 def nw300Instance = new Nw300()
@@ -74,8 +86,7 @@ class NetReptileService {
                 nw300Instance.lastUpdated = new Date()
                 nw300Instance.type = '11'
                 nw300Instance.periods = no2
-                nw300Instance.opendt = new Date()
-
+                nw300Instance.opendt = Date.parse('yyyy-MM-dd HH:mm:ss', opdt) //2015-09-08 23:55:00
                 if(result=='大'){
                     result = '2'
                 }else if(result=='小'){

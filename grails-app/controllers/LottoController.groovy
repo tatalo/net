@@ -915,7 +915,7 @@ GROUP BY trunc(NW3.OPENDT),NW31.NO
 ORDER BY COUNT(1) DESC
                   """
 
-        println 'sql = '+sql
+        //println 'sql = '+sql
 
         def result1 = s.rows(sql.toString())
 

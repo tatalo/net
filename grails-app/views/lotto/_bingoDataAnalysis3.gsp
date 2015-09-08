@@ -161,6 +161,12 @@
         /*width:810px;*/
     }
 
+    .titilx{
+        font-size:20px;
+        /*font-weight: bold;*/
+        color: #53868B;
+    }
+
     </style>
 
     <script type="text/javascript">
@@ -173,7 +179,7 @@
 
 <center>
     <div>
-        最新期數:${nowPeriods}
+        <label class="titilx">最新期數:${nowPeriods}</label>
         <table class="" style="border:1px #cccccc solid;" rules="all">
 
             <tr class="tdbg2">
