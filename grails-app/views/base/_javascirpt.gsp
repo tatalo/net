@@ -1,10 +1,4 @@
 <script>
-    function CKupdate() { //編輯器內容更新
-        for (i in CKEDITOR.instances) {
-            CKEDITOR.instances[i].updateElement();
-        }
-    }
-
     //facebook留言版
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -36,32 +30,11 @@
         $(this).trigger("click");
     });
 
-    //hash anchor fix
-    var options = {
-        selectorAttribute: "data-target"
-//        backToTop: true
-    };
-    $('.stickyTabs').stickyTabs(options);
-
-    //自動開啟tab用
-    function TabByHash(hash) {
-        var $myTab = $(hash);
-        if ($myTab.size() != 0) {
-            var $topTab = $myTab.parent().closest('.tab-pane');
-            if ($topTab.size() != 0) {
-                $('a[href=#' + $topTab.attr('id') + ']').trigger('click');
-            }
-            $('a[href=#' + $myTab.attr('id') + ']').trigger('click');
+    function CKupdate() { //編輯器內容更新
+        for (i in CKEDITOR.instances) {
+            CKEDITOR.instances[i].updateElement();
         }
     }
-
-    var hash = window.location.hash;
-    if (hash) {
-        TabByHash(hash);
-    } else {
-        $('.activeAuto').trigger('click');
-    }
-
     %{--CKEDITOR.plugins.addExternal('divarea', '${resource(dir: '/ckeditor/plugins/divarea/')}');--}%
     %{--CKEDITOR.editorConfig = function (config) {--}%
 %{--//        config.extraPlugins = 'divarea';--}%
@@ -80,7 +53,6 @@
 %{--//            Underline--}%
 %{--//        '] ] };--}%
     %{--};--}%
-
 
     function shareToSocial(type){
         var url = '';
