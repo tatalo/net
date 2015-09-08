@@ -68,9 +68,8 @@ class NetReptileService {
 
             def queryNw300Object = Nw300.findByTypeAndPeriods('11',no2)
 
-
             def ds = new Sql(dataSource)
-            def sql = " select GETBINGODT($no2) dt from dual a "
+            def sql = " select PK_GET.F_BINGODT($no2) dt from dual a "
 
             def r = ds.firstRow(sql)
             def opdt = r?.dt?.toString()
