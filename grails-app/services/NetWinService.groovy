@@ -1049,26 +1049,27 @@ order by A.NO
         def s = new Sql(dataSource)
         def sql = """
 select
-LPAD (x.NO, 2, '0') NO, x.CNT1 NUM
+LPAD (x.NO, 2, '0') NO,
+x.CNT1 NUM
 from (
 SELECT
-trunc(NW3.OPENDT) OPENDT,
-NW31.NO,
-COUNT(1) CNT1,
-(MAX(MAX(NW3.CNT)) OVER()) - MAX(NW3.CNT) CNT2,
-0 END
-FROM (
-    SELECT
-    ROW_NUMBER() OVER(ORDER BY NW3.PERIODS ASC) CNT,
-    NW3.OBJID,
-    NW3.TYPE,
-    NW3.PERIODS,
-    NW3.OPENDT
-    FROM NW300 NW3
-    WHERE 1 = 1
-    AND NW3.TYPE = '11'
-    --and trunc(nw3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
-    and trunc(nw3.OPENDT) = (
+                  trunc(NW3.OPENDT) OPENDT,
+　　　　　　　　　NW31.NO,
+　　　　　　　　　COUNT(1) CNT1, --連續
+　　　　　　　　　(MAX(MAX(NW3.CNT)) OVER()) - MAX(NW3.CNT) CNT2, --最久
+　　　　　　　　　0 END
+　　　　　　　　　FROM (
+　　　　　　　　　    SELECT
+　　　　　　　　　    ROW_NUMBER() OVER(ORDER BY NW3.PERIODS ASC) CNT,
+　　　　　　　　　    NW3.OBJID,
+　　　　　　　　　    NW3.TYPE,
+　　　　　　　　　    NW3.PERIODS,
+　　　　　　　　　    NW3.OPENDT
+　　　　　　　　　    FROM NW300 NW3
+　　　　　　　　　    WHERE 1 = 1
+　　　　　　　　　    AND NW3.TYPE = 11
+　　　　　　　　　    --and trunc(NW3.OPENDT) = to_date('2015/8/25','yyyy/MM/dd')
+　　　　　　　　　    and trunc(NW3.OPENDT) = (
     select max(x.aa) from (
 select max(trunc(B.OPENDT)) aa from nw300 b
 where b.type = '11'
@@ -1076,14 +1077,13 @@ group by trunc(B.OPENDT)
 ) x
 group by 1
     )
-) NW3
-LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
-WHERE 1=1
-GROUP BY trunc(NW3.OPENDT),NW31.NO
-ORDER BY COUNT(1) DESC
+　　　　　　　　　) NW3
+　　　　　　　　　LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
+　　　　　　　　　WHERE 1=1
+　　　　　　　　　GROUP BY trunc(NW3.OPENDT),NW31.NO
+　　　　　　　　　ORDER BY COUNT(1) DESC
 ) x
 where rownum <= 10
-order by x.CNT1 desc, x.no
                   """
 
         def result = s.rows(sql)
@@ -1098,27 +1098,29 @@ order by x.CNT1 desc, x.no
     def getbingoAnalysisC() {
         def s = new Sql(dataSource)
         def sql = """
+select * from (
 select
-LPAD (x.NO, 2, '0') NO, x.CNT2 NUM
+LPAD (x.NO, 2, '0') NO,
+x.CNT1 NUM
 from (
 SELECT
-NW3.OPENDT,
-NW31.NO,
-COUNT(1) CNT1,
-(MAX(MAX(NW3.CNT)) OVER()) - MAX(NW3.CNT) CNT2,
-0 END
-FROM (
-    SELECT
-    ROW_NUMBER() OVER(ORDER BY NW3.PERIODS ASC) CNT,
-    NW3.OBJID,
-    NW3.TYPE,
-    NW3.PERIODS,
-    NW3.OPENDT
-    FROM NW300 NW3
-    WHERE 1 = 1
-    AND NW3.TYPE = '11'
-    --and trunc(nw3.OPENDT) = to_date('2015/08/25','yyyy/MM/dd')
-    and trunc(nw3.OPENDT) =(
+                  trunc(NW3.OPENDT) OPENDT,
+　　　　　　　　　NW31.NO,
+　　　　　　　　　COUNT(1) CNT1, --連續
+　　　　　　　　　(MAX(MAX(NW3.CNT)) OVER()) - MAX(NW3.CNT) CNT2, --最久
+　　　　　　　　　0 END
+　　　　　　　　　FROM (
+　　　　　　　　　    SELECT
+　　　　　　　　　    ROW_NUMBER() OVER(ORDER BY NW3.PERIODS ASC) CNT,
+　　　　　　　　　    NW3.OBJID,
+　　　　　　　　　    NW3.TYPE,
+　　　　　　　　　    NW3.PERIODS,
+　　　　　　　　　    NW3.OPENDT
+　　　　　　　　　    FROM NW300 NW3
+　　　　　　　　　    WHERE 1 = 1
+　　　　　　　　　    AND NW3.TYPE = 11
+　　　　　　　　　    --and trunc(NW3.OPENDT) = to_date('2015/8/25','yyyy/MM/dd')
+　　　　　　　　　    and trunc(NW3.OPENDT) = (
     select max(x.aa) from (
 select max(trunc(B.OPENDT)) aa from nw300 b
 where b.type = '11'
@@ -1126,14 +1128,15 @@ group by trunc(B.OPENDT)
 ) x
 group by 1
     )
-) NW3
-LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
-WHERE 1=1
-GROUP BY NW3.OPENDT,NW31.NO
-ORDER BY COUNT(1) DESC
+　　　　　　　　　) NW3
+　　　　　　　　　LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
+　　　　　　　　　WHERE 1=1
+　　　　　　　　　GROUP BY trunc(NW3.OPENDT),NW31.NO
+　　　　　　　　　ORDER BY COUNT(1) DESC
 ) x
+order by x.cnt1
+) y
 where rownum <= 10
-order by x.CNT2, X.NO
                   """
 
         def result = s.rows(sql)
