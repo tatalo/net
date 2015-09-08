@@ -883,7 +883,6 @@ class LottoController {
         println '===showBingoAnalysis2==='
         def pOpendt = params?.pOpendt   //格式:20150905
         def s = new Sql(dataSource)
-
         String datecondition = ""
 
         if(pOpendt!=null){
@@ -891,9 +890,6 @@ class LottoController {
         }else{
             datecondition = " and trunc(NW3.OPENDT) = (select max(x.aa) from (select max(trunc(B.OPENDT)) aa from nw300 b where b.type = '11' group by trunc(B.OPENDT) ) x group by 1 ) "
         }
-
-        String xxx = " and 1=1 "
-
         def sql = """
                   SELECT
 trunc(NW3.OPENDT) OPENDT,
@@ -911,8 +907,7 @@ NW3.OPENDT
 FROM NW300 NW3
 WHERE 1 = 1
 AND NW3.TYPE = 11
-and trunc(NW3.OPENDT) = (select max(x.aa) from (select max(trunc(B.OPENDT)) aa from nw300 b where b.type = '11' group by trunc(B.OPENDT) ) x group by 1 )
-$xxx
+$datecondition
 ) NW3
 LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
 WHERE 1=1
@@ -921,7 +916,8 @@ ORDER BY COUNT(1) DESC
                   """
 
         println 'sql = '+sql
-        def result1 = s.rows(sql)
+
+        def result1 = s.rows(sql.toString())
 
         def LMAXNO = 0
         def RMAXNO = 0

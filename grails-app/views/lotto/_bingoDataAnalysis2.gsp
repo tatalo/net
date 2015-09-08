@@ -95,7 +95,7 @@
 
 <div class="text-center">
     <g:each in="${hl.getBingoNewestDays()}" var="pOpendt" status="j">
-        <g:link class="btn btn-primary ${hl.chkActiveClass(chkValue: params.pOpendt, matchValue: pOpendt)}" controller="lotto" action="showBingoAnalysis2" params="[pOpendt: pOpendt]">
+        <g:link class="btn btn-primary ${hl.chkActiveClass(chkValue: params.pOpendt, matchValue: pOpendt)}" controller="lotto" action="customStatistBingo" params="[pOpendt: pOpendt]">
             ${pOpendt[4..-1]}
         </g:link>
     </g:each>
