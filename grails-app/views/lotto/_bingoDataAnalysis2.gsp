@@ -93,11 +93,19 @@
 
 </style>
 
+<div class="text-center">
+    <g:each in="${hl.getBingoNewestDays()}" var="pOpendt" status="j">
+        <g:link class="btn btn-primary ${hl.chkActiveClass(chkValue: params.pOpendt, matchValue: pOpendt)}" controller="lotto" action="showBingoAnalysis2" params="[pOpendt: pOpendt]">
+            ${pOpendt[4..-1]}
+        </g:link>
+    </g:each>
+</div>
+<br/>
 <center>
 <table class="bingoTable" style="border:1px #cccccc solid;" rules="all">
 
     <tr>
-        <td class="titlecolor" colspan="3">(2015-08-26) Bingo Bingo 賓果賓果 各球號開出/未開出統計圖表</td>
+        <td class="titlecolor" colspan="3">(<g:formatDate format="yyyy-MM-dd" date="${currentdate}"/>) Bingo Bingo 賓果賓果 各球號開出/未開出統計圖表</td>
     </tr>
 
     <tr>

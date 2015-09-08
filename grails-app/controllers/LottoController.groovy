@@ -881,52 +881,53 @@ class LottoController {
     def showBingoAnalysis2() {
 
         println '===showBingoAnalysis2==='
-
-        def showpage = params?.showpage ?: 20 //近幾期
-        def sdt = params?.sdt //開始日期
-        def edt = params?.edt //結束日期
-        def speriods = params?.speriods //開始期數
-        def eperiods = params?.eperiods //結束期數
+        def pOpendt = params?.pOpendt   //格式:20150905
         def s = new Sql(dataSource)
+
+        String datecondition = ""
+
+        if(pOpendt!=null){
+            datecondition = " and trunc(NW3.OPENDT) = to_date('$pOpendt','yyyyMMdd') "
+        }else{
+            datecondition = " and trunc(NW3.OPENDT) = (select max(x.aa) from (select max(trunc(B.OPENDT)) aa from nw300 b where b.type = '11' group by trunc(B.OPENDT) ) x group by 1 ) "
+        }
+
+        String xxx = " and 1=1 "
 
         def sql = """
                   SELECT
-                  trunc(NW3.OPENDT) OPENDT,
-　　　　　　　　　NW31.NO,
-　　　　　　　　　COUNT(1) CNT1, --連續
-　　　　　　　　　(MAX(MAX(NW3.CNT)) OVER()) - MAX(NW3.CNT) CNT2, --最久
-　　　　　　　　　0 END
-　　　　　　　　　FROM (
-　　　　　　　　　    SELECT
-　　　　　　　　　    ROW_NUMBER() OVER(ORDER BY NW3.PERIODS ASC) CNT,
-　　　　　　　　　    NW3.OBJID,
-　　　　　　　　　    NW3.TYPE,
-　　　　　　　　　    NW3.PERIODS,
-　　　　　　　　　    NW3.OPENDT
-　　　　　　　　　    FROM NW300 NW3
-　　　　　　　　　    WHERE 1 = 1
-　　　　　　　　　    AND NW3.TYPE = 11
-　　　　　　　　　    --and trunc(NW3.OPENDT) = to_date('2015/8/25','yyyy/MM/dd')
-　　　　　　　　　    and trunc(NW3.OPENDT) = (
-    select max(x.aa) from (
-select max(trunc(B.OPENDT)) aa from nw300 b
-where b.type = '11'
-group by trunc(B.OPENDT)
-) x
-group by 1
-    )
-　　　　　　　　　) NW3
-　　　　　　　　　LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
-　　　　　　　　　WHERE 1=1
-　　　　　　　　　GROUP BY trunc(NW3.OPENDT),NW31.NO
-　　　　　　　　　ORDER BY COUNT(1) DESC
+trunc(NW3.OPENDT) OPENDT,
+NW31.NO,
+COUNT(1) CNT1,
+(MAX(MAX(NW3.CNT)) OVER()) - MAX(NW3.CNT) CNT2,
+0 END
+FROM (
+SELECT
+ROW_NUMBER() OVER(ORDER BY NW3.PERIODS ASC) CNT,
+NW3.OBJID,
+NW3.TYPE,
+NW3.PERIODS,
+NW3.OPENDT
+FROM NW300 NW3
+WHERE 1 = 1
+AND NW3.TYPE = 11
+and trunc(NW3.OPENDT) = (select max(x.aa) from (select max(trunc(B.OPENDT)) aa from nw300 b where b.type = '11' group by trunc(B.OPENDT) ) x group by 1 )
+$xxx
+) NW3
+LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID AND NW31.ISSPNO = 0
+WHERE 1=1
+GROUP BY trunc(NW3.OPENDT),NW31.NO
+ORDER BY COUNT(1) DESC
                   """
+
+        println 'sql = '+sql
         def result1 = s.rows(sql)
 
         def LMAXNO = 0
         def RMAXNO = 0
         def list1 = []
         def list2 = []
+        def currentdate
 
         if (result1 != null) {
             def i = 0
@@ -938,9 +939,10 @@ group by 1
 
             LMAXNO = ((list1.max())?.toInteger()) == 0 ? 1 : ((list1.max())?.toInteger())
             RMAXNO = ((list2.max())?.toInteger()) == 0 ? 1 : ((list2.max())?.toInteger())
+            currentdate = result1[0]?.OPENDT
         }
 
-        render(template: '/lotto/bingoDataAnalysis2', model: [nw300InstanceList: result1, LMAXNO: LMAXNO, RMAXNO: RMAXNO])
+        render(template: '/lotto/bingoDataAnalysis2', model: [nw300InstanceList: result1, LMAXNO: LMAXNO, RMAXNO: RMAXNO, currentdate:currentdate])
     }
 
     /**
@@ -952,7 +954,7 @@ group by 1
 
         resultA = netWinService.getbingoAnalysisA()//本期球號 ok
         resultB = netWinService.getbingoAnalysisB()//熱門球號 ok
-        resultC = netWinService.getbingoAnalysisC()//冷門球號 X
+        resultC = netWinService.getbingoAnalysisC()//冷門球號 ok
         resultD = netWinService.getbingoAnalysisD()//熱門連莊 ok
         resultE = netWinService.getbingoAnalysisE()//熱門跳期 X
         resultF = netWinService.getbingoAnalysisF()//二連號 ok
