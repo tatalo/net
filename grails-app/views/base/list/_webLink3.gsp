@@ -22,7 +22,7 @@
                         </thead>
                         <tbody>
                         <g:each in="${nw200I.findAll { it.type in type }}" var="nw200" status="i2">
-                            <g:if test="${i2 % 2 == 0}">
+                            <g:if test="${i2 < (nw200I.findAll { it.type in type }.size()/2)}">
                                 <tr>
                                     <td>${i2 + 1}</td>
                                     <td>
@@ -52,7 +52,7 @@
                         </thead>
                         <tbody>
                         <g:each in="${nw200I.findAll { it.type in type }}" var="nw200" status="i2">
-                            <g:if test="${i2 % 2 == 1}">
+                            <g:if test="${i2 >= (nw200I.findAll { it.type in type }.size()/2)}">
                                 <tr>
                                     <td>${i2 + 1}</td>
                                     <td>
