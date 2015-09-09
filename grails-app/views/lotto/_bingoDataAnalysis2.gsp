@@ -105,7 +105,7 @@
 <table class="bingoTable" style="border:1px #cccccc solid;" rules="all">
 
     <tr>
-        <td class="titlecolor" colspan="3">(<g:formatDate format="yyyy-MM-dd" date="${currentdate}"/>) Bingo Bingo 賓果賓果 各球號開出/未開出統計圖表</td>
+        <td class="titlecolor" colspan="3">(<g:formatDate format="yyyyMMdd" date="${currentdate}"/>) Bingo Bingo 賓果賓果 各球號開出/未開出統計圖表</td>
     </tr>
 
     <tr>
