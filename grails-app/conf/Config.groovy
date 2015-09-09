@@ -88,6 +88,7 @@ grails.hibernate.pass.readonly = false
 grails.hibernate.osiv.readonly = false
 
 grails.assets.less.compile = 'less4j'
+grails.assets.excludes = ["**/*.less"]
 grails.assets.plugin."twitter-bootstrap".excludes = ["**/*.less"]
 grails.assets.plugin."twitter-bootstrap".includes = ["bootstrap.less"]
 grails.assets.bundle=true
@@ -100,9 +101,6 @@ grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
 grails.plugins.remotepagination.max=10
 //EnableBootstrap here when using twitter bootstrap, default is set to false.
 grails.plugins.remotepagination.enableBootstrap=true
-
-//grails.plugins.twitterbootstrap.fixtaglib = true
-//grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
 
 //Disqus plugin
 grails.plugins.disqus.shortname = "tatalo"
