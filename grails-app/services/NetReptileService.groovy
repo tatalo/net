@@ -10,11 +10,15 @@ class NetReptileService {
     static void main(String[] args){
         NetReptileService netReptileService = new NetReptileService()
         def url = "http://www.taiwanlottery.com.tw/index_new.aspx"
+//        def url2 = "http://bet.hkjc.com/marksix/?lang=ch"
+        def url2 = "http://bet.hkjc.com/marksix/index.aspx?lang=ch"
 
-        def aaa = '2015-09-08 23:55:00.0'
-        def b = Date.parse('yyyy-MM-dd HH:mm:ss',aaa) //2015-09-08 23:55:00
 
-        println 'b = '+b
+        try{
+            netReptileService.getSixTry(url2)//六合彩
+        }catch (Exception e){
+            println 'Exception=>'+e
+        }
 
 //        netReptileService.getBingo(url)//賓果
 //        netReptileService.getWayLiTry(url)//威力彩
@@ -32,7 +36,103 @@ class NetReptileService {
      * 取得六合彩
      */
     def getSixTry = {
+        url->
+            println '===getSixTry==='
+            def element = org.jsoup.Jsoup.connect(url).get()
 
+            def s1 = ''//開出順序
+            def s2 = ''//大小順序
+            def delimiter = ' '
+            String title = ''//完整標頭
+            String day = ''//開獎日期
+            String no = ''//期數說明
+            String no2 = ''//期數(純數字)
+
+            element.select('div[id=oddsTable] td[class=content]').eachWithIndex {
+                node,index->
+                    if(index==10){//攪珠期數
+                        no2 = "${node.text()}"
+                    }else if(index==11){//攪珠日期
+                        day = "${node.text()}"
+                    }
+            }
+
+//            println '攪珠期數(1) = '+no2
+//            println '攪珠期數(2) = '+no2.substring(7)
+//            println '攪珠日期(1) = '+day
+//            println '攪珠日期(2) = '+day.substring(13,17) + "/" + day.substring(7,12)
+
+            def queryNw300Object = Nw300.findByTypeAndPeriods('01',no2)
+
+            if(queryNw300Object==null){
+                println '新的一期'
+                def nw300Instance = new Nw300()
+                def nw301Instance
+                def src = ""
+
+                nw300Instance.manCreated = 'system'
+                nw300Instance.dateCreated = new Date()
+                nw300Instance.manLastUpdated = 'system'
+                nw300Instance.lastUpdated = new Date()
+                nw300Instance.type = '01'
+                nw300Instance.periods = no2.substring(7)
+
+                day = day.substring(13,17) + "/" + day.substring(7,12)
+                nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
+
+                nw300Instance.validate()//資料檢查
+
+                if(!nw300Instance.hasErrors()){
+                    nw300Instance.save(flush: true)
+
+                    String a = "http://bet.hkjc.com/marksix/info/images/icon/no_"
+                    int i = 1
+
+                    element.select('div[id=oddsTable] img').eachWithIndex {
+                        node,index->
+
+                            src = "${node.absUrl('src')}"
+
+                            if(src.indexOf(a)>=0){
+//                                println 'no = '+ Long.parseLong(src.substring(a.length(),a.length()+2))
+                                nw301Instance = new Nw301()
+                                nw301Instance.nw300id = nw300Instance
+                                nw301Instance.manCreated = 'system'
+                                nw301Instance.dateCreated = new Date()
+                                nw301Instance.manLastUpdated = 'system'
+                                nw301Instance.lastUpdated = new Date()
+                                nw301Instance.no = Long.parseLong(src.substring(a.length(),a.length()+2))
+                                nw301Instance.opidx = i
+                                if(i==7){
+                                    nw301Instance.isspno = 1
+                                }
+
+                                nw301Instance.validate()//資料檢查
+
+                                if(!nw301Instance.hasErrors()){
+                                    nw301Instance.save(flush: true)
+                                }else {
+                                    nw301Instance.errors.each {
+                                        println  'Exception!!==>'+it
+                                    }
+                                }
+
+                                i++
+                            }
+
+                    }
+
+                }else{
+                    nw300Instance.errors.each {
+                        println it
+                    }
+                }
+
+            }else{
+                println '本次六和彩重複'
+            }
+
+            println ''
     }
 
 
