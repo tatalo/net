@@ -62,7 +62,7 @@ class NetReptileService {
 //            println '攪珠日期(1) = '+day
 //            println '攪珠日期(2) = '+day.substring(13,17) + "/" + day.substring(7,12)
 
-            def queryNw300Object = Nw300.findByTypeAndPeriods('01',no2)
+            def queryNw300Object = Nw300.findByTypeAndPeriods('01',no2.substring(7))
 
             if(queryNw300Object==null){
                 println '新的一期'
