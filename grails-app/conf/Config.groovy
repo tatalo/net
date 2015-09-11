@@ -87,10 +87,11 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
-grails.assets.less.compile = 'less4j'
+grails.assets.less.compiler = 'less4j'
 grails.assets.excludes = ["**/*.less"]
 grails.assets.plugin."twitter-bootstrap".excludes = ["**/*.less"]
 grails.assets.plugin."twitter-bootstrap".includes = ["bootstrap.less"]
+grails.assets.plugin."ckeditor".excludes = ["**/ofm/scripts/CodeMirror/*.*","**/ofm/scripts/CodeMirror/**/*.*"] //修正asset compiling ckeditor問題
 grails.assets.bundle=true
 grails.assets.minifyJs = false
 
