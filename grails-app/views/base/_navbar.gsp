@@ -92,7 +92,7 @@
                     <a href="javascript:self.print()" class="fa fa-print fa-lg"></a>
                 </li>
                 <li data-toggle="tooltip" data-placement="bottom" title="加入書籤">
-                    <a href="javascript:addToFavorite('${message(code: "default.webname.label")}', '${grailsApplication.config.grails.serverURL}')"
+                    <a href="javascript:addToFavorite('${message(code: "default.webname.label")}', location.href)"
                        class="fa fa-heart fa-lg"></a>
                 </li>
             </ul>
