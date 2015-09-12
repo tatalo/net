@@ -77,7 +77,7 @@ class NetReptileService {
                 nw300Instance.type = '01'
                 nw300Instance.periods = no2.substring(7)
 
-                day = day.substring(13,17) + "/" + day.substring(7,12)
+                day = day.substring(13,17) + "/" +day.substring(10,12)+ '/' +day.substring(7,9)
                 nw300Instance.opendt = Date.parse('yyyy/MM/dd',day)
 
                 nw300Instance.validate()//資料檢查
