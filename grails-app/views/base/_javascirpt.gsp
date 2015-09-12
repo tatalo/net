@@ -56,10 +56,11 @@
 
     function shareToSocial(type){
         var url = location.href;
+        url = encodeURIComponent(url);
         var title = '網贏';
         var fbUrl = 'https://www.facebook.com/sharer/sharer.php?sdk=joey&u='+ url +'&display=popup&ref=plugin&src=share_button';
         var googleUrl = 'https://plus.google.com/share?url=' + url;
-        var twitterUrl = 'https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Flocalhost%3A8080%2FnetWin%2F&ref_src=twsrc%5Etfw&text=%E7%B6%B2%E8%B4%8F&tw_p=tweetbutton&url=' + url;
+        var twitterUrl = 'https://twitter.com/intent/tweet?original_referer=' + url + '%2F&ref_src=twsrc%5Etfw&text=%E7%B6%B2%E8%B4%8F&tw_p=tweetbutton&url=' + url;
 
         if(type=='fb'){
             url = fbUrl;
