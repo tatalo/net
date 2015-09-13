@@ -120,6 +120,10 @@ class LottoController {
             df.params_text_date_transform(params: params, list: ["pYyyymmS", "pYyyymmE"])
         }
 
+        if (!params.pYyyymm_year && !params.pYyyymm_month && !params.pPeriods) { //沒有條件只查一筆
+            params.max = 1
+        }
+
         params.pType = "05"
         def nw300I = netWinService.getNw300List(params)
 
