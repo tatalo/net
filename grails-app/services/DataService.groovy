@@ -19,8 +19,8 @@ class DataService {
     def lotto03 = [NOs: (1..38).collect{String.format('%02d', it)}, haveSPNO: 1, SPNOs: (1..8).collect{String.format('%02d', it)}] //威力彩
 
     //history3
-    def lotto09 = [NOs: (0..9).collect{String.format('%02d', it)}, haveSPNO: 0, IDXs: [[IDX:1, NAME: '百位數'],[IDX:2, NAME: '十位數'],[IDX:3, NAME: '個位數']]] //3星彩
-    def lotto10 = [NOs: (0..9).collect{String.format('%02d', it)}, haveSPNO: 0, IDXs: [[IDX:1, NAME: '千位數'],[IDX:2, NAME: '百位數'],[IDX:3, NAME: '十位數'],[IDX:4, NAME: '個位數']]] //4星彩
+    def lotto09 = [NOs: (0..9).collect{it}, haveSPNO: 0, IDXs: [[IDX:1, NAME: '百位數'],[IDX:2, NAME: '十位數'],[IDX:3, NAME: '個位數']]] //3星彩
+    def lotto10 = [NOs: (0..9).collect{it}, haveSPNO: 0, IDXs: [[IDX:1, NAME: '千位數'],[IDX:2, NAME: '百位數'],[IDX:3, NAME: '十位數'],[IDX:4, NAME: '個位數']]] //4星彩
 
     //history4
     def lotto11 = [NOs: (1..80).collect{String.format('%02d', it)}, haveSPNO: 1] //賓果
