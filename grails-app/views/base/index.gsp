@@ -247,12 +247,12 @@
             </g:if>
             <g:if test="${nw300I09}">
                 <div class="zoom55">
-                    <g:render template="/lotto/lottoContent6" model="[pType: '09', nw300I: nw300I09]"/>
+                    <g:render template="/lotto/lottoContent3" model="[pType: '09', nw300I: nw300I09]"/>
                 </div>
             </g:if>
             <g:if test="${nw300I10}">
                 <div class="zoom55">
-                    <g:render template="/lotto/lottoContent6" model="[pType: '10', nw300I: nw300I10]"/>
+                    <g:render template="/lotto/lottoContent3" model="[pType: '10', nw300I: nw300I10]"/>
                 </div>
             </g:if>
             <div class="form-group">

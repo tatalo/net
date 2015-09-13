@@ -14,7 +14,7 @@
                 <table class="table table-condensed">
                     <tbody>
                     <tr>
-                        <th width="150px" class="text-center">
+                        <th width="120px" class="text-center">
                             <h4>
                                 <strong>
                                     開出順序
