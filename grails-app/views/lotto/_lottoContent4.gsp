@@ -31,7 +31,7 @@
                                 </span>
                             </g:each>
                         </td>
-                        <th width="150px" class="text-center">
+                        <th width="120px" class="text-center">
                             <h4>
                                 <strong>
                                     超級獎號
@@ -48,7 +48,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <th width="150px" class="text-center">
+                        <th class="text-center">
                         </th>
                         <td>
                             <g:each in="${nw300?.nw301s.findAll { it.isspno == 0 && it.opidx > 10 }.sort {
@@ -60,7 +60,7 @@
                                 </span>
                             </g:each>
                         </td>
-                        <th width="150px" class="text-center">
+                        <th class="text-center">
                             <h4>
                                 <strong>
                                     猜大小
