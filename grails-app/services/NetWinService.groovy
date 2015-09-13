@@ -961,8 +961,8 @@ class NetWinService {
                                 FROM NW300 NW3
                                 WHERE 1 = :pNum
                                 AND NW3.TYPE = :pType
+                                AND TRUNC(NW3.OPENDT) = TO_DATE(:pOpendt,'yyyyMMdd')
                                 AND ROWNUM <= :max
-                                AND TRUNC(NW3.OPENDT) = TO_DATE(:pOpendt,'yyyymmdd')
                                 ORDER BY NW3.PERIODS DESC
                             ) NW3
                             LEFT JOIN NW301 NW31 ON NW3.OBJID = NW31.NW300ID
@@ -970,7 +970,6 @@ class NetWinService {
                             LEFT JOIN NW301 NW31C ON NW31.NW300ID = NW31C.NW300ID AND NW31.NO = (NW31C.NO-1) AND NW31.ISSPNO = NW31C.ISSPNO
                             GROUP BY NW3.PERIODS, NW3.OPENDT,NW3.RESULT
                         ) NW3
-                        ORDER BY NW3.PERIODS DESC
                   """
         def condition = [:]
         condition.pNum = 1 //default parameters, avoid condition is null then happen exception

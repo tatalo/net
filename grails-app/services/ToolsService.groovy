@@ -15,7 +15,11 @@ class ToolsService {
     def transPRSSql(String sql,Map condition) {
         def result = sql
         condition.each {name, val ->
-            result = result.replace(":" + name, "'" + val + "'")
+            if (val instanceof Integer || val instanceof BigDecimal || val instanceof Number) {
+                result = result.replace(":" + name,"" + val + "")
+            } else {
+                result = result.replace(":" + name, "'" + val + "'")
+            }
         }
         return result
     }
