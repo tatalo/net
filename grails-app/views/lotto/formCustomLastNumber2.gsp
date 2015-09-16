@@ -44,6 +44,7 @@
             <g:render template="/lotto/lottoDataLastNumberList2" model="[columnsNOs: columnsNOs, columnsSPNOs: columnsSPNOs, nw300ILN: nw300ILN, nw300ILNMax: nw300ILNMax, createColumn: createColumn, columnsCNTS: columnsCNTS]"/>
         </table>
     </div>
+    <g:render template="/base/board/board1" model="[name: params.action]"/>
 </div>
 
 </body>

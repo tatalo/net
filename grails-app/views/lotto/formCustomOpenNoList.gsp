@@ -14,6 +14,7 @@
     <div class="table-responsive">
         <g:render template="/lotto/bingoDataAnalysis4" model="[nw300I: nw300I, columnsNOs : columnsNOs]"/>
     </div>
+    <g:render template="/base/board/board1" model="[name: params.action]"/>
 </div>
 
 </body>

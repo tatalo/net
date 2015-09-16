@@ -34,6 +34,7 @@
         <g:render template="/lotto/lottoQueryFilter"/>
         </div>
     </div>
+    <g:render template="/base/board/board1" model="[name: params.action]"/>
 </div>
 </body>
 </html>

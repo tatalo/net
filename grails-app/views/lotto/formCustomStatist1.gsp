@@ -15,6 +15,7 @@
     <div class="table-responsive">
         <g:include controller="lotto" action="showBingoAnalysis2"></g:include>
     </div>
+    <g:render template="/base/board/board1" model="[name: params.action]"/>
 </div>
 
 </body>

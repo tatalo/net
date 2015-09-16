@@ -87,7 +87,7 @@
             <g:render template="/lotto/lottoContent4" model="[pType: '11', nw300I: nw300I11]"/>
         </div>
     </div>
+    <g:render template="/base/board/board1" model="[name: params.action]"/>
 </div>
-
 </body>
 </html>

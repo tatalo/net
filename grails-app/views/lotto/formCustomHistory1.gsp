@@ -60,6 +60,7 @@
                       model="[columnsNOs: columnsNOs, nw300IL: nw300IL, nw300ILMax: nw300ILMax]"/>
         </table>
     </div>
+    <g:render template="/base/board/board1" model="[name: params.action]"/>
 </div>
 
 </body>

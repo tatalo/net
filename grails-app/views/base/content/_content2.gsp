@@ -39,10 +39,7 @@
     </div>
 </div>
 
-<div class="form-group">
-    <div class="fb-comments" data-href="${"http://localhost:8080/netWin" + nw400I?.id}"
-         data-numposts="5"></div>
-</div>
+<g:render template="/base/board/board1" model="[name: nw400I?.id]"/>
 
 %{--<div class="form-group">--}%
 %{--<disqus:comments url="${"http://localhost:8080/netWin?id=" + nw400I?.id}" identifier="${nw400I?.id}"/>--}%

@@ -13,6 +13,7 @@
 
 <div class="container">
     <g:include controller="lotto" action="showBingoAnalysis"></g:include>
+    <g:render template="/base/board/board1" model="[name: params.action]"/>
 </div>
 
 </body>

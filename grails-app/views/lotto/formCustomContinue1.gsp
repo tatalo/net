@@ -45,6 +45,7 @@
             <g:render template="/lotto/lottoDataCntsList1" model="[columnsNOs: columnsNOs, nw300IC: nw300IC, nw300ICMax: nw300ICMax]"/>
         </table>
     </div>
+    <g:render template="/base/board/board1" model="[name: params.action]"/>
 </div>
 
 </body>

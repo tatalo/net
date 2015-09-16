@@ -58,6 +58,7 @@
                       model="[columnsNOs: columnsNOs, columnIDXS: columnIDXS, nw300I: nw300I]"/>
         </table>
     </div>
+    <g:render template="/base/board/board1" model="[name: params.action]"/>
 </div>
 
 </body>
