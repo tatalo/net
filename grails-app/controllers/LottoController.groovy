@@ -1,4 +1,5 @@
 import groovy.sql.Sql
+import grails.converters.*
 
 class LottoController {
 
@@ -1025,4 +1026,48 @@ ORDER BY COUNT(1) DESC
                                                               resultIList: resultI, resultJList: resultJ, resultKList: resultK,
                                                               nowPeriods:nowPeriods])
     }
+
+
+
+    def showApi(){
+        def response = [:]
+        response.name = 'Allen Lai'
+
+        def resultA = netWinService.getbingoAnalysisA()//本期球號
+        def resultB = netWinService.getbingoAnalysisB()//熱門球號
+        def resultC = netWinService.getbingoAnalysisC()//冷門球號
+        response.putAt("resultA", resultA)
+        response.putAt("resultB", resultB)
+        response.putAt("resultC", resultC)
+
+        withFormat {
+            json{render response as JSON}
+        }
+    }
+
+    //本期球號
+    def getbingoAnalysisA(){
+        def resultA = netWinService.getbingoAnalysisA()//本期球號
+        withFormat {
+            json{render resultA as JSON}
+        }
+    }
+
+    //熱門球號
+    def getbingoAnalysisB(){
+        def resultB = netWinService.getbingoAnalysisB()//熱門球號
+        withFormat {
+            json{render resultB as JSON}
+        }
+    }
+
+    //冷門球號
+    def getbingoAnalysisC(){
+        def resultC = netWinService.getbingoAnalysisC()//冷門球號
+        withFormat {
+            json{render resultC as JSON}
+        }
+    }
+
+
 }
