@@ -43,6 +43,9 @@ grails.views.default.codec = "html"
 // If unspecified, controllers are prototype scoped.
 grails.controllers.defaultScope = 'singleton'
 
+//facebook board data
+grails.facebook.href = "http://wonwin899.net/"
+
 // GSP settings
 grails {
     views {
