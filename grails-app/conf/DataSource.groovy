@@ -18,10 +18,10 @@ environments {
         dataSource {
 //            dbCreate = "update"
 //            url      = "jdbc:oracle:thin:@127.0.0.1:1521:xe"
-//            url      = "jdbc:oracle:thin:@104.155.211.29:1521:xe"
-            url      = "jdbc:oracle:thin:@209.141.56.12:1521:xe"
+            url      = "jdbc:oracle:thin:@104.155.211.29:1521:xe"
+//            url      = "jdbc:oracle:thin:@209.141.56.12:1521:xe"
             username = "netwin"
-            password = "netwin1234"
+            password = "Ppn1234.."
             logSql = false
         }
     }
