@@ -1,6 +1,6 @@
 %{--技巧策略清單MODEL1--}%
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-9">
         <ol class="breadcrumb">
             <li class="active">
                 <i class="fa fa-th-list"></i>
@@ -39,7 +39,35 @@
         </div>
     </div>
 
-    <div class="col-md-2">
-        廣告區
+    <div class="col-md-3">
+        <div class="form-group">
+            <a href="http://www.htc.com/tw/smartphones/htc-one-e9-plus-dual-sim/" target="_blank" class="thumbnail">
+                <img src="${assetPath(src: 'ad/ad01.jpg')}" class="img-responsive" alt="Responsive image">
+            </a>
+            <a href="http://www.samsung.com/tw/galaxy/note5/" target="_blank" class="thumbnail">
+                <img src="${assetPath(src: 'ad/ad02.jpg')}" class="img-responsive" alt="Responsive image">
+            </a>
+            <a href="http://store.sony.com.tw/dslr/A7/index.asp#0" target="_blank" class="thumbnail">
+                <img src="${assetPath(src: 'ad/ad03.jpg')}" class="img-responsive" alt="Responsive image">
+            </a>
+            <a href="http://www.canon.com.tw/specialsite/G7X/" target="_blank" class="thumbnail">
+                <img src="${assetPath(src: 'ad/ad04.jpg')}" class="img-responsive" alt="Responsive image">
+            </a>
+            <a href="http://www.canon.com.tw/specialsite/7DmarkII/" target="_blank" class="thumbnail">
+                <img src="${assetPath(src: 'ad/ad05.jpg')}" class="img-responsive" alt="Responsive image">
+            </a>
+            <a href="http://www.paneraisubmersible.com/zh/submersibles_collection/" target="_blank"
+               class="thumbnail">
+                <img src="${assetPath(src: 'ad/ad06.jpg')}" class="img-responsive" alt="Responsive image">
+            </a>
+            <a href="http://www.dealers.maserati.com/dealers/tw/zh/modena-motori-taiwan/index/ghibli/ghibli.html"
+               target="_blank" class="thumbnail">
+                <img src="${assetPath(src: 'ad/ad07.jpg')}" class="img-responsive" alt="Responsive image">
+            </a>
+            <a href="http://cc.porsche.com/icc_euro/ccCall.do?rt=1441253658&screen=1280x1024&userID=TW&lang=tw&PARAM=parameter_internet_tw&ORDERTYPE=970490&customID=tw&hookURL=http%3a%2f%2fwww.porsche.com%2fpap%2fmodelstart%2fall%2f%3fmodelrange%3dpanamera"
+               target="_blank" class="thumbnail">
+                <img src="${assetPath(src: 'ad/ad08.jpg')}" class="img-responsive" alt="Responsive image">
+            </a>
+        </div>
     </div>
 </div>
