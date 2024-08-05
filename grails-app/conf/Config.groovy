@@ -43,9 +43,6 @@ grails.views.default.codec = "html"
 // If unspecified, controllers are prototype scoped.
 grails.controllers.defaultScope = 'singleton'
 
-//facebook board data
-grails.facebook.href = "http://wonwin899.net/"
-
 // GSP settings
 grails {
     views {
@@ -145,14 +142,11 @@ environments {
     development {
         grails.logging.jul.usebridge = true
         grails.dbconsole.enabled = true
-//        grails.serverURL = "http://localhost:8080/" + appName
 
     }
     production {
         grails.logging.jul.usebridge = false
         grails.dbconsole.enabled = true
-//        grails.serverURL = "http://ww899.net/" + appName
-        // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }
 

@@ -67,7 +67,7 @@ class BaseController {
         def actionType = params.actionType
         println 'actionType = '+actionType
 
-        def url = "http://www.taiwanlottery.com.tw/index_new.aspx"
+        def url = ""
 
         def result = ''
 

@@ -40,7 +40,3 @@
 </div>
 
 <g:render template="/base/board/board1" model="[name: nw400I?.id]"/>
-
-%{--<div class="form-group">--}%
-%{--<disqus:comments url="${"http://localhost:8080/netWin?id=" + nw400I?.id}" identifier="${nw400I?.id}"/>--}%
-%{--</div>--}%

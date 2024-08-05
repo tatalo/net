@@ -9,27 +9,14 @@ class NetReptileService {
 
     static void main(String[] args){
         NetReptileService netReptileService = new NetReptileService()
-        def url = "http://www.taiwanlottery.com.tw/index_new.aspx"
-//        def url2 = "http://bet.hkjc.com/marksix/?lang=ch"
-        def url2 = "http://bet.hkjc.com/marksix/index.aspx?lang=ch"
-
+        def url = ""
+        def url2 = ""
 
         try{
             netReptileService.getSixTry(url2)//六合彩
         }catch (Exception e){
             println 'Exception=>'+e
         }
-
-//        netReptileService.getBingo(url)//賓果
-//        netReptileService.getWayLiTry(url)//威力彩
-//        netReptileService.getThreeEightTry(url)//38樂合彩
-//        netReptileService.getBigLuckToa(url)//大樂透
-//        netReptileService.getFourNineTry(url)//49樂合彩
-//        netReptileService.getBigFuTry(url)//大福彩
-//        netReptileService.getFiveThreeNine(url)//今彩539
-//        netReptileService.getThreeNineTry(url)//39樂合彩
-//        netReptileService.getThreeStarTry(url)//3星彩
-//        netReptileService.getFourStarTry(url)//4星彩
     }
 
     /**
@@ -85,7 +72,7 @@ class NetReptileService {
                 if(!nw300Instance.hasErrors()){
                     nw300Instance.save(flush: true)
 
-                    String a = "http://bet.hkjc.com/marksix/info/images/icon/no_"
+                    String a = ""
                     int i = 1
 
                     element.select('div[id=oddsTable] img').eachWithIndex {

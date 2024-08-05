@@ -16,24 +16,20 @@ hibernate {
 environments {
     development {
         dataSource {
-//            dbCreate = "update"
-//            url      = "jdbc:oracle:thin:@127.0.0.1:1521:xe"
-            url      = "jdbc:oracle:thin:@104.155.211.29:1521:xe"
-//            url      = "jdbc:oracle:thin:@209.141.56.12:1521:xe"
+            dbCreate = "none"
             username = "netwin"
-            password = "Ppn1234.."
+            password = "netWin1234"
             logSql = false
         }
     }
     test {
         dataSource {
-//            dbCreate = "update"
+            dbCreate = "none"
             url      = "jdbc:oracle:thin:@127.0.0.1:1521:xe"
             username = "netwin"
             password = "netWin1234"
 
             properties {
-                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                 jmxEnabled = true
                 initialSize = 20
                 maxActive = 150
@@ -50,7 +46,6 @@ environments {
                 testWhileIdle = true
                 testOnReturn = false
                 jdbcInterceptors = "ConnectionState"
-                //defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
 
 
             }
@@ -58,7 +53,7 @@ environments {
     }
     production {
         dataSource {
-//            dbCreate = "update"
+            dbCreate = "none"
             url      = "jdbc:oracle:thin:@127.0.0.1:1521:xe"
             username = "netwin"
             password = "netwin1234"
@@ -80,7 +75,6 @@ environments {
                testWhileIdle = true
                testOnReturn = false
                jdbcInterceptors = "ConnectionState"
-//               defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
             }
         }
     }
